@@ -8,6 +8,7 @@ zshrc
 shrc
 xmonadrc:.xmonad
 bin:bin
+oh-my-zsh
 [endfiles]
 
 [hosts]
