@@ -8,6 +8,7 @@ alias vnc="/home/pxq/__vnc/VNC-Viewer-6.0.0-Linux-x64"
 alias chrome="google-chrome"
 alias top='htop'
 alias wechat='~/.electronic-wechat-linux-x64/electronic-wechat'
+alias codeit='code . && exit'
 
 #ros相关
 #export ROS_HOSTNAME=192.168.188.233
