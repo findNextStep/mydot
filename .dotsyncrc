@@ -1,0 +1,15 @@
+# Location of your dotfiles in $HOME
+DOTFILES=mydot
+
+# 添加你需要链接的文件
+[files]
+bashrc
+zshrc
+shrc
+xmonadrc:.xmonad
+bin:bin
+[endfiles]
+
+[hosts]
+pxq-CN15S
+[endhosts]

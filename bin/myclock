@@ -1,0 +1,1 @@
+xclock -update 1 -bg black -norender -hd white -hl white -bd red -fg "#325A8E"
