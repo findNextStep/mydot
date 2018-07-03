@@ -9,6 +9,10 @@ alias chrome="google-chrome"
 alias top='htop'
 alias wechat='~/.electronic-wechat-linux-x64/electronic-wechat'
 alias codeit='code . && exit'
+# 命令行使用剪贴板
+tocopy() {
+    xclip -selection c 
+}
 
 #ros相关
 #export ROS_HOSTNAME=192.168.188.233
