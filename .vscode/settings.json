@@ -1,5 +1,7 @@
 {
   "files.associations": {
-    "bashrc": "shellscript"
+    "bashrc": "shellscript",
+    "zshrc": "shellscript",
+    "shrc": "shellscript",
   }
 }
