@@ -9,6 +9,7 @@ shrc
 xmonadrc:.xmonad
 bin:bin
 oh-my-zsh
+gitconfig
 [endfiles]
 
 [hosts]
