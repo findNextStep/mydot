@@ -13,3 +13,5 @@ alias codeit='code . && exit'
 #ros相关
 #export ROS_HOSTNAME=192.168.188.233
 #export ROS_MASTER_URI=http://192.168.188.2:11311
+
+PATH=/opt/ghc/bin:~/.cabal/bin:$PATH
