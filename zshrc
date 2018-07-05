@@ -30,6 +30,10 @@ alias -s docx=wps
 alias -s xls=et
 alias -s xlsx=et
 alias -s md=typora
+alias -s jpg=feh
+alias -s png=feh
+alias -s mp4=mplayer
+alias -s pdf=evince
 
 #导入共同设置 
 source ~/.shrc
