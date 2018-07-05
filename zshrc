@@ -44,3 +44,6 @@ source ~/.shrc
 # ikfast 需要
 #export PYTHONPATH=$PYTHONPATH:"$(openrave-config --python-dir)"
 #source /home/pxq/catkin_ws/devel/setup.zsh
+
+# 命令行高亮，必须放在最后面
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
