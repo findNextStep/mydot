@@ -2,12 +2,8 @@
 alias vi='vim'
 alias grep="grep --color=auto"
 alias cls='clear'
-alias pxqstyle="astyle --options=/home/pxq/.pxqstyle.conf"
-alias android_studio="~/aswork_sp/as_con/android-studio/bin/studio.sh"
-alias vnc="/home/pxq/__vnc/VNC-Viewer-6.0.0-Linux-x64"
 alias chrome="google-chrome"
 alias top='htop'
-alias wechat='~/.electronic-wechat-linux-x64/electronic-wechat'
 alias codeit='code . && exit'
 # 命令行使用剪贴板
 tocopy() {
