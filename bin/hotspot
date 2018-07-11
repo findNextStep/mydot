@@ -1,1 +1,1 @@
-d wifi hotspot ifname wlp3s0 ssid thenext password "findnext" 
+nmcli d wifi hotspot ifname wlp3s0 ssid thenext password "findnext" 
