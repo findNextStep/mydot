@@ -38,7 +38,7 @@ alias -s pdf=evince
 #导入共同设置 
 source ~/.shrc
 #导入ros相关
-#source /opt/ros/indigo/setup.zsh
+source /opt/ros/$(ls /opt/ros)/setup.zsh
 #source /home/pxq/erobot/devel/setup.zsh
 #source /home/pxq/catkin_ws/devel/setup.zsh
 # ikfast 需要
