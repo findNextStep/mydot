@@ -1,4 +1,5 @@
-git submodule update
+git submodule update --init --recursive
+
 $(pwd)/dotsync/bin/dotsync -f $(pwd)/.dotsyncrc -L
 
 cd oh-my-zsh
