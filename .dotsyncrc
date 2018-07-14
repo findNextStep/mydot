@@ -7,6 +7,7 @@ bashrc
 zshrc
 shrc
 xmonadrc:.xmonad
+sakura.conf:.config/sakura/sakura.conf
 bin:bin
 oh-my-zsh
 gitconfig
