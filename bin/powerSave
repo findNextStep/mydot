@@ -1,1 +1,3 @@
-sudo powertop --auto-tune && sudo tlp start && sudo bin/light 3
+sudo powertop --auto-tune && sudo tlp start
+xset +dpms
+~/bin/light 0.3
