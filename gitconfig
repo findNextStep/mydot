@@ -3,3 +3,5 @@
 	name = findNextStep
 [github]
 	user = findNextStep
+[core]
+	editor = vim
