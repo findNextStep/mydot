@@ -1,3 +1,12 @@
+# openrave
+function _openrave_load(){
+    OPENRAVE_PATH=$(openrave-config --python-dir)
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$OPENRAVE_PATH/openravepy/_openravepy_
+    export PYTHONPATH=$PYTHONPATH:$OPENRAVE_PATH
+}
+
+_openrave_load
+
 #命令别名
 alias vi='vim'
 alias grep="grep --color=auto"
@@ -10,9 +19,6 @@ tocopy() {
     xclip -selection c 
 }
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 
 #ros相关
@@ -20,3 +26,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 #export ROS_MASTER_URI=http://192.168.188.2:11311
 
 PATH=/opt/ghc/bin:~/.cabal/bin:$PATH
+
+# 消除ctrl+s锁定
+# 参考https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
+stty -ixon
