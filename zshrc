@@ -20,11 +20,10 @@ source $ZSH/oh-my-zsh.sh
 
 # 定义terminal外启动app的函数
 _outTerminal(){
-    screen $@ > /dev/null 2>&1 &exit
+    screen $@ > /dev/null 2>&1 &
 }
 
 #文件打开方式自定义
-alias -s py=python
 alias -s sh=sh
 alias -s zsh=zsh
 alias -s bash=bash
@@ -40,12 +39,12 @@ alias -s png=feh
 alias -s mp4=mplayer
 alias -s pdf="_outTerminal evince"
 
-#导入共同设置 
-source ~/.shrc
 #导入ros相关
 source /opt/ros/$(ls /opt/ros)/setup.zsh
 source ~/erobot/devel/setup.zsh
 #source ~/catkin_ws/devel/setup.zsh
+#导入共同设置 
+source ~/.shrc
 # ikfast 需要
 #export PYTHONPATH=$PYTHONPATH:"$(openrave-config --python-dir)"
 
