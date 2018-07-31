@@ -50,3 +50,5 @@ source ~/.shrc
 
 # 命令行高亮，必须放在最后面
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

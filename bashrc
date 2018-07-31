@@ -116,3 +116,4 @@ fi
 
 #导入共同设置 
 source ~/.shrc
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
