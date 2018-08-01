@@ -4,6 +4,8 @@ DOTFILES=mydot
 # 添加你需要链接的文件
 [files]
 bashrc
+vimrc
+myvim
 zshrc
 shrc
 xmonadrc:.xmonad
