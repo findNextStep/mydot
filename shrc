@@ -1,6 +1,7 @@
 # openrave
 function _openrave_load(){
-    OPENRAVE_PATH=$(openrave-config --python-dir)
+    #OPENRAVE_PATH=$(openrave-config --python-dir)
+    OPENRAVE_PATH=/opt/ros/kinetic/lib/python2.7/dist-packages
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$OPENRAVE_PATH/openravepy/_openravepy_
     export PYTHONPATH=$PYTHONPATH:$OPENRAVE_PATH
 }
