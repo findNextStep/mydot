@@ -15,6 +15,8 @@ alias cls='clear'
 alias chrome="google-chrome"
 alias top='htop'
 alias codeit='code . && exit'
+# fuzzy的cd跳转
+alias cdto='cd $(find -type d | fzf)'
 # 命令行使用剪贴板
 tocopy() {
     xclip -selection c 
