@@ -23,6 +23,9 @@ call plug#begin('~/.vim/plug')
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     Plug 'Yggdroot/indentLine'
     Plug 'w0rp/ale'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'nanotech/jellybeans.vim'
+    Plug 'flazz/vim-colorschemes'
 call plug#end()
 
 " nerdtree 设置
@@ -50,7 +53,7 @@ set t_Co=256
 
 " LeaderF
 noremap <C-p> :LeaderfFile<CR>
-noremap <S-p> :LeaderfBufTag<CR> 
+noremap <S-p> :LeaderfBufTag<CR>
 
 " gitgutter
 let g:gitgutter_sign_added = '+'
@@ -121,5 +124,14 @@ let g:ycm_filetype_whitelist = {
 			\ "objc":1,
 			\ "sh":1,
 			\ "zsh":1,
+      \ "python":1,
 			\ "zimbu":1,
 			\ }
+
+colorscheme darkZ
+" set background=dark
+let g:solarized_termcolors=256
+hi Normal guibg=NONE ctermbg=NONE 
+hi LineNr guibg=NONE ctermbg=NONE
+
+
