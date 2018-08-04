@@ -32,6 +32,7 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'chxuan/change-colorscheme'
 Plug 'Carpetsmoker/startscreen.vim'
 Plug 't9md/vim-choosewin'
+Plug 'tc50cal/vim-terminal'
 call plug#end()
 
 " nerdtree 设置
@@ -180,3 +181,6 @@ let g:Startscreen_function = function('T')
 
 nmap gw  <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
+
+" 添加创建terminal的指令
+nnoremap <C-j> :terminal ++hidden screen x-terminal-emulator<CR>
