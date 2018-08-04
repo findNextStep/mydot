@@ -30,3 +30,9 @@ vnoremap <space> :
 
 " ctrl+x剪切当前行
 nnoremap <C-x> V"+ydd
+
+" ctrl+n创建新窗口Alt+n创建新标签
+nnoremap <C-n> :tabnew<CR>
+nnoremap <C-k> :sp<CR>
+nnoremap <C-L> :vsp<CR>
+nnoremap <C-i> :tabnext<CR>
