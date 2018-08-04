@@ -5,21 +5,29 @@ func! FormatCode()
     exec "w"
     
     if &filetype == 'c' || &filetype == 'h'
-        exec "!astyle --style=java -U -p -xn -xc -xl -k3 -j % --suffix=none"
+        silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
+        redraw!
     elseif &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'hpp'
-        exec "!astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none"
+        silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
+        redraw!
     elseif &filetype == 'perl'
-        exec "!astyle --style=java -U -p -xn -xc -xl -k3 -j % --suffix=none"
+        silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
+        redraw!
     elseif &filetype == 'py'|| &filetype == 'python'
-        exec "!autopep8 --in-place --aggressive %"
+        silent "!autopep8 --in-place --aggressive %"
+        redraw!
     elseif &filetype == 'java'
-        exec "!astyle --style=java -U -p -xn -xc -xl -k3 -j % --suffix=none"
+        silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
+        redraw!
     elseif &filetype == 'jsp'
-        exec "!astyle --style=java -U -p -xn -xc -xl -k3 -j % --suffix=none"
+        silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
+        redraw!
     elseif &filetype == 'xml'
-        exec "!astyle --style=java -U -p -xn -xc -xl -k3 -j % --suffix=none"
+        silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
+        redraw!
     else
         exec "normal gg=G"
+        redraw!
         return
     endif
 
