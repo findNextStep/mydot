@@ -1,0 +1,36 @@
+                                        M
+                                       MM
+                                      MMM
+                                     MMMM
+                                    MMMMW
+                                   MMMMM   .
+                                  MMMMMM   ..
+                                 MMMMMMM   ...
+                                MMMMMMMM   ....
+                               MMMMMMMMM   .....
+                              MMMMMM.MMM  11M....
+                             MMMM.....M   111MMMM.
+                            MMM.......M   1111MMMM
+                           M...........   11111WMMM
+                          ..MMMMMMMMMMMM   ..1111MMM
+                           ....MMMMMMMMMM1   ....1MMM
+                             ........MMMMM11   ....MMM
+                       MM       ......MMMMM111   ....MM
+                      .M.MMM      ....MMMMMM1111   ...MM
+                     ..MM.MMMM      .MMMMMMMM11111   ..MM
+                    ...MM..MMMMM      ....MMMMW11111   ..M
+                   ....MM...MMMMMM      ........11111    .
+                 ......MMM...MMMMMMMM     .......111111
+                .......MMW ...MMMMMMM.      ......1111111
+               .......MMM    .MMMMM...         ....11111111
+              ........MM       MM.....         MM...111111111
+             .........M         ......      WMMMMMM..1111111111
+            .........M          MM....    MMMMMMMM.  .11111111111
+           ..MMMMMMMMMM         MMMM..  MMMM....       11111111111
+             MMMMMMMMMMMM        MMMMM........        MMMMMMMMMMMMM
+                MMMMMMMMMM       MMMM......         MMMMMMMMMMM
+                    MMMMMMM      MMM....           MMMMMMMM
+                       MMMMMM     M...           MMMMMMM
+                          MMMM    .            MMMMM
+                              MM             MMM
+                                           M
