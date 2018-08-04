@@ -31,6 +31,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'chxuan/change-colorscheme'
 Plug 'Carpetsmoker/startscreen.vim'
+Plug 't9md/vim-choosewin'
 call plug#end()
 
 " nerdtree 设置
@@ -173,5 +174,9 @@ function! T()
     :silent %>> 
     " Go to line 1 
     :1 
+    echo "welcome theNext"
 endfun 
 let g:Startscreen_function = function('T') 
+
+nmap gw  <Plug>(choosewin)
+let g:choosewin_overlay_enable = 1
