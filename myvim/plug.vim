@@ -33,6 +33,9 @@ Plug 'chxuan/change-colorscheme'
 Plug 'Carpetsmoker/startscreen.vim'
 Plug 't9md/vim-choosewin'
 Plug 'tc50cal/vim-terminal'
+" vim-debug 需要
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'idanarye/vim-vebugger'
 call plug#end()
 
 " nerdtree 设置
@@ -138,7 +141,8 @@ let g:ycm_filetype_whitelist = {
             \ "zimbu":1,
             \ }
 
-colorscheme onedark
+" colorscheme molokai
+colorscheme Tomorrow-Night
 " set background=dark
 let g:solarized_termcolors=256
 hi Normal guibg=NONE ctermbg=NONE 
