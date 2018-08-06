@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plug')
 Plug '~/.vim/plug/YouCompleteMe'
 Plug 'octol/vim-cpp-enhanced-highlight' ,{ 'for':'cpp'}
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'octol/vim-cpp-enhanced-highlight' 
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'davidhalter/jedi-vim' ,{ 'for':'python'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle','for':'netrw'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -40,6 +40,14 @@ Plug 'idanarye/vim-vebugger'
 Plug 'bronson/vim-trailing-whitespace'
 " 光标下词语自动高亮
 Plug 'RRethy/vim-illuminate'
+" 颜色功能增强
+Plug 'jeaye/color_coded', {
+  \ 'build': {
+    \   'unix': 'rm -f CMakeCache.txt && cmake . && make && make install',
+  \ },
+  \ 'autoload': { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
+  \ 'build_commands' : ['cmake', 'make']
+\}
 call plug#end()
 
 " nerdtree 设置
@@ -99,13 +107,13 @@ let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = {
-            \ 'c': ['cppcheck'], 
-            \ 'cpp': ['cppcheck'], 
-            \ 'python': ['flake8', 'pylint'], 
-            \ 'lua': ['luac'], 
+            \ 'c': ['cppcheck'],
+            \ 'cpp': ['cppcheck'],
+            \ 'python': ['flake8', 'pylint'],
+            \ 'lua': ['luac'],
             \ 'go': ['go build', 'gofmt'],
             \ 'java': ['javac'],
-            \ 'javascript': ['eslint'], 
+            \ 'javascript': ['eslint'],
             \ }
 let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
@@ -135,9 +143,9 @@ let g:ycm_semantic_triggers =  {
 
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
 highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
-let g:ycm_filetype_whitelist = { 
+let g:ycm_filetype_whitelist = {
             \ "c":1,
-            \ "cpp":1, 
+            \ "cpp":1,
             \ "cmake":1,
             \ "objc":1,
             \ "sh":1,
@@ -150,7 +158,7 @@ let g:ycm_filetype_whitelist = {
 colorscheme Tomorrow-Night
 " set background=dark
 let g:solarized_termcolors=256
-hi Normal guibg=NONE ctermbg=NONE 
+hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
 
 " set doctool
@@ -176,17 +184,17 @@ let g:DoxygenToolKit_interCommentBlock = "/// "
 
 
 " start page change
-function! T() 
+function! T()
     " wecome界面不需要缩进线
     IndentLinesToggle
     read ~/.myvim/start.txt
-    " Some margin for readability 
-    :silent %>> 
-    " Go to line 1 
-    :1 
+    " Some margin for readability
+    :silent %>>
+    " Go to line 1
+    :1
     echo "welcome theNext"
-endfun 
-let g:Startscreen_function = function('T') 
+endfun
+let g:Startscreen_function = function('T')
 
 nmap gw  <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
