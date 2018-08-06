@@ -36,6 +36,10 @@ Plug 'tc50cal/vim-terminal'
 " vim-debug 需要
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'idanarye/vim-vebugger'
+" 消除多余空格
+Plug 'bronson/vim-trailing-whitespace'
+" 光标下词语自动高亮
+Plug 'RRethy/vim-illuminate'
 call plug#end()
 
 " nerdtree 设置
@@ -95,8 +99,8 @@ let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = {
-            \ 'c': ['gcc', 'cppcheck'], 
-            \ 'cpp': ['gcc', 'cppcheck'], 
+            \ 'c': ['cppcheck'], 
+            \ 'cpp': ['cppcheck'], 
             \ 'python': ['flake8', 'pylint'], 
             \ 'lua': ['luac'], 
             \ 'go': ['go build', 'gofmt'],
@@ -134,6 +138,7 @@ highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
 let g:ycm_filetype_whitelist = { 
             \ "c":1,
             \ "cpp":1, 
+            \ "cmake":1,
             \ "objc":1,
             \ "sh":1,
             \ "zsh":1,
@@ -188,3 +193,8 @@ let g:choosewin_overlay_enable = 1
 
 " 添加创建terminal的指令
 nnoremap <C-j> :terminal ++hidden screen x-terminal-emulator<CR>
+
+
+" RRethy / vim-illuminate
+let g:Illuminate_delay = 20
+let g:Illuminate_ftblacklist = ['nerdtree']
