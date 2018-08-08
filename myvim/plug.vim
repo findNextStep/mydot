@@ -24,6 +24,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'nanotech/jellybeans.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -41,13 +43,17 @@ Plug 'bronson/vim-trailing-whitespace'
 " 光标下词语自动高亮
 Plug 'RRethy/vim-illuminate'
 " 颜色功能增强
-Plug 'jeaye/color_coded', {
-  \ 'build': {
-    \   'unix': 'rm -f CMakeCache.txt && cmake . && make && make install',
-  \ },
-  \ 'autoload': { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
-  \ 'build_commands' : ['cmake', 'make']
-\}
+" Plug 'jeaye/color_coded'
+" , {
+"   \ 'build': {
+"     \   'unix': 'rm -f CMakeCache.txt && cmake . && make && make install',
+"   \ },
+"   \ 'autoload': { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
+"   \ 'build_commands' : ['cmake', 'make']
+" \}
+" markdown预览
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
 call plug#end()
 
 " nerdtree 设置
@@ -154,8 +160,8 @@ let g:ycm_filetype_whitelist = {
             \ "zimbu":1,
             \ }
 
-" colorscheme molokai
-colorscheme Tomorrow-Night
+colorscheme molokai
+" colorscheme Tomorrow-Night
 " set background=dark
 let g:solarized_termcolors=256
 hi Normal guibg=NONE ctermbg=NONE
@@ -206,3 +212,8 @@ nnoremap <C-j> :terminal ++hidden screen x-terminal-emulator<CR>
 " RRethy / vim-illuminate
 let g:Illuminate_delay = 20
 let g:Illuminate_ftblacklist = ['nerdtree']
+
+
+" fzf command
+nnoremap ;<space> :Commands<CR>
+let g:fzf_layout = {'up' : '~40%'}

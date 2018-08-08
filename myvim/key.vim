@@ -3,7 +3,7 @@
 " 定义leader键
 let mapleader=';'
 
-" 定义常规快捷键 
+" 定义常规快捷键
 noremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>i
 
