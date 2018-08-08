@@ -36,3 +36,8 @@ nnoremap <C-n> :tabnew<CR>
 nnoremap <C-k> :sp<CR>
 nnoremap <C-L> :vsp<CR>
 nnoremap <C-i> :tabnext<CR>
+
+" 撤销和反撤销
+nnoremap <C-z> u
+nnoremap <C-Y> <C-r>
+nnoremap U <C-r>
