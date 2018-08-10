@@ -137,6 +137,11 @@ let g:ycm_complete_in_strings=1
 let g:ycm_key_invoke_completion = '<c-z>'
 let g:ycm_confirm_extra_conf=0
 set completeopt=menu,menuone
+let g:ycm_python_binary_path = 'python'
+let g:ycm_error_symbol = '✗'
+let g:ycm_complete_in_comments = 1
+let g:ycm_seed_identifiers_with_syntax = 0
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 nnoremap gd :YcmCompleter GoToDeclaration<CR>
 
 

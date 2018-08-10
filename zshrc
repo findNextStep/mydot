@@ -40,8 +40,8 @@ alias -s mp4=mplayer
 alias -s pdf="_outTerminal evince"
 
 #导入ros相关
-source /opt/ros/$(ls /opt/ros)/setup.zsh
-source ~/erobot/devel/setup.zsh
+# source /opt/ros/$(ls /opt/ros)/setup.zsh
+# source ~/erobot/devel/setup.zsh
 #source ~/catkin_ws/devel/setup.zsh
 #导入共同设置 
 source ~/.shrc

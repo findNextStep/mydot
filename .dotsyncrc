@@ -12,6 +12,7 @@ xmonadrc:.xmonad
 sakura.conf:.config/sakura/sakura.conf
 bin:bin
 oh-my-zsh
+ycm_extra_conf.py
 gitconfig
 [endfiles]
 
