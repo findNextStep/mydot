@@ -41,3 +41,6 @@ nnoremap <C-i> :tabnext<CR>
 nnoremap <C-z> u
 nnoremap <C-Y> <C-r>
 nnoremap U <C-r>
+
+" 插入模式下的删除
+inoremap <C-j> <BS>
