@@ -35,6 +35,8 @@ Plug 'chxuan/change-colorscheme'
 Plug 'Carpetsmoker/startscreen.vim'
 Plug 't9md/vim-choosewin'
 Plug 'tc50cal/vim-terminal'
+" 按词跳转,wb增强
+Plug 'chaoren/vim-wordmotion'
 " vim-debug 需要
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'idanarye/vim-vebugger'
