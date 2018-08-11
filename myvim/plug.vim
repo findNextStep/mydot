@@ -13,7 +13,6 @@ call plug#begin('~/.vim/plug')
 Plug '~/.vim/plug/YouCompleteMe'
 Plug 'octol/vim-cpp-enhanced-highlight' ,{ 'for':'cpp'}
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'davidhalter/jedi-vim' ,{ 'for':'python'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle','for':'netrw'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -26,15 +25,11 @@ Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'nanotech/jellybeans.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'chxuan/change-colorscheme'
 Plug 'Carpetsmoker/startscreen.vim'
 Plug 't9md/vim-choosewin'
-Plug 'tc50cal/vim-terminal'
 " 按词跳转,wb增强
 Plug 'chaoren/vim-wordmotion'
 " vim-debug 需要
@@ -53,8 +48,8 @@ Plug 'jeaye/color_coded' , {
    \ 'build_commands' : ['cmake', 'make']
  \}
 " markdown预览
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
+Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
+Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
 call plug#end()
 
 " nerdtree 设置
@@ -223,3 +218,7 @@ let g:Illuminate_ftblacklist = ['nerdtree']
 " fzf command
 nnoremap ;<space> :Commands<CR>
 let g:fzf_layout = {'up' : '~40%'}
+
+" markdown预览
+nnoremap gv :MarkdownPreview<CR>
+nnoremap gk :MarkdownPreviewStop<CR>
