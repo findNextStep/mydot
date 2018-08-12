@@ -30,6 +30,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'Carpetsmoker/startscreen.vim'
 Plug 't9md/vim-choosewin'
+Plug 'ap/vim-css-color'
 " 按词跳转,wb增强
 Plug 'chaoren/vim-wordmotion'
 " vim-debug 需要

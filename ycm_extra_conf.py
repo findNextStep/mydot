@@ -59,13 +59,13 @@ flags = [
     '-x',
     'c++',
     '-isystem',
-    '/usr/bin/../lib/gcc/x86_64-linux-gnu/5.4.0/../../../../include/c++/5.4.0',
-    '/usr/bin/../lib/gcc/x86_64-linux-gnu/5.4.0/../../../../include/x86_64-linux-gnu/c++/5.4.0',
-    '/usr/bin/../lib/gcc/x86_64-linux-gnu/5.4.0/../../../../include/c++/5.4.0/backward',
-    '/usr/local/include',
-    '/usr/lib/llvm-3.8/bin/../lib/clang/3.8.0/include',
-    '/usr/include/x86_64-linux-gnu',
-    '/usr/include'
+    '-I/usr/bin/../lib/gcc/x86_64-linux-gnu/5.4.0/../../../../include/c++/5.4.0',
+    '-I/usr/bin/../lib/gcc/x86_64-linux-gnu/5.4.0/../../../../include/x86_64-linux-gnu/c++/5.4.0',
+    '-I/usr/bin/../lib/gcc/x86_64-linux-gnu/5.4.0/../../../../include/c++/5.4.0/backward',
+    '-I/usr/local/include',
+    '-I/usr/lib/llvm-3.8/bin/../lib/clang/3.8.0/include',
+    '-I/usr/include/x86_64-linux-gnu',
+    '-I/usr/include'
 ]
 
 
