@@ -30,6 +30,9 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'Carpetsmoker/startscreen.vim'
 Plug 't9md/vim-choosewin'
+" haskell自动补全
+Plug 'eagletmt/neco-ghc'
+" 颜色显示
 Plug 'ap/vim-css-color'
 " 按词跳转,wb增强
 Plug 'chaoren/vim-wordmotion'
@@ -147,6 +150,7 @@ noremap <c-z> <NOP>
 let g:ycm_semantic_triggers =  {
             \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
             \ 'cs,lua,javascript': ['re!\w{2}'],
+            \ 'haskell' : ['.']
             \ }
 
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
@@ -160,6 +164,7 @@ let g:ycm_filetype_whitelist = {
             \ "zsh":1,
             \ "python":1,
             \ "zimbu":1,
+            \ "haskell":1,
             \ }
 
 colorscheme molokai
@@ -223,3 +228,8 @@ let g:fzf_layout = {'up' : '~40%'}
 " markdown预览
 nnoremap gv :MarkdownPreview<CR>
 nnoremap gk :MarkdownPreviewStop<CR>
+
+" haskell自动补全
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:necoghc_enable_detailed_browse = 1
