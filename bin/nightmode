@@ -1,0 +1,2 @@
+# 降低色温
+pkill redshift || redshift -t 3500:3500
