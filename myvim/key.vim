@@ -8,10 +8,11 @@ noremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>i
 
 " 从新定义好用的esc
+noremap <space> <ese>
 inoremap jj <ESC>
 cnoremap jj <ESC>
 nnoremap <space> <ESC>
-vnoremap n <ESC>
+vnoremap <space> <ESC>
 
 " 使用tab做直接缩进调整
 nnoremap <tab> V>
@@ -26,7 +27,6 @@ vnoremap y "+y
 
 " 使用空格触发命令
 nnoremap <space> :
-vnoremap <space> :
 
 " ctrl+x剪切当前行
 nnoremap <C-x> V"+ydd
