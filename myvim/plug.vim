@@ -150,7 +150,7 @@ noremap <c-z> <NOP>
 let g:ycm_semantic_triggers =  {
             \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
             \ 'cs,lua,javascript': ['re!\w{2}'],
-            \ 'haskell' : ['.']
+            \ 'haskell' : ['re!\w{2}']
             \ }
 
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
