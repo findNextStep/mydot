@@ -1,7 +1,7 @@
 set encoding=utf-8
 set ruler
 set cursorline
-set number
+set rnu
 set showmode
 " 自适应不同语言的智能缩进
 filetype indent on
