@@ -30,6 +30,8 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'Carpetsmoker/startscreen.vim'
 Plug 't9md/vim-choosewin'
+" js
+Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 " haskell自动补全
 Plug 'eagletmt/neco-ghc'
 " 颜色显示
