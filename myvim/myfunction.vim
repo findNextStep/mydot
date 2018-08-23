@@ -1,4 +1,4 @@
-map <C-S-i> :call FormatCode()<CR>
+map <C-I> :call FormatCode()<CR>
 func! FormatCode()
     "取得当前光标所在行号
     let lineNum = line(".")

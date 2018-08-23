@@ -43,7 +43,7 @@ alias -s pdf="_outTerminal evince"
  source /opt/ros/$(ls /opt/ros)/setup.zsh
  source ~/erobot/devel/setup.zsh
 #source ~/catkin_ws/devel/setup.zsh
-#导入共同设置 
+#导入共同设置
 source ~/.shrc
 # ikfast 需要
 #export PYTHONPATH=$PYTHONPATH:"$(openrave-config --python-dir)"

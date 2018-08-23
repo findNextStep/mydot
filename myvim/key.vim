@@ -44,3 +44,10 @@ nnoremap U <C-r>
 
 " 插入模式下的删除
 inoremap <C-j> <BS>
+
+" tab快速切换
+nnoremap <M-q> :tabnext 1<CR>
+nnoremap <M-w> :tabnext 2<CR>
+nnoremap <M-e> :tabnext 3<CR>
+nnoremap <M-r> :tabnext 4<CR>
+nnoremap <M-t> :tabnext 5<CR>

@@ -26,6 +26,8 @@ Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
+" alt键使用
+Plug 'drmikehenry/vim-fixkey'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'Carpetsmoker/startscreen.vim'
