@@ -34,7 +34,7 @@ Plug 'Carpetsmoker/startscreen.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 't9md/vim-choosewin'
 " js
-Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
+Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
 " haskell自动补全
 Plug 'eagletmt/neco-ghc'
 " 颜色显示
