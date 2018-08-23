@@ -15,6 +15,10 @@ set shiftwidth=4
 set softtabstop=4
 " 高亮显示搜索结果
 set hlsearch
+" 设置默认进行大小写不敏感查找
+set ignorecase
+" 如果有一个大写字母，则切换到大小写敏感查找
+set smartcase
 
 filetype on
 " 让配置变更立即生效
@@ -27,4 +31,4 @@ syntax enable
 " 允许用指定语法高亮配色方案替换默认方案
 syntax on
 
-source ~/.myvim/install.vim 
+source ~/.myvim/install.vim
