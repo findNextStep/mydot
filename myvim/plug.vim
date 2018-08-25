@@ -172,7 +172,7 @@ let g:ycm_filetype_whitelist = {
             \ "haskell":1,
             \ }
 
-colorscheme molokai
+colorscheme Tomorrow-Night-Bright
 " colorscheme Tomorrow-Night
 " set background=dark
 let g:solarized_termcolors=256
