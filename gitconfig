@@ -10,6 +10,7 @@
     postBuffer = 1048576000
 [https]
     proxy = socks5://127.0.0.1:1080
+    postBuffer = 1048576000
 [credential]
 	helper = store
 [push]
