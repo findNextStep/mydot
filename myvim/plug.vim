@@ -33,6 +33,8 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'Carpetsmoker/startscreen.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 't9md/vim-choosewin'
+" zsh 补全
+Plug 'tracyone/vim-zsh-completion',{'for': ['zsh','sh']}
 " js
 Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
 " haskell自动补全
