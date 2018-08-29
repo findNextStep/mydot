@@ -65,7 +65,8 @@ flags = [
     '-I/usr/local/include',
     '-I/usr/lib/llvm-3.8/bin/../lib/clang/3.8.0/include',
     '-I/usr/include/x86_64-linux-gnu',
-    '-I/usr/include'
+    '-I/usr/include',
+    '-I/usr/include/c++/5'
 ]
 
 
