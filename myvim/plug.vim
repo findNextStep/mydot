@@ -29,9 +29,13 @@ Plug 'jiangmiao/auto-pairs'
 " alt键使用
 Plug 'drmikehenry/vim-fixkey'
 Plug 'flazz/vim-colorschemes'
+" doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
+" 初始界面美化
 Plug 'Carpetsmoker/startscreen.vim'
+" ts支持
 Plug 'leafgarland/typescript-vim'
+" 可视化的窗口选择
 Plug 't9md/vim-choosewin'
 " zsh 补全
 Plug 'tracyone/vim-zsh-completion',{'for': ['zsh','sh']}
@@ -183,25 +187,23 @@ hi LineNr guibg=NONE ctermbg=NONE
 
 " set doctool
 let g:DoxygenToolkit_briefTag_funcName = "yes"
-" for C++ style, change the '@' to '\'
-let g:DoxygenToolkit_commentType = "C++"
-let g:DoxygenToolkit_briefTag_pre = "\\brief "
-let g:DoxygenToolkit_templateParamTag_pre = "\\tparam "
-let g:DoxygenToolkit_paramTag_pre = "\\param "
-let g:DoxygenToolkit_returnTag = "\\return "
-let g:DoxygenToolkit_throwTag_pre = "\\throw " " @exception is also valid
-let g:DoxygenToolkit_fileTag = "\\file "
-let g:DoxygenToolkit_dateTag = "\\date "
-let g:DoxygenToolkit_authorTag = "\\author "
-let g:DoxygenToolkit_versionTag = "\\version "
-let g:DoxygenToolkit_blockTag = "\\name "
-let g:DoxygenToolkit_classTag = "\\class "
+" let g:DoxygenToolkit_commentType = "C++"
+let g:DoxygenToolkit_briefTag_pre = "@brief "
+let g:DoxygenToolkit_templateParamTag_pre = "@tparam "
+let g:DoxygenToolkit_paramTag_pre = "@param "
+let g:DoxygenToolkit_returnTag = "@return "
+let g:DoxygenToolkit_throwTag_pre = "@throw " " @exception is also valid
+let g:DoxygenToolkit_fileTag = "@file "
+let g:DoxygenToolkit_dateTag = "@date "
+let g:DoxygenToolkit_authorTag = "@author findNextStep"
+let g:DoxygenToolkit_versionTag = "@version "
+let g:DoxygenToolkit_blockTag = "@name "
+let g:DoxygenToolkit_classTag = "@class "
 let g:DoxygenToolkit_authorName = "findNextStep , findNextStep@gmail.com"
 let g:doxygen_enhanced_color = 1
-"let g:load_doxygen_syntax = 1
-let g:DoxygenToolKit_startCommentBlock = "/// "
-let g:DoxygenToolKit_interCommentBlock = "/// "
-
+let g:load_doxygen_syntax = 1
+" let g:DoxygenToolKit_startCommentBlock = "/// "
+" let g:DoxygenToolKit_interCommentBlock = "/// "
 
 " start page change
 function! T()
