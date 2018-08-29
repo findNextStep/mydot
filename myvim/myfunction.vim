@@ -3,7 +3,7 @@ func! FormatCode()
     "取得当前光标所在行号
     let lineNum = line(".")
     exec "w"
-    
+
     if &filetype == 'c' || &filetype == 'h'
         silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
         redraw!
@@ -26,11 +26,9 @@ func! FormatCode()
         silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
         redraw!
     else
-        exec "normal gg=G"
-        redraw!
-        return
+        call <SNR>39_FixWhitespace(0,line("$"))
     endif
 
-    exec lineNum 
+    exec lineNum
 endfunc
 
