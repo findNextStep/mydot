@@ -6,9 +6,10 @@ let mapleader=';'
 " 定义常规快捷键
 noremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>i
+nnoremap <A-k> :m .-1-<count><CR>
+nmap <A-j> :m .+<count><CR>
 
 " 从新定义好用的esc
-noremap <space> <ese>
 inoremap jj <ESC>
 cnoremap jj <ESC>
 nnoremap <space> <ESC>
