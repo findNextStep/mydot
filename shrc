@@ -7,7 +7,7 @@ _openrave_load(){
     export PYTHONPATH=$PYTHONPATH:$OPENRAVE_PATH
 }
 
-_openrave_load
+# _openrave_load
 
 #命令别名
 alias vi='vim'
@@ -36,8 +36,8 @@ PATH=/opt/ghc/bin:~/.cabal/bin:$PATH
 stty -ixon
 
 # CUDA
-export PATH=/usr/local/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+# export PATH=/usr/local/cuda/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 # vim mode
 set -o vi
