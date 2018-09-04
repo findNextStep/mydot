@@ -20,7 +20,7 @@ source $ZSH/oh-my-zsh.sh
 
 # 定义terminal外启动app的函数
 _outTerminal(){
-    screen $@ > /dev/null 2>&1 &
+    screen $@ > /dev/null 2>&1 &!
 }
 
 #文件打开方式自定义
