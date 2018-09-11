@@ -15,3 +15,5 @@
 	helper = store
 [push]
 	default = simple
+[diff]
+   external = git-diff-warpper.sh
