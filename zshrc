@@ -13,7 +13,11 @@ ENABLE_CORRECTION="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(git autojump)
+plugins=(
+git 
+autojump
+docker
+)
 
 source $ZSH/oh-my-zsh.sh
 
