@@ -14,9 +14,12 @@ ENABLE_CORRECTION="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
-git 
+git
 autojump
 docker
+stack
+cabal
+npm
 )
 
 source $ZSH/oh-my-zsh.sh
