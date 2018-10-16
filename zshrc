@@ -15,7 +15,6 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
 git
-# autojump
 docker
 stack
 cabal
@@ -74,3 +73,6 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
 bindkey "^[l" autosuggest-accept
 bindkey "^[k" up-line-or-beginning-search
 bindkey "^[j" down-line-or-beginning-search
+#历史纪录条目数量
+export HISTSIZE=1000000
+
