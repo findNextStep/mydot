@@ -15,14 +15,24 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
 git
-autojump
+# autojump
 docker
 stack
 cabal
 npm
+z
+zsh-autosuggestions
 )
-
 source $ZSH/oh-my-zsh.sh
+# zsh vim mode
+# Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+# Beginning search with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
 
 
 # 定义terminal外启动app的函数
@@ -59,3 +69,8 @@ source ~/.shrc
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+## autosuggestions keybind
+bindkey "^[l" autosuggest-accept
+bindkey "^[k" up-line-or-beginning-search
+bindkey "^[j" down-line-or-beginning-search
