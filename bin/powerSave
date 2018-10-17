@@ -1,4 +1,4 @@
 sudo powertop --auto-tune && sudo tlp start
 xset +dpms
-~/bin/light 0.3
+~/bin/light 0.5
 pkill theNexttaffybar
