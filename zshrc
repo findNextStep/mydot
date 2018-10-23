@@ -39,6 +39,8 @@ _outTerminal(){
     screen $@ > /dev/null 2>&1 &!
 }
 
+alias img_shower="feh --scale-down"
+
 #文件打开方式自定义
 alias -s sh=sh
 alias -s zsh=zsh
@@ -50,8 +52,8 @@ alias -s docx="_outTerminal wps"
 alias -s xls="_outTerminal et"
 alias -s xlsx="_outTerminal et"
 alias -s md="_outTerminal typora"
-alias -s jpg=feh
-alias -s png=feh
+alias -s jpg=img_shower
+alias -s png=img_shower
 alias -s mp4=mplayer
 alias -s pdf="_outTerminal evince"
 
