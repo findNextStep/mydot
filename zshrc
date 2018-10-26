@@ -73,8 +73,8 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
 
 ## autosuggestions keybind
 bindkey "^[l" autosuggest-accept
-bindkey "^[k" up-line-or-beginning-search
-bindkey "^[j" down-line-or-beginning-search
+bindkey "^[k" up-line-or-search
+bindkey "^[j" down-line-or-search
 #历史纪录条目数量
 export HISTSIZE=1000000
 #注销后保存的历史纪录条目数量
