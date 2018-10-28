@@ -11,20 +11,30 @@ endif
 call plug#begin('~/.vim/plug')
 " 为了避免反复更新巨大的YCM
 Plug '~/.vim/plug/YouCompleteMe'
-Plug 'octol/vim-cpp-enhanced-highlight' ,{ 'for':'cpp'}
+" ycm和颜色高亮插件的自动完成
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" python自动补全
 Plug 'davidhalter/jedi-vim' ,{ 'for':'python'}
+" 文件夹视图
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle','for':'netrw'}
+" 结合git插件和文件夹视图
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" vim特殊字符使用
 Plug 'ryanoasis/vim-devicons'
 Plug 'powerline/powerline', {'rtp': '~/.vim/plug/powerline/powerline/bindings/vim/'}
+" git插件
 Plug 'airblade/vim-gitgutter'
+" 注释
 Plug 'scrooloose/nerdcommenter'
+" fuzzy窗口
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" 缩进线
 Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
+" fuzzy 命令
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" {[(自动配对)]}
 Plug 'jiangmiao/auto-pairs'
 " alt键使用
 Plug 'drmikehenry/vim-fixkey'
@@ -45,8 +55,6 @@ Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
 Plug 'eagletmt/neco-ghc'
 " 颜色显示
 Plug 'ap/vim-css-color'
-" 按词跳转,wb增强
-Plug 'chaoren/vim-wordmotion'
 " vim-debug 需要
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'idanarye/vim-vebugger'
@@ -169,11 +177,9 @@ highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
 let g:ycm_filetype_whitelist = {
             \ "c":1,
             \ "cpp":1,
-            \ "cmake":1,
             \ "objc":1,
             \ "sh":1,
             \ "zsh":1,
-            \ "python":1,
             \ "zimbu":1,
             \ "haskell":1,
             \ }
@@ -222,7 +228,7 @@ nmap gw  <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
 
 " 添加创建terminal的指令
-nnoremap <C-j> :terminal ++hidden screen x-terminal-emulator<CR>
+nnoremap <C-j> :terminal ++hidden screen x-terminal-emulator 2>&1 &!;exit <CR>
 
 
 " RRethy / vim-illuminate
