@@ -11,6 +11,8 @@ endif
 call plug#begin('~/.vim/plug')
 " 颜色主题
 Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
 " 为了避免反复更新巨大的YCM
 Plug '~/.vim/plug/YouCompleteMe'
@@ -250,3 +252,10 @@ let g:cmake_map_keys = 0
 nnoremap <F9> :VBGtoggleBreakpointThisLine<CR>
 nnoremap <F5> :VBGstartGDB 
 nnoremap <F7> :VBGcontinue<CR>
+
+let g:airline#extensions#tabline#enabled = 1
+set laststatus=2 "Always show statusline
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts=1
+let g:t_Co=256
+let g:airline_theme="onedark"
