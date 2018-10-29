@@ -9,6 +9,7 @@ endif
 
 " 加载插件设置
 call plug#begin('~/.vim/plug')
+Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
 " 为了避免反复更新巨大的YCM
 Plug '~/.vim/plug/YouCompleteMe'
 " ycm和颜色高亮插件的自动完成
@@ -248,6 +249,8 @@ nnoremap gk :MarkdownPreviewStop<CR>
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:necoghc_enable_detailed_browse = 1
+
+let g:cmake_map_keys = 0
 
 " VBG debug
 nnoremap <F9> :VBGtoggleBreakpointThisLine<CR>
