@@ -9,6 +9,8 @@ endif
 
 " 加载插件设置
 call plug#begin('~/.vim/plug')
+" 颜色主题
+Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
 " 为了避免反复更新巨大的YCM
 Plug '~/.vim/plug/YouCompleteMe'
@@ -38,7 +40,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 " alt键使用
 Plug 'drmikehenry/vim-fixkey'
-Plug 'flazz/vim-colorschemes'
 " doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
 " 初始界面美化
