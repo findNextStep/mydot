@@ -22,7 +22,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle','for':'netrw'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " vim特殊字符使用
 Plug 'ryanoasis/vim-devicons'
-Plug 'powerline/powerline', {'rtp': '~/.vim/plug/powerline/powerline/bindings/vim/'}
 " git插件
 Plug 'airblade/vim-gitgutter'
 " 注释
@@ -91,12 +90,6 @@ let g:NERDTreeIndicatorMapCustom = {
             \ 'Ignored'   : '☒',
             \ "Unknown"   : "?"
             \ }
-
-" powerline设置
-set rtp+=~/.vim/plug/powerline/powerline/bindings/vim
-set laststatus=2
-set t_Co=256
-
 
 
 " LeaderF
