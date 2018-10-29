@@ -23,7 +23,8 @@ tocopy() {
     xclip -selection c 
 }
 
-
+export TASKDDATA=~/.tasked
+mkdir -p $TASKDDATA
 
 #ros相关
 #export ROS_HOSTNAME=192.168.188.233

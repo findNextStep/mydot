@@ -15,10 +15,12 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
 git
+taskwarrior
 docker
 stack
 cabal
 npm
+yarn
 z
 zsh-autosuggestions
 )
