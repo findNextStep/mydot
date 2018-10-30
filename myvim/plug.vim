@@ -11,8 +11,11 @@ endif
 call plug#begin('~/.vim/plug')
 " 颜色主题
 Plug 'chriskempson/vim-tomorrow-theme'
+" airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" 自动保存当前状态
+Plug 'findNextStep/vim-obsession'
 Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
 " 为了避免反复更新巨大的YCM
 Plug '~/.vim/plug/YouCompleteMe'
@@ -281,3 +284,9 @@ endfunction
 
 call airline#parts#define('cmake', {'function': 'CMakeStat'})
 let g:airline_section_b = airline#section#create_left(['cmake'])
+
+let g:obsession_file_name=".Session.vim"
+if filereadable(g:obsession_file_name)
+    silent execute 'source '.g:obsession_file_name
+    " execute 'Obsession'
+endif

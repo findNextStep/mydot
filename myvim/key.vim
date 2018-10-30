@@ -29,8 +29,6 @@ nnoremap <space> <ESC>
 vnoremap <space> <ESC>
 
 " 使用tab做直接缩进调整
-nnoremap <tab> V>
-nnoremap <s-tab> V<
 vnoremap <tab> >gv
 vnoremap <s-tab> <gv
 
@@ -49,7 +47,6 @@ nnoremap <C-x> V"+ydd
 nnoremap <C-n> :tabnew<CR>
 nnoremap <C-k> :sp<CR>
 nnoremap <C-L> :vsp<CR>
-nnoremap <C-i> :tabnext<CR>
 
 " 撤销和反撤销
 nnoremap <C-z> u
