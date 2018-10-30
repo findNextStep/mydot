@@ -40,8 +40,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " {[(自动配对)]}
 Plug 'jiangmiao/auto-pairs'
-" alt键使用
-Plug 'drmikehenry/vim-fixkey'
 " doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
 " 初始界面美化
@@ -257,5 +255,29 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2 "Always show statusline
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts=1
-let g:t_Co=256
-let g:airline_theme="onedark"
+let g:airline_theme='bubblegum'
+function! CMakeStat()
+  let l:cmake_build_dir = get(g:, 'cmake_build_dir', 'build')
+  let l:build_dir = finddir(l:cmake_build_dir, '.;')
+
+
+  let l:retstr = ""
+  if l:build_dir != ""
+      if filereadable(build_dir . '/CMakeCache.txt')
+          let cmcache = readfile(build_dir . '/CMakeCache.txt')
+          for line in cmcache
+              if line =~ "CMAKE_BUILD_TYPE"
+                  let value = reverse(split(line, '='))[0]
+                  let retstr = retstr . value . " "
+              elseif line =~ "RUN_TESTS"
+                  let value = reverse(split(line, '='))[0]
+                  let retstr = retstr . "T" . value . " "
+              endif
+          endfor
+      endif
+  endif
+  return substitute(retstr, '^\s*\(.\{-}\)\s*$', '\1', '')
+endfunction
+
+call airline#parts#define('cmake', {'function': 'CMakeStat'})
+let g:airline_section_b = airline#section#create_left(['cmake'])
