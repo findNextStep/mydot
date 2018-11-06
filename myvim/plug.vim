@@ -132,7 +132,6 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {
             \ 'c': ['cppcheck'],
             \ 'cpp': ['cppcheck'],
-            \ 'python': ['flake8', 'pylint'],
             \ 'lua': ['luac'],
             \ 'go': ['go build', 'gofmt'],
             \ 'java': ['javac'],
@@ -181,6 +180,12 @@ let g:ycm_filetype_whitelist = {
             \ "zimbu":1,
             \ "haskell":1,
             \ }
+
+
+" jedi
+let g:jedi#auto_initialization = 1
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#popup_on_dot = 1
 
 colorscheme Tomorrow-Night-Bright
 " colorscheme Tomorrow-Night
