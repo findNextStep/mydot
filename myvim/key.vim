@@ -19,6 +19,8 @@ endfor
 let mapleader=" "
 map <leader>wq :wq<CR>
 map <leader>q :q<CR>
+map <leader>source :source 
+map <leader>noh :noh<CR>
 
 " 定义常规快捷键
 noremap <C-s> :w<CR>
@@ -29,8 +31,6 @@ nmap <A-j> :m .+<count><CR>
 " 从新定义好用的esc
 inoremap jj <ESC>
 cnoremap jj <ESC>
-nnoremap <space> <ESC>
-vnoremap <space> <ESC>
 
 " 使用tab做直接缩进调整
 vnoremap <tab> >gv
