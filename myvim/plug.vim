@@ -23,6 +23,7 @@ Plug '~/.vim/plug/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " python自动补全
 Plug 'davidhalter/jedi-vim' ,{ 'for':'python'}
+Plug 'miyakogi/asyncjedi' ,{'for':'python'}
 " 文件夹视图
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle','for':'netrw'}
 " 结合git插件和文件夹视图
@@ -311,11 +312,11 @@ nmap s <Plug>(easymotion-overwin-f)
 let g:EasyMotion_smartcase = 1
 
 " JK motions: Line motions
-nnoremap <Leader>j <Plug>(easymotion-j)
-nnoremap <Leader>k <Plug>(easymotion-k)
-nmap  n <Plug>(easymotion-next)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
-noremap <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>l <Plug>(easymotion-lineforward)
 nmap t <Plug>(easymotion-s2)
 nmap <Leader>h <Plug>(easymotion-linebackward)
 nmap / <Plug>(easymotion-sn)
