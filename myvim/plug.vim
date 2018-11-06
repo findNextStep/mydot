@@ -77,6 +77,7 @@ Plug 'jeaye/color_coded' , {
 " markdown预览
 Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " nerdtree 设置
@@ -286,8 +287,8 @@ function! CMakeStat()
   endif
   return substitute(retstr, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
-
 call airline#parts#define('cmake', {'function': 'CMakeStat'})
+
 let g:airline_section_b = airline#section#create_left(['cmake'])
 
 let g:obsession_file_name=".Session.vim"
@@ -295,3 +296,28 @@ if filereadable(g:obsession_file_name)
     silent execute 'source '.g:obsession_file_name
     " execute 'Obsession'
 endif
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+
+" nmap s <Plug>(easymotion-overwin-f2)
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+nnoremap <Leader>j <Plug>(easymotion-j)
+nnoremap <Leader>k <Plug>(easymotion-k)
+nmap  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)noremap <Leader>l <Plug>(easymotion-lineforward)
+nmap t <Plug>(easymotion-s2)
+nmap <Leader>h <Plug>(easymotion-linebackward)
+nmap / <Plug>(easymotion-sn)
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
