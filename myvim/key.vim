@@ -17,9 +17,9 @@ for i in range(48,57)
 endfor
 " 定义leader键
 let mapleader=" "
+map <leader> :
 map <leader>wq :wq<CR>
 map <leader>q :q<CR>
-map <leader>source :source 
 map <leader>noh :noh<CR>
 
 " 定义常规快捷键
