@@ -21,6 +21,7 @@ stack
 cabal
 npm
 yarn
+pip
 z
 zsh-autosuggestions
 )
