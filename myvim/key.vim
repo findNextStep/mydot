@@ -16,7 +16,9 @@ for i in range(48,57)
   exec "map! \e".c." <M-".c.">"
 endfor
 " 定义leader键
-let mapleader=';'
+let mapleader=" "
+map <leader>wq :wq<CR>
+map <leader>q :q<CR>
 
 " 定义常规快捷键
 noremap <C-s> :w<CR>
@@ -38,9 +40,6 @@ vnoremap <s-tab> <gv
 vnoremap p "+p
 nnoremap p "+p
 vnoremap y "+y
-
-" 使用空格触发命令
-nnoremap <space> :
 
 " ctrl+x剪切当前行
 nnoremap <C-x> V"+ydd
