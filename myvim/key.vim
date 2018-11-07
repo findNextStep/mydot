@@ -5,15 +5,15 @@ set mouse=a
 " 添加alt键映射
 " a-z
 for i in range(97,122)
-  let c = nr2char(i)
-  exec "map \e".c." <M-".c.">"
-  exec "map! \e".c." <M-".c.">"
+    let c = nr2char(i)
+    exec "map \e".c." <M-".c.">"
+    exec "map! \e".c." <M-".c.">"
 endfor
 " 0-9
 for i in range(48,57)
-  let c = nr2char(i)
-  exec "map \e".c." <M-".c.">"
-  exec "map! \e".c." <M-".c.">"
+    let c = nr2char(i)
+    exec "map \e".c." <M-".c.">"
+    exec "map! \e".c." <M-".c.">"
 endfor
 " 定义leader键
 let mapleader=" "
@@ -60,5 +60,5 @@ inoremap <C-j> <BS>
 " tab快速切换
 nnoremap <M-5> :tabnext 5<CR>
 for c in range(1,9)
-  exec "nnoremap <M-".c."> :tabnext ".c."<CR>"
+    exec "nnoremap <M-".c."> :tabnext ".c."<CR>"
 endfor
