@@ -322,4 +322,10 @@ nmap <Leader>h <Plug>(easymotion-linebackward)
 nmap / <Plug>(easymotion-sn)
 map n <Plug>(easymotion-next)
 map N <Plug>(easymotion-prev)
+
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
+set nocompatible
+set completeopt=menu,noinsert
+let g:jedi#completions_enabled = 1
+
