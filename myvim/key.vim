@@ -20,6 +20,7 @@ let mapleader=" "
 map <leader> :
 map <leader>wq :wq<CR>
 map <leader>q :q<CR>
+map <leader>aq :qa<CR>
 map <leader>noh :noh<CR>
 
 " 定义常规快捷键
