@@ -6,12 +6,24 @@ set mouse=a
 " a-z
 for i in range(97,122)
     let c = nr2char(i)
+    exec "map \e".c." <A-".c.">"
+    exec "map! \e".c." <A-".c.">"
+    exec "map \e".c." <M-".c.">"
+    exec "map! \e".c." <M-".c.">"
+endfor
+" A-Z
+for i in range(65,90)
+    let c = nr2char(i)
+    exec "map \e".c." <A-".c.">"
+    exec "map! \e".c." <A-".c.">"
     exec "map \e".c." <M-".c.">"
     exec "map! \e".c." <M-".c.">"
 endfor
 " 0-9
 for i in range(48,57)
     let c = nr2char(i)
+    exec "map \e".c." <A-".c.">"
+    exec "map! \e".c." <A-".c.">"
     exec "map \e".c." <M-".c.">"
     exec "map! \e".c." <M-".c.">"
 endfor
