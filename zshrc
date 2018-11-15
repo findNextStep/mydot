@@ -78,6 +78,25 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
 bindkey "^[l" autosuggest-accept
 bindkey "^[k" up-line-or-search
 bindkey "^[j" down-line-or-search
+
+
+# copy
+x-paste() {
+    PASTE=$(xclip -selection clipboard -o)
+    LBUFFER="$LBUFFER${RBUFFER:0:1}"
+    RBUFFER="$PASTE${RBUFFER:1:${#RBUFFER}}"
+}
+zle -N x-paste
+
+bindkey -M vicmd "p" x-paste
+
+copy-to-xclip() {
+    [[ "$REGION_ACTIVE" -ne 0 ]] && zle copy-region-as-kill
+    print -rn -- $CUTBUFFER | xclip -selection clipboard -i
+}
+zle -N copy-to-xclip
+bindkey -M vicmd "y" copy-to-xclip
+
 #历史纪录条目数量
 export HISTSIZE=1000000
 #注销后保存的历史纪录条目数量
