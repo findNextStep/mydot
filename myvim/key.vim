@@ -75,3 +75,7 @@ nnoremap <M-5> :tabnext 5<CR>
 for c in range(1,9)
     exec "nnoremap <M-".c."> :tabnext ".c."<CR>"
 endfor
+
+" 自动居中
+map j jzz
+map k kzz
