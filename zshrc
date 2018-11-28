@@ -36,6 +36,8 @@ bindkey "^[OB" down-line-or-beginning-search
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
 
+# 避免esc延时
+KEYTIMEOUT=1
 
 # 定义terminal外启动app的函数
 _outTerminal(){

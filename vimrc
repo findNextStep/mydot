@@ -52,8 +52,9 @@ function! Fcitx2zh()
       let g:input_toggle = 0
    endif
 endfunction
-set ttimeoutlen=150
-"退出插入模式
+
+set timeoutlen=180 ttimeoutlen=80
+" 退出插入模式
 autocmd InsertLeave * call Fcitx2en()
 "进入插入模式
 autocmd InsertEnter * call Fcitx2zh()
