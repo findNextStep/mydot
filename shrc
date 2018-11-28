@@ -18,6 +18,7 @@ alias top='htop'
 alias codeit='code . && exit'
 # fuzzy的cd跳转
 alias cdto='cd $(find -type d | fzf)'
+alias q="exit"
 # 命令行使用剪贴板
 tocopy() {
     xclip -selection c 
@@ -30,7 +31,8 @@ mkdir -p $TASKDDATA
 #export ROS_HOSTNAME=192.168.188.233
 #export ROS_MASTER_URI=http://192.168.188.2:11311
 
-PATH=~/bin:/opt/ghc/bin:~/.cabal/bin:$PATH
+PATH=~/.nix-profile/bin:~/.local/bin:~/bin:/opt/ghc/bin:~/.cabal/bin:$PATH
+nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
 
 # 消除ctrl+s锁定
 # 参考https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
