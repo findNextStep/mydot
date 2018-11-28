@@ -30,7 +30,7 @@ mkdir -p $TASKDDATA
 #export ROS_HOSTNAME=192.168.188.233
 #export ROS_MASTER_URI=http://192.168.188.2:11311
 
-PATH=/opt/ghc/bin:~/.cabal/bin:$PATH
+PATH=~/bin:/opt/ghc/bin:~/.cabal/bin:$PATH
 
 # 消除ctrl+s锁定
 # 参考https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
