@@ -1,17 +1,9 @@
 git submodule update --init --recursive
 
-_installTim(){
-    if [ ! -e bin/tim ] ; then
-    sudo apt install curl
-    curl https://yun.tzmm.com.cn/index.php/s/5hJNzt2VR9aIEF2/download > bin/tim
-    fi
-}
-# 后台下载可用的tim.appimg
-_installTim &
-
 mkdir -p ~/.config/sakura/
 
 cd oh-my-zsh
 git submodule update
+cd ..
 
 $(pwd)/dotsync/bin/dotsync -f $(pwd)/.dotsyncrc -L
