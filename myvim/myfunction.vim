@@ -32,7 +32,8 @@ func! FormatCode()
     exec lineNum
 endfunc
 
-if &filetype == 'c' || &filetype == 'h'
+if &filetype == 'c' || &filetype == 'h' || &filetype == 'cpp' || &filetype == 'hpp'
+
 set equalprg=astyle\ --style=java\ -U\ -p\ -xn\ -xc\ -xl\ -k3\ -j
 elseif &filetype == 'python'
 set equalprg=yapf
