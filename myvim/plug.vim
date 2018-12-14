@@ -19,6 +19,8 @@ Plug 'findNextStep/vim-obsession'
 Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
 " 为了避免反复更新巨大的YCM
 Plug '~/.vim/plug/YouCompleteMe'
+" ctags
+Plug 'https://github.com/ludovicchabant/vim-gutentags'
 " ycm和颜色高亮插件的自动完成
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " python自动补全
@@ -109,6 +111,28 @@ let g:gitgutter_sign_removed = '>'
 let g:gitgutter_sign_removed_first_line = '^'
 let g:gitgutter_sign_modified_removed = 'w'
 set updatetime=100
+
+"ctags
+set tags=./.tags;,.tags
+" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" 检测 ~/.cache/tags 不存在就新建
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
 
 " indentLine
 let g:indentLine_color_term = 239
