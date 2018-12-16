@@ -2,31 +2,6 @@
 " 鼠标操作设定
 set mouse=a
 
-" 添加alt键映射
-" a-z
-for i in range(97,122)
-    let c = nr2char(i)
-    exec "map \e".c." <A-".c.">"
-    exec "map! \e".c." <A-".c.">"
-    exec "map \e".c." <M-".c.">"
-    exec "map! \e".c." <M-".c.">"
-endfor
-" A-Z
-for i in range(65,90)
-    let c = nr2char(i)
-    exec "map \e".c." <A-".c.">"
-    exec "map! \e".c." <A-".c.">"
-    exec "map \e".c." <M-".c.">"
-    exec "map! \e".c." <M-".c.">"
-endfor
-" 0-9
-for i in range(48,57)
-    let c = nr2char(i)
-    exec "map \e".c." <A-".c.">"
-    exec "map! \e".c." <A-".c.">"
-    exec "map \e".c." <M-".c.">"
-    exec "map! \e".c." <M-".c.">"
-endfor
 " 定义leader键
 let mapleader=" "
 map <leader> :
@@ -63,18 +38,16 @@ nnoremap <C-k> :sp<CR>
 nnoremap <C-L> :vsp<CR>
 
 " 撤销和反撤销
-nnoremap <C-z> u
-nnoremap <C-Y> <C-r>
 nnoremap U <C-r>
 
 " 插入模式下的删除
 inoremap <C-j> <BS>
 
 " tab快速切换
-nnoremap <M-5> :tabnext 5<CR>
-for c in range(1,9)
-    exec "nnoremap <M-".c."> :tabnext ".c."<CR>"
-endfor
+nmap <leader>a :tabnext 1<CR>
+nmap <leader>s :tabnext 2<CR>
+nmap <leader>d :tabnext 3<CR>
+nmap <leader>f :tabnext 4<CR>
 
 " 自动居中
 map j jzz
