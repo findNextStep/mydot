@@ -53,7 +53,7 @@ function! Fcitx2zh()
    endif
 endfunction
 
-set timeoutlen=180 ttimeoutlen=80
+set timeoutlen=300 ttimeoutlen=0
 " 退出插入模式
 autocmd InsertLeave * call Fcitx2en()
 "进入插入模式
