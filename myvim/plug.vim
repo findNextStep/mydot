@@ -9,6 +9,8 @@ endif
 
 " 加载插件设置
 call plug#begin('~/.vim/plug')
+" 后台运行
+Plug 'https://github.com/skywind3000/asyncrun.vim'
 " 颜色主题
 Plug 'chriskempson/vim-tomorrow-theme'
 " airline
