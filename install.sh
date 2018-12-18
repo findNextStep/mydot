@@ -7,3 +7,5 @@ git submodule update
 cd ..
 
 $(pwd)/dotsync/bin/dotsync -f $(pwd)/.dotsyncrc -L
+
+cp ./picture/background.jpg ~/.xmonad/
