@@ -83,6 +83,7 @@ Plug 'jeaye/color_coded' , {
 Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
 Plug 'easymotion/vim-easymotion'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " nerdtree 设置
@@ -257,10 +258,6 @@ let g:Startscreen_function = function('T')
 
 nmap gw  <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
-
-" 添加创建terminal的指令
-nnoremap <C-j> :terminal ++hidden screen x-terminal-emulator 2>&1 &!;exit <CR>
-
 
 " RRethy / vim-illuminate
 let g:Illuminate_delay = 20

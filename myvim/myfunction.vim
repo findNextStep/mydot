@@ -42,3 +42,20 @@ elseif &filetype == 'java'
 elseif &filetype == 'jsp'
     set equalprg=astyle\ --style=java\ -U\ -p\ -xn\ -xc\ -xl\ -k3\ -j
 endif
+
+
+" quickfix window toggle
+" https://github.com/drmingdrmer/vim-toggle-quickfix
+fun! QuickfixToggle()
+    let nr = winnr("$")
+    copen
+    let nr2 = winnr("$")
+    if nr == nr2
+        cclose
+    endif
+endfunction
+map <c-j> :call QuickfixToggle()<CR>
+
+
+" 添加创建terminal的指令
+nnoremap <leader>t :terminal ++noclose ++hidden screen x-terminal-emulator > /dev/null 2>&1 &!<CR>
