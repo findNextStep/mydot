@@ -76,7 +76,7 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ## autosuggestions keybind
-bindkey "^[l" autosuggest-accept
+bindkey "^[ " autosuggest-accept
 bindkey "^[k" up-line-or-search
 bindkey "^[j" down-line-or-search
 
