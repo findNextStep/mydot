@@ -1,0 +1,1 @@
+set completeopt=menu,preview;

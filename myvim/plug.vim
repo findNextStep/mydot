@@ -181,7 +181,6 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_strings=1
 let g:ycm_key_invoke_completion = '<c-z>'
 let g:ycm_confirm_extra_conf=0
-set completeopt=menu,menuone
 let g:ycm_python_binary_path = 'python'
 let g:ycm_error_symbol = '✗'
 let g:ycm_complete_in_comments = 1
@@ -348,7 +347,5 @@ map N <Plug>(easymotion-prev)
 
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
-set nocompatible
-set completeopt=menu,noinsert
 let g:jedi#completions_enabled = 1
 
