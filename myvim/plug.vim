@@ -72,22 +72,77 @@ Plug 'bronson/vim-trailing-whitespace'
 " 光标下词语自动高亮
 Plug 'RRethy/vim-illuminate'
 " 颜色功能增强
-" Plug 'jeaye/color_coded' , {
-            " \ 'build': {
-            " \   'unix': 'rm -f CMakeCache.txt && cmake . && make && make install',
-            " \ },
-            " \ 'autoload': { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
-            " \ 'build_commands' : ['cmake', 'make']
-            " \}
+Plug 'jeaye/color_coded' , {
+            \ 'build': {
+            \   'unix': 'rm -f CMakeCache.txt && cmake . && make && make install',
+            \ },
+            \ 'autoload': { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
+            \ 'build_commands' : ['cmake', 'make']
+            \}
 " markdown预览
 Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
 Plug 'easymotion/vim-easymotion'
 Plug 'sheerun/vim-polyglot'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install --user pynvim' }
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'roxma/nvim-yarp'
 call plug#end()
 
+" lsp
+set hidden
+let g:LanguageClient_serverCommands = {
+            \'cpp' : ['cquery', '--log-file=/tmp/cq.log'],
+            \}
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_diagnosticsEnable = 0
+let g:LanguageClient_selectionUI = 'quickfix'
+let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:LanguageClient_diagnosticsList = v:null
+let g:LanguageClient_hoverPreview = 'Never'
+let g:LanguageClient_settingsPath ="/home/pxq/test.json"
+let g:LanguageClient_autoStart = 1
+
+noremap <leader>rd :call LanguageClient#textDocument_definition()<cr>
+noremap <leader>rr :call LanguageClient#textDocument_references()<cr>
+noremap <leader>rv :call LanguageClient#textDocument_hover()<cr>
+
+" 补全设置
+" 自启动
+let g:deoplete#enable_at_startup = 1
+" smart case不解释
+let g:deoplete#enable_smart_case = 1
+
+" 用户输入至少两个字符时再开始提示补全
+call deoplete#custom#source('LanguageClient', 'min_pattern_length', 1)
+
+" 补全结束或离开插入模式时，关闭预览窗口
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" 为每个语言定义completion source
+" 是的vim script和zsh script都有，这就是deoplete
+call deoplete#custom#option('sources', {
+            \ 'cpp': ['LanguageClient'],
+            \ 'c': ['LanguageClient'],
+            \ 'vim': ['vim'],
+            \ 'zsh': ['zsh']
+            \})
+" 忽略一些没意思的completion source。
+let g:deoplete#ignore_sources = {}
+let g:deoplete#ignore_sources._ = ['buffer', 'around']
+" 把Server的补全API提交给Vim
+" 一般有deoplete就可以用了，加上一条以防万一。
+set completefunc=LanguageClient#complete
+" 把Server的格式化API提交给Vim
+set formatexpr=LanguageClient_textDocument_rangeFormatting()
+
+
 " nerdtree 设置
-nnoremap <C-S-e> :NERDTreeToggle<CR>
+nnoremap <C-e> :NERDTreeToggle<CR>
 
 let g:NERDTreeIndicatorMapCustom = {
             \ "Modified"  : "✹",
@@ -186,7 +241,6 @@ let g:ycm_error_symbol = '✗'
 let g:ycm_complete_in_comments = 1
 let g:ycm_seed_identifiers_with_syntax = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-nnoremap gd :YcmCompleter GoToDeclaration<CR>
 
 
 noremap <c-z> <NOP>
@@ -280,7 +334,7 @@ let g:cmake_map_keys = 0
 
 " VBG debug
 nnoremap <F9> :VBGtoggleBreakpointThisLine<CR>
-nnoremap <F5> :VBGstartGDB 
+nnoremap <F5> :VBGstartGDB
 nnoremap <F7> :VBGcontinue<CR>
 
 let g:airline#extensions#tabline#enabled = 1
