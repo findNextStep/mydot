@@ -26,7 +26,10 @@ yarn
 pip
 z
 zsh-autosuggestions
+zsh-vimto
 )
+
+source ~/.oh-my-zsh/custom/plugins/zsh-vimto/zsh-vimto.zsh
 
 source $ZSH/oh-my-zsh.sh
 
