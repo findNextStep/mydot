@@ -1,5 +1,6 @@
 if [ -e ~/shadowsocks.json ] ; then
-sslocal -c ~/shadowsocks.json
+# sslocal -c ~/shadowsocks.json
+Downloads/electron-ssr-0.2.6.AppImage
 fi
 # fan
 export http_proxy='http://127.0.0.1:8123'
