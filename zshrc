@@ -27,6 +27,10 @@ pip
 z
 zsh-autosuggestions
 )
+
+# highlighting theme
+fast-theme zdharma
+
 source $ZSH/oh-my-zsh.sh
 # zsh vim mode
 # Better searching in command mode
