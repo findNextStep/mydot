@@ -31,7 +31,7 @@ zsh-autosuggestions
 source $ZSH/oh-my-zsh.sh
 
 # highlighting theme
-fast-theme zdharma
+fast-theme -q zdharma
 
 # zsh vim mode
 # Better searching in command mode
