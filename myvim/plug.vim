@@ -72,13 +72,11 @@ Plug 'bronson/vim-trailing-whitespace'
 " 光标下词语自动高亮
 Plug 'RRethy/vim-illuminate'
 " 颜色功能增强
-Plug 'jeaye/color_coded' , {
-            \ 'build': {
-            \   'unix': 'rm -f CMakeCache.txt && cmake . && make && make install',
-            \ },
-            \ 'autoload': { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
-            \ 'build_commands' : ['cmake', 'make']
-            \}
+" Plug 'jeaye/color_coded' , {
+            " \ 'build': 'rm -f CMakeCache.txt && cmake . && make && make install',
+            " \ 'autoload': { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
+            " \ 'build_commands' : ['cmake', 'make']
+            " \}
 " markdown预览
 Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
@@ -91,6 +89,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install --user pynvim' }
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'roxma/nvim-yarp'
+"org-mod"
+Plug 'jceb/vim-orgmode'
+Plug 'vim-scripts/speeddating.vim'
 call plug#end()
 
 " lsp
