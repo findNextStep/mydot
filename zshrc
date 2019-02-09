@@ -28,10 +28,11 @@ z
 zsh-autosuggestions
 )
 
+source $ZSH/oh-my-zsh.sh
+
 # highlighting theme
 fast-theme zdharma
 
-source $ZSH/oh-my-zsh.sh
 # zsh vim mode
 # Better searching in command mode
 # Beginning search with arrow keys
