@@ -48,7 +48,3 @@ nmap <leader>a :tabnext 1<CR>
 nmap <leader>s :tabnext 2<CR>
 nmap <leader>d :tabnext 3<CR>
 nmap <leader>f :tabnext 4<CR>
-
-" 自动居中
-map j jzz
-map k kzz
