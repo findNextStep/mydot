@@ -108,9 +108,12 @@ let g:LanguageClient_hoverPreview = 'Never'
 let g:LanguageClient_settingsPath ="/home/pxq/test.json"
 let g:LanguageClient_autoStart = 1
 
-noremap <leader>rd :call LanguageClient#textDocument_definition()<cr>
-noremap <leader>rr :call LanguageClient#textDocument_references()<cr>
-noremap <leader>rv :call LanguageClient#textDocument_hover()<cr>
+" show where it define
+noremap <leader>gd :call LanguageClient#textDocument_definition()<cr>
+" show where it used
+noremap <leader>gr :call LanguageClient#textDocument_references()<cr>
+" show what it is
+noremap <leader>gv :call LanguageClient#textDocument_hover()<cr>
 
 " 补全设置
 " 自启动
