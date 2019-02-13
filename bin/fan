@@ -3,6 +3,6 @@ if [ -e ~/shadowsocks.json ] ; then
 Downloads/electron-ssr-0.2.6.AppImage
 fi
 # fan
-export http_proxy='http://127.0.0.1:8123'
-export https_proxy='https://127.0.0.1:8123'
+export http_proxy='http://127.0.0.1:12333'
+export https_proxy='https://127.0.0.1:12333'
 
