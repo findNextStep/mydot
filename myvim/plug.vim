@@ -20,7 +20,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'findNextStep/vim-obsession'
 Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
 " 为了避免反复更新巨大的YCM
-Plug '~/.vim/plug/YouCompleteMe'
+" Plug '~/.vim/plug/YouCompleteMe'
 " ctags
 Plug 'https://github.com/ludovicchabant/vim-gutentags'
 " ycm和颜色高亮插件的自动完成
@@ -97,7 +97,7 @@ call plug#end()
 " lsp
 set hidden
 let g:LanguageClient_serverCommands = {
-            \'cpp' : ['cquery', '--log-file=/tmp/cq.log'],
+            \'cpp' : ['/usr/bin/clangd-6.0'],
             \}
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_diagnosticsEnable = 0
