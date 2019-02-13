@@ -21,6 +21,7 @@ alias cdto='cd $(find -type d | fzf)'
 alias q="exit"
 # 构建指令
 alias cb="cd build&&make -j&&.."
+alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON '
 upgrade_finish(){
     echo "更新完成" | espeak -v zh
 }
