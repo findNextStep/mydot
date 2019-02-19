@@ -127,6 +127,11 @@ let g:deoplete#enable_at_startup = 1
 " smart case不解释
 let g:deoplete#enable_smart_case = 1
 
+" 使用tab在补全中找选项
+" https://zhuanlan.zhihu.com/p/54586480
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+
 " 用户输入至少两个字符时再开始提示补全
 call deoplete#custom#source('LanguageClient', 'min_pattern_length', 1)
 
