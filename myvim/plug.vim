@@ -91,14 +91,20 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'roxma/nvim-yarp'
 "org-mod"
 Plug 'jceb/vim-orgmode'
+Plug 'mattn/calendar-vim'
 Plug 'vim-scripts/speeddating.vim'
 call plug#end()
 
 " lsp
 set hidden
 let g:LanguageClient_serverCommands = {
-            \'cpp' : ['/usr/bin/clangd-6.0'],
+            \'cpp' : ['/usr/local/bin/cquery'],
+            \'python' : ['pyls'],
             \}
+let g:LanguageClient_rootMarkers = {
+            \ 'cpp': ['compile_commands.json', 'build'],
+            \ 'c': ['compile_commands.json', 'build']
+            \ }
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_selectionUI = 'quickfix'
