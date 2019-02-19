@@ -111,7 +111,7 @@ let g:LanguageClient_selectionUI = 'quickfix'
 let g:LanguageClient_loggingLevel = 'DEBUG'
 let g:LanguageClient_diagnosticsList = v:null
 let g:LanguageClient_hoverPreview = 'Never'
-let g:LanguageClient_settingsPath ="/home/pxq/test.json"
+let g:LanguageClient_settingsPath ="~/.lsp_setting.json"
 let g:LanguageClient_autoStart = 1
 
 " show where it define
