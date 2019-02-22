@@ -1,3 +1,4 @@
 bin/rj
 bin/tim
 picture/background.png
+*.pyc

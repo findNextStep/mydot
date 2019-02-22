@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -r ~/.xinit-session-rc ]
+then
+    . ~/.xinit-session-rc
+fi
+
+exec qtile "$@"
+
