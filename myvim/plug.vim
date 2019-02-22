@@ -26,8 +26,8 @@ Plug 'https://github.com/ludovicchabant/vim-gutentags'
 " ycm和颜色高亮插件的自动完成
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " python自动补全
-Plug 'davidhalter/jedi-vim' ,{ 'for':'python'}
-Plug 'miyakogi/asyncjedi' ,{'for':'python'}
+" Plug 'davidhalter/jedi-vim' ,{ 'for':'python'}
+" Plug 'miyakogi/asyncjedi' ,{'for':'python'}
 " 文件夹视图
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle','for':'netrw'}
 " 结合git插件和文件夹视图
@@ -61,7 +61,7 @@ Plug 'tracyone/vim-zsh-completion',{'for': ['zsh','sh']}
 " js
 Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
 " haskell自动补全
-Plug 'eagletmt/neco-ghc'
+" Plug 'eagletmt/neco-ghc'
 " 颜色显示
 Plug 'ap/vim-css-color'
 " vim-debug 需要
@@ -100,10 +100,12 @@ set hidden
 let g:LanguageClient_serverCommands = {
             \'cpp' : ['/usr/local/bin/cquery'],
             \'python' : ['pyls'],
+            \'haskell' : ['hie-wrapper','-l','/tmp/hie.log'],
             \}
 let g:LanguageClient_rootMarkers = {
             \ 'cpp': ['compile_commands.json', 'build'],
-            \ 'c': ['compile_commands.json', 'build']
+            \ 'c': ['compile_commands.json', 'build'],
+            \ 'haskell': ['*.cabal', 'stack.yaml'],
             \ }
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_diagnosticsEnable = 0
@@ -120,6 +122,10 @@ noremap <leader>gd :call LanguageClient#textDocument_definition()<cr>
 noremap <leader>gr :call LanguageClient#textDocument_references()<cr>
 " show what it is
 noremap <leader>gv :call LanguageClient#textDocument_hover()<cr>
+" formatting "
+noremap <Leader>gf :call LanguageClient#textDocument_formatting()<cr>
+noremap <Leader>ga :call LanguageClient#textDocument_codeAction()<CR>
+noremap <Leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
 
 " 补全设置
 " 自启动
@@ -143,6 +149,8 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 call deoplete#custom#option('sources', {
             \ 'cpp': ['LanguageClient'],
             \ 'c': ['LanguageClient'],
+            \ 'python': ['LanguageClient'],
+            \ 'haskell': ['LanguageClient'],
             \ 'vim': ['vim'],
             \ 'zsh': ['zsh']
             \})
@@ -260,11 +268,6 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 noremap <c-z> <NOP>
 
-let g:ycm_semantic_triggers =  {
-            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-            \ 'cs,lua,javascript': ['re!\w{2}'],
-            \ 'haskell' : ['re!\w{2}']
-            \ }
 
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
 highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
@@ -341,9 +344,9 @@ nnoremap gv :MarkdownPreview<CR>
 nnoremap gk :MarkdownPreviewStop<CR>
 
 " haskell自动补全
-let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-let g:necoghc_enable_detailed_browse = 1
+" let g:haskellmode_completion_ghc = 0
+" autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+" let g:necoghc_enable_detailed_browse = 1
 
 let g:cmake_map_keys = 0
 
