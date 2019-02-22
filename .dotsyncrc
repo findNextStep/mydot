@@ -17,6 +17,7 @@ gitconfig
 xinit-session-rc
 lsp_setting.json
 spacemacs.el:.spacemacs
+qtile:.config/qtile
 [endfiles]
 
 [hosts]
