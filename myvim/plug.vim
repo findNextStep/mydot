@@ -87,6 +87,9 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install --user pynvim' }
+" deoplete plug
+" 智能补全
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'roxma/nvim-yarp'
 "org-mod"
@@ -149,11 +152,11 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 call deoplete#custom#option('sources', {
             \ 'cpp': ['LanguageClient'],
             \ 'c': ['LanguageClient'],
-            \ 'python': ['LanguageClient'],
             \ 'haskell': ['LanguageClient'],
             \ 'vim': ['vim'],
             \ 'zsh': ['zsh']
             \})
+" \ 'python': ['LanguageClient'],
 " 忽略一些没意思的completion source。
 let g:deoplete#ignore_sources = {}
 let g:deoplete#ignore_sources._ = ['buffer', 'around']
