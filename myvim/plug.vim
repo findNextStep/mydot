@@ -154,11 +154,12 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 call deoplete#custom#option('sources', {
             \ 'cpp': ['LanguageClient'],
             \ 'c': ['LanguageClient'],
+            \ 'python': ['LanguageClient'],
             \ 'haskell': ['LanguageClient'],
             \ 'vim': ['vim'],
             \ 'zsh': ['zsh']
             \})
-" \ 'python': ['LanguageClient'],
+
 " 忽略一些没意思的completion source。
 let g:deoplete#ignore_sources = {}
 let g:deoplete#ignore_sources._ = ['buffer', 'around']
