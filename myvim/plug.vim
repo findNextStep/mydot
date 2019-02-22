@@ -90,6 +90,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install --user pynvim' }
 " deoplete plug
 " 智能补全
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" vim 补全
+Plug 'https://github.com/Shougo/neco-vim'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'roxma/nvim-yarp'
 "org-mod"
