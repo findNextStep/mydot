@@ -2,6 +2,19 @@
 " 鼠标操作设定
 set mouse=a
 
+" https://github.com/avelino/vim-bootstrap
+"" no one is really happy until you have this shortcuts
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+
 " 定义leader键
 let mapleader=" "
 map <leader> :
@@ -28,6 +41,7 @@ vnoremap <s-tab> <gv
 vnoremap p "+p
 nnoremap p "+p
 vnoremap y "+y
+vnoremap x "+x
 
 " ctrl+x剪切当前行
 nnoremap <C-x> V"+ydd
