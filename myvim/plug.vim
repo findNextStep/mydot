@@ -103,7 +103,7 @@ call plug#end()
 " lsp
 set hidden
 let g:LanguageClient_serverCommands = {
-            \'cpp' : ['/usr/local/bin/cquery'],
+            \'cpp' : ['/usr/local/bin/cquery',"--log-file","/tmp/cquery.log"],
             \'python' : ['pyls'],
             \'haskell' : ['hie-wrapper','-l','/tmp/hie.log'],
             \}
