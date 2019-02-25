@@ -152,8 +152,8 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " 为每个语言定义completion source
 " 是的vim script和zsh script都有，这就是deoplete
 call deoplete#custom#option('sources', {
-            \ 'cpp': ['LanguageClient'],
-            \ 'c': ['LanguageClient'],
+            \ 'cpp': ['tabnine','LanguageClient'],
+            \ 'c': ['tabnine','LanguageClient'],
             \ 'python': ['LanguageClient'],
             \ 'haskell': ['LanguageClient'],
             \ 'vim': ['vim'],
