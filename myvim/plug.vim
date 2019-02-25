@@ -154,10 +154,10 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 call deoplete#custom#option('sources', {
             \ 'cpp': ['tabnine','LanguageClient'],
             \ 'c': ['tabnine','LanguageClient'],
-            \ 'python': ['LanguageClient'],
-            \ 'haskell': ['LanguageClient'],
-            \ 'vim': ['vim'],
-            \ 'zsh': ['zsh']
+            \ 'python': ['tabnine','LanguageClient'],
+            \ 'haskell': ['tabnine','LanguageClient'],
+            \ 'vim': ['tabnine','vim'],
+            \ 'zsh': ['tabnine','zsh']
             \})
 
 " 忽略一些没意思的completion source。
