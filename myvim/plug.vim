@@ -90,6 +90,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install --user pynvim' }
 " deoplete plug
 " 智能补全
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" tagbar - lsp
+Plug 'liuchengxu/vista.vim'
 " vim 补全
 Plug 'https://github.com/Shougo/neco-vim'
 Plug 'roxma/vim-hug-neovim-rpc'
@@ -105,7 +107,7 @@ set hidden
 let g:LanguageClient_serverCommands = {
             \'cpp' : ['/usr/local/bin/cquery',"--log-file","/tmp/cquery.log"],
             \'python' : ['pyls'],
-            \'haskell' : ['hie-wrapper','-l','/tmp/hie.log'],
+            \'haskell' : ['hie-wrapper', '--lsp', '-r', getcwd()],
             \}
 let g:LanguageClient_rootMarkers = {
             \ 'cpp': ['compile_commands.json', 'build'],
@@ -169,6 +171,14 @@ set completefunc=LanguageClient#complete
 " 把Server的格式化API提交给Vim
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
 
+"vista
+noremap P :Vista!!<CR>
+" 跳转后自动关闭
+let g:vista_close_on_jump = 1
+let g:vista_stay_on_open = 1
+let g:vista_blink = [0, 100]
+let g:vista_icon_indent = ["ﲒ ", "ﲖ "]
+let g:vista_fzf_preview = ['right:50%']
 
 " nerdtree 设置
 nnoremap <C-e> :NERDTreeToggle<CR>
@@ -189,7 +199,6 @@ let g:NERDTreeIndicatorMapCustom = {
 
 " LeaderF
 noremap <C-p> :LeaderfFile<CR>
-noremap <S-p> :LeaderfBufTag<CR>
 
 " gitgutter
 let g:gitgutter_sign_added = '+'
