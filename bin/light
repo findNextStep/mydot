@@ -1,3 +1,9 @@
 #!/bin/zsh
 #echo $1 >  /sys/class/backlight/intel_backlight/brightness
-xrandr --output eDP1 --brightness $1
+# xrandr --output eDP1 --brightness $1
+
+Monitors=( ${(f)"$(xrandr | grep ' connected' | cut -d' ' -f1)"} )
+
+for monitor in $Monitors; do
+    xrandr --output $monitor --brightness $1
+done;
