@@ -7,6 +7,8 @@ from libqtile.command import lazy
 from libqtile.config import Click, Drag, Group, Key, Screen
 from pymouse import PyMouse
 
+import os
+
 shift = 'shift'
 control = 'control'
 alt_l = 'mod1'
@@ -45,12 +47,25 @@ def front_if_not_fullscreen(qtile):
         #  win.cmd_bring_to_front()
         #  if win.fullscreen:
             #  win.window.configure(stackmode=StackMode.Below)
+last_window_id = ''
+def focus_transset(w):
+    global last_window_id
+    if last_window_id is not w.window.wid:
+        if last_window_id is not '':
+            os.system("transset -i " + str(last_window_id) + ' 0.75')
+        os.system("transset -a 1")
+        last_window_id = w.window.wid
+
 
 keys = [
-    Key([mod], "h", lazy.layout.left()),
-    Key([mod], "l", lazy.layout.right()),
-    Key([mod], "j", lazy.group.next_window()),
-    Key([mod], "k", lazy.group.prev_window()),
+    Key([mod], "h", lazy.layout.left(),
+        lazy.function(lambda x:focus_transset(x.currentWindow))),
+    Key([mod], "l", lazy.layout.right(),
+        lazy.function(lambda x:focus_transset(x.currentWindow))),
+    Key([mod], "j", lazy.group.next_window(),
+        lazy.function(lambda x:focus_transset(x.currentWindow))),
+    Key([mod], "k", lazy.group.prev_window(),
+        lazy.function(lambda x:focus_transset(x.currentWindow))),
     Key([mod, shift], "h", lazy.layout.swap_left(),
         lazy.layout.shuffle_left()),
     Key([mod, shift], "l", lazy.layout.swap_right(),
@@ -68,8 +83,11 @@ keys = [
     Key([mod, control], "n", lazy.layout.normalize()),
     Key([mod, control], "o", lazy.layout.maximize()),
     Key([mod, control], "space", lazy.layout.flip()),
-    Key([alt_l], "Tab", lazy.group.next_window()),
-    Key([mod], 'c', lazy.window.kill()),
+    Key([alt_l], "Tab", lazy.group.next_window(),
+        lazy.function(lambda x:focus_transset(x.currentWindow))),
+    Key([mod], 'c', lazy.window.kill(),
+        lazy.group.next_window(),
+        lazy.function(lambda x:focus_transset(x.currentWindow))),
     Key([mod, super_l], 'r', lazy.restart()),
     Key([mod], "space", lazy.function(toggle_layout)),
     Key([mod,shift],'space',lazy.group.setlayout(layouts[2].name)),
@@ -106,7 +124,8 @@ keys.extend([
     Key([mod,alt_l],'j',lazy.function(lambda _:mouse_move(0,1))),
     Key([mod,alt_l],'k',lazy.function(lambda _:mouse_move(0,-1))),
     Key([mod,alt_l],'l',lazy.function(lambda _:mouse_move(1,0))),
-    Key([mod,alt_l],'f',lazy.function(lambda _:mouse_click(1))),
+    Key([mod,alt_l],'f',lazy.function(lambda _:mouse_click(1)),
+        lazy.function(lambda x:focus_transset(x.currentWindow))),
     # apps
     Key([super_l],'j',lazy.spawn("dmenu_run -p \">\" -nb \"#000000\" -sb \"#666666\" -b")),
     Key([super_l],'d',open_web('')),
@@ -155,9 +174,11 @@ groups=[]
 for name in group_name:
     groups.append(Group(name))
     keys.append(Key([mod], name,
-                    lazy.group[name].toscreen()))
+                    lazy.group[name].toscreen(),
+                    lazy.function(lambda x:focus_transset(x.currentWindow))))
     keys.append(Key([mod, shift], name,
-                    lazy.window.togroup(name)))
+                    lazy.window.togroup(name),
+                    lazy.function(lambda x:focus_transset(x.currentWindow))))
 
     floating_layout = layout.Floating()
 
@@ -201,7 +222,8 @@ screens = [
 
 screen_name = 'qwer'
 for i in range(0,count_screen()):
-    keys.append(Key([mod],screen_name[i],lazy.to_screen(i)))
+    keys.append(Key([mod],screen_name[i],lazy.to_screen(i),
+        lazy.function(lambda x:focus_transset(x.currentWindow))))
     if i!=0:
         screens.append(
             Screen(
@@ -220,8 +242,10 @@ for i in range(0,count_screen()):
                 ),
             )
         )
+
 @hook.subscribe.client_new
 def func(c):
+    focus_transset(c)
     if c.match(wmclass='tim.exe'):
         c.togroup('p')
     elif c.match(wmclass='netease-cloud-music'):
