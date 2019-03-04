@@ -100,6 +100,8 @@ Plug 'roxma/nvim-yarp'
 Plug 'jceb/vim-orgmode'
 Plug 'mattn/calendar-vim'
 Plug 'vim-scripts/speeddating.vim'
+
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " lsp
@@ -302,12 +304,13 @@ let g:jedi#auto_initialization = 1
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#popup_on_dot = 1
 
-colorscheme Tomorrow-Night-Bright
+" colorscheme Tomorrow-Night-Bright
+colorscheme onedark
 " colorscheme Tomorrow-Night
 " set background=dark
 let g:solarized_termcolors=256
-hi Normal guibg=NONE ctermbg=NONE
-hi LineNr guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
+" hi LineNr guibg=NONE ctermbg=NONE
 
 " set doctool
 let g:DoxygenToolkit_briefTag_funcName = "yes"
