@@ -175,7 +175,7 @@ for name in group_name:
     groups.append(Group(name))
     keys.append(Key([mod], name,
                     lazy.group[name].toscreen(),
-                    lazy.function(lambda x:focus_transset(x.currentWindow))))
+                    lazy.function(lambda x:focus_transset(x.group[x.groupMap[name]].currentWindow))))
     keys.append(Key([mod, shift], name,
                     lazy.window.togroup(name),
                     lazy.function(lambda x:focus_transset(x.currentWindow))))
