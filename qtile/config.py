@@ -49,12 +49,12 @@ def front_if_not_fullscreen(qtile):
             #  win.window.configure(stackmode=StackMode.Below)
 last_window_id = ''
 def focus_transset(w):
+    os.system("transset -i " + str(w.window.wid) + ' 1')
     global last_window_id
     if last_window_id is not w.window.wid:
         if last_window_id is not '':
             os.system("transset -i " + str(last_window_id) + ' 0.75')
-        os.system("transset -a 1")
-        last_window_id = w.window.wid
+    last_window_id = w.window.wid
 
 
 keys = [
