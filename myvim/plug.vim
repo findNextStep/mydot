@@ -146,6 +146,8 @@ let g:deoplete#enable_smart_case = 1
 " https://zhuanlan.zhihu.com/p/54586480
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<tab>"
 
 " 用户输入至少两个字符时再开始提示补全
 call deoplete#custom#source('LanguageClient', 'min_pattern_length', 1)
