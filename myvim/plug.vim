@@ -180,7 +180,6 @@ let g:vista_close_on_jump = 1
 let g:vista_stay_on_open = 1
 let g:vista_blink = [0, 100]
 let g:vista_icon_indent = ["ﲒ ", "ﲖ "]
-let g:vista_fzf_preview = ['right:50%']
 
 " nerdtree 设置
 nnoremap <C-e> :NERDTreeToggle<CR>
