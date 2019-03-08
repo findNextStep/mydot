@@ -12,7 +12,7 @@ _openrave_load(){
 #命令别名
 alias vi='vim'
 alias grep="grep --color=auto"
-alias cls='reset'
+alias cls='tput reset'
 alias chrome="google-chrome"
 alias top='htop'
 alias codeit='code . && exit'
