@@ -6,6 +6,7 @@ from libqtile import bar, extension, hook, layout, widget
 from libqtile.command import lazy
 from libqtile.config import Click, Drag, Group, Key, Screen
 from pymouse import PyMouse
+from six import u
 
 import os
 
@@ -132,6 +133,7 @@ keys.extend([
     Key([super_l],'f',lazy.spawn('nemo')),
     Key([super_l],'z',open_web('www.zhihu.com')),
     Key([super_l],'b',open_web('t.bilibili.com')),
+    Key([super_l],'p',lazy.spawn('mpc --host=localhost --port=16600 toggle')),
     Key([super_l],'Return',lazy.spawn('termonad')),
     Key([control,alt_l],'a',lazy.spawn('shutter -s -n -c')),
     Key([super_l],'l',lazy.spawn('dm-tool lock'),
@@ -204,13 +206,19 @@ screens = [
                 widget.currentscreen.CurrentScreen(),
                 widget.Prompt(),
                 widget.WindowName(),
+                widget.Mpd2(font='DroidSansMono Nerd Font',port=16600,
+                            play_states = {
+                                'play': u('\uf04b'),
+                                'pause': u('\uf04c'),
+                                'stop': u('\uf9da'),
+                            }
+                            ),
                 widget.TextBox('\\ufa7d'.decode('unicode-escape')),
                 widget.volume.Volume(),
                 widget.TextBox('\\uf578'.decode('unicode-escape')),
                 widget.battery.Battery(),
                 widget.TextBox('\\uf0eb'.decode('unicode-escape')),
                 widget.backlight.Backlight(backlight_name='intel_backlight'),
-                #  widget.wlan.Wlan(),
                 widget.Clock(format='%Y-%m-%e %H:%M:%S'),
                 widget.Systray(),
             ],
