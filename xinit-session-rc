@@ -54,3 +54,5 @@ systemctl --user stop redshift.service&
 
 # launch chrome
 google-chrome --no-startup-window &
+
+mpd
