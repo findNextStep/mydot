@@ -2,6 +2,6 @@ bin/rj
 bin/tim
 picture/background.png
 *.pyc
-termonad/termonad.hs
+termonad/termonad.hi
 termonad/termonad
 termonad/termonad.o
