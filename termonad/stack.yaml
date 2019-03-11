@@ -19,7 +19,7 @@
 #
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
-resolver: lts-13.11
+resolver: lts-12.11
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -45,7 +45,9 @@ packages:
 # using the same syntax as the packages field.
 # (e.g., acme-missiles-0.3)
 extra-deps:
-    - termonad-1.1.0.0@sha256:29095014c2fa76b421244ed9bdcda9adbccc0c401c561955f8ff33394053623a
+    - termonad-1.1.0.0
+    - focuslist-0.1.0.1
+    - gi-vte-2.91.19
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
