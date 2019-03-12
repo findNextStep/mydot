@@ -109,7 +109,7 @@ set hidden
 let g:LanguageClient_serverCommands = {
             \'cpp' : ['/usr/local/bin/cquery',"--log-file","/tmp/cquery.log"],
             \'python' : ['pyls'],
-            \'haskell' : ['hie-wrapper', '--lsp', '-r', getcwd()],
+            \'haskell' : ['hie-wrapper', '--lsp', '-r', getcwd() ,'-d'],
             \}
 let g:LanguageClient_rootMarkers = {
             \ 'cpp': ['compile_commands.json', 'build'],
