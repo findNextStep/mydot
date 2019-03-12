@@ -199,15 +199,25 @@ screens = [
             widgets=[
                 widget.AGroupBox(),
                 widget.GroupBox(
+                    invert_mouse_wheel = False,
+                    center_aligned = True,
+                    spacing = 0,
                     highlight_method='block',
                     inactive='999999'
                 ),
                 widget.currentlayout.CurrentLayout(),
                 widget.currentlayout.CurrentLayoutIcon(scale=0.5),
                 widget.currentscreen.CurrentScreen(),
+                #  widget.TaskList(),
+                #  widget.tasklist.TaskList(),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Mpd2(font='DroidSansMono Nerd Font',port=16600,
+                widget.Memory(),
+                widget.Net(
+                    interface = 'wlp3s0'
+                ),
+                widget.Mpd2(font='DroidSansMono Nerd Font',
+                            port=16600,
                             play_states = {
                                 'play': u('\uf04b'),
                                 'pause': u('\uf04c'),
