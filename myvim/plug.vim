@@ -108,7 +108,7 @@ call plug#end()
 set hidden
 let g:LanguageClient_serverCommands = {
             \'cpp' : ['/usr/local/bin/cquery',"--log-file","/tmp/cquery.log"],
-            \'python' : ['pyls'],
+            \'python' : ['pyls','--log-file',"/tmp/pyls.log"],
             \'haskell' : ['hie-wrapper', '--lsp', '-r', getcwd() ,'-d'],
             \}
 let g:LanguageClient_rootMarkers = {
