@@ -212,7 +212,7 @@ screens = [
                 #  widget.tasklist.TaskList(),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Memory(),
+                widget.Memory(fmt="{MemAvailable}M/{MemTotal}M",update_interval = 10),
                 widget.Net(
                     interface = 'wlp3s0'
                 ),
