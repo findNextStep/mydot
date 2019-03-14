@@ -33,6 +33,10 @@ nmap <A-j> :m .+<count><CR>
 inoremap jj <ESC>
 cnoremap jj <ESC>
 
+" jk 移动按照显示的行使用
+nnoremap j gj
+nnoremap k gk
+
 " 使用tab做直接缩进调整
 vnoremap <tab> >gv
 vnoremap <s-tab> <gv
