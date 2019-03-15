@@ -9,6 +9,8 @@ endif
 
 " 加载插件设置
 call plug#begin('~/.vim/plug')
+" vim merge tool
+Plug 'samoshkin/vim-mergetool'
 " 后台运行
 Plug 'https://github.com/skywind3000/asyncrun.vim'
 " 颜色主题
@@ -440,3 +442,6 @@ let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 let g:jedi#completions_enabled = 1
 
+" git merge tool
+let g:mergetool_layout = 'mbr'
+let g:mergetool_prefer_revision = 'local'
