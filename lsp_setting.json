@@ -1,14 +1,14 @@
 {
     "initializationOptions": {
         "cacheDirectory": "/tmp/cquery"
-    } ,
+    },
     "languageServerHaskell": {
-        "hlintOn"                     : True,
+        "hlintOn"                     : true,
         "maxNumberOfProblems"         : 10000,
         "diagnosticsDebounceDuration" : 100,
-        "liquidOn"                    : False,
-        "completionSnippetsOn"        : True,
-        "formatOnImportOn"            : True,
+        "liquidOn"                    : false,
+        "completionSnippetsOn"        : true,
+        "formatOnImportOn"            : true,
         "formattingProvider"          : "brittany"
     }
 }
