@@ -1,0 +1,25 @@
+copy(){
+    back="${1##*.}"
+    case $back in
+    "jpg")
+        copyq write image/jpg - < $1
+        ;;
+    "png")
+        copyq write image/png - < $1
+        ;;
+    "gif")
+        copyq write image/gif - < $1
+        ;;
+    *)
+        copyq copy $(cat $1)
+        ;;
+    esac
+    # copyq write image/jpg - < $1
+    copyq select 0
+}
+if [ -f $1 ];then
+    copy $@
+else
+    copyq add $@
+    copyq select 0
+fi
