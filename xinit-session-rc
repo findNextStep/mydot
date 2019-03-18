@@ -55,4 +55,7 @@ systemctl --user stop redshift.service&
 # launch chrome
 google-chrome --no-startup-window &
 
-mpd
+mpd&
+
+# 剪贴版管理器
+copyq&
