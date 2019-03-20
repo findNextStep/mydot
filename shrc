@@ -40,7 +40,7 @@ mkdir -p $TASKDDATA
 #export ROS_HOSTNAME=192.168.188.233
 #export ROS_MASTER_URI=http://192.168.188.2:11311
 
-PATH=~/.nix-profile/bin:~/.local/bin:~/bin:/opt/ghc/bin:~/.cabal/bin:~/.stack/programs/x86_64-linux/ghc-8.2.2/bin:$PATH
+PATH=~/.cargo/bin:~/.nix-profile/bin:~/.local/bin:~/bin:/opt/ghc/bin:~/.cabal/bin:~/.stack/programs/x86_64-linux/ghc-8.2.2/bin:$PATH
 nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
 
 # 消除ctrl+s锁定

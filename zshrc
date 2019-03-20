@@ -24,6 +24,9 @@ fast-syntax-highlighting
 npm
 yarn
 pip
+cargo
+rust
+rustup
 z
 zsh-autosuggestions
 zsh-vimto
