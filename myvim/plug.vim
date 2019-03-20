@@ -112,11 +112,13 @@ let g:LanguageClient_serverCommands = {
             \'cpp' : ['/usr/local/bin/cquery',"--log-file","/tmp/cquery.log"],
             \'python' : ['pyls','--log-file',"/tmp/pyls.log"],
             \'haskell' : ['hie-wrapper', '--lsp', '-r', getcwd() ,'-d','-l','/tmp/hie.log'],
+            \'rust' : ['rustup','run','stable','rls'],
             \}
 let g:LanguageClient_rootMarkers = {
             \ 'cpp': ['compile_commands.json', 'build'],
             \ 'c': ['compile_commands.json', 'build'],
             \ 'haskell': ['*.cabal', 'stack.yaml'],
+            \ 'rust': ['Cargo.lock'],
             \ }
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_diagnosticsEnable = 0
@@ -164,6 +166,7 @@ call deoplete#custom#option('sources', {
             \ 'c': ['tabnine','LanguageClient'],
             \ 'python': ['tabnine','LanguageClient'],
             \ 'haskell': ['tabnine','LanguageClient'],
+            \ 'rust':['LanguageClient'],
             \ 'vim': ['tabnine','vim'],
             \ 'zsh': ['tabnine','zsh']
             \})
