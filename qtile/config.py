@@ -128,7 +128,7 @@ keys.extend([
     Key([mod,alt_l],'f',lazy.function(lambda _:mouse_click(1)),
         lazy.function(lambda x:focus_transset(x.currentWindow))),
     # apps
-    Key([super_l],'j',lazy.spawn("dmenu_run -p \">\" -nb \"#000000\" -sb \"#666666\" -b")),
+    Key([super_l],'j',lazy.spawn("zsh -c \"dmenu_run\"")),
     Key([super_l],'d',open_web('')),
     Key([super_l],'f',lazy.spawn('nemo')),
     Key([super_l],'z',open_web('www.zhihu.com')),
