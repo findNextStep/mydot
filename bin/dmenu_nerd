@@ -1,0 +1,1 @@
+cat ~/bin/nerd_test.txt | dmenu -l 10 | awk '{print $2}'| xclip -selection c
