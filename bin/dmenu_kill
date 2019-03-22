@@ -1,0 +1,14 @@
+#!/bin/sh
+pid=$(ps -a |sed 1d | dmenu -l 11 | awk '{print }')
+sleep 0.02
+chose=$(echo "yes\nno" | dmenu -p "Are you sure?" -l 2)
+case $chose in
+    "yes")
+        kill $pid
+        ;;
+    "no")
+        return 1
+        ;;
+    *)
+        ;;
+esac
