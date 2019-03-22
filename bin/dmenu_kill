@@ -1,6 +1,6 @@
 #!/bin/sh
 pid=$(ps -a |sed 1d | dmenu -l 11 | awk '{print }')
-sleep 0.02
+sleep 0.4
 if [ -z $pid ];then
     return 1
 fi
