@@ -1,3 +1,4 @@
+#!/bin/sh
 copy(){
     back="${1##*.}"
     case $back in
