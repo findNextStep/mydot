@@ -1,0 +1,4 @@
+#!/bin/zsh
+# mpc --host=localhost --port=16600 playlist
+song=$(mpc --host=localhost --port=16600 playlist | dmenu -l 11)
+mpc --host=localhost --port=16600 play "$(mpc --host=localhost --port=16600 playlist | grep -n "$song" | awk -F ':' '{print $1}')"
