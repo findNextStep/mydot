@@ -364,8 +364,8 @@ nnoremap ;<space> :Commands<CR>
 let g:fzf_layout = {'up' : '~40%'}
 
 " markdown预览
-nnoremap <leader>gv :MarkdownPreview<CR>
-nnoremap <leader>gk :MarkdownPreviewStop<CR>
+nnoremap <leader>mv :MarkdownPreview<CR>
+nnoremap <leader>mk :MarkdownPreviewStop<CR>
 
 " haskell自动补全
 " let g:haskellmode_completion_ghc = 0
