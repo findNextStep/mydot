@@ -90,7 +90,13 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install --user pynvim' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install --user pynvim' }
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 " deoplete plug
 " 智能补全
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
