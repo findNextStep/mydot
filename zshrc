@@ -1,4 +1,7 @@
+MY_SHELL="zsh"
 export ZSH=~/.oh-my-zsh
+
+HOSTNAME=$HOST
 
 ZSH_THEME="pxq-style"
 
