@@ -4,6 +4,8 @@
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    silent curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -104,6 +106,8 @@ Plug 'mattn/calendar-vim'
 Plug 'vim-scripts/speeddating.vim'
 
 Plug 'joshdick/onedark.vim'
+" 颜色显示插件
+Plug 'RRethy/vim-hexokinase'
 call plug#end()
 
 " lsp
@@ -448,3 +452,13 @@ let g:jedi#completions_enabled = 1
 " git merge tool
 let g:mergetool_layout = 'mbr'
 let g:mergetool_prefer_revision = 'local'
+
+" use ture color
+if has("termguicolors")
+    set termguicolors
+endif
+
+nnoremap <leader>sc :HexokinaseToggle<CR>
+
+let g:Hexokinase_ftAutoload = ['css']
+let g:Hexokinase_signIcon = ''
