@@ -117,15 +117,17 @@ def mouse_click(click_num = 1):
 
 keys.extend([
     # mouse control
-    Key([mod,alt_l,shift],'h',lazy.function(lambda _:mouse_move(-20,0))),
-    Key([mod,alt_l,shift],'j',lazy.function(lambda _:mouse_move(0,20))),
-    Key([mod,alt_l,shift],'k',lazy.function(lambda _:mouse_move(0,-20))),
-    Key([mod,alt_l,shift],'l',lazy.function(lambda _:mouse_move(20,0))),
-    Key([mod,alt_l],'h',lazy.function(lambda _:mouse_move(-1,0))),
-    Key([mod,alt_l],'j',lazy.function(lambda _:mouse_move(0,1))),
-    Key([mod,alt_l],'k',lazy.function(lambda _:mouse_move(0,-1))),
-    Key([mod,alt_l],'l',lazy.function(lambda _:mouse_move(1,0))),
-    Key([mod,alt_l],'f',lazy.function(lambda _:mouse_click(1)),
+    Key([mod,alt_l,shift],'s',lazy.function(lambda _:mouse_move(-20,0))),
+    Key([mod,alt_l,shift],'d',lazy.function(lambda _:mouse_move(0,20))),
+    Key([mod,alt_l,shift],'e',lazy.function(lambda _:mouse_move(0,-20))),
+    Key([mod,alt_l,shift],'f',lazy.function(lambda _:mouse_move(20,0))),
+    Key([mod,alt_l],'s',lazy.function(lambda _:mouse_move(-1,0))),
+    Key([mod,alt_l],'d',lazy.function(lambda _:mouse_move(0,1))),
+    Key([mod,alt_l],'e',lazy.function(lambda _:mouse_move(0,-1))),
+    Key([mod,alt_l],'f',lazy.function(lambda _:mouse_move(1,0))),
+    Key([mod,alt_l],'w',lazy.function(lambda _:mouse_click(1)),
+        lazy.function(lambda x:focus_transset(x.currentWindow))),
+    Key([mod,alt_l],'r',lazy.function(lambda _:mouse_click(2)),
         lazy.function(lambda x:focus_transset(x.currentWindow))),
     # apps
     Key([super_l],'j',lazy.spawn("zsh -c \"dmenu_run\"")),
