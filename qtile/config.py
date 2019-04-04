@@ -137,7 +137,7 @@ keys.extend([
     Key([super_l],'b',open_web('t.bilibili.com')),
     Key([super_l],'p',lazy.spawn('mpc --host=localhost --port=16600 toggle')),
     Key([super_l,shift],'p',lazy.spawn('mpc --host=localhost --port=16600 next')),
-    Key([super_l],'Return',lazy.spawn('theNextTermonad')),
+    Key([super_l],'Return',lazy.spawn('st')),
     Key([super_l,shift],'Return',lazy.spawn('dmenu_z')),
     Key([control,alt_l],'a',lazy.spawn('shutter -s -n -c')),
     Key([super_l],'l',lazy.spawn('dm-tool lock'),
