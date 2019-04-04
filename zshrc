@@ -80,6 +80,7 @@ KEYTIMEOUT=1
 # 定义terminal外启动app的函数
 _outTerminal(){
     screen $@ > /dev/null 2>&1 &!
+    tput reset
 }
 
 alias img_shower="feh --scale-down"
