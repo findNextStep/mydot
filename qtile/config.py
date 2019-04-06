@@ -49,11 +49,12 @@ def front_if_not_fullscreen(qtile):
         #  if win.fullscreen:
             #  win.window.configure(stackmode=StackMode.Below)
 last_window_id = ''
+no_transset_window_ids = []
 def focus_transset(w):
     os.system("transset -i " + str(w.window.wid) + ' 1')
     global last_window_id
     if last_window_id is not w.window.wid:
-        if last_window_id is not '':
+        if last_window_id is not '' and last_window_id not in no_transset_window_ids:
             os.system("transset -i " + str(last_window_id) + ' 0.75')
     last_window_id = w.window.wid
 
@@ -67,6 +68,8 @@ keys = [
         lazy.function(lambda x:focus_transset(x.currentWindow))),
     Key([mod], "k", lazy.group.prev_window(),
         lazy.function(lambda x:focus_transset(x.currentWindow))),
+    Key([mod,shift], 't', lazy.function(
+        lambda x:no_transset_window_ids.append(x.currentWindow.window.wid))),
     Key([mod, shift], "h", lazy.layout.swap_left(),
         lazy.layout.shuffle_left()),
     Key([mod, shift], "l", lazy.layout.swap_right(),
