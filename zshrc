@@ -47,11 +47,11 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=""
 # 分隔各个模块
 ZSH_THEME_GIT_PROMPT_SEPARATOR=""
 # 未add的更改
-ZSH_THEME_GIT_PROMPT_STAGED=" \ue0b1%{$fg[white]%}✚ %{%G%}"
+ZSH_THEME_GIT_PROMPT_STAGED=" \ue0b1%{$fg[reset]%}✚ %{%G%}"
 # 未处理的冲突
 ZSH_THEME_GIT_PROMPT_CONFLICTS=" \ue0b1%{$fg[red]%}%{✖ %G%}"
 # 未提交的记录
-ZSH_THEME_GIT_PROMPT_CHANGED=" \ue0b1%{$fg[white]%}%{● %G%}"
+ZSH_THEME_GIT_PROMPT_CHANGED=" \ue0b1%{$fg[reset]%}%{● %G%}"
 # 落后远程分支（需要pull更新）
 ZSH_THEME_GIT_PROMPT_BEHIND="% \ue0b1{↓ %G%}"
 # 领先远程分支（需要push更新）
