@@ -322,16 +322,16 @@ let g:jedi#auto_initialization = 1
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#popup_on_dot = 1
 
-" nnoremap <silent> <F9> :PreviousColorScheme<cr>
-" inoremap <silent> <F9> <esc> :PreviousColorScheme<cr>
-" nnoremap <silent> <F10> :NextColorScheme<cr>
-" inoremap <silent> <F10> <esc> :NextColorScheme<cr>
-" nnoremap <silent> <F11> :RandomColorScheme<cr>
-" inoremap <silent> <F11> <esc> :RandomColorScheme<cr>
-" nnoremap <silent> <F12> :ShowColorScheme<cr>
-" inoremap <silent> <F12> <esc> :ShowColorScheme<cr>
-colorscheme Tomorrow-Night-Bright
-" colorscheme onedark
+nnoremap <silent> <F9> :PreviousColorScheme<cr>
+inoremap <silent> <F9> <esc> :PreviousColorScheme<cr>
+nnoremap <silent> <F10> :NextColorScheme<cr>
+inoremap <silent> <F10> <esc> :NextColorScheme<cr>
+nnoremap <silent> <F11> :RandomColorScheme<cr>
+inoremap <silent> <F11> <esc> :RandomColorScheme<cr>
+nnoremap <silent> <F12> :ShowColorScheme<cr>
+inoremap <silent> <F12> <esc> :ShowColorScheme<cr>
+" colorscheme Tomorrow-Night-Bright
+colorscheme onedark
 " colorscheme Tomorrow-Night
 " set background=dark
 let g:solarized_termcolors=256
@@ -440,7 +440,6 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f)
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
@@ -452,10 +451,7 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-map n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
 map <Leader>l <Plug>(easymotion-lineforward)
-nmap t <Plug>(easymotion-s2)
 nmap <Leader>h <Plug>(easymotion-linebackward)
 nmap / <Plug>(easymotion-sn)
 map n <Plug>(easymotion-next)
