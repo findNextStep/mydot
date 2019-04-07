@@ -50,6 +50,12 @@ def front_if_not_fullscreen(qtile):
             #  win.window.configure(stackmode=StackMode.Below)
 last_window_id = ''
 no_transset_window_ids = []
+def toggle_need_transset(wid):
+    if wid not in no_transset_window_ids:
+        no_transset_window_ids.append(wid)
+        os.system("transset -i " + str(wid) + ' 1')
+    else:
+        no_transset_window_ids.remove(wid)
 def focus_transset(w):
     os.system("transset -i " + str(w.window.wid) + ' 1')
     global last_window_id
@@ -69,7 +75,7 @@ keys = [
     Key([mod], "k", lazy.group.prev_window(),
         lazy.function(lambda x:focus_transset(x.currentWindow))),
     Key([mod,shift], 't', lazy.function(
-        lambda x:no_transset_window_ids.append(x.currentWindow.window.wid))),
+        lambda x: toggle_need_transset(x.currentWindow.window.wid))),
     Key([mod, shift], "h", lazy.layout.swap_left(),
         lazy.layout.shuffle_left()),
     Key([mod, shift], "l", lazy.layout.swap_right(),
@@ -266,6 +272,14 @@ for i in range(0,count_screen()):
                 ),
             )
         )
+@hook.subscribe.client_killed
+def when_kill(w):
+    #  f = open("/home/pxq/test.txt","w")
+    #  f.write(str(w.window.wid))
+    #  f.close()
+    if w.window.wid in no_transset_window_ids:
+        no_transset_window_ids.remove(w.window.wid)
+
 
 @hook.subscribe.client_new
 def func(c):
