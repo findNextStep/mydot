@@ -114,6 +114,8 @@ Plug 'vim-scripts/speeddating.vim'
 Plug 'joshdick/onedark.vim'
 " 颜色显示插件
 Plug 'RRethy/vim-hexokinase'
+" theme pick up
+Plug 'https://github.com/chxuan/change-colorscheme'
 call plug#end()
 
 " lsp
@@ -320,8 +322,16 @@ let g:jedi#auto_initialization = 1
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#popup_on_dot = 1
 
-" colorscheme Tomorrow-Night-Bright
-colorscheme onedark
+" nnoremap <silent> <F9> :PreviousColorScheme<cr>
+" inoremap <silent> <F9> <esc> :PreviousColorScheme<cr>
+" nnoremap <silent> <F10> :NextColorScheme<cr>
+" inoremap <silent> <F10> <esc> :NextColorScheme<cr>
+" nnoremap <silent> <F11> :RandomColorScheme<cr>
+" inoremap <silent> <F11> <esc> :RandomColorScheme<cr>
+" nnoremap <silent> <F12> :ShowColorScheme<cr>
+" inoremap <silent> <F12> <esc> :ShowColorScheme<cr>
+colorscheme Tomorrow-Night-Bright
+" colorscheme onedark
 " colorscheme Tomorrow-Night
 " set background=dark
 let g:solarized_termcolors=256
@@ -385,9 +395,9 @@ nnoremap <leader>mk :MarkdownPreviewStop<CR>
 let g:cmake_map_keys = 0
 
 " VBG debug
-nnoremap <F9> :VBGtoggleBreakpointThisLine<CR>
-nnoremap <F5> :VBGstartGDB
-nnoremap <F7> :VBGcontinue<CR>
+nnoremap <leader>sp         :VBGtoggleBreakpointThisLine<CR>
+nnoremap <leader>sd         :VBGstartGDB
+nnoremap <leader>s<space>   :VBGcontinue<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2 "Always show statusline
