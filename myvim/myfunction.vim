@@ -58,4 +58,8 @@ map <c-j> :call QuickfixToggle()<CR>
 
 
 " 添加创建terminal的指令
-nnoremap <leader>t :terminal ++noclose ++hidden screen x-terminal-emulator > /dev/null 2>&1 &!<CR>
+if executable('st')
+    nnoremap <leader>t :terminal ++hidden st<CR>
+else
+    nnoremap <leader>t :terminal ++noclose ++hidden screen x-terminal-emulator > /dev/null 2>&1 &!<CR>
+endif
