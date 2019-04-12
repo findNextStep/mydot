@@ -122,6 +122,7 @@ call plug#end()
 set hidden
 let g:LanguageClient_serverCommands = {
             \'cpp' : ['/usr/local/bin/cquery',"--log-file","/tmp/cquery.log"],
+            \'c' : ['/usr/local/bin/cquery',"--log-file","/tmp/cquery.log"],
             \'python' : ['pyls','--log-file',"/tmp/pyls.log"],
             \'haskell' : ['hie-wrapper', '--lsp', '-r', getcwd() ,'-d','-l','/tmp/hie.log'],
             \'rust' : ['rustup','run','stable','rls'],
@@ -174,8 +175,8 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " 为每个语言定义completion source
 " 是的vim script和zsh script都有，这就是deoplete
 call deoplete#custom#option('sources', {
-            \ 'cpp': ['tabnine','LanguageClient'],
-            \ 'c': ['tabnine','LanguageClient'],
+            \ 'cpp': ['LanguageClient'],
+            \ 'c': ['LanguageClient'],
             \ 'python': ['tabnine','LanguageClient'],
             \ 'haskell': ['tabnine','LanguageClient'],
             \ 'rust':['LanguageClient'],
@@ -193,7 +194,7 @@ set completefunc=LanguageClient#complete
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
 
 "vista
-noremap P :Vista!!<CR>
+noremap גּp :Vista!!<CR>
 " 跳转后自动关闭
 let g:vista_close_on_jump = 1
 let g:vista_stay_on_open = 1
@@ -472,7 +473,7 @@ if has("termguicolors")
     set termguicolors
 endif
 
-nnoremap <leader>sc :HexokinaseToggle<CR>
+nnoremap  גּc :HexokinaseToggle<CR>
 
 let g:Hexokinase_ftAutoload = ['css']
 let g:Hexokinase_signIcon = ''

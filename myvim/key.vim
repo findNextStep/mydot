@@ -26,8 +26,8 @@ map <leader>noh :noh<CR>
 " 定义常规快捷键
 noremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>i
-nnoremap <A-k> :m .-1-<count><CR>
-nmap <A-j> :m .+<count><CR>
+nnoremap גּk :m .-1-<count><CR>
+nnoremap גּj :m .+<count><CR>
 
 " 从新定义好用的esc
 inoremap jj <ESC>
@@ -62,7 +62,7 @@ nnoremap U <C-r>
 inoremap <C-j> <BS>
 
 " tab快速切换
-nmap <leader>a :tabnext 1<CR>
-nmap <leader>s :tabnext 2<CR>
-nmap <leader>d :tabnext 3<CR>
-nmap <leader>f :tabnext 4<CR>
+nmap גּa :tabnext 1<CR>
+nmap גּs :tabnext 2<CR>
+nmap גּd :tabnext 3<CR>
+nmap גּf :tabnext 4<CR>
