@@ -43,13 +43,6 @@ def toggle_layout(qtile):
         qtile.currentGroup.toLayoutIndex(0)
     return
 
-def front_if_not_fullscreen(qtile):
-    pass
-#  for win in qtile.currentGroup.window:
-    #  if win.float:
-        #  win.cmd_bring_to_front()
-        #  if win.fullscreen:
-            #  win.window.configure(stackmode=StackMode.Below)
 last_window_id = ''
 no_transset_window_ids = []
 def toggle_need_transset(wid):
@@ -103,8 +96,7 @@ keys = [
     Key([mod, super_l], 'r', lazy.restart()),
     Key([mod], "space", lazy.function(toggle_layout)),
     Key([mod,shift],'space',lazy.group.setlayout(layouts[2].name)),
-    Key([mod], 't', lazy.window.toggle_floating(),
-        lazy.function(lambda x:front_if_not_fullscreen(x))),
+    Key([mod], 't', lazy.window.toggle_floating()),
     Key([mod],'F12',lazy.window.toggle_fullscreen()),
     Key([mod],'n',lazy.hide_show_bar('bottom')),
 ]
