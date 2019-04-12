@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 import subprocess
 
-from libqtile import bar, extension, hook, layout, widget
+from libqtile import bar, hook, layout, widget
 from libqtile.command import lazy
 from libqtile.config import Click, Drag, Group, Key, Screen
 from pymouse import PyMouse
 from six import u
+from operator import eq
 
 import os
 
@@ -20,7 +21,7 @@ mod = alt_r
 
 
 layouts=[
-    layout.Columns(split=False),
+    layout.Columns(),
     #  layout.MonadTall(),
     #  layout.tree.TreeTab(),
     layout.MonadWide(min_secondary_size = 10,min_ratio= 0.1,max_ratio=0.9),
@@ -35,7 +36,8 @@ layouts=[
 #
 # @return null
 def toggle_layout(qtile):
-    if cmp(qtile.currentLayout.info()['name'], layouts[0].name) == 0:
+    qtile.currentGroup.toLayoutIndex(0)
+    if eq(qtile.currentLayout.info()['name'], layouts[0].name) == 0:
         qtile.currentGroup.toLayoutIndex(1)
     else:
         qtile.currentGroup.toLayoutIndex(0)
@@ -203,7 +205,7 @@ for name in group_name:
 # @return 链接屏幕的数量
 def count_screen():
     (st,_) = subprocess.Popen(['xrandr','-q'],stdout=subprocess.PIPE,shell=True).communicate()
-    return len(filter(lambda x:" connected" in x,st.split('\n')))
+    return len(list(filter(lambda x:" connected" in x,str(st).split('\\n'))))
 
 screens = [
     Screen(
@@ -220,27 +222,15 @@ screens = [
                 widget.currentlayout.CurrentLayout(),
                 widget.currentlayout.CurrentLayoutIcon(scale=0.5),
                 widget.currentscreen.CurrentScreen(),
-                #  widget.TaskList(),
-                #  widget.tasklist.TaskList(),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Memory(fmt="{MemAvailable}M/{MemTotal}M",update_interval = 10),
-                widget.Net(
-                    interface = 'wlp3s0'
-                ),
-                widget.Mpd2(font='DroidSansMono Nerd Font',
-                            port=16600,
-                            play_states = {
-                                'play': u('\uf04b'),
-                                'pause': u('\uf04c'),
-                                'stop': u('\uf9da'),
-                            }
-                            ),
-                widget.TextBox('\\ufa7d'.decode('unicode-escape')),
-                widget.volume.Volume(),
-                widget.battery.Battery(font = 'DroidSansMono Nerd Font', charge_char = u('\uf586'), discharge_char = u('\uf582'), low_percentage = 0.3),
-                widget.TextBox('\\uf0eb'.decode('unicode-escape')),
-                widget.backlight.Backlight(backlight_name='intel_backlight'),
+                #  widget.Memory(fmt="{MemAvailable}M/{MemTotal}M",update_interval = 10),
+                #  widget.Net(
+                    #  interface = 'wlp3s0'
+                #  ),
+                #  widget.volume.Volume(),
+                #  widget.battery.Battery(low_percentage = 0.3),
+                #  widget.backlight.Backlight(backlight_name='intel_backlight'),
                 widget.Clock(format='%Y-%m-%e %H:%M:%S'),
                 widget.Systray(),
             ],
