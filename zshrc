@@ -114,9 +114,9 @@ source ~/.shrc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ## autosuggestions keybind
-bindkey "^[ " autosuggest-accept
-bindkey "^[k" up-line-or-search
-bindkey "^[j" down-line-or-search
+bindkey "גּ " autosuggest-accept
+bindkey "גּk" up-line-or-search
+bindkey "גּj" down-line-or-search
 
 
 # copy
