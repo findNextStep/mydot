@@ -204,6 +204,7 @@ screens = [
         bottom=bar.Bar(
             widgets=[
                 widget.AGroupBox(),
+                widget.CurrentScreen(),
                 widget.GroupBox(
                     invert_mouse_wheel = False,
                     center_aligned = True,
@@ -212,17 +213,16 @@ screens = [
                     inactive='999999'
                 ),
                 widget.currentlayout.CurrentLayout(),
-                widget.currentlayout.CurrentLayoutIcon(scale=0.5),
                 widget.currentscreen.CurrentScreen(),
                 widget.Prompt(),
                 widget.WindowName(),
-                #  widget.Memory(fmt="{MemAvailable}M/{MemTotal}M",update_interval = 10),
-                #  widget.Net(
-                    #  interface = 'wlp3s0'
-                #  ),
-                #  widget.volume.Volume(),
-                #  widget.battery.Battery(low_percentage = 0.3),
-                #  widget.backlight.Backlight(backlight_name='intel_backlight'),
+                widget.Memory(fmt="{MemAvailable}M/{MemTotal}M",update_interval = 10),
+                widget.Net(
+                    interface = 'wlp3s0'
+                ),
+                widget.volume.Volume(),
+                widget.battery.Battery(low_percentage = 0.3),
+                widget.backlight.Backlight(backlight_name='intel_backlight'),
                 widget.Clock(format='%Y-%m-%e %H:%M:%S'),
                 widget.Systray(),
             ],
@@ -243,7 +243,6 @@ for i in range(0,count_screen()):
                     widgets=[
                         widget.AGroupBox(),
                         widget.currentlayout.CurrentLayout(),
-                        widget.currentlayout.CurrentLayoutIcon(scale=0.5),
                         widget.currentscreen.CurrentScreen(),
                         widget.Prompt(),
                         widget.WindowName(),
