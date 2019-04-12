@@ -6,6 +6,8 @@
 # this work for me
 cp sudo_need/init-headphone_in_sleep.d /lib/systemd/system-sleep/init-headphone
 
+cp sudo_need/privoxy_config /etc/privoxy/config
+
 cp bin/init-headphone /usr/local/sbin/init-headphone
 
 # 更换grub背景
