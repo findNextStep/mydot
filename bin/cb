@@ -8,7 +8,6 @@ if [ -f CMakeLists.txt ];then
         mkdir build
     fi
     cd build
-    pwd
     if [ ! -f Makefile ];then
         cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
     fi
