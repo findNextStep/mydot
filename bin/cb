@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# 用于程序构建，实现多语言、多构建系统的单命令构建
+
+# 如果是一个cmake工程
+if [ -f CMakeLists.txt ];then
+    if [ ! -d build ];then
+        mkdir build
+    fi
+    cd build
+    pwd
+    if [ ! -f Makefile ];then
+        cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+    fi
+    make "$@"
+fi
