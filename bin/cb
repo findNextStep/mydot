@@ -12,4 +12,6 @@ if [ -f CMakeLists.txt ];then
         cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
     fi
     make "$@"
+elif [ -f Makefile ];then
+    make "$@"
 fi
