@@ -33,6 +33,7 @@ rustup
 z
 zsh-autosuggestions
 zsh-vimto
+Snappy
 )
 
 source $ZSH/oh-my-zsh.sh
