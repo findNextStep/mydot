@@ -13,5 +13,13 @@ if [ -f CMakeLists.txt ];then
     fi
     make "$@"
 elif [ -f Makefile ];then
-    make "$@"
+    if [ ! -f compile_commands.json ];then
+        bear make "$@"
+    else
+        make "$@"
+    fi
+elif [ -f ./configure ];then
+    sh ./configure "$@"
+elif [ -f autogen.sh ];then
+    sh ./autogen.sh "$@"
 fi
