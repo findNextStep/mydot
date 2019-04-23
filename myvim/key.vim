@@ -37,10 +37,6 @@ cnoremap jj <ESC>
 nnoremap j gj
 nnoremap k gk
 
-" 使用tab做直接缩进调整
-vnoremap <tab> >gv
-vnoremap <s-tab> <gv
-
 " 使用系统剪贴板
 vnoremap p "+p
 nnoremap p "+p
@@ -72,3 +68,7 @@ nmap גּj <C-w>j
 nmap גּh <C-w>h
 nmap גּk <C-w>k
 nmap גּl <C-w>l
+
+set foldmethod=syntax
+set foldlevel=99
+nnoremap <TAB> za

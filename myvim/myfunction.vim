@@ -1,4 +1,4 @@
-map <C-i> :call FormatCode()<CR>zz
+" nnoremap <C-S-i> :call FormatCode()<CR>zz
 func! FormatCode()
     "取得当前光标所在行号
     let lineNum = line(".")
