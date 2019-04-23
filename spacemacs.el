@@ -2,6 +2,11 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+;; use apsell as ispell backend
+(setq-default ispell-program-name "aspell")
+;; use American English as ispell default dictionary
+(ispell-change-dictionary "american" t)
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -133,8 +138,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("UbuntuMono Nerd Font"
+                               :size 20
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
