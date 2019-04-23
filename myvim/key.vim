@@ -26,8 +26,8 @@ map <leader>noh :noh<CR>
 " 定义常规快捷键
 noremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>i
-inoremap גּk :m .-1-<count><CR>
-inoremap גּj :m .+<count><CR>
+vnoremap גּk :'<,'>m .-1-<count><CR>
+vnoremap גּj :'<.'>m .+<count><CR>
 
 " 从新定义好用的esc
 inoremap jj <ESC>
