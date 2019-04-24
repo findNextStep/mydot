@@ -1,6 +1,3 @@
-[submodule "xmonadrc"]
-	path = xmonadrc
-	url = https://github.com/findNextStep/xmonadrc
 [submodule "dotsync"]
 	path = dotsync
 	url = https://github.com/dotphiles/dotsync
