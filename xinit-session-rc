@@ -29,7 +29,7 @@ shutter --min_at_startup &
 xcompmgr -Ff&
 
 # 执行键盘按键重映射
-xmodmap ~/.xmonad/script/modmap
+xmodmap ~/.xmodmap
 
 # indicator-cpufreq
 indicator-cpufreq&
