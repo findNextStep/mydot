@@ -9,7 +9,6 @@ myvim
 zshrc
 shrc
 xmodmap
-xmonadrc:.xmonad
 sakura.conf:.config/sakura/sakura.conf
 bin:bin
 oh-my-zsh
@@ -21,7 +20,6 @@ spacemacs.el:.spacemacs
 qtile:.config/qtile
 gtkrc-2.0
 gtk-3.0:.config/gtk-3.0
-termonad:.config/termonad
 [endfiles]
 
 [hosts]
