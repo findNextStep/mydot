@@ -8,6 +8,7 @@ vimrc
 myvim
 zshrc
 shrc
+xmodmap
 xmonadrc:.xmonad
 sakura.conf:.config/sakura/sakura.conf
 bin:bin
@@ -25,4 +26,5 @@ termonad:.config/termonad
 
 [hosts]
 pxq-CN15S
+pxq-laptop
 [endhosts]
