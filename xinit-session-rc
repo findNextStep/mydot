@@ -1,8 +1,8 @@
 # 在窗口管理器启动之前运行的脚本
 # 解决xcompmgr背景变灰色的帮助来自https://wiki.archlinux.org/index.php/Xcompmgr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
 
-if [ -f ~/.xmonad/background.jpg ];then
-feh --bg-fill ~/.xmonad/background.jpg
+if [ -f ~/.picture/background.jpg ];then
+feh --bg-fill ~/.picture/background.jpg
 else
 hsetroot -solid "#fff"
 fi
