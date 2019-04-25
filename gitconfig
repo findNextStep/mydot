@@ -9,7 +9,7 @@
     proxy = http://127.0.0.1:8118
     postBuffer = 1048576000
 [https]
-    proxy = socks5://127.0.0.1:8118
+    proxy = http://127.0.0.1:8118
     postBuffer = 1048576000
 [credential]
 	helper = store
