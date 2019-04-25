@@ -1,5 +1,5 @@
 #!/bin/sh
-workspace=$(cat ~/.z | sort -t"|" -k2 -n -r | dmenu | awk -F '|' '{print $1}')
+workspace=$(cat ~/.z | sort -t"|" -k2 -n -r | dmenu -format | awk -F '|' '{print $1}')
 if [ "$workspace" != "" ];then
     sleep 0.5
     st -e zsh -c "cd \"$workspace\";zsh"
