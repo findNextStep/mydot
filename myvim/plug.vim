@@ -121,8 +121,8 @@ call plug#end()
 " lsp
 set hidden
 let g:LanguageClient_serverCommands = {
-            \'cpp' : ['/usr/local/bin/cquery',"--log-file","/tmp/cquery.log"],
-            \'c' : ['/usr/local/bin/cquery',"--log-file","/tmp/cquery.log"],
+            \'cpp' : ['ccls',"--log-file","/tmp/cquery.log"],
+            \'c' : ['ccls',"--log-file","/tmp/cquery.log"],
             \'python' : ['pyls','--log-file',"/tmp/pyls.log"],
             \'haskell' : ['hie-wrapper', '--lsp', '-r', getcwd() ,'-d','-l','/tmp/hie.log'],
             \'rust' : ['rustup','run','stable','rls'],
