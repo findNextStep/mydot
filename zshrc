@@ -61,7 +61,9 @@ ZSH_THEME_GIT_PROMPT_AHEAD=" \ue0b1%{↑ %G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{\uf42e%G%}"
 
-source ~/.oh-my-zsh/custom/plugins/zsh-vimto/zsh-vimto.zsh
+if [ -z $IS_VSCODE ];then
+    source ~/.oh-my-zsh/custom/plugins/zsh-vimto/zsh-vimto.zsh
+fi
 
 
 # highlighting theme
