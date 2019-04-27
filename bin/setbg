@@ -1,5 +1,6 @@
-if [ -f ~/.xmonad/background.jpg ];then
-feh --bg-fill ~/.xmonad/background.jpg
-else 
-hsetroot -solid "#325A8E"
+#!/bin/sh
+if [ -f ~/.picture/background.jpg ];then
+feh --bg-fill ~/.picture/background.jpg
+else
+hsetroot -solid "#fff"
 fi
