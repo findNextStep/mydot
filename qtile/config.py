@@ -36,8 +36,7 @@ layouts=[
 #
 # @return null
 def toggle_layout(qtile):
-    qtile.currentGroup.toLayoutIndex(0)
-    if eq(qtile.currentLayout.info()['name'], layouts[0].name) == 0:
+    if eq(str(qtile.currentLayout.info()['name']), 'columns'):
         qtile.currentGroup.toLayoutIndex(1)
     else:
         qtile.currentGroup.toLayoutIndex(0)
