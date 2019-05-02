@@ -16,6 +16,7 @@ alias cls='tput reset'
 alias chrome="google-chrome"
 alias top='htop'
 alias codeit='code . && exit'
+alias apt_proxy='apt -o Acquire::http::proxy="http://127.0.0.1:8118/"'
 # fuzzy的cd跳转
 alias cdto='cd $(find -type d | fzf)'
 alias q="exit"
