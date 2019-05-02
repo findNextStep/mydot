@@ -26,4 +26,5 @@ gtk-3.0:.config/gtk-3.0
 [hosts]
 pxq-CN15S
 pxq-laptop
+pxq-matebook14
 [endhosts]
