@@ -217,7 +217,7 @@ screens = [
                 widget.WindowName(),
                 widget.Memory(fmt="{MemAvailable}M/{MemTotal}M",update_interval = 10),
                 widget.Net(
-                    interface = 'wlp3s0'
+                    interface = 'wlp0s20f3'
                 ),
                 widget.volume.Volume(),
                 widget.battery.Battery(low_percentage = 0.3),
