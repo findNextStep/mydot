@@ -121,8 +121,8 @@ call plug#end()
 " lsp
 set hidden
 let g:LanguageClient_serverCommands = {
-            \'cpp' : ['ccls',"--log-file","/tmp/cquery.log"],
-            \'c' : ['ccls',"--log-file","/tmp/cquery.log"],
+            \'cpp' : ['cquery',"--log-file","/tmp/cquery.log"],
+            \'c' : ['cquery',"--log-file","/tmp/cquery.log"],
             \'python' : ['pyls','--log-file',"/tmp/pyls.log"],
             \'haskell' : ['hie-wrapper', '--lsp', '-r', getcwd() ,'-d','-l','/tmp/hie.log'],
             \'rust' : ['rustup','run','stable','rls'],
@@ -199,7 +199,17 @@ noremap גּp :Vista!!<CR>
 let g:vista_close_on_jump = 1
 let g:vista_stay_on_open = 1
 let g:vista_blink = [0, 100]
-let g:vista_icon_indent = ["ﲒ ", "ﲖ "]
+let g:vista_icon_indent = [">", "|>"]
+let g:vista_default_executive = 'ctags'
+let g:vista_executive_for = {
+  \ 'c' : 'lcn',
+  \ 'cpp': 'lcn',
+  \ }
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 
 " nerdtree 设置
 nnoremap <C-e> :NERDTreeToggle<CR>
