@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [ -d /sys/class/backlight/$(/sys/class/backlight) ];then
+    chmod 777 /sys/class/backlight/$(ls /sys/class/backlight)/brightness
+fi

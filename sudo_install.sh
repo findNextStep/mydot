@@ -18,3 +18,5 @@ update-grub
 # 更改电源设置
 cp ./sudo_need/logind.conf /ect/systemd/logind.conf
 sudo systemctl restart systemd-logind.service
+
+cp ./sudo_need/rc.local /etc/rc.local

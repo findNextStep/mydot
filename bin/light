@@ -2,8 +2,16 @@
 #echo $1 >  /sys/class/backlight/intel_backlight/brightness
 # xrandr --output eDP1 --brightness $1
 
-Monitors=( ${(f)"$(xrandr | grep ' connected' | cut -d' ' -f1)"} )
+# Monitors=( ${(f)"$(xrandr | grep ' connected' | cut -d' ' -f1)"} )
 
-for monitor in $Monitors; do
-    xrandr --output $monitor --brightness $1
-done;
+# for monitor in $Monitors; do
+    # xrandr --output $monitor --brightness $1
+# done;
+#
+readonly max_bright=$(cat /sys/class/backlight/$(ls /sys/class/backlight)/max_brightness)
+readonly bright=$(cat /sys/class/backlight/$(ls /sys/class/backlight)/brightness)
+if [ -z $1 ];then
+    echo $(($bright / $max_bright * 100))
+else
+    echo $(($1 * $max_bright / 100)) > /sys/class/backlight/$(ls /sys/class/backlight)/brightness
+fi
