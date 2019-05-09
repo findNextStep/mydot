@@ -106,7 +106,7 @@ keys.extend([
 ])
 
 def open_web(url):
-    return lazy.spawn("google-chrome " + url)
+    return lazy.spawn('firefox ' + url)
 
 m = PyMouse()
 def mouse_move(x_move,y_move):

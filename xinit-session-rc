@@ -53,9 +53,6 @@ autocutsel &
 # 禁用redshift的自启动程序
 systemctl --user stop redshift.service&
 
-# launch chrome
-google-chrome --no-startup-window &
-
 mpd&
 
 # 剪贴版管理器
