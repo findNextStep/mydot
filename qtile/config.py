@@ -260,6 +260,10 @@ def when_kill(w):
     if w.window.wid in no_transset_window_ids:
         no_transset_window_ids.remove(w.window.wid)
 
+@hook.subscribe.client_focus
+def when_focus(w):
+    if w.window.wid in no_transset_window_ids:
+        no_transset_window_ids.remove(w.window.wid)
 
 @hook.subscribe.client_new
 def func(c):
