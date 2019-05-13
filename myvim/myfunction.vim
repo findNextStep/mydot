@@ -6,18 +6,23 @@ func! FormatCode()
 
     if &filetype == 'c' || &filetype == 'h'
         silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
+        e!
         redraw!
     elseif &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'hpp'
         silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
+        e!
         redraw!
     elseif &filetype == 'py'|| &filetype == 'python'
         silent "!autopep8 --in-place --aggressive %"
+        e!
         redraw!
     elseif &filetype == 'java'
         silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
+        e!
         redraw!
     elseif &filetype == 'jsp'
         silent !astyle --style=java -U -p -xn -xc -xl -k3 -j  % --suffix=none
+        e!
         redraw!
     else
         call <SNR>39_FixWhitespace(0,line("$"))
