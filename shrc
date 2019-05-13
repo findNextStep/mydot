@@ -10,7 +10,8 @@ _openrave_load(){
 # _openrave_load
 
 #命令别名
-alias vi='vim'
+alias vim='nvim'
+alias vi='nvim'
 alias grep="grep --color=auto"
 alias cls='tput reset'
 alias chrome="google-chrome"
@@ -41,6 +42,7 @@ mkdir -p $TASKDDATA
 #export ROS_MASTER_URI=http://192.168.188.2:11311
 
 PATH=~/.cargo/bin:~/.nix-profile/bin:~/.local/bin:~/bin:/opt/ghc/bin:~/.cabal/bin:~/.stack/programs/x86_64-linux/ghc-8.2.2/bin:$PATH
+PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
 
 # 消除ctrl+s锁定

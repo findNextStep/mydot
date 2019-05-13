@@ -8,7 +8,11 @@ fi
 # theme
 sudo add-apt-repository ppa:daniruiz/flat-remix
 
+sudo add-apt-repository ppa:neovim-ppa/stable
+
 apt update
+
+sudo apt-get install neovim -y
 
 apt install privoxy copyq mpd astyle tty-clock ipython gnome-screensaver screen tree polipo fcitx-table fcitx-bin powertop haskell-stack haskell-platform lua5.1 ruby lua5.1-policy-dev perl libperl-dev python3 python3.6-dev libruby2.5 ruby-dev llvm clang ack libclang-6.0-dev htop xclip arandr hsetroot xcompmgr shutter indicator-cpufreq autocutsel numlockx icdiff code cabal-install feh xcompmgr numlockx suckless-tools sakura python-smbus python3-pip lxappearance flat-remix-gnome bear -y
 
@@ -22,6 +26,7 @@ xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
 
 
 # 设置sakura为默认模拟器
+sudo update-alternatives --set vi /usr/bin/nvim
 sudo update-alternatives --set x-terminal-emulator /usr/bin/sakura
 # 恢复使用nautilus(原生资源管理器)使用一下命令
 # xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
