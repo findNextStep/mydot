@@ -4,7 +4,10 @@
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    silent curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif 
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -15,11 +18,8 @@ call plug#begin('~/.vim/plug')
 Plug 'samoshkin/vim-mergetool'
 " 后台运行
 Plug 'https://github.com/skywind3000/asyncrun.vim'
-" 颜色主题
-Plug 'chriskempson/vim-tomorrow-theme'
 " airline
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 " 自动保存当前状态
 Plug 'findNextStep/vim-obsession'
 Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
@@ -84,22 +84,22 @@ Plug 'RRethy/vim-illuminate'
 " markdown预览
 Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 Plug 'sheerun/vim-polyglot'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install --user pynvim' }
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+  " Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install --user pynvim' }
+  " Plug 'roxma/nvim-yarp'
+  " Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 " deoplete plug
 " 智能补全
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " tagbar - lsp
 Plug 'liuchengxu/vista.vim'
 " vim 补全
@@ -108,10 +108,10 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'roxma/nvim-yarp'
 "org-mod"
 Plug 'jceb/vim-orgmode'
-Plug 'mattn/calendar-vim'
-Plug 'vim-scripts/speeddating.vim'
-
-Plug 'joshdick/onedark.vim'
+" coc
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'
 " 颜色显示插件
 Plug 'RRethy/vim-hexokinase'
 " theme pick up
@@ -125,7 +125,7 @@ let g:LanguageClient_serverCommands = {
             \'c' : ['cquery',"--log-file","/tmp/cquery.log"],
             \'python' : ['pyls','--log-file',"/tmp/pyls.log"],
             \'haskell' : ['hie-wrapper', '--lsp', '-r', getcwd() ,'-d','-l','/tmp/hie.log'],
-            \'rust' : ['rustup','run','stable','rls'],
+            \'rust' : ['rustup','run','nightly','rls'],
             \}
 let g:LanguageClient_rootMarkers = {
             \ 'cpp': ['compile_commands.json', 'build'],
@@ -155,9 +155,9 @@ noremap <Leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
 
 " 补全设置
 " 自启动
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 " smart case不解释
-let g:deoplete#enable_smart_case = 1
+" let g:deoplete#enable_smart_case = 1
 
 " 使用tab在补全中找选项
 " https://zhuanlan.zhihu.com/p/54586480
@@ -167,26 +167,26 @@ inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<tab>"
 
 " 用户输入至少两个字符时再开始提示补全
-call deoplete#custom#source('LanguageClient', 'min_pattern_length', 1)
+" call deoplete#custom#source('LanguageClient', 'min_pattern_length', 1)
 
 " 补全结束或离开插入模式时，关闭预览窗口
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " 为每个语言定义completion source
 " 是的vim script和zsh script都有，这就是deoplete
-call deoplete#custom#option('sources', {
-            \ 'cpp': ['LanguageClient'],
-            \ 'c': ['LanguageClient'],
-            \ 'python': ['tabnine','LanguageClient'],
-            \ 'haskell': ['tabnine','LanguageClient'],
-            \ 'rust':['LanguageClient'],
-            \ 'vim': ['tabnine','vim'],
-            \ 'zsh': ['tabnine','zsh']
-            \})
+" call deoplete#custom#option('sources', {
+            " \ 'cpp': ['LanguageClient'],
+            " \ 'c': ['LanguageClient'],
+            " \ 'python': ['tabnine','LanguageClient'],
+            " \ 'haskell': ['tabnine','LanguageClient'],
+            " \ 'rust':['LanguageClient'],
+            " \ 'vim': ['tabnine','vim'],
+            " \ 'zsh': ['tabnine','zsh']
+            " \})
 
 " 忽略一些没意思的completion source。
-let g:deoplete#ignore_sources = {}
-let g:deoplete#ignore_sources._ = ['buffer', 'around']
+" let g:deoplete#ignore_sources = {}
+" let g:deoplete#ignore_sources._ = ['buffer', 'around']
 " 把Server的补全API提交给Vim
 " 一般有deoplete就可以用了，加上一条以防万一。
 set completefunc=LanguageClient#complete
@@ -341,13 +341,8 @@ nnoremap <silent> <F11> :RandomColorScheme<cr>
 inoremap <silent> <F11> <esc> :RandomColorScheme<cr>
 nnoremap <silent> <F12> :ShowColorScheme<cr>
 inoremap <silent> <F12> <esc> :ShowColorScheme<cr>
-" colorscheme Tomorrow-Night-Bright
-colorscheme onedark
-" colorscheme Tomorrow-Night
-" set background=dark
+colorscheme desert
 let g:solarized_termcolors=256
-" hi Normal guibg=NONE ctermbg=NONE
-" hi LineNr guibg=NONE ctermbg=NONE
 
 " set doctool
 let g:DoxygenToolkit_briefTag_funcName = "yes"
@@ -414,7 +409,6 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2 "Always show statusline
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts=1
-let g:airline_theme='bubblegum'
 function! CMakeStat()
     let l:cmake_build_dir = get(g:, 'cmake_build_dir', 'build')
     let l:build_dir = finddir(l:cmake_build_dir, '.;')
@@ -447,7 +441,7 @@ if filereadable(g:obsession_file_name)
     " execute 'Obsession'
 endif
 
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
@@ -457,18 +451,18 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " nmap s <Plug>(easymotion-overwin-f2)
 " Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
+" let g:EasyMotion_smartcase = 1
 
 " JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>l <Plug>(easymotion-lineforward)
-nmap <Leader>h <Plug>(easymotion-linebackward)
-nmap / <Plug>(easymotion-sn)
-map n <Plug>(easymotion-next)
-map N <Plug>(easymotion-prev)
+" map <Leader>j <Plug>(easymotion-j)
+" map <Leader>k <Plug>(easymotion-k)
+" map <Leader>l <Plug>(easymotion-lineforward)
+" nmap <Leader>h <Plug>(easymotion-linebackward)
+" nmap / <Plug>(easymotion-sn)
+" map n <Plug>(easymotion-next)
+" map N <Plug>(easymotion-prev)
 
-let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+" let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 let g:jedi#completions_enabled = 1
 
@@ -487,3 +481,11 @@ nnoremap  גּc :HexokinaseToggle<CR>
 
 let g:Hexokinase_ftAutoload = ['css']
 let g:Hexokinase_signIcon = ''
+
+" coc
+autocmd FileType json syntax match Comment +\/\/.\+$+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+highlight Pmenu    guibg=darkgrey  guifg=black 
+highlight PmenuSel guibg=lightgrey guifg=black
