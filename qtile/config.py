@@ -19,6 +19,8 @@ super_l = 'mod4'
 super_r = 'mod5'
 mod = alt_r
 
+def get_win_id(w):
+    return w.info()['id']
 
 layouts=[
     layout.Columns(),
@@ -42,7 +44,7 @@ def toggle_layout(qtile):
         qtile.currentGroup.toLayoutIndex(0)
     return
 
-last_window_id = ''
+last_window_id = 0
 no_transset_window_ids = []
 def toggle_need_transset(wid):
     if wid not in no_transset_window_ids:
@@ -51,12 +53,13 @@ def toggle_need_transset(wid):
     else:
         no_transset_window_ids.remove(wid)
 def focus_transset(w):
-    os.system("transset -i " + str(w.window.wid) + ' 1')
+    os.system("transset -i " + str(get_win_id(w)) + ' 1')
     global last_window_id
-    if last_window_id is not w.window.wid:
-        if last_window_id is not '' and last_window_id not in no_transset_window_ids:
+    if last_window_id is not get_win_id(w):
+        if last_window_id is not 0 and last_window_id not in no_transset_window_ids:
             os.system("transset -i " + str(last_window_id) + ' 0.75')
-    last_window_id = w.window.wid
+    last_window_id = get_win_id(w)
+    print(no_transset_window_ids)
 
 
 keys = [
@@ -69,7 +72,7 @@ keys = [
     Key([mod], "k", lazy.group.prev_window(),
         lazy.function(lambda x:focus_transset(x.currentWindow))),
     Key([mod,shift], 't', lazy.function(
-        lambda x: toggle_need_transset(x.currentWindow.window.wid))),
+        lambda x: toggle_need_transset(get_win_id(x.currentWindow)))),
     Key([mod, shift], "h", lazy.layout.swap_left(),
         lazy.layout.shuffle_left()),
     Key([mod, shift], "l", lazy.layout.swap_right(),
@@ -183,7 +186,7 @@ for name in group_name:
     groups.append(Group(name))
     keys.append(Key([mod], name,
                     lazy.group[name].toscreen(),
-                    lazy.function(lambda x:focus_transset(x.group[x.groupMap[name]].currentWindow))))
+                    lazy.function(lambda x:focus_transset(x.groups[x.groupMap[name]].window))))
     keys.append(Key([mod, shift], name,
                     lazy.window.togroup(name),
                     lazy.function(lambda x:focus_transset(x.currentWindow))))
@@ -254,16 +257,13 @@ for i in range(0,count_screen()):
         )
 @hook.subscribe.client_killed
 def when_kill(w):
-    #  f = open("/home/pxq/test.txt","w")
-    #  f.write(str(w.window.wid))
-    #  f.close()
-    if w.window.wid in no_transset_window_ids:
-        no_transset_window_ids.remove(w.window.wid)
+    if get_win_id(w) in no_transset_window_ids:
+        no_transset_window_ids.remove(get_win_id(w))
 
 @hook.subscribe.client_focus
 def when_focus(w):
-    if w.window.wid in no_transset_window_ids:
-        no_transset_window_ids.remove(w.window.wid)
+    if get_win_id(w) in no_transset_window_ids:
+        no_transset_window_ids.remove(get_win_id(w))
 
 @hook.subscribe.client_new
 def func(c):
