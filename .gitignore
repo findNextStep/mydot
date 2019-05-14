@@ -6,3 +6,4 @@ termonad/termonad.hi
 termonad/termonad
 termonad/termonad.o
 .stack-work
+.netrwhist
