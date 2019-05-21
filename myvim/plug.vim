@@ -142,16 +142,20 @@ let g:LanguageClient_hoverPreview = 'Never'
 let g:LanguageClient_settingsPath ="~/.lsp_setting.json"
 let g:LanguageClient_autoStart = 1
 
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
 " show where it define
-noremap <leader>gd :call LanguageClient#textDocument_definition()<cr>
+" noremap <leader>gd :call LanguageClient#textDocument_definition()<cr>
 " show where it used
-noremap <leader>gr :call LanguageClient#textDocument_references()<cr>
+" noremap <leader>gr :call LanguageClient#textDocument_references()<cr>
 " show what it is
-noremap <leader>gv :call LanguageClient#textDocument_hover()<cr>
+" noremap <leader>gv :call LanguageClient#textDocument_hover()<cr>
 " formatting "
-noremap <Leader>gf :call LanguageClient#textDocument_formatting()<cr>
-noremap <Leader>ga :call LanguageClient#textDocument_codeAction()<CR>
-noremap <Leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
+" noremap <Leader>gf :call LanguageClient#textDocument_formatting()<cr>
+" noremap <Leader>ga :call LanguageClient#textDocument_codeAction()<CR>
+" noremap <Leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
 
 " 补全设置
 " 自启动
