@@ -9,6 +9,11 @@
                     "directory": "/tmp/ccls"
                 }
             }
+        },
+        "pyls":{
+            "command": "pyls",
+            "filetypes":["python"],
+            "rootPatterns":["__pycache__"]
         }
     }
 }
