@@ -218,10 +218,10 @@ screens = [
                 widget.currentscreen.CurrentScreen(),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Memory(fmt="{MemAvailable}M/{MemTotal}M",update_interval = 10),
                 widget.Net(
                     interface = 'wlp0s20f3'
                 ),
+                widget.Memory(fmt="{MemAvailable}M/{MemTotal}M",update_interval = 10),
                 widget.volume.Volume(),
                 widget.battery.Battery(low_percentage = 0.3),
                 widget.backlight.Backlight(backlight_name='intel_backlight'),
