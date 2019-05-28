@@ -55,5 +55,7 @@ systemctl --user stop redshift.service&
 
 mpd&
 
+~/.touchpad.sh &
+
 # 剪贴版管理器
 # copyq&
