@@ -143,7 +143,7 @@ let g:LanguageClient_settingsPath ="~/.lsp_setting.json"
 let g:LanguageClient_autoStart = 1
 
 nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gt <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
 " show where it define
