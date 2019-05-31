@@ -49,15 +49,16 @@ no_transset_window_ids = []
 def toggle_need_transset(wid):
     if wid not in no_transset_window_ids:
         no_transset_window_ids.append(wid)
-        os.system("transset -i " + str(wid) + ' 1')
+        #  os.system("transset -i " + str(wid) + ' 1')
     else:
         no_transset_window_ids.remove(wid)
 def focus_transset(w):
-    os.system("transset -i " + str(get_win_id(w)) + ' 1')
+    #  os.system("transset -i " + str(get_win_id(w)) + ' 1')
     global last_window_id
     if last_window_id is not get_win_id(w):
         if last_window_id is not 0 and last_window_id not in no_transset_window_ids:
-            os.system("transset -i " + str(last_window_id) + ' 0.75')
+            #  os.system("transset -i " + str(last_window_id) + ' 0.75')
+            pass
     last_window_id = get_win_id(w)
     print(no_transset_window_ids)
 
