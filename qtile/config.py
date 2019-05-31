@@ -220,7 +220,7 @@ screens = [
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Net(
-                    interface = 'wlp0s20f3'
+                    interface = 'wlan0'
                 ),
                 widget.Memory(fmt="{MemAvailable}M/{MemTotal}M",update_interval = 10),
                 widget.volume.Volume(),
