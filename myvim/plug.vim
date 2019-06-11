@@ -116,6 +116,8 @@ Plug 'neoclide/coc-neco'
 Plug 'RRethy/vim-hexokinase'
 " theme pick up
 Plug 'https://github.com/chxuan/change-colorscheme'
+" file manager
+Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 " lsp
@@ -216,7 +218,7 @@ let g:vista#renderer#icons = {
 \  }
 
 " nerdtree 设置
-nnoremap <C-e> :NERDTreeToggle<CR>
+nnoremap <C-e> :Bolt<CR>
 
 let g:NERDTreeIndicatorMapCustom = {
             \ "Modified"  : "✹",
