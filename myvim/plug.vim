@@ -118,6 +118,7 @@ Plug 'RRethy/vim-hexokinase'
 Plug 'https://github.com/chxuan/change-colorscheme'
 " file manager
 Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'puremourning/vimspector'
 call plug#end()
 
 " lsp
@@ -495,3 +496,9 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 highlight Pmenu    guibg=darkgrey  guifg=black 
 highlight PmenuSel guibg=lightgrey guifg=black
+
+" packadd! vimspector
+nnoremap <leader>dl :call vimspector#Launch()<CR>
+nnoremap <leader>dg :call vimspector#Continue()<CR>
+nnoremap <leader>dk :call vimspector#Stop()<CR>
+nnoremap <leader>dp :call vimspector#ToggleBreakpoint()<CR>
