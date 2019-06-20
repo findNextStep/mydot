@@ -1,5 +1,5 @@
 #!/bin/zsh
-pid=$(ps -a |sed 1d | dmenu -l 11 | awk '{print $1 }')
+pid=$(ps -A |sed 1d | dmenu -l 11 | awk '{print $1 }')
 sleep 0.4
 echo $pid
 if [ -z $pid ];then
