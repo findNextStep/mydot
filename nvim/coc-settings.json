@@ -2,6 +2,7 @@
     "languageserver": {
         "ccls": {
             "command": "ccls",
+            "args": ["--log-file","/tmp/ccls.log"],
             "filetypes": ["c", "cpp", "objc", "objcpp"],
             "rootPatterns": [".ccls", ".vim/", ".git/", "compile_commands.json"],
             "initializationOptions": {
