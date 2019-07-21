@@ -27,7 +27,7 @@ fan &
 shutter --min_at_startup &
 
 # 允许窗口透明
-compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --unredir-if-possible
+compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --unredir-if-possible &
 
 # 执行键盘按键重映射
 xmodmap ~/.xmodmap
