@@ -8,9 +8,9 @@ git submodule update
 cd ..
 case "$(uname -s)" in
     Linux*)
-        $(pwd)/dotsync/bin/dotsync -f $(pwd)/.dotsyncrc -L
+        $(pwd)/dotsync/bin/dotsync -f $(pwd)/.dotsyncrc -L ;;
     Darwin*)   
-        $(pwd)/dotsync/bin/dotsync -f $(pwd)/.dotsyncrc_for_mac -L
+        $(pwd)/dotsync/bin/dotsync -f $(pwd)/.dotsyncrc_for_mac -L ;;
 esac
 
 
