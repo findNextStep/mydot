@@ -24,6 +24,9 @@ docker
 stack
 cabal
 fast-syntax-highlighting
+gem
+pod
+xcode
 npm
 yarn
 pip
@@ -32,7 +35,6 @@ rust
 rustup
 z
 zsh-autosuggestions
-zsh-vimto
 Snappy
 )
 
@@ -62,7 +64,10 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{\uf42e%G%}"
 
 if [ -z $IS_VSCODE ];then
-    source ~/.oh-my-zsh/custom/plugins/zsh-vimto/zsh-vimto.zsh
+    if [ "$(uname -s)" = "Linux" ];then
+        # launch only in linux
+        source ~/.oh-my-zsh/custom/plugins/zsh-vimto/zsh-vimto.zsh
+    fi
 fi
 
 
