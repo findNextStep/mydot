@@ -1,0 +1,29 @@
+lcmd - j : yabai -m window --focus next
+lcmd - k : yabai -m window --focus prev
+ralt - return : /Applications/iTerm.app/Contents/MacOS/iTerm2
+ralt - d : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+lcmd - t : yabai -m window --toggle float
+
+shift + lcmd - j : yabai -m window --swap next
+shift + lcmd - k : yabai -m window --swap prev
+
+
+ralt - space : yabai -m window --toggle zoom-fullscreen
+
+lcmd - a : yabai -m space --focus 1
+lcmd - s : yabai -m space --focus 2
+lcmd - d : yabai -m space --focus 3
+lcmd - f : yabai -m space --focus 4
+lcmd - u : yabai -m space --focus 5
+lcmd - i : yabai -m space --focus 6
+lcmd - o : yabai -m space --focus 7
+lcmd - p : yabai -m space --focus 8
+
+lcmd + shift - a : yabai -m window --space 1
+lcmd + shift - s : yabai -m window --space 2
+lcmd + shift - d : yabai -m window --space 3
+lcmd + shift - f : yabai -m window --space 4
+lcmd + shift - u : yabai -m window --space 5
+lcmd + shift - i : yabai -m window --space 6
+lcmd + shift - o : yabai -m window --space 7
+lcmd + shift - p : yabai -m window --space 8

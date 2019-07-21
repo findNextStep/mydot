@@ -1,0 +1,57 @@
+#!/bin/bash
+
+yabai -m space --destroy
+yabai -m space --destroy
+yabai -m space --destroy
+yabai -m space --destroy
+yabai -m space --destroy
+yabai -m space --destroy
+yabai -m space --destroy
+
+yabai -m space --create
+yabai -m space --create
+yabai -m space --create
+yabai -m space --create
+yabai -m space --create
+yabai -m space --create
+yabai -m space --create
+# bsp or float (default: bsp)
+yabai -m config layout bsp
+# Set all padding and gaps to 20pt (default: 0)
+yabai -m config top_padding    0
+yabai -m config bottom_padding 0
+yabai -m config left_padding   0
+yabai -m config right_padding  0
+yabai -m config window_gap     0
+
+# on or off (default: off)
+yabai -m config auto_balance off
+# Floating point value between 1 and 1 (default: 0.5)
+yabai -m config split_ratio 0.5
+# set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
+yabai -m config focus_follows_mouse off
+# set mouse follows focus mode (default: off)
+yabai -m config mouse_follows_focus on
+# floating windows are always on top (default: off)
+yabai -m config window_topmost on
+# modify window shadows (default: on, options: on, off, float)
+# example: show shadows only for floating windows
+yabai -m config window_shadow float
+yabai -m config window_border on
+yabai -m config window_border_width 1
+yabai -m config active_window_border_color 0x5fff0000
+yabai -m config normal_window_border_color 0x5feeeeee
+yabai -m config insert_window_border_color 0x5f0000ff
+
+# bar settings
+yabai -m config status_bar                   on
+yabai -m config status_bar_text_font         "Hack Nerd Font:12.0"
+yabai -m config status_bar_icon_font         "Hack Nerd Font:12.0"
+yabai -m config status_bar_background_color  0xff000000
+yabai -m config status_bar_foreground_color  0xffaaaaaa
+yabai -m config status_bar_space_icon_strip  a s d f u i o p
+yabai -m config status_bar_power_icon_strip   
+yabai -m config status_bar_space_icon        
+yabai -m config status_bar_clock_icon        
+
+
