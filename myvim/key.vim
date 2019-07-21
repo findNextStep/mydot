@@ -62,6 +62,10 @@ nmap גּa :tabnext 1<CR>
 nmap גּs :tabnext 2<CR>
 nmap גּd :tabnext 3<CR>
 nmap גּf :tabnext 4<CR>
+nmap <leader>a :tabnext 1<CR>
+nmap <leader>s :tabnext 2<CR>
+nmap <leader>d :tabnext 3<CR>
+nmap <leader>f :tabnext 4<CR>
 
 
 nmap גּj <C-w>j
