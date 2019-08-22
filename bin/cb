@@ -14,6 +14,7 @@ if [ -f CMakeLists.txt ];then
     if [ -f Makefile ];then
         make "$@"
     elif [ -f build.ninja ];then
+        ninja -t compdb cxx cc > compile_commands.json
         ninja "$@"
     fi
 elif [ -f Makefile ];then
