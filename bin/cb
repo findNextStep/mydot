@@ -27,6 +27,8 @@ elif [ -f build.ninja ];then
     ninja "$@"
 elif [ -f ./configure ];then
     sh ./configure "$@"
+elif [ -f ./build.sh ];then
+    sh ./build.sh "$@"
 elif [ -f autogen.sh ];then
     sh ./autogen.sh "$@"
 fi
