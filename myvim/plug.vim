@@ -202,6 +202,8 @@ set formatexpr=LanguageClient_textDocument_rangeFormatting()
 
 "vista
 noremap גּp :Vista!!<CR>
+noremap <C-P> :Vista!!<CR>
+noremap <leader>p :BTags<CR>
 " 跳转后自动关闭
 let g:vista_close_on_jump = 1
 let g:vista_stay_on_open = 1
@@ -395,6 +397,7 @@ let g:Illuminate_ftblacklist = ['nerdtree']
 " fzf command
 nnoremap ;<space> :Commands<CR>
 let g:fzf_layout = {'up' : '~40%'}
+let g:fzf_tags_command = '/usr/local/bin/ctags -R'
 
 " markdown预览
 nnoremap <leader>mv :MarkdownPreview<CR>
