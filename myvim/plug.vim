@@ -113,7 +113,7 @@ let g:vista_close_on_jump = 1
 let g:vista_stay_on_open = 1
 let g:vista_blink = [0, 100]
 let g:vista_icon_indent = [">", "|>"]
-let g:vista_default_executive = 'ctags'
+let g:vista_default_executive = 'coc'
 let g:vista_executive_for = {
   \ 'c' : 'coc',
   \ 'cpp': 'coc',
@@ -278,7 +278,7 @@ let g:Illuminate_ftblacklist = ['nerdtree']
 " fzf command
 nnoremap ;<space> :Commands<CR>
 let g:fzf_layout = {'up' : '~40%'}
-let g:fzf_tags_command = '/usr/local/bin/ctags -R'
+" let g:fzf_tags_command = '/usr/local/bin/ctags -R'
 
 " markdown预览
 nnoremap <leader>mv :MarkdownPreview<CR>
