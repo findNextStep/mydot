@@ -75,37 +75,12 @@ Plug 'idanarye/vim-vebugger'
 Plug 'bronson/vim-trailing-whitespace'
 " 光标下词语自动高亮
 Plug 'RRethy/vim-illuminate'
-" 颜色功能增强
-" Plug 'jeaye/color_coded' , {
-            " \ 'build': 'rm -f CMakeCache.txt && cmake . && make && make install',
-            " \ 'autoload': { 'filetypes' : ['c', 'cpp', 'objc', 'objcpp'] },
-            " \ 'build_commands' : ['cmake', 'make']
-            " \}
 " markdown预览
 Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
-" Plug 'easymotion/vim-easymotion'
 Plug 'sheerun/vim-polyglot'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-" if has('nvim')
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-  " Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install --user pynvim' }
-  " Plug 'roxma/nvim-yarp'
-  " Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-" deoplete plug
-" 智能补全
-" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " tagbar - lsp
 Plug 'liuchengxu/vista.vim'
-" vim 补全
-Plug 'https://github.com/Shougo/neco-vim'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'roxma/nvim-yarp'
 "org-mod"
 Plug 'jceb/vim-orgmode'
 " coc
@@ -121,51 +96,6 @@ Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'puremourning/vimspector'
 call plug#end()
 
-" lsp
-set hidden
-let g:LanguageClient_serverCommands = {
-            \'cpp' : ['cquery',"--log-file","/tmp/cquery.log"],
-            \'c' : ['cquery',"--log-file","/tmp/cquery.log"],
-            \'python' : ['pyls','--log-file',"/tmp/pyls.log"],
-            \'haskell' : ['hie-wrapper', '--lsp', '-r', getcwd() ,'-d','-l','/tmp/hie.log'],
-            \'rust' : ['rustup','run','nightly','rls'],
-            \}
-let g:LanguageClient_rootMarkers = {
-            \ 'cpp': ['compile_commands.json', 'build'],
-            \ 'c': ['compile_commands.json', 'build'],
-            \ 'haskell': ['*.cabal', 'stack.yaml'],
-            \ 'rust': ['Cargo.lock'],
-            \ }
-let g:LanguageClient_loadSettings = 1
-let g:LanguageClient_diagnosticsEnable = 0
-let g:LanguageClient_selectionUI = 'quickfix'
-let g:LanguageClient_loggingLevel = 'DEBUG'
-let g:LanguageClient_diagnosticsList = v:null
-let g:LanguageClient_hoverPreview = 'Never'
-let g:LanguageClient_settingsPath ="~/.lsp_setting.json"
-let g:LanguageClient_autoStart = 1
-
-nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gt <Plug>(coc-type-definition)
-nmap <silent> <leader>gi <Plug>(coc-implementation)
-nmap <silent> <leader>gr <Plug>(coc-references)
-" show where it define
-" noremap <leader>gd :call LanguageClient#textDocument_definition()<cr>
-" show where it used
-" noremap <leader>gr :call LanguageClient#textDocument_references()<cr>
-" show what it is
-" noremap <leader>gv :call LanguageClient#textDocument_hover()<cr>
-" formatting "
-" noremap <Leader>gf :call LanguageClient#textDocument_formatting()<cr>
-" noremap <Leader>ga :call LanguageClient#textDocument_codeAction()<CR>
-" noremap <Leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
-
-" 补全设置
-" 自启动
-" let g:deoplete#enable_at_startup = 1
-" smart case不解释
-" let g:deoplete#enable_smart_case = 1
-
 " 使用tab在补全中找选项
 " https://zhuanlan.zhihu.com/p/54586480
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -173,36 +103,10 @@ inoremap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<tab>"
 
-" 用户输入至少两个字符时再开始提示补全
-" call deoplete#custom#source('LanguageClient', 'min_pattern_length', 1)
-
-" 补全结束或离开插入模式时，关闭预览窗口
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" 为每个语言定义completion source
-" 是的vim script和zsh script都有，这就是deoplete
-" call deoplete#custom#option('sources', {
-            " \ 'cpp': ['LanguageClient'],
-            " \ 'c': ['LanguageClient'],
-            " \ 'python': ['tabnine','LanguageClient'],
-            " \ 'haskell': ['tabnine','LanguageClient'],
-            " \ 'rust':['LanguageClient'],
-            " \ 'vim': ['tabnine','vim'],
-            " \ 'zsh': ['tabnine','zsh']
-            " \})
-
-" 忽略一些没意思的completion source。
-" let g:deoplete#ignore_sources = {}
-" let g:deoplete#ignore_sources._ = ['buffer', 'around']
-" 把Server的补全API提交给Vim
-" 一般有deoplete就可以用了，加上一条以防万一。
-set completefunc=LanguageClient#complete
-" 把Server的格式化API提交给Vim
-set formatexpr=LanguageClient_textDocument_rangeFormatting()
 
 "vista
 noremap גּp :Vista!!<CR>
-noremap <C-P> :Vista!!<CR>
+noremap P :Vista!!<CR>
 noremap <leader>p :BTags<CR>
 " 跳转后自动关闭
 let g:vista_close_on_jump = 1
@@ -211,10 +115,11 @@ let g:vista_blink = [0, 100]
 let g:vista_icon_indent = [">", "|>"]
 let g:vista_default_executive = 'ctags'
 let g:vista_executive_for = {
-  \ 'c' : 'lcn',
-  \ 'cpp': 'lcn',
+  \ 'c' : 'coc',
+  \ 'cpp': 'coc',
   \ }
 let g:vista#renderer#enable_icon = 1
+let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
@@ -291,34 +196,10 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 
-let g:ale_linters = {
-            \ 'c': ['cppcheck'],
-            \ 'cpp': ['cppcheck'],
-            \ 'lua': ['luac'],
-            \ 'go': ['go build', 'gofmt'],
-            \ 'java': ['javac'],
-            \ 'javascript': ['eslint'],
-            \ }
 let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
-
-
-" YCM
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_server_log_level = 'info'
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_strings=1
-let g:ycm_key_invoke_completion = '<c-z>'
-let g:ycm_confirm_extra_conf=0
-let g:ycm_python_binary_path = 'python'
-let g:ycm_error_symbol = '✗'
-let g:ycm_complete_in_comments = 1
-let g:ycm_seed_identifiers_with_syntax = 0
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 
 noremap <c-z> <NOP>
@@ -494,11 +375,17 @@ let g:Hexokinase_signIcon = ''
 
 " coc
 autocmd FileType json syntax match Comment +\/\/.\+$+
-autocmd CursorHold * silent call CocActionAsync('highlight')
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-highlight Pmenu    guibg=darkgrey  guifg=black 
-highlight PmenuSel guibg=lightgrey guifg=black
+" highlight Pmenu    guibg=darkgrey  guifg=black 
+" highlight PmenuSel guibg=lightgrey guifg=black
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gt <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
+set updatetime=300
+" au CursorHold * sil call CocActionAsync('highlight')
+" au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 
 " packadd! vimspector
 nnoremap <leader>dl :call vimspector#Launch()<CR>
