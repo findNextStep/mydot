@@ -4,7 +4,7 @@
             "command": "ccls",
             "args": ["--log-file","/tmp/ccls.log"],
             "filetypes": ["c", "cpp", "objc", "objcpp"],
-            "rootPatterns": [".ccls", ".vim/", ".git/", "compile_commands.json"]
+            "rootPatterns": [".ccls-cache", ".vim/", ".git/", "compile_commands.json"]
         },
         "pyls":{
             "command": "pyls",
