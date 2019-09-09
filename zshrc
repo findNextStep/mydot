@@ -93,21 +93,36 @@ _outTerminal(){
 
 alias img_shower="feh --scale-down"
 
+if [ "$(uname -s)" = "Darwin" ];then
+    alias typora="open -a Typora"
+fi
+
 #文件打开方式自定义
-alias -s sh=sh
-alias -s zsh=zsh
-alias -s bash=bash
-alias -s ppt="_outTerminal wpp"
-alias -s pptx="_outTerminal wpp"
-alias -s doc="_outTerminal wps"
-alias -s docx="_outTerminal wps"
-alias -s xls="_outTerminal et"
-alias -s xlsx="_outTerminal et"
-alias -s md="_outTerminal typora"
-alias -s jpg=img_shower
-alias -s png=img_shower
-alias -s mp4=mplayer
-alias -s pdf="_outTerminal evince"
+case "$(uname -s)" in
+    Linux*)
+        alias -s sh=sh
+        alias -s zsh=zsh
+        alias -s bash=bash
+        alias -s ppt="_outTerminal wpp"
+        alias -s pptx="_outTerminal wpp"
+        alias -s doc="_outTerminal wps"
+        alias -s docx="_outTerminal wps"
+        alias -s xls="_outTerminal et"
+        alias -s xlsx="_outTerminal et"
+        alias -s md="_outTerminal typora"
+        alias -s jpg=img_shower
+        alias -s png=img_shower
+        alias -s mp4=mplayer
+        alias -s pdf="_outTerminal evince"
+        ;;
+    Darwin*)
+        alias -s sh=sh
+        alias -s zsh=zsh
+        alias -s bash=bash
+        alias -s md="open -a Typora"
+        alias -s pdf="_outTerminal evince"
+        ;;
+esac
 
 #导入ros相关
 # source /opt/ros/$(ls /opt/ros)/setup.zsh
