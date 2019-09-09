@@ -2,14 +2,27 @@
     "languageserver": {
         "ccls": {
             "command": "ccls",
-            "args": ["--log-file","/tmp/ccls.log"],
+            "args": ["--log-file","/tmp/ccls.log"
+            ],
             "filetypes": ["c", "cpp", "objc", "objcpp"],
-            "rootPatterns": [".ccls-cache", ".vim/", ".git/", "compile_commands.json"]
-        },
-        "pyls":{
-            "command": "pyls",
-            "filetypes":["python"],
-            "rootPatterns":["__pycache__"]
+            "rootPatterns": [".ccls-cache", ".vim/", ".git/", "compile_commands.json"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "highlight": { "lsRanges" : true },
+                "clang": {
+                    "extraArgs": [
+                        "-isystem",
+                        "/Library/Developer/CommandLineTools/usr/include/c++/v1"
+                    ]
+                }
+            },
+            "pyls":{
+                "command": "pyls",
+                "filetypes":["python"],
+                "rootPatterns":["__pycache__"]
+            }
         }
     }
 }
