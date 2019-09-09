@@ -87,6 +87,8 @@ Plug 'jceb/vim-orgmode'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
+" 智能高亮需要coc.nvim
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 " 颜色显示插件
 Plug 'RRethy/vim-hexokinase'
 " theme pick up
