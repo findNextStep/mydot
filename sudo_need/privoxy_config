@@ -780,8 +780,7 @@ logfile logfile
 #
 #        listen-address [::1]:8118
 #
-listen-address  127.0.0.1:8118
-listen-address  [::1]:8118
+listen-address  localhost:8118
 #
 #  4.2. toggle
 #  ============
@@ -1334,7 +1333,7 @@ enable-proxy-authentication-forwarding 0
 #      To chain Privoxy and Tor, both running on the same system, you
 #      would use something like:
 #
-       forward-socks5   /               127.0.0.1:1080 .
+       forward-socks5   /               127.0.0.1:12333 .
 #
 #      Note that if you got Tor through one of the bundles, you may
 #      have to change the port from 9050 to 9150 (or even another

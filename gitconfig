@@ -6,10 +6,10 @@
 [core]
 	editor = vim
 [http]
-    proxy = http://127.0.0.1:8118
+    proxy = http://127.0.0.1:12333
     postBuffer = 1048576000
 [https]
-    proxy = http://127.0.0.1:8118
+    proxy = http://127.0.0.1:12333
     postBuffer = 1048576000
 [credential]
 	helper = store
