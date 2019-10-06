@@ -17,6 +17,7 @@ spacemacs.el:.spacemacs
 nvim:.config/nvim
 yabairc
 skhdrc
+gitignore-global
 [endfiles]
 
 [hosts]

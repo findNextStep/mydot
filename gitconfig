@@ -5,6 +5,7 @@
 	user = findNextStep
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore-global
 [http]
     proxy = http://127.0.0.1:12333
     postBuffer = 1048576000
