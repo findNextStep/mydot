@@ -386,8 +386,8 @@ nmap <silent> <leader>gt <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
 set updatetime=300
-" au CursorHold * sil call CocActionAsync('highlight')
-" au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
+au CursorHold * sil call CocActionAsync('highlight')
+au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 
 " packadd! vimspector
 nnoremap <leader>dl :call vimspector#Launch()<CR>
