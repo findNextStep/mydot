@@ -138,6 +138,7 @@ source ~/.shrc
 
 ## autosuggestions keybind
 bindkey "גּ " autosuggest-accept
+bindkey "¬" autosuggest-accept
 bindkey "גּk" up-line-or-search
 bindkey "גּj" down-line-or-search
 
