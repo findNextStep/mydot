@@ -85,6 +85,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'jceb/vim-orgmode'
 " coc
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'https://github.com/neoclide/coc-snippets'
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
 " 智能高亮需要coc.nvim
@@ -207,8 +208,6 @@ let g:ale_cpp_cppcheck_options = ''
 noremap <c-z> <NOP>
 
 
-highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
-highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
 let g:ycm_filetype_whitelist = {
             \ "c":1,
             \ "cpp":1,
@@ -394,3 +393,6 @@ nnoremap <leader>dl :call vimspector#Launch()<CR>
 nnoremap <leader>dg :call vimspector#Continue()<CR>
 nnoremap <leader>dk :call vimspector#Stop()<CR>
 nnoremap <leader>dp :call vimspector#ToggleBreakpoint()<CR>
+
+highlight Pmenu    guibg=darkgrey  guifg=black 
+highlight PmenuSel guibg=lightgrey guifg=black
