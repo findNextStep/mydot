@@ -8,21 +8,22 @@
             "rootPatterns": [".ccls-cache", ".vim/", ".git/", "compile_commands.json"],
             "initializationOptions": {
                 "cache": {
-                    "directory": "/tmp/ccls"
+                    "directory": "./.ccls-cache-nvim"
                 },
+                "compilationDatabaseDirectory":"./build",
                 "highlight": { "lsRanges" : true },
                 "clang": {
                     "extraArgs": [
                         "-isystem",
                         "/Library/Developer/CommandLineTools/usr/include/c++/v1"
-                    ]
+                    ],"resourceDir":"/usr/local/Cellar/llvm/9.0.0/lib/clang/9.0.0"
                 }
-            },
-            "pyls":{
-                "command": "pyls",
-                "filetypes":["python"],
-                "rootPatterns":["__pycache__"]
             }
+        },
+        "pyls":{
+            "command": "pyls",
+            "filetypes":["python"],
+            "rootPatterns":["__pycache__"]
         }
     }
 }

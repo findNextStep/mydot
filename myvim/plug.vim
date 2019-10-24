@@ -384,9 +384,34 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gt <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
-set updatetime=300
-au CursorHold * sil call CocActionAsync('highlight')
-au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
+" set updatetime=300
+" au CursorHold * sil call CocActionAsync('highlight')
+" au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
+
+" use lsp to highlight cxx
+let g:lsp_cxx_hl_use_text_props = 1
+" Change skipped regions to Dark Gray
+highlight LspCxxHlSkippedRegion ctermfg=DarkGray guifg=DarkGray
+set cursorline
+highlight LspCxxHlSymMethod guifg=#e5b124
+highlight LspCxxHlSymClass guifg=#729de3 gui=bold
+highlight LspCxxHlSymStruct guifg=#729de3 gui=bold
+highlight LspCxxHlSymParameter guifg=#306b72
+highlight LspCxxHlSymMacro guifg=#8f5daf gui=bold
+highlight LspCxxHlSymClassMethod gui=underline guifg=#e5b124
+highlight LspCxxHlSymClassMethodStatic gui=standout guifg=#e5b124
+highlight LspCxxHlSymVariable guifg=#26cdca
+highlight LspCxxHlGroupMemberVariable gui=underline guifg=#7ca6b7
+highlight LspCxxHlSymNamespace guifg=#00d780
+highlight LspCxxHlSymEnumMember guifg=#397797 gui=bold
+highlight LspCxxHlSymEnum guifg=#729de3 gui=bold
+highlight Statement guifg=#569cd6
+highlight Type guifg=#569cd6
+highlight Normal guibg=#000000 guifg=white
+highlight Comment guifg=#7ca668
+
+" black, brown酒红, grey, blue, green, cyan, magenta, yellow, white
+" bold、underline、reverse、italic或standout
 
 " packadd! vimspector
 nnoremap <leader>dl :call vimspector#Launch()<CR>
