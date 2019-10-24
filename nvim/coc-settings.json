@@ -5,7 +5,7 @@
             "args": ["--log-file","/tmp/ccls.log"
             ],
             "filetypes": ["c", "cpp", "objc", "objcpp"],
-            "rootPatterns": [".ccls-cache", ".vim/", ".git/", "compile_commands.json"],
+            "rootPatterns": [".ccls-cache-nvim", ".vim/", ".git/", "compile_commands.json"],
             "initializationOptions": {
                 "cache": {
                     "directory": "./.ccls-cache-nvim"
