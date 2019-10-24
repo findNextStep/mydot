@@ -105,6 +105,7 @@ inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<tab>"
 noremap גּp :Vista!!<CR>
 noremap P :Vista!!<CR>
 noremap <leader>p :BTags<CR>
+noremap <C-j> :Vista finder coc<CR>
 " 跳转后自动关闭
 let g:vista_close_on_jump = 1
 let g:vista_stay_on_open = 1
@@ -384,6 +385,9 @@ highlight Statement guifg=#569cd6
 highlight Type guifg=#569cd6
 highlight Normal guibg=#000000 guifg=white
 highlight Comment guifg=#7ca668
+highlight String guifg=#ce9178
+highlight Constant guifg=#b5cea8
+highlight LspCxxHlSymUnknownNone ctermfg=Red guifg=#FF0000 cterm=bold gui=bold
 autocmd FileType cpp,cxx setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
 " black, brown酒红, grey, blue, green, cyan, magenta, yellow, white

@@ -59,7 +59,6 @@ fun! QuickfixToggle()
         cclose
     endif
 endfunction
-map <c-j> :call QuickfixToggle()<CR>
 
 
 " 添加创建terminal的指令
