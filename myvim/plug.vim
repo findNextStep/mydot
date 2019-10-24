@@ -383,6 +383,7 @@ nmap <leader>f  <Plug>(coc-format-selected)
 nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gt <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gn <Plug>(coc-rename)
 nmap <silent> <leader>gr <Plug>(coc-references)
 " set updatetime=300
 " au CursorHold * sil call CocActionAsync('highlight')
@@ -400,16 +401,19 @@ highlight LspCxxHlSymParameter guifg=#306b72
 highlight LspCxxHlSymMacro guifg=#8f5daf gui=bold
 highlight LspCxxHlSymClassMethod gui=underline guifg=#e5b124
 highlight LspCxxHlSymClassMethodStatic gui=standout guifg=#e5b124
+highlight LspCxxHlSymFunction guifg=#e5b124
 highlight LspCxxHlSymVariable guifg=#26cdca
 highlight LspCxxHlGroupMemberVariable gui=underline guifg=#7ca6b7
-highlight LspCxxHlSymNamespace guifg=#00d780
+highlight LspCxxHlSymNamespace guifg=#00d780 gui=bold
+highlight LspCxxHlSymVariableStatic guifg=#8f5daf
 highlight LspCxxHlSymEnumMember guifg=#397797 gui=bold
 highlight LspCxxHlSymEnum guifg=#729de3 gui=bold
 highlight Statement guifg=#569cd6
 highlight Type guifg=#569cd6
 highlight Normal guibg=#000000 guifg=white
 highlight Comment guifg=#7ca668
-
+autocmd FileType cpp,cxx setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
 " black, brown酒红, grey, blue, green, cyan, magenta, yellow, white
 " bold、underline、reverse、italic或standout
 
