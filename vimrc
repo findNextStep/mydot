@@ -3,6 +3,8 @@ set ruler
 set cursorline
 set rnu
 set number
+" 结尾统一换行符
+set fileformat=dos
 set showmode
 " 自适应不同语言的智能缩进
 filetype indent on
