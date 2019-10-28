@@ -8,7 +8,7 @@
             "rootPatterns": [".ccls-cache-nvim", ".vim/", ".git/", "compile_commands.json"],
             "initializationOptions": {
                 "cache": {
-                    "directory": "./.ccls-cache-nvim"
+                    "directory": "./.ccls-cache"
                 },
                 "compilationDatabaseDirectory":"./build",
                 "highlight": { "lsRanges" : true },
