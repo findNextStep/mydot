@@ -5,7 +5,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif 
+endif
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -14,14 +14,13 @@ endif
 
 " 加载插件设置
 call plug#begin('~/.vim/plug')
-" vim merge tool
-Plug 'samoshkin/vim-mergetool'
 " 后台运行
 Plug 'https://github.com/skywind3000/asyncrun.vim'
 " airline
 Plug 'vim-airline/vim-airline'
 " 自动保存当前状态
 Plug 'findNextStep/vim-obsession'
+" cmake 自动补全
 Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
 " 文件夹视图
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle','for':'netrw'}
@@ -37,12 +36,11 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 缩进线
 Plug 'Yggdroot/indentLine'
-Plug 'w0rp/ale'
 " fuzzy 命令
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " {[(自动配对)]}
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 " doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
 " 初始界面美化
@@ -55,8 +53,6 @@ Plug 't9md/vim-choosewin'
 Plug 'tracyone/vim-zsh-completion',{'for': ['zsh','sh']}
 " js
 Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
-" haskell自动补全
-" Plug 'eagletmt/neco-ghc'
 " 颜色显示
 Plug 'ap/vim-css-color'
 " vim-debug 需要
@@ -69,25 +65,23 @@ Plug 'RRethy/vim-illuminate'
 " markdown预览
 Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
+" 多种语言的高亮包
 Plug 'sheerun/vim-polyglot'
 " tagbar - lsp
 Plug 'liuchengxu/vista.vim'
-"org-mod"
-Plug 'jceb/vim-orgmode'
 " coc
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-lists'
-Plug 'https://github.com/neoclide/coc-snippets'
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
 " 智能高亮需要coc.nvim
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-" clang-format
-Plug 'rhysd/vim-clang-format'
+" 格式化工具
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
 " 颜色显示插件
 Plug 'RRethy/vim-hexokinase'
 " theme pick up
-Plug 'https://github.com/chxuan/change-colorscheme'
+Plug 'chxuan/change-colorscheme'
 " file manager
 Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'puremourning/vimspector'
@@ -106,6 +100,7 @@ noremap גּp :Vista!!<CR>
 noremap P :Vista!!<CR>
 noremap <leader>p :BTags<CR>
 noremap <C-j> :Vista finder coc<CR>
+
 " 跳转后自动关闭
 let g:vista_close_on_jump = 1
 let g:vista_stay_on_open = 1
@@ -162,35 +157,7 @@ filetype plugin on
 map <C-_>  <plug>NERDCommenterInvert
 
 
-" 作者：韦易笑
-" 链接：https://www.zhihu.com/question/47691414/answer/373700711
-let g:ale_linters_explicit = 1
-let g:ale_completion_delay = 500
-let g:ale_echo_delay = 20
-let g:ale_lint_delay = 500
-let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:airline#extensions#ale#enabled = 1
-
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
-let g:ale_c_cppcheck_options = ''
-let g:ale_cpp_cppcheck_options = ''
-
-
 noremap <c-z> <NOP>
-
-
-let g:ycm_filetype_whitelist = {
-            \ "c":1,
-            \ "cpp":1,
-            \ "objc":1,
-            \ "sh":1,
-            \ "zsh":1,
-            \ "zimbu":1,
-            \ "haskell":1,
-            \ }
 
 
 " jedi
@@ -306,34 +273,6 @@ if filereadable(g:obsession_file_name)
     " execute 'Obsession'
 endif
 
-" let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-
-" nmap s <Plug>(easymotion-overwin-f2)
-" Turn on case insensitive feature
-" let g:EasyMotion_smartcase = 1
-
-" JK motions: Line motions
-" map <Leader>j <Plug>(easymotion-j)
-" map <Leader>k <Plug>(easymotion-k)
-" map <Leader>l <Plug>(easymotion-lineforward)
-" nmap <Leader>h <Plug>(easymotion-linebackward)
-" nmap / <Plug>(easymotion-sn)
-" map n <Plug>(easymotion-next)
-" map N <Plug>(easymotion-prev)
-
-" let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
-
-let g:jedi#completions_enabled = 1
-
-" git merge tool
-let g:mergetool_layout = 'mbr'
-let g:mergetool_prefer_revision = 'local'
 
 " use ture color
 if has("termguicolors")
@@ -351,7 +290,7 @@ let g:Hexokinase_signIcon = ''
 autocmd FileType json syntax match Comment +\/\/.\+$+
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-" highlight Pmenu    guibg=darkgrey  guifg=black 
+" highlight Pmenu    guibg=darkgrey  guifg=black
 " highlight PmenuSel guibg=lightgrey guifg=black
 nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gt <Plug>(coc-type-definition)
@@ -400,9 +339,9 @@ nnoremap <leader>dk :call vimspector#Stop()<CR>
 nnoremap <leader>dp :call vimspector#ToggleBreakpoint()<CR>
 
 let g:clang_format#command = 'clang-format'
-nmap <C-K> :ClangFormat<cr>
+nmap <C-K> :FormatCode<cr>
 autocmd FileType c ClangFormatAutoEnable
 let g:clang_format#detect_style_file = 1
 
-highlight Pmenu    guibg=darkgrey  guifg=black 
+highlight Pmenu    guibg=darkgrey  guifg=black
 highlight PmenuSel guibg=lightgrey guifg=black
