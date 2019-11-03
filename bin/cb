@@ -9,7 +9,11 @@ if [ -f CMakeLists.txt ];then
     fi
     cd build
     if [ ! -f Makefile -a ! -f build.ninja ];then
-        cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -G Ninja ..
+        cmake -D CMAKE_C_COMPILER=clang\
+            -D CMAKE_CXX_COMPILER=clang++ \
+            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -G Ninja ..
     fi
     if [ -f Makefile ];then
         make "$@"
