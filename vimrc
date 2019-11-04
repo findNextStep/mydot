@@ -1,6 +1,5 @@
 set encoding=utf-8
 set ruler
-set cursorline
 set rnu
 set number
 " 结尾统一换行符
@@ -61,3 +60,7 @@ autocmd InsertEnter * call Fcitx2zh()
 "##### auto fcitx end ######
 " 自动到达上一次打开的位置
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
+
+" 当前行高亮的方案
+set cursorline
+highlight CursorLine   cterm=NONE guibg=#222222
