@@ -15,7 +15,7 @@
                 "clang": {
                     "extraArgs": [
                         "-isystem",
-                        "/Library/Developer/CommandLineTools/usr/include/c++/v1"
+                        "/usr/local/Cellar/llvm/9.0.0/include/c++/v1"
                     ],"resourceDir":"/usr/local/Cellar/llvm/9.0.0/lib/clang/9.0.0"
                 }
             }
