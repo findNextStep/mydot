@@ -48,8 +48,8 @@ nnoremap <C-x> V"+ydd
 
 " ctrl+n创建新窗口Alt+n创建新标签
 nnoremap <C-n> :tabnew<CR>
-nnoremap <C-k> :sp<CR>
-nnoremap <C-L> :vsp<CR>
+nnoremap <leader>wk :sp<CR>
+nnoremap <leader>wl :vsp<CR>
 
 " 撤销和反撤销
 nnoremap U <C-r>
@@ -76,3 +76,6 @@ nmap גּl <C-w>l
 set foldmethod=syntax
 set foldlevel=99
 nnoremap <TAB> za
+
+" ctrl-o的反操作
+nnoremap <C-L> <C-I>

@@ -209,7 +209,7 @@ function! T()
 endfun
 let g:Startscreen_function = function('T')
 
-nmap gw  <Plug>(choosewin)
+nmap <leader>gw  <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
 
 " RRethy / vim-illuminate
