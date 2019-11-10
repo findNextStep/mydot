@@ -340,7 +340,6 @@ nnoremap <leader>dp :call vimspector#ToggleBreakpoint()<CR>
 
 let g:clang_format#command = 'clang-format'
 nmap <C-K> :FormatCode<cr>
-autocmd FileType c ClangFormatAutoEnable
 let g:clang_format#detect_style_file = 1
 
 highlight Pmenu    guibg=darkgrey  guifg=black
