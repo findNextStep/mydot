@@ -99,7 +99,8 @@ inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<tab>"
 noremap גּp :Vista!!<CR>
 noremap P :Vista!!<CR>
 noremap <leader>p :BTags<CR>
-noremap <C-j> :Vista finder coc<CR>
+noremap <C-j> :CocList outline<CR>
+noremap <C-t> :CocList symbols<CR>
 
 " 跳转后自动关闭
 let g:vista_close_on_jump = 1
