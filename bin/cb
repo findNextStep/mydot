@@ -38,9 +38,9 @@ if [ -f CMakeLists.txt ];then
     fi
     cd build-clangd
     if [ ! -f Makefile -a ! -f build.ninja ];then
-        CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/9.0.0/include/c++/v1\
+        CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/9.0.0/include/c++/v1 \
         cmake \
-            -D CMAKE_C_COMPILER=/usr/local/Cellar/llvm/9.0.0/bin/clang\
+            -D CMAKE_C_COMPILER=/usr/local/Cellar/llvm/9.0.0/bin/clang \
             -D CMAKE_CXX_COMPILER=/usr/local/Cellar/llvm/9.0.0/bin/clang++ \
             -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
             -DCMAKE_BUILD_TYPE=Debug \
@@ -75,7 +75,7 @@ if [ -f CMakeLists.txt ];then
     fi
     cd ..
     # 创建ccls的cache文件
-    ccls -index=./ -init="{\"compilationDatabaseDirectory\":\"./build-ccls\",\"cache\":{\"directory\":\"./.ccls-cache\",\"format\":\"binary\",\"hierarchicalPath\":false,\"retainInMemory\":2},\"clang\":{\"extraArgs\":[\"-isystem\",\"/usr/local/Cellar/llvm/9.0.0/include/c++/v1\",\"-Wold-style-cast\"],\"resourceDir\":\"/usr/local/Cellar/llvm/9.0.0/lib/clang/9.0.0\"},\"index\":{\"threads\":$CCLS_THREAD}}"
+    ccls -index=./ -init="{\"compilationDatabaseDirectory\":\"./build-ccls\",\"cache\":{\"directory\":\"./.ccls-cache\",\"format\":\"binary\",\"hierarchicalPath\":false,\"retainInMemory\":2},\"clang\":{\"extraArgs\":[\"-isystem\",\"/usr/local/Cellar/llvm/9.0.0/include/c++/v1\",\"-Wold-style-cast\"],\"resourceDir\":\"/usr/local/Cellar/llvm/9.0.0/lib/clang/9.0.0\"},\"index\":{\"threads\":$CCLS_THREAD}}" 2>&1 >/dev/null  | grep parse
     if [ $? -ne 0 ]; then
         exit 1
     fi
