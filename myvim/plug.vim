@@ -32,8 +32,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 " 注释
 Plug 'scrooloose/nerdcommenter'
-" fuzzy窗口
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 缩进线
 Plug 'Yggdroot/indentLine'
 " fuzzy 命令
@@ -45,8 +43,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 " 初始界面美化
 Plug 'Carpetsmoker/startscreen.vim'
-" ts支持
-Plug 'leafgarland/typescript-vim'
 " 可视化的窗口选择
 Plug 't9md/vim-choosewin'
 " zsh 补全
@@ -99,7 +95,6 @@ inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<tab>"
 noremap גּp :Vista!!<CR>
 noremap P :Vista!!<CR>
 noremap <leader>p :BTags<CR>
-noremap <C-j> :CocList outline<CR>
 noremap <C-t> :CocList symbols<CR>
 
 " 跳转后自动关闭
@@ -136,8 +131,9 @@ let g:NERDTreeIndicatorMapCustom = {
             \ }
 
 
-" LeaderF
-noremap <C-p> :LeaderfFile<CR>
+noremap <C-p> :Files<CR>
+noremap <leader>bf :Windows<CR>
+noremap <C-j> :Blines<CR>
 
 " gitgutter
 let g:gitgutter_sign_added = '+'
