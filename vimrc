@@ -64,3 +64,8 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 " 当前行高亮的方案
 set cursorline
 highlight CursorLine   cterm=NONE guibg=#222222
+" check for and load file changes
+autocmd WinEnter,BufWinEnter,FocusGained * checktime
+
+" disable swapfile to avoid errors on load
+set noswapfile
