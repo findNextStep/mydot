@@ -22,14 +22,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'findNextStep/vim-obsession'
 " cmake 自动补全
 Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
-" 文件夹视图
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle','for':'netrw'}
-" 结合git插件和文件夹视图
-Plug 'Xuyuanp/nerdtree-git-plugin'
 " vim特殊字符使用
 Plug 'ryanoasis/vim-devicons'
 " git插件
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 " 注释
 Plug 'scrooloose/nerdcommenter'
 " 缩进线
@@ -37,12 +34,11 @@ Plug 'Yggdroot/indentLine'
 " fuzzy 命令
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" {[(自动配对)]}
-" Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
 " 初始界面美化
-Plug 'Carpetsmoker/startscreen.vim'
+" Plug 'Carpetsmoker/startscreen.vim'
 " 可视化的窗口选择
 Plug 't9md/vim-choosewin'
 " zsh 补全
@@ -71,9 +67,6 @@ Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
 " 智能高亮需要coc.nvim
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-" 格式化工具
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
 " 颜色显示插件
 Plug 'RRethy/vim-hexokinase'
 " theme pick up
@@ -114,26 +107,9 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \  }
 
-" nerdtree 设置
-nnoremap <C-e> :Bolt<CR>
-
-let g:NERDTreeIndicatorMapCustom = {
-            \ "Modified"  : "✹",
-            \ "Staged"    : "✚",
-            \ "Untracked" : "✭",
-            \ "Renamed"   : "➜",
-            \ "Unmerged"  : "═",
-            \ "Deleted"   : "✖",
-            \ "Dirty"     : "✗",
-            \ "Clean"     : "✔︎",
-            \ 'Ignored'   : '☒',
-            \ "Unknown"   : "?"
-            \ }
-
-
-noremap <C-p> :Files<CR>
+noremap <C-p> :Leaderf file --popup<CR>
 noremap <leader>bf :Windows<CR>
-noremap <C-j> :Blines<CR>
+noremap <C-j> :Leaderf function --popup<CR>
 
 " gitgutter
 let g:gitgutter_sign_added = '+'
@@ -153,9 +129,7 @@ filetype plugin on
 " 这里实际上是<C-/>不过由于某些原因是这样
 map <C-_>  <plug>NERDCommenterInvert
 
-
 noremap <c-z> <NOP>
-
 
 " jedi
 let g:jedi#auto_initialization = 1
@@ -211,7 +185,6 @@ let g:choosewin_overlay_enable = 1
 
 " RRethy / vim-illuminate
 let g:Illuminate_delay = 20
-let g:Illuminate_ftblacklist = ['nerdtree']
 
 
 " fzf command
@@ -234,9 +207,6 @@ nnoremap <leader>sp         :VBGtoggleBreakpointThisLine<CR>
 nnoremap <leader>sd         :VBGstartGDB
 nnoremap <leader>s<space>   :VBGcontinue<CR>
 
-let g:airline#extensions#tabline#enabled = 1
-set laststatus=2 "Always show statusline
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts=1
 function! CMakeStat()
     let l:cmake_build_dir = get(g:, 'cmake_build_dir', 'build')
@@ -260,9 +230,9 @@ function! CMakeStat()
     endif
     return substitute(retstr, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
-call airline#parts#define('cmake', {'function': 'CMakeStat'})
+" call airline#parts#define('cmake', {'function': 'CMakeStat'})
 
-let g:airline_section_b = airline#section#create_left(['cmake'])
+" let g:airline_section_b = airline#section#create_left(['cmake'])
 
 let g:obsession_file_name=".Session.vim"
 if filereadable(g:obsession_file_name)
@@ -294,9 +264,13 @@ nmap <silent> <leader>gt <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gn <Plug>(coc-rename)
 nmap <silent> <leader>gr <Plug>(coc-references)
+nmap <silent> <C-k> <Plug>(coc-format)
+xmap <silent> <C-k> <Plug>(coc-format-selected)
 " set updatetime=300
 " au CursorHold * sil call CocActionAsync('highlight')
 " au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
+highlight CocErrorHighlight ctermbg=Red  guibg=#ff0000
+highlight CocWarningHighlight guibg=#ffff00
 
 " use lsp to highlight cxx
 let g:lsp_cxx_hl_use_text_props = 1
@@ -335,9 +309,29 @@ nnoremap <leader>dg :call vimspector#Continue()<CR>
 nnoremap <leader>dk :call vimspector#Stop()<CR>
 nnoremap <leader>dp :call vimspector#ToggleBreakpoint()<CR>
 
-let g:clang_format#command = 'clang-format'
-nmap <C-K> :FormatCode<cr>
-let g:clang_format#detect_style_file = 1
+" 补全中使用回车确认使用snippet
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" coc airline
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#coc#error_symbol = 'E:'
+let g:airline#extensions#coc#warning_symbol = 'W:'
+"解决coc.nvim大文件卡死状况
+let g:trigger_size = 0.5 * 1048576
+
+augroup hugefile
+  autocmd!
+  autocmd BufReadPre *
+        \ let size = getfsize(expand('<afile>')) |
+        \ if (size > g:trigger_size) || (size == -2) |
+        \   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
+        \   exec 'CocDisable' |
+        \ else |
+        \   exec 'CocEnable' |
+        \ endif |
+        \ unlet size
+augroup END
 
 highlight Pmenu    guibg=darkgrey  guifg=black
 highlight PmenuSel guibg=lightgrey guifg=black
