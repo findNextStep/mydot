@@ -21,6 +21,7 @@ if [ -f CMakeLists.txt ];then
     fi
     cd build-ccls
     if [ ! -f Makefile -a ! -f build.ninja ];then
+        CXXFLAGS=-Wold-style-cast\ -Wthread-safety\
         cmake \
             -D CMAKE_C_COMPILER=clang\
             -D CMAKE_CXX_COMPILER=clang++ \
@@ -38,7 +39,7 @@ if [ -f CMakeLists.txt ];then
     fi
     cd build-clangd
     if [ ! -f Makefile -a ! -f build.ninja ];then
-        CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/9.0.0_1/include/c++/v1\ -Wold-style-cast \
+        CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/9.0.0_1/include/c++/v1\ -Wold-style-cast\ -Wthread-safety\
         cmake \
             -D CMAKE_C_COMPILER=/usr/local/Cellar/llvm/9.0.0_1/bin/clang \
             -D CMAKE_CXX_COMPILER=/usr/local/Cellar/llvm/9.0.0_1/bin/clang++ \
