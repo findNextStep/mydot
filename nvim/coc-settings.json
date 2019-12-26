@@ -62,6 +62,16 @@
             "command": "pyls",
             "filetypes": ["python"],
             "rootPatterns": ["__pycache__"]
+        },
+        "cmake": {
+            "command": "cmake-language-server",
+            "filetypes": ["cmake"],
+            "rootPatterns": [
+                "build/"
+            ],
+            "initializationOptions": {
+                "buildDirectory": "build"
+            }
         }
     }
 }
