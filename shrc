@@ -77,6 +77,9 @@ case "$(uname -s)" in
         export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
         export PATH="/usr/local/opt/gettext/bin:$PATH"
         export PATH="$PATH:/usr/local/bin"
+        export PATH="$PATH:/Library/Apple/usr/bin"
+        export ANDROID_HOME=~/Library/Android/sdk
+        export ANDROID_SDK_ROOT=~/Library/Android/sdk       
         export PATH="/Users/findnextstep/Downloads/code.app/Contents/Resources/app/bin:$PATH"
         export CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/9.0.0/include/c++/v1
         ;;
