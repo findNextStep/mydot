@@ -117,6 +117,7 @@ let g:gitgutter_sign_modified = 'c'
 let g:gitgutter_sign_removed = '>'
 let g:gitgutter_sign_removed_first_line = '^'
 let g:gitgutter_sign_modified_removed = 'w'
+noremap <silent> <leader>gia :!Git add %<CR>
 set updatetime=100
 
 
