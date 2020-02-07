@@ -1,44 +1,76 @@
 {
     "coc.preferences.enableFloatHighlight": true,
     "suggest.enablePreview": true,
-    "tabnine.disable_filetypes": ["cpp", "c", "json", "vim","go"],
+    "tabnine.disable_filetypes": [
+        "cpp",
+        "c",
+        "json",
+        "vim",
+        "go"
+    ],
     "coc.preferences.colorSupport": true,
     "codeLens.enable": true,
     "languageserver": {
         "vim": {
             "command": "vim-language-server",
-            "args": ["--stdio"],
-            "filetypes": ["vim"]
+            "args": [
+                "--stdio"
+            ],
+            "filetypes": [
+                "vim"
+            ]
         },
         "clangd": {
             "command": "/usr/local/Cellar/llvm/9.0.1/bin/clangd",
             "args": [
                 "--background-index",
                 "--compile-commands-dir=build-clangd",
-                "-j", "12",
+                "-j",
+                "12",
                 "--clang-tidy",
                 "--completion-style=detailed",
                 "--header-insertion=iwyu",
                 "--pch-storage=disk"
             ],
-            "rootPatterns": ["./build-clangd"],
-            "filetypes": ["c", "cpp", "objc", "objcpp"]
+            "rootPatterns": [
+                "./build-clangd"
+            ],
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ]
         },
         "ccls": {
             "command": "ccls",
             "args": [
-                "--log-file", "/tmp/ccls.log"
+                "--log-file",
+                "/tmp/ccls.log"
             ],
-            "filetypes": ["c", "cpp", "objc", "objcpp"],
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
             "disableCompletion": true,
-            "rootPatterns": [".ccls-cache", ".vim/", ".git/", "compile_commands.json"],
+            "rootPatterns": [
+                ".ccls-cache",
+                ".vim/",
+                ".git/",
+                "compile_commands.json"
+            ],
             "initializationOptions": {
                 "cache": {
                     "directory": "./.ccls-cache"
                 },
-                "compilationDatabaseDirectory": "./build-ccls",
+                "compilationDatabaseDirectory": "./build/Debug",
                 "highlight": {
                     "lsRanges": true
+                },
+                "index": {
+                    "thread": 12
                 },
                 "clang": {
                     "extraArgs": [
@@ -53,22 +85,35 @@
         "golang": {
             "command": "~/go/bin/gopls",
             "env": {
-                "GO111MODULE":"on"
+                "GO111MODULE": "on"
             },
-            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-            "filetypes": ["go"],
+            "rootPatterns": [
+                "go.mod",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "filetypes": [
+                "go"
+            ],
             "initializationOptions": {
                 "usePlaceholders": true
             }
         },
         "pyls": {
             "command": "pyls",
-            "filetypes": ["python"],
-            "rootPatterns": ["__pycache__"]
+            "filetypes": [
+                "python"
+            ],
+            "rootPatterns": [
+                "__pycache__"
+            ]
         },
         "cmake": {
             "command": "cmake-language-server",
-            "filetypes": ["cmake"],
+            "filetypes": [
+                "cmake"
+            ],
             "rootPatterns": [
                 "build/"
             ],
