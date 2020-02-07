@@ -11,38 +11,20 @@ if [ -f CMakeLists.txt ];then
         # when chose thread
         echo "$i" | grep -e '-j.' && CCLS_THREAD=${i:2}
     }
-    if [ ! -d build ];then
-        mkdir build
+    if [ ! -d build/Debug ];then
+        mkdir -p build/Debug
     fi
     # 创建compile database
-    # ccls
-    if [ ! -d build-ccls ];then
-        mkdir build-ccls
-    fi
-    cd build-ccls
-    if [ ! -f Makefile -a ! -f build.ninja ];then
-        CXXFLAGS=-Wold-style-cast\ -Wthread-safety\
-        cmake \
-            -D CMAKE_C_COMPILER=clang\
-            -D CMAKE_CXX_COMPILER=clang++ \
-            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-            -DCMAKE_BUILD_TYPE=Debug \
-            ..
-        if [ $? -ne 0 ]; then
-            exit 1
-        fi
-    fi
-    cd ..
     # clangd
     if [ ! -d build-clangd ];then
         mkdir build-clangd
     fi
     cd build-clangd
     if [ ! -f Makefile -a ! -f build.ninja ];then
-        CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/9.0.0_1/include/c++/v1\ -Wold-style-cast\ -Wthread-safety\
+        CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/9.0.1/include/c++/v1\ -Wold-style-cast\ -Wthread-safety\
         cmake \
-            -D CMAKE_C_COMPILER=/usr/local/Cellar/llvm/9.0.0_1/bin/clang \
-            -D CMAKE_CXX_COMPILER=/usr/local/Cellar/llvm/9.0.0_1/bin/clang++ \
+            -D CMAKE_C_COMPILER=/usr/local/Cellar/llvm/9.0.1/bin/clang \
+            -D CMAKE_CXX_COMPILER=/usr/local/Cellar/llvm/9.0.1/bin/clang++ \
             -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
             -DCMAKE_BUILD_TYPE=Debug \
             ..
@@ -51,18 +33,19 @@ if [ -f CMakeLists.txt ];then
         fi
     fi
     cd ..
-    cd build
     if [ ! -f Makefile -a ! -f build.ninja ];then
         cmake \
-            -D CMAKE_C_COMPILER=clang\
+            -D CMAKE_C_COMPILER=clang \
             -D CMAKE_CXX_COMPILER=clang++ \
             -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
             -DCMAKE_BUILD_TYPE=Debug \
-            -G Ninja ..
+            -B$(pwd)/build/Debug \
+            $(pwd)
         if [ $? -ne 0 ]; then
             exit 1
         fi
     fi
+    cd ./build/Debug
     if [ -f Makefile ];then
         make "$@"
         if [ $? -ne 0 ]; then
@@ -74,9 +57,9 @@ if [ -f CMakeLists.txt ];then
             exit 1
         fi
     fi
-    cd ..
+    cd ../..
     # 创建ccls的cache文件
-    ccls -index=./ -init="{\"compilationDatabaseDirectory\":\"./build-ccls\",\"cache\":{\"directory\":\"./.ccls-cache\",\"format\":\"binary\",\"hierarchicalPath\":false,\"retainInMemory\":2},\"clang\":{\"extraArgs\":[\"-isystem\",\"/usr/local/Cellar/llvm/9.0.0_1/include/c++/v1\",\"-Wold-style-cast\"],\"resourceDir\":\"/usr/local/Cellar/llvm/9.0.0_1/lib/clang/9.0.0\"},\"index\":{\"threads\":$CCLS_THREAD}}" 2>&1 >/dev/null  | grep parse
+    ccls -index=./ -init="{\"compilationDatabaseDirectory\":\"./build/Debug\",\"cache\":{\"directory\":\"./.ccls-cache\",\"format\":\"binary\",\"hierarchicalPath\":false,\"retainInMemory\":2},\"clang\":{\"extraArgs\":[\"-isystem\",\"/usr/local/Cellar/llvm/9.0.1/include/c++/v1\",\"-Wold-style-cast\"],\"resourceDir\":\"/usr/local/Cellar/llvm/9.0.1/lib/clang/9.0.1\"},\"index\":{\"threads\":12}}" 2>&1 >/dev/null  | grep parse
     if [ $? -ne 0 ]; then
         exit 1
     fi
