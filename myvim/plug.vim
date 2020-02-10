@@ -74,6 +74,8 @@ Plug 'chxuan/change-colorscheme'
 " file manager
 Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'puremourning/vimspector'
+" 搜索多个目标
+Plug 'https://github.com/lfv89/vim-interestingwords'
 call plug#end()
 
 " 使用tab在补全中找选项
