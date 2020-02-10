@@ -59,7 +59,7 @@ if [ -f CMakeLists.txt ];then
     fi
     cd ../..
     # 创建ccls的cache文件
-    ccls -index=./ -init="{\"compilationDatabaseDirectory\":\"./build/Debug\",\"cache\":{\"directory\":\"./.ccls-cache\",\"format\":\"binary\",\"hierarchicalPath\":false,\"retainInMemory\":2},\"clang\":{\"extraArgs\":[\"-isystem\",\"/usr/local/Cellar/llvm/9.0.1/include/c++/v1\",\"-Wold-style-cast\"],\"resourceDir\":\"/usr/local/Cellar/llvm/9.0.1/lib/clang/9.0.1\"},\"index\":{\"threads\":12}}" 2>&1 >/dev/null  | grep parse
+    ccls -index=./ -init="{\"compilationDatabaseDirectory\":\"./build/Debug\",\"cache\":{\"directory\":\"./.ccls-cache\",\"format\":\"binary\",\"hierarchicalPath\":false,\"retainInMemory\":2},\"highlight\":{\"lsRanges\": true }, \"clang\":{\"extraArgs\":[\"-isystem\",\"/usr/local/Cellar/llvm/9.0.1/include/c++/v1\",\"-Wold-style-cast\"],\"resourceDir\":\"/usr/local/Cellar/llvm/9.0.1/lib/clang/9.0.1\"},\"index\":{\"threads\":12}}"
     if [ $? -ne 0 ]; then
         exit 1
     fi

@@ -54,7 +54,6 @@
                 "objc",
                 "objcpp"
             ],
-            "disableCompletion": true,
             "rootPatterns": [
                 ".ccls-cache",
                 ".vim/",
