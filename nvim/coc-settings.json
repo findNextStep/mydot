@@ -78,6 +78,9 @@
                         "-Wold-style-cast"
                     ],
                     "resourceDir": "/usr/local/Cellar/llvm/9.0.1/lib/clang/9.0.1"
+                },
+                "client":{
+                    "snippetSupport":true
                 }
             }
         },
@@ -114,10 +117,10 @@
                 "cmake"
             ],
             "rootPatterns": [
-                "build/"
+                "build/Debug"
             ],
             "initializationOptions": {
-                "buildDirectory": "build"
+                "buildDirectory": "build/Debug"
             }
         },
         "bash": {

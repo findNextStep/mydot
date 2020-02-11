@@ -21,7 +21,7 @@ Plug 'vim-airline/vim-airline'
 " 自动保存当前状态
 Plug 'findNextStep/vim-obsession'
 " cmake 自动补全
-Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
+" Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
 " vim特殊字符使用
 Plug 'ryanoasis/vim-devicons'
 " git插件
