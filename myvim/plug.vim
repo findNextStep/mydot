@@ -291,9 +291,10 @@ highlight LspCxxHlSymClassMethod gui=underline guifg=#e5b124
 highlight LspCxxHlSymClassMethodStatic gui=standout guifg=#e5b124
 highlight LspCxxHlSymFunction guifg=#e5b124
 highlight LspCxxHlSymVariable guifg=#26cdca
+" 全局变量
+highlight LspCxxHlSymNamespaceVariable guifg=#8f5daf gui=bold
 highlight LspCxxHlGroupMemberVariable gui=underline guifg=#7ca6b7
 highlight LspCxxHlSymNamespace guifg=#00d780 gui=bold
-highlight LspCxxHlSymVariableStatic guifg=#8f5daf
 highlight LspCxxHlSymEnumMember guifg=#397797 gui=bold
 highlight LspCxxHlSymEnum guifg=#729de3 gui=bold
 highlight Statement guifg=#569cd6
