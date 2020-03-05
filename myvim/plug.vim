@@ -76,6 +76,8 @@ Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'puremourning/vimspector'
 " 搜索多个目标
 Plug 'https://github.com/lfv89/vim-interestingwords'
+" DAP
+Plug 'puremourning/vimspector' , { 'do' : './install_gadget.py --all --disable-tcl'}
 call plug#end()
 
 " 使用tab在补全中找选项
@@ -85,7 +87,10 @@ inoremap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<tab>"
 
-
+let g:vimspector_enable_mappings = 'HUMAN'
+sign define vimspectorBP text=🔴 texthl=Normal
+sign define vimspectorBPDisabled text=🔵 texthl=Normal
+sign define vimspectorPC text=🔶 texthl=SpellBad
 "vista
 noremap גּp :Vista!!<CR>
 noremap P :Vista!!<CR>
@@ -293,7 +298,8 @@ highlight LspCxxHlSymFunction guifg=#e5b124
 highlight LspCxxHlSymVariable guifg=#26cdca
 " 全局变量
 highlight LspCxxHlSymNamespaceVariable guifg=#8f5daf gui=bold
-highlight LspCxxHlGroupMemberVariable gui=underline guifg=#7ca6b7
+" 成员变量
+highlight LspCxxHlSymField gui=underline guifg=#7ca6b7
 highlight LspCxxHlSymNamespace guifg=#00d780 gui=bold
 highlight LspCxxHlSymEnumMember guifg=#397797 gui=bold
 highlight LspCxxHlSymEnum guifg=#729de3 gui=bold
