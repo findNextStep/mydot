@@ -21,10 +21,11 @@ if [ -f CMakeLists.txt ];then
     fi
     cd build-clangd
     if [ ! -f Makefile -a ! -f build.ninja ];then
-        CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/9.0.1/include/c++/v1\ -Wold-style-cast\ -Wthread-safety\
+        LDFLAGS="-L/usr/local/opt/llvm/lib" \
+        CPPFLAGS="-I/usr/local/opt/llvm/include" \
         cmake \
-            -D CMAKE_C_COMPILER=/usr/local/Cellar/llvm/9.0.1/bin/clang \
-            -D CMAKE_CXX_COMPILER=/usr/local/Cellar/llvm/9.0.1/bin/clang++ \
+            -D CMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang \
+            -D CMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ \
             -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
             -DCMAKE_BUILD_TYPE=Debug \
             ..
@@ -33,19 +34,20 @@ if [ -f CMakeLists.txt ];then
         fi
     fi
     cd ..
+    cd ./build/Debug
     if [ ! -f Makefile -a ! -f build.ninja ];then
         cmake \
-            -D CMAKE_C_COMPILER=clang \
-            -D CMAKE_CXX_COMPILER=clang++ \
+            -D CMAKE_C_COMPILER=/usr/bin/clang \
+            -D CMAKE_CXX_COMPILER=/usr/bin/clang++ \
             -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
             -DCMAKE_BUILD_TYPE=Debug \
-            -B$(pwd)/build/Debug \
-            $(pwd)
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -B$(pwd)/. \
+            $(pwd)/../..
         if [ $? -ne 0 ]; then
             exit 1
         fi
     fi
-    cd ./build/Debug
     if [ -f Makefile ];then
         make "$@"
         if [ $? -ne 0 ]; then
@@ -59,7 +61,7 @@ if [ -f CMakeLists.txt ];then
     fi
     cd ../..
     # 创建ccls的cache文件
-    ccls -index=./ -init="{\"compilationDatabaseDirectory\":\"./build/Debug\",\"cache\":{\"directory\":\"./.ccls-cache\",\"format\":\"binary\",\"hierarchicalPath\":false,\"retainInMemory\":2},\"highlight\":{\"lsRanges\": true }, \"clang\":{\"extraArgs\":[\"-isystem\",\"/usr/local/Cellar/llvm/9.0.1/include/c++/v1\",\"-Wold-style-cast\"],\"resourceDir\":\"/usr/local/Cellar/llvm/9.0.1/lib/clang/9.0.1\"},\"index\":{\"threads\":12}}"
+    ccls -index=./ -init="{\"compilationDatabaseDirectory\":\"./build/Debug\",\"cache\":{\"directory\":\"./.ccls-cache\",\"format\":\"binary\",\"hierarchicalPath\":false,\"retainInMemory\":2},\"highlight\":{\"lsRanges\": true }, \"clang\":{\"extraArgs\":[\"-isystem\",\"/usr/local/opt/llvm/include/c++/v1\",\"-Wold-style-cast\"],\"resourceDir\":\"/usr/local/opt/llvm/lib/clang/9.0.1\"},\"index\":{\"threads\":12}}"
     if [ $? -ne 0 ]; then
         exit 1
     fi
