@@ -1,7 +1,12 @@
 #!/bin/sh
 #命令别名
-alias vim='nvim'
-alias vi='nvim'
+if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
+    alias vim="~/.config/nvim/send_command_to_vim.py"
+    alias vi="~/.config/nvim/send_command_to_vim.py"
+else
+    alias vim='nvim'
+    alias vi='nvim'
+fi
 alias grep="grep --color=auto"
 alias cls='tput reset'
 alias chrome="google-chrome"
