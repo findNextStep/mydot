@@ -17,7 +17,6 @@ cnoreabbrev Qall qall
 
 " 定义leader键
 let mapleader=" "
-map <leader> :
 map <leader>wq :wq<CR>
 map <leader>q :q<CR>
 map <leader>aq :qa<CR>
@@ -79,3 +78,8 @@ nnoremap <TAB> za
 
 " ctrl-o的反操作
 nnoremap <C-L> <C-I>
+
+tnoremap <ESC> <c-\><c-n>
+
+" 打开光标下的路径
+map <leader>gf :leftabove wincmd f<CR>

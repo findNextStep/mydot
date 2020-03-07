@@ -78,7 +78,17 @@ Plug 'puremourning/vimspector'
 Plug 'https://github.com/lfv89/vim-interestingwords'
 " DAP
 Plug 'puremourning/vimspector' , { 'do' : './install_gadget.py --all --disable-tcl'}
+" 内建终端功能的增强
+Plug 'findNextStep/vim-terminal-help'
 call plug#end()
+
+nmap <C-u> :call TerminalToggle()<cr>
+if has('nvim') == 0
+    tmap <C-u> <c-_>:call TerminalToggle()<cr>
+else
+    tmap <C-u> <c-\><C-n>:call TerminalToggle()<cr>
+endif
+let g:terminal_close_when_exit = 1
 
 " 使用tab在补全中找选项
 " https://zhuanlan.zhihu.com/p/54586480
@@ -95,7 +105,6 @@ sign define vimspectorPC text=🔶 texthl=SpellBad
 noremap גּp :Vista!!<CR>
 noremap P :Vista!!<CR>
 noremap <leader>p :BTags<CR>
-noremap <C-t> :CocList symbols<CR>
 
 " 跳转后自动关闭
 let g:vista_close_on_jump = 1
@@ -325,6 +334,9 @@ nnoremap <leader>dp :call vimspector#ToggleBreakpoint()<CR>
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" 同时高亮多个词
+nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+
 " coc airline
 let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#coc#error_symbol = 'E:'
@@ -347,3 +359,6 @@ augroup END
 
 highlight Pmenu    guibg=darkgrey  guifg=black
 highlight PmenuSel guibg=lightgrey guifg=black
+
+nnoremap <leader> :
+
