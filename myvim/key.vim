@@ -82,4 +82,4 @@ nnoremap <C-L> <C-I>
 tnoremap <ESC> <c-\><c-n>
 
 " 打开光标下的路径
-map <leader>gf :leftabove wincmd f<CR>
+map <leader>gf :topleft wincmd f<CR>
