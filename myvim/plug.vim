@@ -89,6 +89,7 @@ else
     tmap <C-u> <c-\><C-n>:call TerminalToggle()<cr>
 endif
 let g:terminal_close_when_exit = 1
+let g:terminal_cwd=2
 
 " 使用tab在补全中找选项
 " https://zhuanlan.zhihu.com/p/54586480
