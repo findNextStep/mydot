@@ -79,7 +79,7 @@ Plug 'https://github.com/lfv89/vim-interestingwords'
 " DAP
 Plug 'puremourning/vimspector' , { 'do' : './install_gadget.py --all --disable-tcl'}
 " 内建终端功能的增强
-Plug 'findNextStep/vim-terminal-help'
+Plug 'skywind3000/vim-terminal-help'
 call plug#end()
 
 nmap <C-u> :call TerminalToggle()<cr>
@@ -88,7 +88,7 @@ if has('nvim') == 0
 else
     tmap <C-u> <c-\><C-n>:call TerminalToggle()<cr>
 endif
-let g:terminal_close_when_exit = 1
+let g:terminal_close = 1
 let g:terminal_cwd=2
 
 " 使用tab在补全中找选项
