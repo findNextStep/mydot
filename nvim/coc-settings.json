@@ -6,6 +6,7 @@
         "c",
         "json",
         "vim",
+        "python",
         "go"
     ],
     "coc.preferences.colorSupport": true,
@@ -21,7 +22,7 @@
             ]
         },
         "clangd": {
-            "command": "/usr/local/Cellar/llvm/9.0.1/bin/clangd",
+            "command": "/usr/local/opt/llvm/bin/clangd",
             "args": [
                 "--background-index",
                 "--compile-commands-dir=build-clangd",
@@ -74,27 +75,36 @@
                 "clang": {
                     "extraArgs": [
                         "-isystem",
-                        "/usr/local/Cellar/llvm/9.0.1/include/c++/v1",
+                        "/usr/local/opt/llvm/include/c++/v1",
                         "-Wold-style-cast"
                     ],
-                    "resourceDir": "/usr/local/Cellar/llvm/9.0.1/lib/clang/9.0.1"
+                    "resourceDir": "/usr/local/opt/llvm/lib/clang/9.0.1"
                 },
-                "client":{
-                    "snippetSupport":true
+                "completion": {
+                    "placeholder": true,
+                    "caseSensitivity": 1
+                },
+                "client": {
+                    "snippetSupport": true
                 }
             }
         },
         "golang": {
             "command": "~/go/bin/gopls",
-            "env": {
-                "GO111MODULE": "on"
-            },
+            "args": [
+                "-logfile",
+                "/tmp/gopls-vim"
+            ],
             "rootPatterns": [
                 "go.mod",
                 ".vim/",
                 ".git/",
                 ".hg/"
             ],
+            "env": {
+                "GO111MODULE": "off",
+                "CGO_ENABLED": "0"
+            },
             "filetypes": [
                 "go"
             ],
