@@ -135,7 +135,6 @@ let g:gitgutter_sign_removed = '>'
 let g:gitgutter_sign_removed_first_line = '^'
 let g:gitgutter_sign_modified_removed = 'w'
 noremap <silent> <leader>gia :!Git add %<CR>
-noremap <silent> <leader>gf :AsyncRun Git fetch --tags --prune<CR>
 noremap <silent> <C-b> :AsyncRun make -C ./build/Debug -j6<CR>
 set updatetime=100
 
