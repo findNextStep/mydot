@@ -33,7 +33,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
 " fuzzy 命令
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
@@ -125,8 +124,8 @@ let g:vista#renderer#icons = {
 \  }
 
 noremap <C-p> :Leaderf file --popup<CR>
-noremap <leader>bf :Windows<CR>
-noremap <C-j> :Leaderf function --popup<CR>
+nnoremap ;<space> :Leaderf command --popup<CR>
+noremap <C-j> :Leaderf bufTag --popup<CR>
 
 " gitgutter
 let g:gitgutter_sign_added = '+'
@@ -206,9 +205,6 @@ let g:choosewin_overlay_enable = 1
 let g:Illuminate_delay = 20
 
 
-" fzf command
-nnoremap ;<space> :Commands<CR>
-let g:fzf_layout = {'up' : '~40%'}
 
 " markdown预览
 nnoremap <leader>mv :MarkdownPreview<CR>
