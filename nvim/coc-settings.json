@@ -1,16 +1,23 @@
 {
     "coc.preferences.enableFloatHighlight": true,
     "suggest.enablePreview": true,
-    "tabnine.disable_filetypes": [
-        "cpp",
-        "c",
-        "json",
-        "vim",
-        "python",
-        "go"
+    "clangd.arguments": [
+        "--background-index",
+        "--compile-commands-dir=build-clangd",
+        "-j",
+        "12",
+        "--clang-tidy",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu",
+        "--pch-storage=disk"
     ],
+    "clangd.path": "/usr/local/opt/llvm/bin/clangd",
     "coc.preferences.colorSupport": true,
     "codeLens.enable": true,
+    "coc.preferences.formatOnType": true,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "go"
+    ],
     "languageserver": {
         "vim": {
             "command": "vim-language-server",
@@ -19,28 +26,6 @@
             ],
             "filetypes": [
                 "vim"
-            ]
-        },
-        "clangd": {
-            "command": "/usr/local/opt/llvm/bin/clangd",
-            "args": [
-                "--background-index",
-                "--compile-commands-dir=build-clangd",
-                "-j",
-                "12",
-                "--clang-tidy",
-                "--completion-style=detailed",
-                "--header-insertion=iwyu",
-                "--pch-storage=disk"
-            ],
-            "rootPatterns": [
-                "./build-clangd"
-            ],
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
             ]
         },
         "ccls": {
@@ -62,15 +47,25 @@
                 "compile_commands.json"
             ],
             "initializationOptions": {
+                "compilationDatabaseDirectory": "build/Debug",
                 "cache": {
-                    "directory": "./.ccls-cache"
+                    "directory": ".ccls-cache",
+                    "format": "binary",
+                    "hierarchicalPath": false,
+                    "retainInMemory": 2
                 },
-                "compilationDatabaseDirectory": "./build/Debug",
-                "highlight": {
-                    "lsRanges": true
-                },
-                "index": {
-                    "thread": 12
+                "capabilities": {
+                    "documentOnTypeFormattingProvider": {
+                        "firstTriggerCharacter": "}",
+                        "moreTriggerCharacter": []
+                    },
+                    "foldingRangeProvider": false,
+                    "workspace": {
+                        "workspaceFolders": {
+                            "supported": true,
+                            "changeNotifications": true
+                        }
+                    }
                 },
                 "clang": {
                     "extraArgs": [
@@ -78,14 +73,87 @@
                         "/usr/local/opt/llvm/include/c++/v1",
                         "-Wold-style-cast"
                     ],
+                    "pathMappings": [],
                     "resourceDir": "/usr/local/opt/llvm/lib/clang/9.0.1"
                 },
-                "completion": {
-                    "placeholder": true,
-                    "caseSensitivity": 1
-                },
                 "client": {
+                    "diagnosticsRelatedInformation": true,
+                    "hierarchicalDocumentSymbolSupport": true,
+                    "linkSupport": true,
                     "snippetSupport": true
+                },
+                "codeLens": {
+                    "localVariables": false
+                },
+                "completion": {
+                    "caseSensitivity": 1,
+                    "detailedLabel": true,
+                    "dropOldRequests": true,
+                    "duplicateOptional": true,
+                    "filterAndSort": true,
+                    "include": {
+                        "blacklist": [],
+                        "maxPathSize": 37,
+                        "suffixWhitelist": [
+                            ".h",
+                            ".hpp",
+                            ".hh",
+                            ".inc",
+                            ".h",
+                            ".hpp",
+                            ".hh"
+                        ],
+                        "whitelist": []
+                    },
+                    "maxNum": 100,
+                    "placeholder": true
+                },
+                "diagnostics": {
+                    "blacklist": [],
+                    "onChange": 200,
+                    "onOpen": 0,
+                    "onSave": 0,
+                    "spellChecking": true,
+                    "whitelist": []
+                },
+                "highlight": {
+                    "largeFileSize": 2097152,
+                    "lsRanges": true,
+                    "blacklist": [],
+                    "whitelist": []
+                },
+                "index": {
+                    "blacklist": [],
+                    "comments": 2,
+                    "initialNoLinkage": false,
+                    "initialBlacklist": [],
+                    "initialWhitelist": [],
+                    "maxInitializerLines": 15,
+                    "multiVersion": 0,
+                    "multiVersionBlacklist": [],
+                    "multiVersionWhitelist": [],
+                    "name": {
+                        "suppressUnwrittenScope": false
+                    },
+                    "onChange": false,
+                    "parametersInDeclarations": true,
+                    "threads": 10,
+                    "trackDependency": 2,
+                    "whitelist": []
+                },
+                "request": {
+                    "timeout": 5000
+                },
+                "session": {
+                    "maxNum": 10
+                },
+                "workspaceSymbol": {
+                    "caseSensitivity": 1,
+                    "maxNum": 1000000,
+                    "sort": true
+                },
+                "xref": {
+                    "maxNum": 2000
                 }
             }
         },

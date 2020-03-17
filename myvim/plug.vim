@@ -64,6 +64,9 @@ Plug 'liuchengxu/vista.vim'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
+Plug 'clangd/coc-clangd'
+Plug 'neoclide/coc-json'
+Plug 'iamcco/coc-vimlsp'
 " 智能高亮需要coc.nvim
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 " 颜色显示插件
@@ -270,6 +273,7 @@ let g:Hexokinase_signIcon = ''
 
 " coc
 autocmd FileType json syntax match Comment +\/\/.\+$+
+nnoremap <leader>gf :CocCommand clangd.switchSourceHeader<CR>
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 " highlight Pmenu    guibg=darkgrey  guifg=black
