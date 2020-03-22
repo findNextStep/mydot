@@ -63,12 +63,12 @@ ZSH_THEME_GIT_PROMPT_AHEAD=" \ue0b1%{↑ %G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{\uf42e%G%}"
 
-if [ -z $IS_VSCODE ];then
-    if [ "$(uname -s)" = "Linux" ];then
-        # launch only in linux
-        source ~/.oh-my-zsh/custom/plugins/zsh-vimto/zsh-vimto.zsh
-    fi
-fi
+# if [ -z $IS_VSCODE ];then
+#     if [ "$(uname -s)" = "Linux" ];then
+#         # launch only in linux
+#         source ~/.oh-my-zsh/custom/plugins/zsh-vimto/zsh-vimto.zsh
+#     fi
+# fi
 
 
 # highlighting theme
