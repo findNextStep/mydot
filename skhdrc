@@ -1,6 +1,6 @@
 lcmd - j : yabai -m window --focus next
 lcmd - k : yabai -m window --focus prev
-ralt - return : /Applications/iTerm.app/Contents/MacOS/iTerm2
+ralt - return : open -n /Applications/iTerm.app
 ralt - d : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
 lcmd - t : yabai -m window --toggle float
 
@@ -27,3 +27,11 @@ lcmd + shift - u : yabai -m window --space 5
 lcmd + shift - i : yabai -m window --space 6
 lcmd + shift - o : yabai -m window --space 7
 lcmd + shift - p : yabai -m window --space 8
+
+lcmd - space : yabai -m window --toggle split
+
+lcmd - q : yabai -m display --focus next
+lcmd - w : yabai -m display --focus prev
+lcmd + shift -q : yabai -m window --display next
+lcmd + shift -w : yabai -m window --display prev
+
