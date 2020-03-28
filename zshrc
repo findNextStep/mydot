@@ -140,6 +140,7 @@ source ~/.shrc
 bindkey "גּ " autosuggest-accept
 ## super + l in mac
 bindkey "¬" autosuggest-accept
+bindkey "גּl" autosuggest-accept
 bindkey "גּk" up-line-or-search
 bindkey "גּj" down-line-or-search
 
