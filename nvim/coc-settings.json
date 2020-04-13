@@ -1,6 +1,8 @@
 {
     "coc.preferences.enableFloatHighlight": true,
     "suggest.enablePreview": true,
+    "coc.preferences.hoverTarget":"float",
+    "clangd.enabled": false,
     "clangd.arguments": [
         "--background-index",
         "--compile-commands-dir=build-clangd",
@@ -111,27 +113,17 @@
                 "diagnostics": {
                     "blacklist": [],
                     "onChange": 200,
-                    "onOpen": 0,
-                    "onSave": 0,
                     "spellChecking": true,
                     "whitelist": []
                 },
                 "highlight": {
-                    "largeFileSize": 2097152,
-                    "lsRanges": true,
-                    "blacklist": [],
-                    "whitelist": []
+                    "lsRanges": true
                 },
                 "index": {
-                    "blacklist": [],
                     "comments": 2,
                     "initialNoLinkage": false,
-                    "initialBlacklist": [],
-                    "initialWhitelist": [],
                     "maxInitializerLines": 15,
                     "multiVersion": 0,
-                    "multiVersionBlacklist": [],
-                    "multiVersionWhitelist": [],
                     "name": {
                         "suppressUnwrittenScope": false
                     },
