@@ -21,6 +21,10 @@ set hlsearch
 set ignorecase
 " 如果有一个大写字母，则切换到大小写敏感查找
 set smartcase
+" 设置延迟渲染
+set lazyredraw
+" 一些需要强制渲染的场景https://github.com/tpope/vim-sensible/issues/78
+autocmd VimEnter * redraw!
 
 filetype on
 
