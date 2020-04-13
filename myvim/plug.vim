@@ -32,8 +32,8 @@ Plug 'scrooloose/nerdcommenter'
 " 缩进线
 Plug 'Yggdroot/indentLine'
 " fuzzy 命令
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
 " 初始界面美化
@@ -64,9 +64,8 @@ Plug 'liuchengxu/vista.vim'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
-Plug 'clangd/coc-clangd'
-Plug 'neoclide/coc-json'
-Plug 'iamcco/coc-vimlsp'
+" Plug 'clangd/coc-clangd'
+" Plug 'neoclide/coc-json'
 " 智能高亮需要coc.nvim
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 " 颜色显示插件
@@ -126,9 +125,9 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \  }
 
-noremap <C-p> :Leaderf file --popup<CR>
-nnoremap ;<space> :Leaderf command --popup<CR>
-noremap <C-j> :Leaderf bufTag --popup<CR>
+noremap <C-p> :Files<CR>
+nnoremap ;<space> :Commands<CR>
+noremap <C-j> :BTags<CR>
 
 " gitgutter
 let g:gitgutter_sign_added = '+'
