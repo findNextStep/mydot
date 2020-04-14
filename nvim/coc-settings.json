@@ -2,7 +2,7 @@
     "coc.preferences.enableFloatHighlight": true,
     "suggest.enablePreview": true,
     "coc.preferences.hoverTarget":"float",
-    "clangd.enabled": false,
+    "clangd.enabled": true,
     "clangd.arguments": [
         "--background-index",
         "--compile-commands-dir=build-clangd",
@@ -76,7 +76,7 @@
                         "-Wold-style-cast"
                     ],
                     "pathMappings": [],
-                    "resourceDir": "/usr/local/opt/llvm/lib/clang/9.0.1"
+                    "resourceDir": "/usr/local/opt/llvm/lib/clang/10.0.0"
                 },
                 "client": {
                     "diagnosticsRelatedInformation": true,
