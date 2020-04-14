@@ -32,7 +32,7 @@ Plug 'scrooloose/nerdcommenter'
 " 缩进线
 Plug 'Yggdroot/indentLine'
 " fuzzy 命令
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
