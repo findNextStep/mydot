@@ -33,6 +33,7 @@ pip
 cargo
 rust
 rustup
+xcode
 z
 zsh-autosuggestions
 Snappy
@@ -40,11 +41,11 @@ Snappy
 
 source $ZSH/oh-my-zsh.sh
 
-PATH=$PATH:~/.oh-my-zsh/custom/plugins/zsh-git-prompt/src/.bin
+# PATH=$PATH:~/.oh-my-zsh/custom/plugins/zsh-git-prompt/src/.bin
 
-source ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/zshrc.sh
+# source ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/zshrc.sh
 
-[ -f ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/src/.bin/gitstatus ] && GIT_PROMPT_EXECUTABLE="haskell" || echo "git prompt need to build\nsee ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/"
+# [ -f ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/src/.bin/gitstatus ] && GIT_PROMPT_EXECUTABLE="haskell" || echo "git prompt need to build\nsee ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/"
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 # 分隔各个模块
@@ -147,7 +148,14 @@ bindkey "גּj" down-line-or-search
 
 # copy
 x-paste() {
-    PASTE=$(xclip -selection clipboard -o)
+    case "$(uname -s)" in
+        Linux*) 
+            PASTE=$(xclip -selection clipboard -o)
+            ;;
+        Darwin*)
+            PASTE=$(pbpaste)
+            ;;
+    esac
     LBUFFER="$LBUFFER${RBUFFER:0:1}"
     RBUFFER="$PASTE${RBUFFER:1:${#RBUFFER}}"
 }
@@ -157,7 +165,14 @@ bindkey -M vicmd "p" x-paste
 
 copy-to-xclip() {
     [[ "$REGION_ACTIVE" -ne 0 ]] && zle copy-region-as-kill
-    print -rn -- $CUTBUFFER | xclip -selection clipboard -i
+    case "$(uname -s)" in
+        Linux*) 
+            print -rn -- $CUTBUFFER | xclip -selection clipboard -i
+            ;;
+        Darwin*)
+            print -rn -- $CUTBUFFER | pbcopy
+            ;;
+    esac
 }
 zle -N copy-to-xclip
 bindkey -M vicmd "y" copy-to-xclip

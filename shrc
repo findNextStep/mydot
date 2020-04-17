@@ -28,9 +28,11 @@ upgrade_finish(){
 case "$(uname -s)" in
     Linux*) 
         alias tocopy='xclip -selection c'
+        alias fromcopy='xclip -selection clipboard -o'
         ;;
     Darwin*)
         alias tocopy='pbcopy'
+        alias fromcopy='pbpaste'
         ;;
 esac
 
@@ -86,6 +88,7 @@ case "$(uname -s)" in
         export ANDROID_HOME=~/Library/Android/sdk
         export ANDROID_SDK_ROOT=~/Library/Android/sdk
         export PATH="/Users/findnextstep/Downloads/code.app/Contents/Resources/app/bin:$PATH"
+        export GOPATH="/Users/findnextstep/go"
         export CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/9.0.0/include/c++/v1
         ;;
 esac
