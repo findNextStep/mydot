@@ -87,8 +87,8 @@ case "$(uname -s)" in
         export PATH="$PATH:/Library/Apple/usr/bin"
         export ANDROID_HOME=~/Library/Android/sdk
         export ANDROID_SDK_ROOT=~/Library/Android/sdk
-        export PATH="/Users/findnextstep/Downloads/code.app/Contents/Resources/app/bin:$PATH"
-        export GOPATH="/Users/findnextstep/go"
+        export PATH="$HOME/Downloads/code.app/Contents/Resources/app/bin:$PATH"
+        export GOPATH="$HOME/go"
         export CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/9.0.0/include/c++/v1
         ;;
 esac
