@@ -64,8 +64,8 @@ Plug 'liuchengxu/vista.vim'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
-" Plug 'clangd/coc-clangd'
-" Plug 'neoclide/coc-json'
+Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 " 智能高亮需要coc.nvim
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 " 颜色显示插件
