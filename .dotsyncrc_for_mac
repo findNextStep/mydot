@@ -15,7 +15,7 @@ gitconfig
 lsp_setting.json
 spacemacs.el:.spacemacs
 nvim:.config/nvim
-yabai
+yabai:.yabairc
 skhdrc
 gitignore-global
 kitty.conf:.config/kitty/kitty.conf
