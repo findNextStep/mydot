@@ -20,8 +20,6 @@ Plug 'https://github.com/skywind3000/asyncrun.vim'
 Plug 'vim-airline/vim-airline'
 " 自动保存当前状态
 Plug 'findNextStep/vim-obsession'
-" cmake 自动补全
-" Plug 'richq/vim-cmake-completion' , { 'for' : 'cmake' }
 " vim特殊字符使用
 Plug 'ryanoasis/vim-devicons'
 " git插件
@@ -36,8 +34,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
-" 初始界面美化
-" Plug 'Carpetsmoker/startscreen.vim'
 " 可视化的窗口选择
 Plug 't9md/vim-choosewin'
 " zsh 补全
@@ -56,10 +52,6 @@ Plug 'RRethy/vim-illuminate'
 " markdown预览
 Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
-" 多种语言的高亮包
-Plug 'sheerun/vim-polyglot'
-" tagbar - lsp
-Plug 'liuchengxu/vista.vim'
 " coc
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'Shougo/neco-vim'
@@ -103,27 +95,6 @@ let g:vimspector_enable_mappings = 'HUMAN'
 sign define vimspectorBP text=🔴 texthl=Normal
 sign define vimspectorBPDisabled text=🔵 texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
-"vista
-noremap גּp :Vista!!<CR>
-noremap P :Vista!!<CR>
-noremap <leader>p :BTags<CR>
-
-" 跳转后自动关闭
-let g:vista_close_on_jump = 1
-let g:vista_stay_on_open = 1
-let g:vista_blink = [0, 100]
-let g:vista_icon_indent = [">", "|>"]
-let g:vista_default_executive = 'coc'
-let g:vista_executive_for = {
-  \ 'c' : 'coc',
-  \ 'cpp': 'coc',
-  \ }
-let g:vista#renderer#enable_icon = 1
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
 
 noremap <C-p> :Files<CR>
 nnoremap ;<space> :Commands<CR>
