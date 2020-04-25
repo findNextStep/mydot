@@ -1,6 +1,6 @@
 lcmd - j : yabai -m window --focus next
 lcmd - k : yabai -m window --focus prev
-ralt - return : /Applications/kitty.app/Contents/MacOS/kitty
+ralt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance
 ralt - t : open -n /System/Applications/Utilities/Terminal.app
 ralt - d : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
 lcmd - t : yabai -m window --toggle float
