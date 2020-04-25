@@ -20,6 +20,7 @@ plugins=(
 git
 git-extras
 git-remote-branch
+gitstatus
 docker
 stack
 cabal
@@ -40,6 +41,8 @@ Snappy
 )
 
 source $ZSH/oh-my-zsh.sh
+
+gitstatus_stop next; gitstatus_start next
 
 # PATH=$PATH:~/.oh-my-zsh/custom/plugins/zsh-git-prompt/src/.bin
 
