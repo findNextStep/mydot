@@ -5,7 +5,7 @@
 	user = findNextStep
     email = findNextStep@gmail.com
 [core]
-	editor = vim
+	editor = nvim
 	excludesFile = ~/.gitignore
 [credential]
 	helper = store
