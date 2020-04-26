@@ -1,5 +1,4 @@
 MY_SHELL="zsh"
-export ZSH=~/.oh-my-zsh
 
 HOSTNAME=$HOST
 
@@ -16,79 +15,68 @@ ENABLE_CORRECTION="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(
-git
-git-extras
-git-remote-branch
-gitstatus
-docker
-stack
-cabal
-fast-syntax-highlighting
-gem
-pod
-xcode
-npm
-yarn
-pip
-cargo
-rust
-rustup
-xcode
-z
-zsh-autosuggestions
-Snappy
-)
 
-source $ZSH/oh-my-zsh.sh
+setopt interactive_comments hist_ignore_dups  octal_zeroes   no_prompt_cr
+setopt no_hist_no_functions no_always_to_end  append_history list_packed
+setopt inc_append_history   complete_in_word  no_auto_menu   auto_pushd
+setopt pushd_ignore_dups    no_glob_complete  no_glob_dots   c_bases
+setopt numeric_glob_sort    no_share_history  promptsubst    auto_cd
+setopt rc_quotes            extendedglob      notify
+autoload -Uz rgzh rgsrc rgdata pslist ebindkey expand_alias palette printc oomscore pb
+autoload -Uz zcalc zmv
+
+[[ ! -f ~/.zinit/bin/zinit.zsh ]] && {
+    command mkdir -p ~/.zinit
+    command git clone https://github.com/zdharma/zinit ~/.zinit/bin
+}
+
+source "$HOME/.zinit/bin/zinit.zsh"
+
+
+zinit for \
+    OMZ::lib/git.zsh \
+    OMZ::lib/clipboard.zsh \
+    OMZ::lib/key-bindings.zsh \
+    OMZ::lib/completion.zsh \
+    OMZ::lib/correction.zsh \
+    OMZ::lib/history.zsh \
+    OMZ::lib/theme-and-appearance.zsh \
+    OMZ::plugins/git/git.plugin.zsh \
+    OMZ::plugins/git-extras/git-extras.plugin.zsh
+# zinit as="completion" for \
+    # PZT::modules/docker/_docker \
+    # OMZ::plugins/cabal_/cabal \
+    # OMZ::plugins/xcode/_xcode \
+    # OMZ::plugins/fd/_fd
+zinit light-mode for \
+        agkozak/zsh-z
+zinit light-mode for \
+    blockf \
+        zsh-users/zsh-completions \
+    as="program" atclone="rm -f ^(rgg|agv)" \
+        lilydjwg/search-and-view \
+    atclone="dircolors -b LS_COLORS > c.zsh" atpull='%atclone' pick='c.zsh' \
+        trapd00r/LS_COLORS
+
+zinit light-mode for \
+    zdharma/fast-syntax-highlighting \
+    zsh-users/zsh-autosuggestions \
+    romkatv/gitstatus
+
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+    zsh-users/zsh-completions
+# autoload -Uz compinit
+# compinit
+# # zinit 出于效率考虑会截获 compdef 调用，放到最后再统一应用，可以节省不少时间
+# zinit cdreplay -q
 
 gitstatus_stop next; gitstatus_start next
 
-# PATH=$PATH:~/.oh-my-zsh/custom/plugins/zsh-git-prompt/src/.bin
-
-# source ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/zshrc.sh
-
-# [ -f ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/src/.bin/gitstatus ] && GIT_PROMPT_EXECUTABLE="haskell" || echo "git prompt need to build\nsee ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/"
-ZSH_THEME_GIT_PROMPT_PREFIX=""
-ZSH_THEME_GIT_PROMPT_SUFFIX=""
-# 分隔各个模块
-ZSH_THEME_GIT_PROMPT_SEPARATOR=""
-# 未add的更改
-ZSH_THEME_GIT_PROMPT_STAGED=" \ue0b1%{$fg[reset]%}✚ %{%G%}"
-# 未处理的冲突
-ZSH_THEME_GIT_PROMPT_CONFLICTS=" \ue0b1%{$fg[red]%}%{✖ %G%}"
-# 未提交的记录
-ZSH_THEME_GIT_PROMPT_CHANGED=" \ue0b1%{$fg[reset]%}%{● %G%}"
-# 落后远程分支（需要pull更新）
-ZSH_THEME_GIT_PROMPT_BEHIND=" \ue0b1%{↓ %G%}"
-# 领先远程分支（需要push更新）
-ZSH_THEME_GIT_PROMPT_AHEAD=" \ue0b1%{↑ %G%}"
-# 有未跟踪的内容
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{\uf42e%G%}"
-
-# if [ -z $IS_VSCODE ];then
-#     if [ "$(uname -s)" = "Linux" ];then
-#         # launch only in linux
-#         source ~/.oh-my-zsh/custom/plugins/zsh-vimto/zsh-vimto.zsh
-#     fi
-# fi
-
+# mytheme
+source ~/mydot/pxq-style.zsh-theme
 
 # highlighting theme
-fast-theme -q zdharma
-
-# zsh vim mode
-# Better searching in command mode
-# Beginning search with arrow keys
-bindkey "^[OA" up-line-or-beginning-search
-bindkey "^[OB" down-line-or-beginning-search
-bindkey -M vicmd "k" up-line-or-beginning-search
-bindkey -M vicmd "j" down-line-or-beginning-search
-
-# 避免esc延时
-KEYTIMEOUT=1
-
+# fast-theme -q zdharma
 # 定义terminal外启动app的函数
 _outTerminal(){
     screen $@ > /dev/null 2>&1 &!
@@ -128,27 +116,6 @@ case "$(uname -s)" in
         ;;
 esac
 
-#导入ros相关
-# source /opt/ros/$(ls /opt/ros)/setup.zsh
-# source ~/erobot/devel/setup.zsh
-#source ~/catkin_ws/devel/setup.zsh
-#导入共同设置
-source ~/.shrc
-# ikfast 需要
-#export PYTHONPATH=$PYTHONPATH:"$(openrave-config --python-dir)"
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-## autosuggestions keybind
-bindkey "גּ " autosuggest-accept
-## super + l in mac
-bindkey "¬" autosuggest-accept
-bindkey "גּl" autosuggest-accept
-bindkey "גּk" up-line-or-search
-bindkey "גּj" down-line-or-search
-
-
 # copy
 x-paste() {
     case "$(uname -s)" in
@@ -162,8 +129,8 @@ x-paste() {
     LBUFFER="$LBUFFER${RBUFFER:0:1}"
     RBUFFER="$PASTE${RBUFFER:1:${#RBUFFER}}"
 }
-zle -N x-paste
 
+zle -N x-paste
 bindkey -M vicmd "p" x-paste
 
 copy-to-xclip() {
@@ -179,6 +146,23 @@ copy-to-xclip() {
 }
 zle -N copy-to-xclip
 bindkey -M vicmd "y" copy-to-xclip
+## autosuggestions keybind
+bindkey "גּ " autosuggest-accept
+## super + l in mac
+bindkey "¬" autosuggest-accept
+bindkey "^J" autosuggest-accept
+bindkey "גּl" autosuggest-accept
+bindkey "גּk" up-line-or-search
+bindkey "˚" up-line-or-search
+bindkey "גּj" down-line-or-search
+bindkey "∆" down-line-or-search
+
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey "^K" up-line-or-beginning-search
+bindkey "^J" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
 
 #历史纪录条目数量
 export HISTSIZE=1000000
@@ -197,5 +181,8 @@ setopt PUSHD_IGNORE_DUPS
 
 #在命令前添加空格，不将此命令添加到纪录文件中
 setopt HIST_IGNORE_SPACE
-#}}}
-# source ~/.oh-my-zsh/plugins/fzf-tab/fzf-tab.zsh
+
+source ~/.shrc
+
+# fzf just good
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
