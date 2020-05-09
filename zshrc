@@ -1,3 +1,12 @@
+# zmodload zsh/datetime
+# setopt PROMPT_SUBST
+# PS4='+$EPOCHREALTIME %N:%i> '
+
+# logfile=~/$(mktemp zsh_profile.XXXXXXXX)
+# echo "Logging to $logfile"
+# exec 3>&2 2>$logfile
+
+# setopt XTRACE
 MY_SHELL="zsh"
 
 HOSTNAME=$HOST
@@ -25,6 +34,8 @@ setopt rc_quotes            extendedglob      notify
 autoload -Uz rgzh rgsrc rgdata pslist ebindkey expand_alias palette printc oomscore pb
 autoload -Uz zcalc zmv
 
+zmodload zsh/zpty
+
 [[ ! -f ~/.zinit/bin/zinit.zsh ]] && {
     command mkdir -p ~/.zinit
     command git clone https://github.com/zdharma/zinit ~/.zinit/bin
@@ -43,13 +54,15 @@ zinit for \
     OMZ::lib/theme-and-appearance.zsh \
     OMZ::plugins/git/git.plugin.zsh \
     OMZ::plugins/git-extras/git-extras.plugin.zsh
+
 # zinit as="completion" for \
     # PZT::modules/docker/_docker \
     # OMZ::plugins/cabal_/cabal \
     # OMZ::plugins/xcode/_xcode \
     # OMZ::plugins/fd/_fd
-zinit light-mode for \
-        agkozak/zsh-z
+# zinit light-mode for \
+        # agkozak/zsh-z
+zinit load agkozak/zsh-z
 zinit light-mode for \
     blockf \
         zsh-users/zsh-completions \
@@ -182,7 +195,39 @@ setopt PUSHD_IGNORE_DUPS
 #在命令前添加空格，不将此命令添加到纪录文件中
 setopt HIST_IGNORE_SPACE
 
+
+# 自动提示中使用自动补全的项目
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 source ~/.shrc
 
 # fzf just good
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# __git_aliased_command requires 1 argument
+__git_aliased_command ()
+{
+	local word cmdline=$(__git config --get "alias.$1")
+	for word in $cmdline; do
+		case "$word" in
+		\!gitk|gitk)
+			echo "gitk"
+			return
+			;;
+		\!*)	: shell command alias ;;
+		-*)	: option ;;
+		*=*)	: setting env ;;
+		git)	: git itself ;;
+		\(\))   : skip parens of shell function definition ;;
+		{)	: skip start of shell helper function ;;
+		:)	: skip null command ;;
+		\'*)	: skip opening quote after sh -c ;;
+		*)
+			echo "$word"
+			return
+		esac
+	done
+}
+
+# unsetopt XTRACE
+# exec 2>&3 3>&-
