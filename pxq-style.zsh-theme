@@ -17,23 +17,24 @@ esac
   LC_ALL="" LC_CTYPE="zh_CN.UTF-8"
   readonly SEGMENT_SEPARATOR="\ue0b0"
   readonly SEGMENT_SEPARATOR_DIFF="\ue0b2"
-  if [ $MY_SHELL = "zsh" ];then
-    readonly _color_front_set="%{"
-    readonly _color_back_set="%}"
-  else
-    readonly _color_front_set=''
-    readonly _color_back_set=''
-  fi
+  readonly _color_front_set="%{"
+  readonly _color_back_set="%}"
   # SEGMENT_SEPARATOR=$'\uf0da '
   # SEGMENT_SEPARATOR_DIFF=$'\ue0be '
 # }
+__PROMPT=""
+_echo(){
+  __PROMPT="$__PROMPT$1"
+}
+
+
 
 _color_reset="$_color_front_set\e[0m$_color_back_set"
 # 使用%{%}防止终端颜色提示符被记入长度计量中影响补全的位置
 set_terminal_fg(){
   case $1 in
     "reset")
-      echo "$_color_front_set\e[39m$_color_back_set"
+      _echo "$_color_front_set\e[39m$_color_back_set"
       ;;
     "black")
       set_terminal_fg 0
@@ -92,11 +93,7 @@ set_terminal_fg(){
       ;;
     *)
       color="$_color_front_set\e[38;5;$1m$_color_back_set"
-      if [ $MY_SHELL = "zsh" ];then
-        print -n $color
-      else
-        echo -ne $color
-      fi
+      _echo $color
       ;;
   esac
 
@@ -104,7 +101,7 @@ set_terminal_fg(){
 set_terminal_bg(){
   case $1 in
     "reset")
-    print -n "$_color_front_set\e[49m$_color_back_set"
+    _echo "$_color_front_set\e[49m$_color_back_set"
       ;;
     "black")
       set_terminal_bg 0
@@ -163,11 +160,7 @@ set_terminal_bg(){
       ;;
     *)
       color="$_color_front_set\e[48;5;$1m$_color_back_set"
-      if [ $MY_SHELL = "zsh" ];then
-        print -n $color
-      else
-        echo -ne $color
-      fi
+      _echo $color
       ;;
   esac
 }
@@ -176,41 +169,54 @@ set_terminal_bg(){
 # Takes two arguments, background and foreground. Both can be omitted,
 # rendering default background/foreground.
 prompt_segment() {
-  local SHOW=""$_color_reset
   local bg fg
   [[ -n $1 ]] && bg="$1" || bg=""
   [[ -n $2 ]] && fg="$2" || fg=""
   if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
-    SHOW=$SHOW"$(set_terminal_bg $CURRENT_BG) $(set_terminal_bg $bg)$(set_terminal_fg $CURRENT_BG)$SEGMENT_SEPARATOR"
+    set_terminal_bg $bg
+    set_terminal_fg $CURRENT_BG
+    _echo $SEGMENT_SEPARATOR
   elif [[ $CURRENT_BG != 'NONE' ]];then
-    SHOW=$SHOW"$(set_terminal_bg $CURRENT_BG) $(set_terminal_fg 0)"
+    set_terminal_bg $CURRENT_BG
+    set_terminal_fg 0
+    _echo ""
   fi
   if [[ $CURRENT_BG != 'NONE' ]];then
-    SHOW=$SHOW"$(set_terminal_fg $2)$(set_terminal_bg $1) "
+    set_terminal_fg $2
+    set_terminal_bg $1
   else
-    SHOW=$SHOW"$(set_terminal_fg $2)$(set_terminal_bg $1)"
+    set_terminal_fg $2
+    set_terminal_bg $1
   fi
   CURRENT_BG=$1
-  SHOW=$SHOW"$_color_front_set\e[1m$_color_back_set"
-  [[ -n $3 ]] &&  SHOW=$SHOW$3
-  print -n $SHOW
+  [[ -n $3 ]] && _echo $3
 }
+
 prompt_segment_diff() {
-  echo -ne $_color_reset
+  _echo $_color_reset
   local bg fg
-  echo -n "$_color_front_set$(set_terminal_bg $CURRENT_BG)$_color_back_set$_color_front_set$(set_terminal_fg $1)$_color_back_set$SEGMENT_SEPARATOR_DIFF"
-  echo -n "$_color_front_set$(set_terminal_fg $2)$_color_back_set$_color_front_set$(set_terminal_bg $1)$_color_back_set"
+  set_terminal_bg $CURRENT_BG
+  set_terminal_fg $1
+  _echo $SEGMENT_SEPARATOR_DIFF
+  set_terminal_bg $1
+  set_terminal_fg $2
+  # _echo "$_color_front_set$(set_terminal_bg $CURRENT_BG)$_color_back_set$_color_front_set$(set_terminal_fg $1)$_color_back_set$SEGMENT_SEPARATOR_DIFF"
+  # _echo  "$_color_front_set$(set_terminal_fg $2)$_color_back_set$_color_front_set$(set_terminal_bg $1)$_color_back_set"
   CURRENT_BG=$1
-  echo -n "$_color_front_set\e[1m$_color_back_set"
-  [[ -n $3 ]] && echo -n $3
+  # _echo "$_color_front_set\e[1m$_color_back_set"
+  [[ -n $3 ]] && _echo $3
 }
 
 # End the prompt, closing any open segments
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
-    print -n "$_color_front_set$(set_terminal_fg $CURRENT_BG)\e[49m$_color_back_set$SEGMENT_SEPARATOR$_color_front_set$(set_terminal_fg reset)$_color_back_set"
+    set_terminal_bg reset
+    set_terminal_fg $CURRENT_BG
+    _echo $SEGMENT_SEPARATOR
+    set_terminal_fg reset
   else
-    print -n "$_color_front_set$(set_terminal_bg reset)$(set_terminal_fg reset)$_color_back_set"
+    set_terminal_bg reset
+    set_terminal_fg reset
   fi
   CURRENT_BG='NONE'
 }
@@ -328,35 +334,45 @@ prompt_bettery(){
   if [ -d /sys/class/power_supply/BAT0 ];then
     num="$(cat /sys/class/power_supply/BAT0/capacity)"
     STATUS=$num
-    if [ $( cat $ACF) -eq "1" ];then
-      if [[ $num -ne "100" ]];then
-        STATUS=" $STATUS"
-      fi
-    else
-      STATUS="$_color_front_set$(set_terminal_fg red)$_color_back_set $_color_front_set$(set_terminal_fg white)$_color_back_set$STATUS"
-    fi
     if [[ $num -lt 10 ]];then
-      prompt_segment_diff red white "$STATUS"
+      prompt_segment_diff red white
     else
       if [[ $num -gt 90 ]];then
-        prompt_segment_diff green white "$STATUS"
+        prompt_segment_diff green white
       else
-        prompt_segment_diff olive white "$STATUS"
+        prompt_segment_diff olive white
       fi
     fi
+    if [ $( cat $ACF) -eq "1" ];then
+      if [[ $num -ne "100" ]];then
+        _echo ""
+      fi
+    else
+      set_terminal_fg red
+      _echo ""
+      set_terminal_fg white
+    fi
+    _echo " $num%%"
   elif [ "$(uname -s)" = "Darwin" ];then
     STATUS="$(pmset -g ps|grep -o '[0-9]*%')"
     num=${STATUS%%%}
-    STATUS="$_color_front_set$(set_terminal_fg red)$_color_back_set $_color_front_set$(set_terminal_fg white)$_color_back_set$STATUS"
     if [[ $num -lt 10 ]];then
-      prompt_segment_diff red white "$STATUS\n"
+      prompt_segment_diff red white
     else
       if [[ $num -gt 90 ]];then
-        prompt_segment_diff green white "$STATUS\n"
+        prompt_segment_diff green white
       else
-        prompt_segment_diff olive white "$STATUS\n"
+        prompt_segment_diff olive white
       fi
     fi
+    if [[ $num -ne "100" ]];then
+      _echo ""
+    else
+      set_terminal_fg red
+      _echo ""
+      set_terminal_fg white
+    fi
+    _echo " $num%%"
   fi
 
 }
@@ -367,6 +383,9 @@ prompt_session_check(){
   fi
   if [ -f .vscode/settings.json ];then
     prompt_segment 17 white " "
+  fi
+  if [ -f go.mod ]; then
+    prompt_segment teal white "ﳑ"
   fi
   if [ -f Cargo.toml ];then
     prompt_segment 3 0 " "
@@ -383,7 +402,8 @@ prompt_proxy(){
 ## Main prompt
 build_prompt() {
   RETVAL=$?
-  echo -ne $_color_reset
+  __PROMPT=""
+  _echo $_color_reset
   prompt_virtualenv
   prompt_context
   if [ $MY_SHELL != "zsh" ];then
@@ -396,24 +416,37 @@ build_prompt() {
   prompt_session_check
   prompt_proxy
   prompt_end
-  print -n '\n'
+  _echo '\n'
   prompt_show_now_time
   prompt_last_command_status
   prompt_end
-  echo -ne $_color_reset
+  _echo $_color_reset
+  echo -ne $__PROMPT
 }
 
 build_prompt_diff(){
-  echo -ne $_color_reset
+  __PROMPT=""
+  _echo $_color_reset
   prompt_bettery
   prompt_background_jobs
-  echo -ne $_color_reset
+  _echo $_color_reset
+  echo -n $__PROMPT
 }
-if [ $MY_SHELL = "zsh" ];then
+# if [ $MY_SHELL = "zsh" ];then
   PS1='$(build_prompt) > '
   RPROMPT='$(build_prompt_diff)'
-else
-  PS1='$(echo -ne $(echo -n $(build_prompt))) > '
-fi
+# else
+  # PS1='$(echo -ne $(echo -n $(build_prompt))) > '
+# fi
+set_terminal_fg blue
+_echo "["
+set_terminal_fg green
+_echo $(date -u +"%F") 
+set_terminal_fg blue
+_echo ":" 
+set_terminal_fg green
+_echo $(date -u +"%T")
+set_terminal_fg blue
+_echo "]"
 
-echo -e "$(echo $_color_reset)\e[1m$(set_terminal_fg blue)[$(set_terminal_fg green)$(date -u +"%F") $(set_terminal_fg blue): $(set_terminal_fg green)$(date -u +"%T")$(set_terminal_fg blue)]$_color_reset" | sed 's/%{//g' | sed 's/%}//g'
+print -P $__PROMPT
