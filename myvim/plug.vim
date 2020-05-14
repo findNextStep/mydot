@@ -60,6 +60,8 @@ Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 " 智能高亮需要coc.nvim
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+" ccls加强
+Plug 'm-pilia/vim-ccls'
 " 颜色显示插件
 Plug 'RRethy/vim-hexokinase'
 " theme pick up
