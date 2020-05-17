@@ -197,7 +197,7 @@ setopt HIST_IGNORE_SPACE
 
 
 # 自动提示中使用自动补全的项目
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 source ~/.shrc
 

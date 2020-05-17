@@ -2,10 +2,11 @@
     "coc.preferences.enableFloatHighlight": true,
     "suggest.enablePreview": true,
     "coc.preferences.hoverTarget": "float",
-    "clangd.enabled": true,
+    "clangd.enabled": false,
     "clangd.arguments": [
         "--background-index",
         "--compile-commands-dir=build-clangd",
+        "--all-scopes-completion",
         "-j",
         "12",
         "--clang-tidy",
