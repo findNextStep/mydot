@@ -62,6 +62,8 @@ Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 " ccls加强
 Plug 'm-pilia/vim-ccls'
+" ale
+Plug 'dense-analysis/ale'
 " 颜色显示插件
 Plug 'RRethy/vim-hexokinase'
 " theme pick up
@@ -334,3 +336,9 @@ highlight PmenuSel guibg=lightgrey guifg=black
 
 nnoremap <leader> :
 
+let g:ale_cpp_clangtidy_executable="/usr/local/opt/llvm/bin/clang-tidy"
+let g:ale_cpp_clangtidy_checks=["bugprone-*","cppcoreguidelines*","performance-*"]
+let g:ale_cpp_build_dir="build-clangd"
+" let g:ale_c_parse_makefile=1
+
+let g:ale_linters = {'cpp': ['clangtidy']}
