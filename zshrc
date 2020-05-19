@@ -74,7 +74,8 @@ zinit light-mode for \
 zinit light-mode for \
     zdharma/fast-syntax-highlighting \
     zsh-users/zsh-autosuggestions \
-    romkatv/gitstatus
+    romkatv/gitstatus \
+    zsh-vi-more/vi-motions
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
