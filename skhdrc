@@ -11,23 +11,24 @@ shift + lcmd - k : yabai -m window --swap prev
 
 ralt - space : yabai -m window --toggle zoom-fullscreen
 
-lcmd - a : yabai -m space --focus 1
-lcmd - s : yabai -m space --focus 2
-lcmd - d : yabai -m space --focus 3
-lcmd - f : yabai -m space --focus 4
-lcmd - u : yabai -m space --focus 5
-lcmd - i : yabai -m space --focus 6
-lcmd - o : yabai -m space --focus 7
-lcmd - p : yabai -m space --focus 8
+lcmd - a : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[0]["index"]')
+lcmd - s : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[1]["index"]')
+lcmd - d : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[2]["index"]')
+lcmd - f : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[3]["index"]')
+lcmd - u : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[4]["index"]')
+lcmd - i : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[5]["index"]')
+lcmd - o : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[6]["index"]')
+lcmd - p : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[7]["index"]')
 
-lcmd + shift - a : yabai -m window --space 1
-lcmd + shift - s : yabai -m window --space 2
-lcmd + shift - d : yabai -m window --space 3
-lcmd + shift - f : yabai -m window --space 4
-lcmd + shift - u : yabai -m window --space 5
-lcmd + shift - i : yabai -m window --space 6
-lcmd + shift - o : yabai -m window --space 7
-lcmd + shift - p : yabai -m window --space 8
+
+lcmd + shift - a : yabai -m window --space $(yabai -m query --spaces --display | jq '.[0]["index"]')
+lcmd + shift - s : yabai -m window --space $(yabai -m query --spaces --display | jq '.[1]["index"]')
+lcmd + shift - d : yabai -m window --space $(yabai -m query --spaces --display | jq '.[2]["index"]')
+lcmd + shift - f : yabai -m window --space $(yabai -m query --spaces --display | jq '.[3]["index"]')
+lcmd + shift - u : yabai -m window --space $(yabai -m query --spaces --display | jq '.[4]["index"]')
+lcmd + shift - i : yabai -m window --space $(yabai -m query --spaces --display | jq '.[5]["index"]')
+lcmd + shift - o : yabai -m window --space $(yabai -m query --spaces --display | jq '.[6]["index"]')
+lcmd + shift - p : yabai -m window --space $(yabai -m query --spaces --display | jq '.[7]["index"]')
 
 lcmd - space : yabai -m window --toggle split
 
