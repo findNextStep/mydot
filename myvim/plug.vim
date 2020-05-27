@@ -77,6 +77,8 @@ Plug 'https://github.com/lfv89/vim-interestingwords'
 Plug 'puremourning/vimspector' , { 'do' : './install_gadget.py --all --disable-tcl'}
 " 内建终端功能的增强
 Plug 'skywind3000/vim-terminal-help'
+" 头文件到cpp的切换
+Plug 'vim-scripts/a.vim'
 call plug#end()
 
 nmap <C-u> :call TerminalToggle()<cr>
@@ -103,6 +105,10 @@ sign define vimspectorPC text=🔶 texthl=SpellBad
 noremap <C-p> :Files<CR>
 nnoremap ;<space> :Commands<CR>
 noremap <C-j> :BTags<CR>
+noremap <leader>pf :Files<CR>
+noremap <leader>fs :BTags<CR>
+noremap <leader>fl :Lines<CR>
+nnoremap <leader>ps :CocList symbols<CR>
 
 " gitgutter
 let g:gitgutter_sign_added = '+'
@@ -247,7 +253,7 @@ let g:Hexokinase_signIcon = ''
 
 " coc
 autocmd FileType json syntax match Comment +\/\/.\+$+
-nnoremap <leader>gf :CocCommand clangd.switchSourceHeader<CR>
+nnoremap <leader>gf :A<CR>
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 " highlight Pmenu    guibg=darkgrey  guifg=black
