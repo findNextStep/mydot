@@ -73,3 +73,8 @@ autocmd WinEnter,BufWinEnter,FocusGained * checktime
 
 " disable swapfile to avoid errors on load
 set noswapfile
+set guifont=DejaVuSansMono\ Nerd\ Font\ Mono:20
+let g:neovide_refresh_rate=60
+let g:neovide_fullscreen=v:true
+let g:neovide_cursor_animation_length=0.05
+let g:neovide_cursor_antialiasing=v:true
