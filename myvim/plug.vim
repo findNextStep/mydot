@@ -102,7 +102,11 @@ sign define vimspectorBP text=🔴 texthl=Normal
 sign define vimspectorBPDisabled text=🔵 texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 
-noremap <C-p> :Files<CR>
+if filereadable(getcwd() . '/.git/config')
+    noremap <C-p> :GFiles<CR>
+else
+    noremap <C-p> :Files<CR>
+endif
 nnoremap ;<space> :Commands<CR>
 noremap <C-j> :BTags<CR>
 noremap <leader>pf :Files<CR>
