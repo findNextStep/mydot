@@ -62,6 +62,8 @@ Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 " ccls加强
 Plug 'm-pilia/vim-ccls'
+" DAP debug
+Plug 'puremourning/vimspector',{ 'do' : 'python3 ./install_gadget.py --enable-go --enable-c '}
 " ale
 Plug 'dense-analysis/ale'
 " 颜色显示插件
@@ -70,15 +72,14 @@ Plug 'RRethy/vim-hexokinase'
 Plug 'chxuan/change-colorscheme'
 " file manager
 Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'puremourning/vimspector'
 " 搜索多个目标
 Plug 'https://github.com/lfv89/vim-interestingwords'
-" DAP
-Plug 'puremourning/vimspector' , { 'do' : './install_gadget.py --all --disable-tcl'}
 " 内建终端功能的增强
 Plug 'skywind3000/vim-terminal-help'
 " 头文件到cpp的切换
 Plug 'vim-scripts/a.vim'
+" git blamer
+Plug 'APZelos/blamer.nvim'
 call plug#end()
 
 nmap <C-u> :call TerminalToggle()<cr>
@@ -97,10 +98,21 @@ inoremap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<tab>"
 
-let g:vimspector_enable_mappings = 'HUMAN'
-sign define vimspectorBP text=🔴 texthl=Normal
-sign define vimspectorBPDisabled text=🔵 texthl=Normal
-sign define vimspectorPC text=🔶 texthl=SpellBad
+sign define vimspectorBP text=  texthl=Normal
+sign define vimspectorBPDisabled text=  texthl=Normal
+sign define vimspectorPC text=🔶 texthl=SpellBad linehl=Vimspector_PC_line
+highlight Vimspector_PC_line ctermbg=Red  guibg=#ffff00
+
+nmap <F5>         <Plug>VimspectorContinue
+nmap <S-F5>       <Plug>VimspectorStop
+nmap <C-S-F5>     <Plug>VimspectorRestart
+nmap <C-P>        <Plug>VimspectorPause
+nnoremap <leader>dp   <Plug>VimspectorToggleBreakpoint
+nnoremap <leader>dP   <Plug>VimspectorToggleConditionalBreakpoint
+nnoremap <leader>df   <Plug>VimspectorAddFunctionBreakpoint
+nnoremap <F9>         <Plug>VimspectorStepOver
+nnoremap <F10>        <Plug>VimspectorStepInto
+nmap <S-F11>      <Plug>VimspectorStepOut
 
 if filereadable(getcwd() . '/.git/config')
     noremap <C-p> :GFiles<CR>
@@ -346,9 +358,14 @@ highlight PmenuSel guibg=lightgrey guifg=black
 
 nnoremap <leader> :
 
+let g:blamer_enabled = 1
+let g:blamer_delay = 200
+let g:blamer_show_in_visual_modes = 0
+let g:blamer_prefix = '  '
+
 let g:ale_cpp_clangtidy_executable="/usr/local/opt/llvm/bin/clang-tidy"
 let g:ale_cpp_clangtidy_checks=["bugprone-*","cppcoreguidelines*","performance-*"]
-let g:ale_cpp_build_dir="build-clangd"
+let g:ale_cpp_build_dir="build/Debug"
 " let g:ale_c_parse_makefile=1
 
 let g:ale_linters = {'cpp': ['clangtidy']}
