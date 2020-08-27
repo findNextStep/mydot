@@ -2,3 +2,16 @@
 tags
 compile_commands.json
 .vscode
+
+.idea
+parker.cert
+cmake-build-debug
+.vim
+build
+
+current_version
+
+__*
+.vimspector.json
+
+result
