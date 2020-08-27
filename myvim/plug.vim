@@ -51,6 +51,8 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'RRethy/vim-illuminate'
 " markdown预览
 Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
+" gtest
+Plug 'alepez/vim-gtest'
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
 " coc
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -366,6 +368,25 @@ let g:blamer_prefix = '  '
 let g:ale_cpp_clangtidy_executable="/usr/local/opt/llvm/bin/clang-tidy"
 let g:ale_cpp_clangtidy_checks=["bugprone-*","cppcoreguidelines*","performance-*"]
 let g:ale_cpp_build_dir="build/Debug"
+let g:ale_cpp_clangtidy_extra_options="-isystem/usr/local/opt/llvm/include/c++/v1"
+
 " let g:ale_c_parse_makefile=1
 
-let g:ale_linters = {'cpp': ['clangtidy']}
+let g:ale_linters = {
+            \ 'cpp': ['clangtidy'],
+            \ 'go':["golangci-lint"],
+            \ }
+let g:gtest#gtest_command = "./build/Debug/test"
+let g:gtest#highlight_failing_tests = 1
+augroup GTest
+	autocmd FileType cpp nnoremap <silent> <leader>tt :GTestRun<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tu :GTestRunUnderCursor<CR>
+	autocmd FileType cpp nnoremap          <leader>tc :GTestCase<space>
+	autocmd FileType cpp nnoremap          <leader>tn :GTestName<space>
+	autocmd FileType cpp nnoremap <silent> <leader>te :GTestToggleEnabled<CR>
+	autocmd FileType cpp nnoremap <silent> ]T         :GTestNext<CR>
+	autocmd FileType cpp nnoremap <silent> [T         :GTestPrev<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tf :CtrlPGTest<CR>
+	autocmd FileType cpp nnoremap <silent> <leader>tj :GTestJump<CR>
+	autocmd FileType cpp nnoremap          <leader>ti :GTestNewTest<CR>i
+augroup END
