@@ -1,3 +1,8 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
 # zmodload zsh/datetime
 # setopt PROMPT_SUBST
 # PS4='+$EPOCHREALTIME %N:%i> '
@@ -12,6 +17,9 @@ MY_SHELL="zsh"
 HOSTNAME=$HOST
 
 ZSH_THEME="pxq-style"
+
+# fast vim switch
+KEYTIMEOUT=1
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
@@ -84,10 +92,9 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 # # zinit 出于效率考虑会截获 compdef 调用，放到最后再统一应用，可以节省不少时间
 # zinit cdreplay -q
 
-gitstatus_stop next; gitstatus_start next
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 
-# mytheme
-source ~/mydot/pxq-style.zsh-theme
 
 # highlighting theme
 # fast-theme -q zdharma
@@ -232,3 +239,6 @@ __git_aliased_command ()
 
 # unsetopt XTRACE
 # exec 2>&3 3>&-
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
