@@ -73,11 +73,10 @@
                 "clang": {
                     "extraArgs": [
                         "-isystem",
-                        "/usr/local/opt/llvm/include/c++/v1",
-                        "-Wold-style-cast"
+                        "/usr/local/opt/llvm/include/c++/v1"
                     ],
                     "pathMappings": [],
-                    "resourceDir": "/usr/local/opt/llvm/lib/clang/10.0.0"
+                    "resourceDir": "/usr/local/opt/llvm/lib/clang/10.0.1"
                 },
                 "client": {
                     "diagnosticsRelatedInformation": true,
@@ -200,8 +199,7 @@
                 "start"
             ],
             "filetypes": [
-                "sh",
-                "zsh"
+                "sh"
             ],
             "ignoredRootPaths": [
                 "~"
