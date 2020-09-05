@@ -11,7 +11,7 @@
 readonly max_bright=$(cat /sys/class/backlight/$(ls /sys/class/backlight)/max_brightness)
 readonly bright=$(cat /sys/class/backlight/$(ls /sys/class/backlight)/brightness)
 if [ -z $1 ];then
-    echo $(($bright / $max_bright * 100))
+    echo $(($bright * 100 / $max_bright))
 else
     echo $(($1 * $max_bright / 100)) > /sys/class/backlight/$(ls /sys/class/backlight)/brightness
 fi
