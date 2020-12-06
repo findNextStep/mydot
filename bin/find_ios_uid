@@ -1,0 +1,4 @@
+for uid in $(idevice_id -l)
+do
+echo $uid $(ideviceinfo -k "DeviceName" -u $uid)&
+done | fzf | awk '{print $1}'
