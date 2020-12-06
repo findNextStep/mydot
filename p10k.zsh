@@ -1608,6 +1608,7 @@
     function prompt_cmake(){
         _p9k_upglob CMakeLists.txt && return
         _p9k_upglob build && return
+        [[ -f $dir/build/Debug/CMakeCache.txt ]] || return
         local dir=$_p9k__parent_dirs[$?]
         local build_type=$( cat $dir/build/Debug/CMakeCache.txt | grep CMAKE_BUILD_TYPE:STRING= | awk -F "=" '{print $2}')
         local generator=$( cat $dir/build/Debug/CMakeCache.txt | grep CMAKE_GENERATOR:INTERNAL= | awk -F "=" '{print $2}')
