@@ -78,3 +78,5 @@ let g:neovide_refresh_rate=60
 let g:neovide_fullscreen=v:true
 let g:neovide_cursor_animation_length=0.05
 let g:neovide_cursor_antialiasing=v:true
+
+autocmd FileType json syntax match Comment +\/\/.\+$+

@@ -36,7 +36,7 @@ if [ -f CMakeLists.txt ];then
     # fi
     # cd ..
     if [ ! -f ./build/Debug/Makefile -a ! -f ./build/Debug/build.ninja ];then
-        cmake -H. -Bbuild/Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -G Ninja
+        cmake -H. -Bbuild/Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -G Ninja -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
         if [ $? -ne 0 ]; then
             exit 1
         fi
@@ -53,7 +53,7 @@ if [ -f CMakeLists.txt ];then
         fi
     fi
     # 创建ccls的cache文件
-    ccls -index=./ -init="{\"compilationDatabaseDirectory\":\"./build/Debug\",\"cache\":{\"directory\":\"./.ccls-cache\",\"format\":\"binary\",\"hierarchicalPath\":false,\"retainInMemory\":2},\"highlight\":{\"lsRanges\": true }, \"clang\":{\"extraArgs\":[\"-isystem\",\"/usr/local/opt/llvm/include/c++/v1\"],\"resourceDir\":\"/usr/local/opt/llvm/lib/clang/10.0.1\"},\"index\":{\"threads\":12}}"
+    ccls -index=./ -init="{\"compilationDatabaseDirectory\":\"./build/Debug\",\"cache\":{\"directory\":\"./.ccls-cache\",\"format\":\"binary\",\"hierarchicalPath\":false,\"retainInMemory\":2},\"highlight\":{\"lsRanges\": true }, \"clang\":{\"extraArgs\":[\"-isystem\",\"/usr/local/opt/llvm/include/c++/v1\"]},\"index\":{\"threads\":12}}"
     if [ $? -ne 0 ]; then
         exit 1
     fi

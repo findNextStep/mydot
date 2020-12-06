@@ -53,8 +53,6 @@
                 "compilationDatabaseDirectory": "build/Debug",
                 "cache": {
                     "directory": ".ccls-cache",
-                    "format": "binary",
-                    "hierarchicalPath": false,
                     "retainInMemory": 2
                 },
                 "capabilities": {
@@ -74,9 +72,7 @@
                     "extraArgs": [
                         "-isystem",
                         "/usr/local/opt/llvm/include/c++/v1"
-                    ],
-                    "pathMappings": [],
-                    "resourceDir": "/usr/local/opt/llvm/lib/clang/10.0.1"
+                    ]
                 },
                 "client": {
                     "diagnosticsRelatedInformation": true,
@@ -87,31 +83,9 @@
                 "codeLens": {
                     "localVariables": false
                 },
-                "completion": {
-                    "caseSensitivity": 1,
-                    "detailedLabel": true,
-                    "dropOldRequests": true,
-                    "duplicateOptional": true,
-                    "filterAndSort": true,
-                    "include": {
-                        "blacklist": [],
-                        "maxPathSize": 37,
-                        "suffixWhitelist": [
-                            ".h",
-                            ".hpp",
-                            ".hh",
-                            ".inc",
-                            ".h",
-                            ".hpp",
-                            ".hh"
-                        ],
-                        "whitelist": []
-                    },
-                    "maxNum": 100,
-                    "placeholder": true
-                },
                 "diagnostics": {
                     "blacklist": [],
+                    "onOpen": 0,
                     "onChange": 200,
                     "spellChecking": true,
                     "whitelist": []
@@ -162,8 +136,9 @@
                 ".hg/"
             ],
             "env": {
-                "GO111MODULE": "off",
-                "CGO_ENABLED": "0"
+                "GO111MODULE": "on",
+                "GOFLAGS": "-mod=vendor",
+                "CGO_ENABLED": "1"
             },
             "filetypes": [
                 "go"
@@ -178,7 +153,6 @@
                 "python"
             ],
             "rootPatterns": [
-                "__pycache__"
             ]
         },
         "cmake": {

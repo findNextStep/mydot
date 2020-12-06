@@ -54,6 +54,9 @@ Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 " gtest
 Plug 'alepez/vim-gtest'
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
+Plug 'antoinemadec/FixCursorHold.nvim'
+" 移动光标
+Plug 'https://github.com/matze/vim-move'
 " coc
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'Shougo/neco-vim'
@@ -83,6 +86,15 @@ Plug 'vim-scripts/a.vim'
 " git blamer
 Plug 'APZelos/blamer.nvim'
 call plug#end()
+" in millisecond, used for both CursorHold and CursorHoldI,
+" use updatetime instead if not defined
+let g:cursorhold_updatetime = 100
+
+vmap gj <Plug>MoveBlockDown
+vmap gk <Plug>MoveBlockUp
+
+nmap gj <Plug>MoveLineDown
+nmap gk <Plug>MoveLineUp
 
 nmap <C-u> :call TerminalToggle()<cr>
 if has('nvim') == 0
@@ -117,9 +129,9 @@ nnoremap <F10>        <Plug>VimspectorStepInto
 nmap <S-F11>      <Plug>VimspectorStepOut
 
 if filereadable(getcwd() . '/.git/config')
-    noremap <C-p> :GFiles<CR>
+    noremap <leader>pf :GFiles<CR>
 else
-    noremap <C-p> :Files<CR>
+    noremap <leader>pf :Files<CR>
 endif
 nnoremap ;<space> :Commands<CR>
 noremap <C-j> :BTags<CR>
@@ -147,6 +159,7 @@ let g:NERDSpaceDelims=1
 filetype plugin on
 " 这里实际上是<C-/>不过由于某些原因是这样
 map <C-_>  <plug>NERDCommenterInvert
+map gc  <plug>NERDCommenterInvert
 
 noremap <c-z> <NOP>
 

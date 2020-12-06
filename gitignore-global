@@ -8,6 +8,8 @@ parker.cert
 cmake-build-debug
 .vim
 build
+build-macos
+build-ios
 
 current_version
 
