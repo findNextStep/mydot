@@ -1,9 +1,12 @@
 lcmd - j : yabai -m window --focus next
 lcmd - k : yabai -m window --focus prev
-ralt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+ralt + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+ralt - return : /Users/panxueqian/.cargo/bin/alacritty
 ralt - t : open -n /System/Applications/Utilities/Terminal.app
 ralt - d : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
 lcmd - t : yabai -m window --toggle float
+
+lcmd - g : zsh -c "/Users/panxueqian/Library/Android/sdk/platform-tools/adb shell input tap 1878 363&&sleep 5&&/Users/panxueqian/Library/Android/sdk/platform-tools/adb shell input tap 1878 963&&sleep 1&&/Users/panxueqian/Library/Android/sdk/platform-tools/adb shell input tap 1878 963"
 
 shift + lcmd - j : yabai -m window --swap next
 shift + lcmd - k : yabai -m window --swap prev
@@ -36,4 +39,6 @@ lcmd - w : yabai -m display --focus next
 lcmd - q : yabai -m display --focus prev
 lcmd + shift -w : yabai -m window --display next
 lcmd + shift -q : yabai -m window --display prev
+
+lcmd + shift - r :/Users/panxueqian/Downloads/code.app/Contents/Resources/app/bin/code $(cat /Users/panxueqian/Library/Application\ Support/Code/storage.json | grep path | awk -F'\"' '{print $4}' | xmenu)
 

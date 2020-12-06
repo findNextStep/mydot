@@ -37,8 +37,6 @@ case "$(uname -s)" in
 esac
 
 
-export TASKDDATA=~/.tasked
-mkdir -p $TASKDDATA
 
 #ros相关
 #export ROS_HOSTNAME=192.168.188.233
@@ -50,7 +48,11 @@ nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs
 
 # 消除ctrl+s锁定
 # 参考https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
-stty -ixon
+if [ ! -z $MY_TERMINAL ]; then
+    if [ $MY_TERMINAL != "alacritty"  ] ;then
+        stty -ixon
+    fi
+fi
 
 # CUDA
 # export PATH=/usr/local/cuda/bin:$PATH
@@ -79,12 +81,15 @@ export LESS_TERMCAP_ZV=""
 export LESS_TERMCAP_so=$'\E[1m\E[33m\E[44m'
 export LANG=en_US.UTF-8
 
+export PATH="$PATH:$HOME/.emacs.d/bin"
+
 case "$(uname -s)" in
     Linux*) ;;
     Darwin*)
         export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
         export PATH="/usr/local/opt/gettext/bin:$PATH"
         export PATH="$PATH:/usr/local/bin"
+        export PATH="$PATH:~/go/bin"
         export PATH="$PATH:/Library/Apple/usr/bin"
         export ANDROID_HOME="$HOME/Library/Android/sdk" 
         export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
@@ -92,6 +97,10 @@ case "$(uname -s)" in
         export PATH="$PATH:$ANDROID_HOME/platform-tools"
         export PATH="$HOME/Downloads/code.app/Contents/Resources/app/bin:$PATH"
         export GOPATH="$HOME/go"
-        export CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/9.0.0/include/c++/v1
+        export CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/10.0.1/include/c++/v1
+        export PATH="$PATH:~/anaconda3/bin"
+        # export PATH="/usr/local/opt/llvm/bin:$PATH"
+        # export LDFLAGS="-L/usr/local/Cellar/llvm@9/9.0.1_2/lib/clang"
+        # export CPPFLAGS="-I/usr/local/Cellar/llvm@9/9.0.1_2/include"
         ;;
 esac

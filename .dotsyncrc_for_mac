@@ -6,6 +6,7 @@ DOTFILES=mydot
 bashrc
 vimrc
 myvim
+alacritty.yml
 zshrc
 shrc
 picture
@@ -23,6 +24,6 @@ kitty.conf:.config/kitty/kitty.conf
 
 [hosts]
 findNextepdeMBP
-C02CG178MD6V
+MacBook-Pro.local 
 bogon
 [endhosts]
