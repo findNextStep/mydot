@@ -70,11 +70,13 @@ zinit for \
 
 zinit ice as="completion"
 zinit snippet https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty
-# zinit as="completion" for \
-    # PZT::modules/docker/_docker \
-    # OMZ::plugins/cabal_/cabal \
-    # OMZ::plugins/xcode/_xcode \
-    # OMZ::plugins/fd/_fd
+zinit as="completion" for \
+    OMZ::plugins/docker/_docker \
+    OMZ::plugins/rust/_rust \
+    OMZ::plugins/cargo/_cargo \
+    OMZ::plugins/fd/_fd
+zinit ice mv=":zsh -> _cht" as="completion"
+zinit snippet https://cheat.sh/:zsh
 # zinit light-mode for \
         # agkozak/zsh-z
 zinit load agkozak/zsh-z
