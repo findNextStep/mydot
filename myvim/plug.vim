@@ -58,7 +58,7 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 " 移动光标
 Plug 'https://github.com/matze/vim-move'
 " coc
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
 Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
