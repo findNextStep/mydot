@@ -676,7 +676,7 @@ background_opacity: 0.7
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
+key_bindings:
   #- { key: Paste,                                action: Paste          }
   #- { key: Copy,                                 action: Copy           }
   #- { key: L,         mods: Control,             action: ClearLogNotice }
@@ -757,6 +757,7 @@ background_opacity: 0.7
   #- { key: Key0,           mods: Command,            action: ResetFontSize    }
   #- { key: Equals,         mods: Command,            action: IncreaseFontSize }
   #- { key: Plus,           mods: Command,            action: IncreaseFontSize }
+  - { key: Slash,   mods: Control,       chars: "\x1f"                 }
   #- { key: NumpadAdd,      mods: Command,            action: IncreaseFontSize }
   #- { key: Minus,          mods: Command,            action: DecreaseFontSize }
   #- { key: NumpadSubtract, mods: Command,            action: DecreaseFontSize }
