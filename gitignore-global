@@ -10,6 +10,7 @@ cmake-build-debug
 build
 build-macos
 build-ios
+build_*
 
 current_version
 
