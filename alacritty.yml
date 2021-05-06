@@ -658,6 +658,7 @@ key_bindings:
   #- { key: Equals,         mods: Command,            action: IncreaseFontSize }
   #- { key: Plus,           mods: Command,            action: IncreaseFontSize }
   - { key: Slash,   mods: Control,       chars: "\x1f"                 }
+  - { key: Back,    action:  ReceiveChar}
   #- { key: NumpadAdd,      mods: Command,            action: IncreaseFontSize }
   #- { key: Minus,          mods: Command,            action: DecreaseFontSize }
   #- { key: NumpadSubtract, mods: Command,            action: DecreaseFontSize }
