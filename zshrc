@@ -175,11 +175,15 @@ copy-to-xclip() {
     esac
 }
 zle -N copy-to-xclip
+
+source ~/.shrc
+
 bindkey -M vicmd "y" copy-to-xclip
 ## autosuggestions keybind
 bindkey "גּ " autosuggest-accept
 ## super + l in mac
 bindkey "¬" autosuggest-accept
+bindkey "^L" autosuggest-accept
 bindkey "^J" autosuggest-accept
 bindkey "גּl" autosuggest-accept
 bindkey "גּk" up-line-or-search
@@ -190,7 +194,7 @@ bindkey "∆" down-line-or-search
 bindkey "^[OA" up-line-or-beginning-search
 bindkey "^[OB" down-line-or-beginning-search
 bindkey "^K" up-line-or-beginning-search
-bindkey "^J" down-line-or-beginning-search
+# bindkey "^J" down-line-or-beginning-search
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
 
@@ -216,7 +220,6 @@ setopt HIST_IGNORE_SPACE
 # 自动提示中使用自动补全的项目
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-source ~/.shrc
 
 # fzf just good
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -266,3 +269,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
