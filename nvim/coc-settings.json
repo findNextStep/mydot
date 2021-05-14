@@ -2,19 +2,21 @@
     "coc.preferences.enableFloatHighlight": true,
     "suggest.enablePreview": true,
     "coc.preferences.hoverTarget": "float",
-    "clangd.enabled": false,
+    "clangd.enabled": true,
+    "clangd.semanticHighlighting": false,
     "clangd.arguments": [
         "--background-index",
-        "--compile-commands-dir=build-clangd",
-        "--all-scopes-completion",
-        "-j",
-        "12",
+        "--compile-commands-dir=build/Debug",
+        "-j=10",
         "--clang-tidy",
+        "--query-driver=/usr/bin/clang++",
+        "--all-scopes-completion",
         "--completion-style=detailed",
+        "--function-arg-placeholders",
         "--header-insertion=iwyu",
         "--pch-storage=disk"
     ],
-    "clangd.path": "/usr/local/opt/llvm/bin/clangd",
+    "clangd.path": "/Users/panxueqian/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/12.0.0/clangd_12.0.0/bin/clangd",
     "coc.preferences.colorSupport": true,
     "codeLens.enable": true,
     "coc.preferences.formatOnType": true,
@@ -30,98 +32,6 @@
             "filetypes": [
                 "vim"
             ]
-        },
-        "ccls": {
-            "command": "ccls",
-            "args": [
-                "--log-file",
-                "/tmp/ccls.log"
-            ],
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ],
-            "rootPatterns": [
-                ".ccls-cache",
-                ".vim/",
-                ".git/",
-                "compile_commands.json"
-            ],
-            "initializationOptions": {
-                "compilationDatabaseDirectory": "build/Debug",
-                "cache": {
-                    "directory": ".ccls-cache",
-                    "retainInMemory": 2
-                },
-                "capabilities": {
-                    "documentOnTypeFormattingProvider": {
-                        "firstTriggerCharacter": "}",
-                        "moreTriggerCharacter": []
-                    },
-                    "foldingRangeProvider": false,
-                    "workspace": {
-                        "workspaceFolders": {
-                            "supported": true,
-                            "changeNotifications": true
-                        }
-                    }
-                },
-                "clang": {
-                    "extraArgs": [
-                        "-isystem",
-                        "/usr/local/opt/llvm/include/c++/v1"
-                    ]
-                },
-                "client": {
-                    "diagnosticsRelatedInformation": true,
-                    "hierarchicalDocumentSymbolSupport": true,
-                    "linkSupport": true,
-                    "snippetSupport": true
-                },
-                "codeLens": {
-                    "localVariables": false
-                },
-                "diagnostics": {
-                    "blacklist": [],
-                    "onOpen": 0,
-                    "onChange": 200,
-                    "spellChecking": true,
-                    "whitelist": []
-                },
-                "highlight": {
-                    "lsRanges": true
-                },
-                "index": {
-                    "comments": 2,
-                    "initialNoLinkage": false,
-                    "maxInitializerLines": 15,
-                    "multiVersion": 0,
-                    "name": {
-                        "suppressUnwrittenScope": false
-                    },
-                    "onChange": false,
-                    "parametersInDeclarations": true,
-                    "threads": 10,
-                    "trackDependency": 2,
-                    "whitelist": []
-                },
-                "request": {
-                    "timeout": 5000
-                },
-                "session": {
-                    "maxNum": 10
-                },
-                "workspaceSymbol": {
-                    "caseSensitivity": 1,
-                    "maxNum": 1000000,
-                    "sort": true
-                },
-                "xref": {
-                    "maxNum": 2000
-                }
-            }
         },
         "golang": {
             "command": "~/go/bin/gopls",
@@ -152,8 +62,7 @@
             "filetypes": [
                 "python"
             ],
-            "rootPatterns": [
-            ]
+            "rootPatterns": []
         },
         "cmake": {
             "command": "cmake-language-server",

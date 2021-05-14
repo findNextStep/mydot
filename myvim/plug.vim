@@ -58,7 +58,7 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 " 移动光标
 Plug 'https://github.com/matze/vim-move'
 " coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'feat/lsp-316'}
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
 Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
@@ -135,10 +135,12 @@ else
 endif
 nnoremap ;<space> :Commands<CR>
 noremap <C-j> :BTags<CR>
+noremap <leader>sj :BTags<CR>
 noremap <leader>pf :Files<CR>
 noremap <leader>fs :BTags<CR>
 noremap <leader>fl :Lines<CR>
 nnoremap <leader>ps :CocList symbols<CR>
+nnoremap <leader>sf :call CocActionAsync('showSemanticHighlightInfo')<CR>
 
 " gitgutter
 let g:gitgutter_sign_added = '+'
@@ -300,7 +302,7 @@ xmap <silent> <C-k> <Plug>(coc-format-selected)
 " au CursorHold * sil call CocActionAsync('highlight')
 " au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 highlight CocErrorHighlight ctermbg=Red  guibg=#ff0000
-highlight CocWarningHighlight guibg=#ffff00
+highlight CocWarningHighlight guibg=#da8000
 
 " use lsp to highlight cxx
 let g:lsp_cxx_hl_use_text_props = 1
@@ -330,6 +332,22 @@ highlight Comment guifg=#7ca668
 highlight String guifg=#ce9178
 highlight Constant guifg=#b5cea8
 highlight LspCxxHlSymUnknownNone ctermfg=Red guifg=#FF0000 cterm=bold gui=bold
+
+highlight CocSem_parameter guifg=#306b72
+highlight CocSem_class guifg=#729de3 gui=bold
+highlight CocSem_type guifg=#729de3 gui=bold
+highlight CocSem_function guifg=#e5b124
+highlight CocSem_typeParameter guifg=#729de3 gui=bold
+highlight CocSem_variable guifg=#26cdca
+highlight CocSem_enum guifg=#729de3 gui=bold
+highlight CocSem_enumMember guifg=#397797 gui=bold
+highlight CocSem_macro guifg=#8f5daf gui=bold
+highlight CocSem_method guifg=#e5b124 gui=underline
+highlight CocSem_comment guifg=#505050
+highlight CocSem_namespace guifg=#00d780 gui=bold
+highlight CocSem_property guifg=#7ca6b7 gui=underline
+
+
 autocmd FileType cpp,cxx setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
 " black, brown酒红, grey, blue, green, cyan, magenta, yellow, white
