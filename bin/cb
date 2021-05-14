@@ -14,29 +14,8 @@ if [ -f CMakeLists.txt ];then
     if [ ! -d build/Debug ];then
         mkdir -p build/Debug
     fi
-    # 创建compile database
-    # clangd
-    if [ ! -d build-clangd ];then
-        mkdir build-clangd
-    fi
-    # cd build-clangd
-    # if [ ! -f Makefile -a ! -f build.ninja ];then
-        # LDFLAGS="-L/usr/local/opt/llvm/lib" \
-        # CPPFLAGS="-I/usr/local/opt/llvm/include" \
-        # cmake \
-            # -D CMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang \
-            # -D CMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ \
-            # -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-            # -DCMAKE_BUILD_TYPE=Debug \
-            # -G Ninja \ 
-            # ..
-        # if [ $? -ne 0 ]; then
-            # exit 1
-        # fi
-    # fi
-    # cd ..
     if [ ! -f ./build/Debug/Makefile -a ! -f ./build/Debug/build.ninja ];then
-        cmake -H. -Bbuild/Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -G Ninja -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+        cmake -H. -Bbuild/Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -G Ninja -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
         if [ $? -ne 0 ]; then
             exit 1
         fi
