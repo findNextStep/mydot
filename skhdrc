@@ -1,7 +1,7 @@
 lcmd - j : yabai -m window --focus next
 lcmd - k : yabai -m window --focus prev
 ralt + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
-ralt - return : /usr/local/bin/alacritty
+ralt - return : /Users/panxueqian/.cargo/bin/alacritty
 ralt - t : open -n /System/Applications/Utilities/Terminal.app
 ralt - d : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
 lcmd - t : yabai -m window --toggle float
@@ -40,5 +40,5 @@ lcmd - q : yabai -m display --focus prev
 lcmd + shift -w : yabai -m window --display next
 lcmd + shift -q : yabai -m window --display prev
 
-lcmd + shift - r : /usr/local/bin/alacritty --command zsh -c "/Users/panxueqian/Downloads/code.app/Contents/Resources/app/bin/code \$(cat /Users/panxueqian/Library/Application\ Support/Code/storage.json | grep path | awk -F'\\\"' '{print \$4}' | /Users/panxueqian/.fzf/bin/fzf)"
+lcmd + shift - r : /Users/panxueqian/.cargo/bin/alacritty --command zsh -c "/usr/local/bin/code \$(cat /Users/panxueqian/Library/Application\ Support/Code/storage.json | grep path | awk -F'\\\"' '{print \$4}' | /Users/panxueqian/.fzf/bin/fzf)"
 
