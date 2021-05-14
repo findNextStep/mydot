@@ -16,10 +16,12 @@ alias apt_proxy='apt -o Acquire::http::proxy="http://127.0.0.1:8118/"'
 # fuzzy的cd跳转
 alias cdto='cd $(find -type d | fzf)'
 alias q="exit"
-# 构建指令
-alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON '
 # my mpc
 alias mpc='mpc --host=localhost --port=16600'
+# android copy
+alias adbcopy='adb shell am broadcast -a clipper.set -e text'
+# android paste
+alias adbclipget='adb shell am broadcast -a clipper.get'
 
 upgrade_finish(){
     echo "更新完成" | espeak -v zh
@@ -91,11 +93,11 @@ case "$(uname -s)" in
         export PATH="$PATH:/usr/local/bin"
         export PATH="$PATH:~/go/bin"
         export PATH="$PATH:/Library/Apple/usr/bin"
-        export ANDROID_HOME="$HOME/Library/Android/sdk" 
+        export PATH="/usr/local/sbin:$PATH"
+        export ANDROID_HOME="$HOME/Library/Android/sdk"
         export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
         export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
         export PATH="$PATH:$ANDROID_HOME/platform-tools"
-        export PATH="$HOME/Downloads/code.app/Contents/Resources/app/bin:$PATH"
         export GOPATH="$HOME/go"
         export CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/10.0.1/include/c++/v1
         export PATH="$PATH:~/anaconda3/bin"
