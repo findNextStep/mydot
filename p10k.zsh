@@ -86,7 +86,7 @@
     load                  # CPU load
     # disk_usage            # disk usage
     ram                   # free RAM
-    # swap                  # used swap
+    swap                  # used swap
     # todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
     # timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     # taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
@@ -949,6 +949,7 @@
   # without the surrounding parentheses, or to the last path component of CONDA_PREFIX if the former
   # is empty.
   typeset -g POWERLEVEL9K_ANACONDA_CONTENT_EXPANSION='${${${${CONDA_PROMPT_MODIFIER#\(}% }%\)}:-${CONDA_PREFIX:t}}'
+  typeset -g CONDA_PROMPT_MODIFIER='base'
 
   # Custom icon.
   # typeset -g POWERLEVEL9K_ANACONDA_VISUAL_IDENTIFIER_EXPANSION='⭐'
@@ -1608,8 +1609,8 @@
     function prompt_cmake(){
         _p9k_upglob CMakeLists.txt && return
         _p9k_upglob build && return
-        [[ -f $dir/build/Debug/CMakeCache.txt ]] || return
         local dir=$_p9k__parent_dirs[$?]
+        [[ -f $dir/build/Debug/CMakeCache.txt ]] || return
         local build_type=$( cat $dir/build/Debug/CMakeCache.txt | grep CMAKE_BUILD_TYPE:STRING= | awk -F "=" '{print $2}')
         local generator=$( cat $dir/build/Debug/CMakeCache.txt | grep CMAKE_GENERATOR:INTERNAL= | awk -F "=" '{print $2}')
         p10k segment -b 2 -f 0 -t "$build_type $generator"

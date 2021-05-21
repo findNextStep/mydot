@@ -17,6 +17,7 @@ lsp_setting.json
 spacemacs.el:.spacemacs
 nvim:.config/nvim
 yabai:.yabairc
+p10k.zsh
 skhdrc
 gitignore-global
 kitty.conf:.config/kitty/kitty.conf
