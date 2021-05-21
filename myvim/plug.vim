@@ -24,7 +24,7 @@ Plug 'findNextStep/vim-obsession'
 Plug 'ryanoasis/vim-devicons'
 " git插件
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 " 注释
 Plug 'scrooloose/nerdcommenter'
 " 缩进线
@@ -37,26 +37,26 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 " 可视化的窗口选择
 Plug 't9md/vim-choosewin'
 " zsh 补全
-Plug 'tracyone/vim-zsh-completion',{'for': ['zsh','sh']}
+" Plug 'tracyone/vim-zsh-completion',{'for': ['zsh','sh']}
 " js
-Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
+" Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
 " 颜色显示
 Plug 'ap/vim-css-color'
 " vim-debug 需要
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'idanarye/vim-vebugger'
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'idanarye/vim-vebugger'
 " 消除多余空格
 Plug 'bronson/vim-trailing-whitespace'
 " 光标下词语自动高亮
 Plug 'RRethy/vim-illuminate'
 " markdown预览
-Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
+" Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 " gtest
-Plug 'alepez/vim-gtest'
-Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
+" Plug 'alepez/vim-gtest'
+" Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
 Plug 'antoinemadec/FixCursorHold.nvim'
 " 移动光标
-Plug 'https://github.com/matze/vim-move'
+" Plug 'https://github.com/matze/vim-move'
 " coc
 Plug 'neoclide/coc.nvim', {'branch': 'feat/lsp-316'}
 Plug 'Shougo/neco-vim'
@@ -64,21 +64,21 @@ Plug 'neoclide/coc-neco'
 Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 " 智能高亮需要coc.nvim
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Plug 'jackguo380/vim-lsp-cxx-highlight'
 " ccls加强
-Plug 'm-pilia/vim-ccls'
+" Plug 'm-pilia/vim-ccls'
 " DAP debug
-Plug 'puremourning/vimspector',{ 'do' : 'python3 ./install_gadget.py --enable-go --enable-c '}
+" Plug 'puremourning/vimspector',{ 'do' : 'python3 ./install_gadget.py --enable-go --enable-c '}
 " ale
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 " 颜色显示插件
 Plug 'RRethy/vim-hexokinase'
 " theme pick up
-Plug 'chxuan/change-colorscheme'
+" Plug 'chxuan/change-colorscheme'
 " file manager
-Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
 " 搜索多个目标
-Plug 'https://github.com/lfv89/vim-interestingwords'
+" Plug 'https://github.com/lfv89/vim-interestingwords'
 " 内建终端功能的增强
 Plug 'skywind3000/vim-terminal-help'
 " 头文件到cpp的切换
