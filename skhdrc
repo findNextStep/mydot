@@ -40,5 +40,5 @@ lcmd - q : yabai -m display --focus prev
 lcmd + shift -w : yabai -m window --display next
 lcmd + shift -q : yabai -m window --display prev
 
-lcmd + shift - r : /Users/panxueqian/.cargo/bin/alacritty --command zsh -c "/usr/local/bin/code \$(cat /Users/panxueqian/Library/Application\ Support/Code/storage.json | grep path | awk -F'\\\"' '{print \$4}' | /Users/panxueqian/.fzf/bin/fzf)"
+lcmd + shift - r : ~/.cargo/bin/alacritty --command zsh -c "/usr/local/bin/code --folder-uri \"\$(node -e 'console.log(decodeURIComponent(process.argv[1]))' -- \"\$(cat ~/Library/Application\ Support/Code/storage.json | jq '.openedPathsList.entries[].folderUri' -r | ~/.fzf/bin/fzf  )\")\""
 
