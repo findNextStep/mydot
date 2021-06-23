@@ -88,11 +88,14 @@ zinit light-mode for \
     atclone="dircolors -b LS_COLORS > c.zsh" atpull='%atclone' pick='c.zsh' \
         trapd00r/LS_COLORS
 
-zinit light-mode for \
-    zdharma/fast-syntax-highlighting \
+zinit wait="0" lucid light-mode for \
     zsh-users/zsh-autosuggestions \
     romkatv/gitstatus \
-    zsh-vi-more/vi-motions
+    zsh-vi-more/vi-motions \
+    wfxr/forgit
+zinit light-mode for zdharma/fast-syntax-highlighting
+# stop use syntax highlighting in git, it`s so slow
+FAST_HIGHLIGHT[chroma-git]=0
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
