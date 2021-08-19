@@ -26,16 +26,16 @@ ENABLE_CORRECTION="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 
-setopt interactive_comments hist_ignore_dups  octal_zeroes   no_prompt_cr
-setopt no_hist_no_functions no_always_to_end  append_history list_packed
-setopt inc_append_history   complete_in_word  no_auto_menu   auto_pushd
-setopt pushd_ignore_dups    no_glob_complete  no_glob_dots   c_bases
-setopt numeric_glob_sort    no_share_history  promptsubst    auto_cd
-setopt rc_quotes            extendedglob      notify
-autoload -Uz rgzh rgsrc rgdata pslist ebindkey expand_alias palette printc oomscore pb
-autoload -Uz zcalc zmv
+# setopt interactive_comments hist_ignore_dups  octal_zeroes   no_prompt_cr
+# setopt no_hist_no_functions no_always_to_end  append_history list_packed
+# setopt inc_append_history   complete_in_word  no_auto_menu   auto_pushd
+# setopt pushd_ignore_dups    no_glob_complete  no_glob_dots   c_bases
+# setopt numeric_glob_sort    no_share_history  promptsubst    auto_cd
+# setopt rc_quotes            extendedglob      notify
+# autoload -Uz rgzh rgsrc rgdata pslist ebindkey expand_alias palette printc oomscore pb
+# autoload -Uz zcalc zmv
 
-zmodload zsh/zpty
+# zmodload zsh/zpty
 
 [[ ! -f ~/.zinit/bin/zinit.zsh ]] && {
     command mkdir -p ~/.zinit
@@ -90,6 +90,7 @@ zinit wait"1" lucid for \
 # zsh-autosuggestions fish一样的历史记录提示
 zinit wait"0" lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+ atload"FAST_HIGHLIGHT[chroma-git]=0" \
     zdharma/fast-syntax-highlighting \
  blockf \
     zsh-users/zsh-completions \
