@@ -16,11 +16,18 @@ cnoreabbrev Q q
 cnoreabbrev Qall qall
 
 " 定义leader键
-let mapleader=" "
-map <leader>wq :wq<CR>
-map <leader>q :q<CR>
-map <leader>aq :qa<CR>
-map <leader>noh :noh<CR>
+if exists('g:vscode')
+    let mapleader=","
+    nnoremap <space> <Cmd>call VSCodeNotify('vspacecode.space')<CR>
+else
+    let mapleader=" "
+    nnoremap <leader> :
+    map <leader>wq :wq<CR>
+    map <leader>q :q<CR>
+    map <leader>aq :qa<CR>
+    map <leader>noh :noh<CR>
+endif
+
 
 " 定义常规快捷键
 noremap <C-s> :w<CR>
@@ -47,8 +54,10 @@ nnoremap <C-x> V"+ydd
 
 " ctrl+n创建新窗口Alt+n创建新标签
 nnoremap <C-n> :tabnew<CR>
-nnoremap <leader>wk :sp<CR>
-nnoremap <leader>wl :vsp<CR>
+if !exists('g:vscode')
+    nnoremap <leader>wk :sp<CR>
+    nnoremap <leader>wl :vsp<CR>
+endif
 
 " 撤销和反撤销
 nnoremap U <C-r>
@@ -61,10 +70,13 @@ nmap גּa :tabnext 1<CR>
 nmap גּs :tabnext 2<CR>
 nmap גּd :tabnext 3<CR>
 nmap גּf :tabnext 4<CR>
-nmap <leader>a :tabnext 1<CR>
-nmap <leader>s :tabnext 2<CR>
-nmap <leader>d :tabnext 3<CR>
-nmap <leader>f :tabnext 4<CR>
+
+if !exists('g:vscode')
+    nmap <leader>a :tabnext 1<CR>
+    nmap <leader>s :tabnext 2<CR>
+    nmap <leader>d :tabnext 3<CR>
+    nmap <leader>f :tabnext 4<CR>
+endif
 
 
 nmap גּj <C-w>j
@@ -82,4 +94,6 @@ nnoremap <C-L> <C-I>
 tnoremap jj <c-\><c-n>
 
 " 打开光标下的路径
-nnoremap <leader>gf :topleft wincmd f<CR>
+if !exists('g:vscode')
+    nnoremap <leader>gf :topleft wincmd f<CR>
+endif

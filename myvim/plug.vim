@@ -16,22 +16,24 @@ endif
 call plug#begin('~/.vim/plug')
 " 后台运行
 Plug 'https://github.com/skywind3000/asyncrun.vim'
-" airline
-Plug 'vim-airline/vim-airline'
-" 自动保存当前状态
-Plug 'findNextStep/vim-obsession'
-" vim特殊字符使用
-Plug 'ryanoasis/vim-devicons'
-" git插件
-Plug 'airblade/vim-gitgutter'
-" Plug 'tpope/vim-fugitive'
-" 注释
-Plug 'scrooloose/nerdcommenter'
-" 缩进线
-Plug 'Yggdroot/indentLine'
-" fuzzy 命令
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+if !exists('g:vscode')
+    " airline
+    Plug 'vim-airline/vim-airline'
+    " 自动保存当前状态
+    Plug 'findNextStep/vim-obsession'
+    " vim特殊字符使用
+    Plug 'ryanoasis/vim-devicons'
+    " git插件
+    Plug 'airblade/vim-gitgutter'
+    " Plug 'tpope/vim-fugitive'
+    " 注释
+    Plug 'scrooloose/nerdcommenter'
+    " 缩进线
+    Plug 'Yggdroot/indentLine'
+    " fuzzy 命令
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+endif
 " doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
 " 可视化的窗口选择
@@ -58,11 +60,13 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 " 移动光标
 " Plug 'https://github.com/matze/vim-move'
 " coc
-Plug 'neoclide/coc.nvim', {'branch': 'feat/lsp-316'}
-Plug 'Shougo/neco-vim'
-Plug 'neoclide/coc-neco'
-Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+if !exists('g:vscode')
+    Plug 'neoclide/coc.nvim', {'branch': 'master','do': 'yarn install --frozen-lockfile'}
+    Plug 'Shougo/neco-vim'
+    Plug 'neoclide/coc-neco'
+    Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+endif
 " 智能高亮需要coc.nvim
 " Plug 'jackguo380/vim-lsp-cxx-highlight'
 " ccls加强
@@ -72,19 +76,23 @@ Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 " ale
 " Plug 'dense-analysis/ale'
 " 颜色显示插件
-Plug 'RRethy/vim-hexokinase'
+" Plug 'RRethy/vim-hexokinase'
 " theme pick up
 " Plug 'chxuan/change-colorscheme'
 " file manager
 " Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
 " 搜索多个目标
-" Plug 'https://github.com/lfv89/vim-interestingwords'
-" 内建终端功能的增强
-Plug 'skywind3000/vim-terminal-help'
+Plug 'https://github.com/lfv89/vim-interestingwords'
+if !exists('g:vscode')
+    " 内建终端功能的增强
+    Plug 'skywind3000/vim-terminal-help'
+endif
 " 头文件到cpp的切换
 Plug 'vim-scripts/a.vim'
-" git blamer
-Plug 'APZelos/blamer.nvim'
+if !exists('g:vscode')
+    " git blamer
+    Plug 'APZelos/blamer.nvim'
+endif
 call plug#end()
 " in millisecond, used for both CursorHold and CursorHoldI,
 " use updatetime instead if not defined
@@ -117,30 +125,37 @@ sign define vimspectorBPDisabled text=  texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad linehl=Vimspector_PC_line
 highlight Vimspector_PC_line ctermbg=Red  guibg=#ffff00
 
-nmap <F5>         <Plug>VimspectorContinue
-nmap <S-F5>       <Plug>VimspectorStop
-nmap <C-S-F5>     <Plug>VimspectorRestart
-nmap <C-P>        <Plug>VimspectorPause
-nnoremap <leader>dp   <Plug>VimspectorToggleBreakpoint
-nnoremap <leader>dP   <Plug>VimspectorToggleConditionalBreakpoint
-nnoremap <leader>df   <Plug>VimspectorAddFunctionBreakpoint
-nnoremap <F9>         <Plug>VimspectorStepOver
-nnoremap <F10>        <Plug>VimspectorStepInto
-nmap <S-F11>      <Plug>VimspectorStepOut
+if !exists('g:vscode')
+    nmap <F5>         <Plug>VimspectorContinue
+    nmap <S-F5>       <Plug>VimspectorStop
+    nmap <C-S-F5>     <Plug>VimspectorRestart
+    nmap <C-P>        <Plug>VimspectorPause
+    nnoremap <leader>dp   <Plug>VimspectorToggleBreakpoint
+    nnoremap <leader>dP   <Plug>VimspectorToggleConditionalBreakpoint
+    nnoremap <leader>df   <Plug>VimspectorAddFunctionBreakpoint
+    nnoremap <F9>         <Plug>VimspectorStepOver
+    nnoremap <F10>        <Plug>VimspectorStepInto
+    nmap <S-F11>      <Plug>VimspectorStepOut
+endif
 
-if filereadable(getcwd() . '/.git/config')
-    noremap <leader>pf :GFiles<CR>
-else
-    noremap <leader>pf :Files<CR>
+if !exists('g:vscode')
+    if filereadable(getcwd() . '/.git/config')
+        noremap <leader>pf :GFiles<CR>
+    else
+        noremap <leader>pf :Files<CR>
+    endif
 endif
 nnoremap ;<space> :Commands<CR>
 noremap <C-j> :BTags<CR>
-noremap <leader>sj :BTags<CR>
-noremap <leader>pf :Files<CR>
-noremap <leader>fs :BTags<CR>
-noremap <leader>fl :Lines<CR>
-nnoremap <leader>ps :CocList symbols<CR>
-nnoremap <leader>sf :call CocActionAsync('showSemanticHighlightInfo')<CR>
+
+if !exists('g:vscode')
+    noremap <leader>sj :BTags<CR>
+    noremap <leader>pf :Files<CR>
+    noremap <leader>fs :BTags<CR>
+    noremap <leader>fl :Lines<CR>
+    nnoremap <leader>ps :CocList symbols<CR>
+    nnoremap <leader>sf :call CocActionAsync('showSemanticHighlightInfo')<CR>
+endif
 
 " gitgutter
 let g:gitgutter_sign_added = '+'
@@ -148,8 +163,11 @@ let g:gitgutter_sign_modified = 'c'
 let g:gitgutter_sign_removed = '>'
 let g:gitgutter_sign_removed_first_line = '^'
 let g:gitgutter_sign_modified_removed = 'w'
-noremap <silent> <leader>gia :!Git add %<CR>
-noremap <silent> <C-b> :AsyncRun make -C ./build/Debug -j6<CR>
+
+if !exists('g:vscode')
+    noremap <silent> <leader>gia :!Git add %<CR>
+    noremap <silent> <C-b> :AsyncRun make -C ./build/Debug -j6<CR>
+endif
 set updatetime=100
 
 
@@ -214,7 +232,10 @@ function! T()
 endfun
 let g:Startscreen_function = function('T')
 
-nmap <leader>gw  <Plug>(choosewin)
+
+if !exists('g:vscode')
+    nmap <leader>gw  <Plug>(choosewin)
+endif
 let g:choosewin_overlay_enable = 1
 
 " RRethy / vim-illuminate
@@ -223,8 +244,10 @@ let g:Illuminate_delay = 20
 
 
 " markdown预览
-nnoremap <leader>mv :MarkdownPreview<CR>
-nnoremap <leader>mk :MarkdownPreviewStop<CR>
+if !exists('g:vscode')
+    nnoremap <leader>mv :MarkdownPreview<CR>
+    nnoremap <leader>mk :MarkdownPreviewStop<CR>
+endif
 
 " haskell自动补全
 " let g:haskellmode_completion_ghc = 0
@@ -234,9 +257,11 @@ nnoremap <leader>mk :MarkdownPreviewStop<CR>
 let g:cmake_map_keys = 0
 
 " VBG debug
-nnoremap <leader>sp         :VBGtoggleBreakpointThisLine<CR>
-nnoremap <leader>sd         :VBGstartGDB
-nnoremap <leader>s<space>   :VBGcontinue<CR>
+if !exists('g:vscode')
+    nnoremap <leader>sp         :VBGtoggleBreakpointThisLine<CR>
+    nnoremap <leader>sd         :VBGstartGDB
+    nnoremap <leader>s<space>   :VBGcontinue<CR>
+endif
 
 let g:airline_powerline_fonts=1
 function! CMakeStat()
@@ -286,18 +311,20 @@ let g:Hexokinase_signIcon = ''
 
 " coc
 autocmd FileType json syntax match Comment +\/\/.\+$+
-nnoremap <leader>gf :A<CR>
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-" highlight Pmenu    guibg=darkgrey  guifg=black
-" highlight PmenuSel guibg=lightgrey guifg=black
-nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gt <Plug>(coc-type-definition)
-nmap <silent> <leader>gi <Plug>(coc-implementation)
-nmap <silent> <leader>gn <Plug>(coc-rename)
-nmap <silent> <leader>gr <Plug>(coc-references)
-nmap <silent> <C-k> <Plug>(coc-format)
-xmap <silent> <C-k> <Plug>(coc-format-selected)
+if !exists('g:vscode')
+    nnoremap <leader>gf :A<CR>
+    xmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>f  <Plug>(coc-format-selected)
+    " highlight Pmenu    guibg=darkgrey  guifg=black
+    " highlight PmenuSel guibg=lightgrey guifg=black
+    nmap <silent> <leader>gd <Plug>(coc-definition)
+    nmap <silent> <leader>gt <Plug>(coc-type-definition)
+    nmap <silent> <leader>gi <Plug>(coc-implementation)
+    nmap <silent> <leader>gn <Plug>(coc-rename)
+    nmap <silent> <leader>gr <Plug>(coc-references)
+    nmap <silent> <C-k> <Plug>(coc-format)
+    xmap <silent> <C-k> <Plug>(coc-format-selected)
+endif
 " set updatetime=300
 " au CursorHold * sil call CocActionAsync('highlight')
 " au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
@@ -349,22 +376,26 @@ highlight CocSem_property guifg=#7ca6b7 gui=underline
 
 
 autocmd FileType cpp,cxx setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
+" Update signature help on jump placeholder
 " black, brown酒红, grey, blue, green, cyan, magenta, yellow, white
 " bold、underline、reverse、italic或standout
 
 " packadd! vimspector
-nnoremap <leader>dl :call vimspector#Launch()<CR>
-nnoremap <leader>dg :call vimspector#Continue()<CR>
-nnoremap <leader>dk :call vimspector#Stop()<CR>
-nnoremap <leader>dp :call vimspector#ToggleBreakpoint()<CR>
+if !exists('g:vscode')
+    nnoremap <leader>dl :call vimspector#Launch()<CR>
+    nnoremap <leader>dg :call vimspector#Continue()<CR>
+    nnoremap <leader>dk :call vimspector#Stop()<CR>
+    nnoremap <leader>dp :call vimspector#ToggleBreakpoint()<CR>
+endif
 
 " 补全中使用回车确认使用snippet
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
-                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " 同时高亮多个词
-nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+if !exists('g:vscode')
+    nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+endif
 
 " coc airline
 let g:airline#extensions#coc#enabled = 1
@@ -374,22 +405,21 @@ let g:airline#extensions#coc#warning_symbol = 'W:'
 let g:trigger_size = 0.5 * 1048576
 
 augroup hugefile
-  autocmd!
-  autocmd BufReadPre *
-        \ let size = getfsize(expand('<afile>')) |
-        \ if (size > g:trigger_size) || (size == -2) |
-        \   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
-        \   exec 'CocDisable' |
-        \ else |
-        \   exec 'CocEnable' |
-        \ endif |
-        \ unlet size
+    autocmd!
+    autocmd BufReadPre *
+                \ let size = getfsize(expand('<afile>')) |
+                \ if (size > g:trigger_size) || (size == -2) |
+                \   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
+                \   exec 'CocDisable' |
+                \ else |
+                \   exec 'CocEnable' |
+                \ endif |
+                \ unlet size
 augroup END
 
 highlight Pmenu    guibg=darkgrey  guifg=black
 highlight PmenuSel guibg=lightgrey guifg=black
 
-nnoremap <leader> :
 
 let g:blamer_enabled = 1
 let g:blamer_delay = 200
@@ -409,15 +439,17 @@ let g:ale_linters = {
             \ }
 let g:gtest#gtest_command = "./build/Debug/test"
 let g:gtest#highlight_failing_tests = 1
-augroup GTest
-	autocmd FileType cpp nnoremap <silent> <leader>tt :GTestRun<CR>
-	autocmd FileType cpp nnoremap <silent> <leader>tu :GTestRunUnderCursor<CR>
-	autocmd FileType cpp nnoremap          <leader>tc :GTestCase<space>
-	autocmd FileType cpp nnoremap          <leader>tn :GTestName<space>
-	autocmd FileType cpp nnoremap <silent> <leader>te :GTestToggleEnabled<CR>
-	autocmd FileType cpp nnoremap <silent> ]T         :GTestNext<CR>
-	autocmd FileType cpp nnoremap <silent> [T         :GTestPrev<CR>
-	autocmd FileType cpp nnoremap <silent> <leader>tf :CtrlPGTest<CR>
-	autocmd FileType cpp nnoremap <silent> <leader>tj :GTestJump<CR>
-	autocmd FileType cpp nnoremap          <leader>ti :GTestNewTest<CR>i
-augroup END
+if !exists('g:vscode')
+    augroup GTest
+        autocmd FileType cpp nnoremap <silent> <leader>tt :GTestRun<CR>
+        autocmd FileType cpp nnoremap <silent> <leader>tu :GTestRunUnderCursor<CR>
+        autocmd FileType cpp nnoremap          <leader>tc :GTestCase<space>
+        autocmd FileType cpp nnoremap          <leader>tn :GTestName<space>
+        autocmd FileType cpp nnoremap <silent> <leader>te :GTestToggleEnabled<CR>
+        autocmd FileType cpp nnoremap <silent> ]T         :GTestNext<CR>
+        autocmd FileType cpp nnoremap <silent> [T         :GTestPrev<CR>
+        autocmd FileType cpp nnoremap <silent> <leader>tf :CtrlPGTest<CR>
+        autocmd FileType cpp nnoremap <silent> <leader>tj :GTestJump<CR>
+        autocmd FileType cpp nnoremap          <leader>ti :GTestNewTest<CR>i
+    augroup END
+endif
