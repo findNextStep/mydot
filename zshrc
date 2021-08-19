@@ -1,3 +1,4 @@
+echo 233
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,20 +6,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-
-# zmodload zsh/datetime
-# setopt PROMPT_SUBST
-# PS4='+$EPOCHREALTIME %N:%i> '
-
-# logfile=~/$(mktemp zsh_profile.XXXXXXXX)
-# echo "Logging to $logfile"
-# exec 3>&2 2>$logfile
-
 # setopt XTRACE
 MY_SHELL="zsh"
-
-HOSTNAME=$HOST
 
 ZSH_THEME="pxq-style"
 
@@ -56,10 +45,13 @@ zmodload zsh/zpty
 source "$HOME/.zinit/bin/zinit.zsh"
 
 
-zinit for \
+zinit lucid for OMZ::lib/key-bindings.zsh
+
+zinit ice wait="0" lucid atload="zshz >/dev/null"
+zinit light agkozak/zsh-z
+zinit wait lucid for \
     OMZ::lib/git.zsh \
     OMZ::lib/clipboard.zsh \
-    OMZ::lib/key-bindings.zsh \
     OMZ::lib/completion.zsh \
     OMZ::lib/correction.zsh \
     OMZ::lib/history.zsh \
@@ -67,42 +59,50 @@ zinit for \
     OMZ::plugins/git/git.plugin.zsh \
     OMZ::plugins/git-extras/git-extras.plugin.zsh
 
+zinit lucid for \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
 
-zinit ice as="completion"
-zinit snippet https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty
-zinit as="completion" for \
+# zinit ice as="completion"
+# zinit snippet https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty
+zinit wait"1" lucid as="completion" for \
     OMZ::plugins/docker/_docker \
     OMZ::plugins/rust/_rust \
     OMZ::plugins/cargo/_cargo \
-    OMZ::plugins/fd/_fd
-zinit ice mv=":zsh -> _cht" as="completion"
-zinit snippet https://cheat.sh/:zsh
-# zinit light-mode for \
-        # agkozak/zsh-z
-zinit load agkozak/zsh-z
-zinit light-mode for \
-    blockf \
-        zsh-users/zsh-completions \
+    OMZ::plugins/fd/_fd \
+    https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty
+# zinit ice mv=":zsh -> _cht" as="completion"
+zinit wait"1" mv=":zsh -> _cht" lucid as="completion" for https://cheat.sh/:zsh
+
+zinit wait"2" lucid for \
     as="program" atclone="rm -f ^(rgg|agv)" \
         lilydjwg/search-and-view \
     atclone="dircolors -b LS_COLORS > c.zsh" atpull='%atclone' pick='c.zsh' \
         trapd00r/LS_COLORS
 
-zinit wait="0" lucid light-mode for \
-    zsh-users/zsh-autosuggestions \
-    romkatv/gitstatus \
-    zsh-vi-more/vi-motions \
+zinit wait"2" lucid for \
+    zsh-vi-more/vi-motions
+zinit wait"1" lucid for \
+ atinit"forgit_ignore='fgi'" \
     wfxr/forgit
-zinit light-mode for zdharma/fast-syntax-highlighting
-# stop use syntax highlighting in git, it`s so slow
+# zsh输入语法高亮
+# zsh-completions 一些补全
+# zsh-autosuggestions fish一样的历史记录提示
+zinit wait"0" lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"_zsh_autosuggest_start;bindkey \"גּ \" autosuggest-accept; bindkey \"¬\" autosuggest-accept;bindkey \"^L\" autosuggest-accept; bindkey \"^J\" autosuggest-accept;bindkey \"גּl\" autosuggest-accept " \
+    zsh-users/zsh-autosuggestions
+# 在realx中使用git高亮会很卡，这里关掉这个
+typeset -gA FAST_HIGHLIGHT
 FAST_HIGHLIGHT[chroma-git]=0
 
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-    zsh-users/zsh-completions
-# autoload -Uz compinit
-# compinit
-# # zinit 出于效率考虑会截获 compdef 调用，放到最后再统一应用，可以节省不少时间
-# zinit cdreplay -q
+zinit wait"1" pack"bgn-binary" for fzf
+zinit wait"2" lucid for https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
+zinit ice as="completion"
+zinit snippet https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
@@ -183,12 +183,12 @@ source ~/.shrc
 
 bindkey -M vicmd "y" copy-to-xclip
 ## autosuggestions keybind
-bindkey "גּ " autosuggest-accept
-## super + l in mac
-bindkey "¬" autosuggest-accept
-bindkey "^L" autosuggest-accept
-bindkey "^J" autosuggest-accept
-bindkey "גּl" autosuggest-accept
+# bindkey "גּ " autosuggest-accept
+# super + l in mac
+# bindkey "¬" autosuggest-accept
+# bindkey "^L" autosuggest-accept
+# bindkey "^J" autosuggest-accept
+# bindkey "גּl" autosuggest-accept
 bindkey "גּk" up-line-or-search
 bindkey "˚" up-line-or-search
 bindkey "גּj" down-line-or-search
@@ -224,9 +224,6 @@ setopt HIST_IGNORE_SPACE
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 
-# fzf just good
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # __git_aliased_command requires 1 argument
 __git_aliased_command ()
 {
@@ -257,19 +254,23 @@ __git_aliased_command ()
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
- __conda_setup="$('/Users/panxueqian/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/panxueqian/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/panxueqian/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/panxueqian/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+ # __conda_setup="$('/Users/panxueqian/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+    # eval "$__conda_setup"
+# else
+    # if [ -f "/Users/panxueqian/anaconda3/etc/profile.d/conda.sh" ]; then
+        # . "/Users/panxueqian/anaconda3/etc/profile.d/conda.sh"
+    # else
+        # export PATH="/Users/panxueqian/anaconda3/bin:$PATH"
+    # fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
+ENABLE_CORRECTION="true"
 
+# zinit 出于效率考虑会截获 compdef 调用，放到最后再统一应用，可以节省不少时间
+# autoload -Uz compinit
+# compinit
+# zinit cdreplay -q
