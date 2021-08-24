@@ -40,8 +40,8 @@ inoremap jj <ESC>
 cnoremap jj <ESC>
 
 " jk 移动按照显示的行使用
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 
 " 使用系统剪贴板
 vnoremap p "+p
@@ -86,7 +86,11 @@ nmap גּl <C-w>l
 
 set foldmethod=syntax
 set foldlevel=99
-nnoremap <TAB> za
+if exists('g:vscode')
+    nnoremap <TAB>  <CMD>call VSCodeNotify('editor.toggleFold')<CR>
+else
+    nnoremap <TAB> za
+endif
 
 " ctrl-o的反操作
 nnoremap <C-L> <C-I>
