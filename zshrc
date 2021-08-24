@@ -180,7 +180,7 @@ copy-to-xclip() {
 }
 zle -N copy-to-xclip
 
-source ~/.shrc
+zinit snippet ~/.shrc
 
 bindkey -M vicmd "y" copy-to-xclip
 ## autosuggestions keybind
