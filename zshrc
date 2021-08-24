@@ -59,7 +59,7 @@ zinit wait lucid for \
     OMZ::plugins/git/git.plugin.zsh \
     OMZ::plugins/git-extras/git-extras.plugin.zsh
 
-zinit lucid for \
+zinit light-mode for \
     zinit-zsh/z-a-patch-dl \
     zinit-zsh/z-a-bin-gem-node
 
@@ -96,9 +96,7 @@ zinit wait"0" lucid for \
     zsh-users/zsh-completions \
  atload"_zsh_autosuggest_start;bindkey \"גּ \" autosuggest-accept; bindkey \"¬\" autosuggest-accept;bindkey \"^L\" autosuggest-accept; bindkey \"^J\" autosuggest-accept;bindkey \"גּl\" autosuggest-accept " \
     zsh-users/zsh-autosuggestions
-# 在realx中使用git高亮会很卡，这里关掉这个
-typeset -gA FAST_HIGHLIGHT
-FAST_HIGHLIGHT[chroma-git]=0
+# 在大工程项目中使用git高亮会很卡，这里关掉这个
 
 zinit wait"1" pack"bgn-binary" for fzf
 zinit wait"2" lucid for https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
