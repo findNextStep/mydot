@@ -42,6 +42,8 @@ cnoremap jj <ESC>
 " jk 移动按照显示的行使用
 " nnoremap j gj
 " nnoremap k gk
+" vscode nvim
+set clipboard=unnamedplus
 
 " 使用系统剪贴板
 vnoremap p "+p
