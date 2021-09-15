@@ -70,7 +70,8 @@ zinit wait"1" lucid as="completion" for \
     OMZ::plugins/rust/_rust \
     OMZ::plugins/cargo/_cargo \
     OMZ::plugins/fd/_fd \
-    https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty
+    https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty \
+    https://github.com/skroll/zsh-cmake-completion/blob/master/_cmake
 # zinit ice mv=":zsh -> _cht" as="completion"
 zinit wait"1" mv=":zsh -> _cht" lucid as="completion" for https://cheat.sh/:zsh
 
@@ -178,7 +179,8 @@ copy-to-xclip() {
 }
 zle -N copy-to-xclip
 
-zinit snippet ~/.shrc
+
+source ~/.shrc
 
 bindkey -M vicmd "y" copy-to-xclip
 ## autosuggestions keybind
