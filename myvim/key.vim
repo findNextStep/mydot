@@ -19,6 +19,7 @@ cnoreabbrev Qall qall
 if exists('g:vscode')
     let mapleader=","
     nnoremap <space> <Cmd>call VSCodeNotify('vspacecode.space')<CR>
+    vnoremap <space> <Cmd>call VSCodeNotify('vspacecode.space')<CR>
 else
     let mapleader=" "
     nnoremap <leader> :
@@ -102,4 +103,11 @@ tnoremap jj <c-\><c-n>
 " 打开光标下的路径
 if !exists('g:vscode')
     nnoremap <leader>gf :topleft wincmd f<CR>
+endif
+
+" format
+if exists('g:vscode')
+    vnoremap = <CMD>call VSCodeNotifyVisual('editor.action.formatSelection')<CR>
+    vnoremap = <CMD>call VSCodeNotifyVisual('workbench.action.openWorkspaceSettingsFile')<CR>
+" workbench.action.openWorkspaceSettingsFile
 endif
