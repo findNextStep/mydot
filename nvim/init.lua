@@ -1,4 +1,5 @@
 local fn = vim.fn
+
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
@@ -22,6 +23,12 @@ vim.opt.listchars = {
 }
 
 local packer = require('packer')
+packer.init({
+    profile = {
+        enable = true,
+        threshold = 1,
+    }
+})
 
 packer.startup(function(use)
     use { 'svermeulen/vimpeccable',
@@ -52,10 +59,13 @@ packer.startup(function(use)
         config = function() require 'colorizer'.setup() end
     }
 
-    use { 'tomasiser/vim-code-dark', config =
-        function ()
-            vim.cmd[[colorscheme codedark]]
-        end
+    use { 'tomasiser/vim-code-dark',
+        config =
+            function ()
+                vim.cmd[[colorscheme codedark]]
+            end,
+        opt = true,
+        event = 'VimEnter',
     }
 
     -- 缩进线插件
@@ -77,10 +87,9 @@ packer.startup(function(use)
 
     -- 高亮 主题
     use { "nvim-treesitter/nvim-treesitter",
-        event = "BufRead",
+        ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'lua', 'vim', 'python', 'go'},
         requires = {
             {"nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter"},
-            {"p00f/nvim-ts-rainbow", after = "nvim-treesitter"},
             {"JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter"}
         },
         config = function()
@@ -94,9 +103,6 @@ packer.startup(function(use)
                     enable = true
                 },
                 indent = {
-                    enable = true
-                },
-                rainbow = {
                     enable = true
                 },
                 context_commentstring = {
@@ -125,37 +131,44 @@ packer.startup(function(use)
         config = function ()
             local vimp = require('vimp')
             vim.o.hidden = true
-            local function check_back_space()
-                local col = vim.fn.col('.') - 1
-                if col == 0 then
-                    return true
-                end
-                local last_char = vim.fn.getline('.')[col - 1]
-                return last_char:gsub("%s", "") == ""
-            end
+            --local function check_back_space()
+            --    local col = vim.fn.col('.') - 1
+            --    if col == 0 then
+            --        return true
+            --    end
+            --    local getline = vim.fn.getline('.')
+            --    if getline == nil then
+            --        return true
+            --    end
+            --    local last_char = getline[col - 1]
+            --    return last_char == ""
+            --    -- return last_char:gsub("%s", "") == ""
+            --end
             vimp.inoremap({'expr', 'silent'}, '<TAB>', function()
                 if vim.fn.pumvisible() == 1 then
                     return "<c-n>"
                 end
-                if check_back_space() then
-                    return "<TAB>"
-                end
-                return vim.fn.call("coc#refresh")
+                return "<TAB>"
+                -- FIXME: call coc$refresh expect args
+                -- if check_back_space() then
+                --    return "<TAB>"
+                -- end
+                -- return vim.fn.call("coc#refresh()")
             end)
             vimp.inoremap({'expr', 'silent'}, '<S-TAB>', function()
                 if vim.fn.pumvisible() == 1 then
                     return "<c-p>"
                 else
-                    return "<c-h>"
+                    return "<S-TAB>"
                 end
             end)
-        end
+        end,
     }
 
     use { 'ibhagwan/fzf-lua',
-        requires = {
-            'vijaymarupudi/nvim-fzf',
-            'kyazdani42/nvim-web-devicons' } -- optional for icons
+        requires = { 'vijaymarupudi/nvim-fzf', 'kyazdani42/nvim-web-devicons' },-- optional for icons
+        opt = true,
+        keys = {{'n', '<leader>pf'}}
     }
 
     use { 'AckslD/nvim-whichkey-setup.lua',
@@ -173,6 +186,7 @@ packer.startup(function(use)
                 k = {"<CMD>call InterestingWords('n')<CR>" , "highlight words"},
                 K = {"<CMD>call UncolorAllWords()<CR>" , "diable all highlight"},
                 n = "switch numbers",
+                c = 'comment',
                 s = {
                     name = "search / symbol",
                     e = {"<Plug>(coc-rename)", "edit symbol"},
@@ -191,6 +205,10 @@ packer.startup(function(use)
                     name = 'Toggle UI',
                     z = {':ZenMode<CR>', 'toggle zen mode<CR>'}
                 },
+                l = {
+                    name="line",
+                    c = "comment line",
+                },
                 p = {
                     name = "project",
                     f = {":FzfLua files<cr>", "find file in proect"},
@@ -198,10 +216,13 @@ packer.startup(function(use)
             }
             which.register_keymap('leader',keymap);
         end,
+        opt = true,
+        keys = {{'n', '<leader>'}},
     }
 
     use { 'lfv89/vim-interestingwords',
         opt= true,
+        fn = "InterestingWords",
         config=function()
         end
     }
@@ -211,11 +232,36 @@ packer.startup(function(use)
             require("zen-mode").setup {
                 width = 0.85,
             }
-        end
+        end,
+        opt = true,
+        cmd = "ZenMode",
     }
 
     -- 测量启动时间
     use{ 'dstein64/vim-startuptime', opt=true, cmd='StartupTime' }
+
+    -- 颜色主题的luabind
+    use { 'tjdevries/colorbuddy.nvim',
+        config = function()
+        end
+    }
+
+    use { "terrortylor/nvim-comment",
+        config = function()
+            require('nvim_comment').setup({
+                comment_empty = false,
+                line_mapping = "<leader>lc",
+                operator_mapping = "<leader>c"
+            })
+        end,
+        opt = true,
+        keys = {
+            {'n', '<leader>c'},
+            {'n', '<leader>lc'}
+        },
+    }
+
+    use { 'tversteeg/registers.nvim', keys = { { 'n', '"' }, { 'i', '<c-r>' } } }
 
     use 'wbthomason/packer.nvim'
 end)
