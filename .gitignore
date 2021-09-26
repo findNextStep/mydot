@@ -7,3 +7,4 @@ termonad/termonad
 termonad/termonad.o
 .stack-work
 .netrwhist
+nvim/plugin
