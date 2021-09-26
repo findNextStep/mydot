@@ -97,7 +97,7 @@ packer.startup(function(use)
             vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
             vim.o.foldlevel=100000
             require "nvim-treesitter.configs".setup {
-                ensure_installed = "maintained",
+                ensure_installed = {"cpp","lua","bash","python","go"},
                 -- ensure_installed = "all",
                 highlight = {
                     enable = true
