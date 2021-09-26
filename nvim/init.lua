@@ -263,6 +263,8 @@ packer.startup(function(use)
 
     use { 'tversteeg/registers.nvim', keys = { { 'n', '"' }, { 'i', '<c-r>' } } }
 
+    use { 'tversteeg/registers.nvim', keys = { { 'n', '"' }, { 'i', '<c-r>' } } }
+
     use 'wbthomason/packer.nvim'
 end)
 
