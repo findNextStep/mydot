@@ -21,11 +21,6 @@ vim.opt.listchars = {
     space = "⋅",
 }
 
-function _G.up()
-    return 'G'
-end
-
-
 local packer = require('packer')
 
 packer.startup(function(use)
@@ -157,6 +152,12 @@ packer.startup(function(use)
         end
     }
 
+    use { 'ibhagwan/fzf-lua',
+        requires = {
+            'vijaymarupudi/nvim-fzf',
+            'kyazdani42/nvim-web-devicons' } -- optional for icons
+    }
+
     use { 'AckslD/nvim-whichkey-setup.lua',
         requires = {'liuchengxu/vim-which-key'},
         config = function ()
@@ -172,6 +173,12 @@ packer.startup(function(use)
                 k = {"<CMD>call InterestingWords('n')<CR>" , "highlight words"},
                 K = {"<CMD>call UncolorAllWords()<CR>" , "diable all highlight"},
                 n = "switch numbers",
+                s = {
+                    name = "search / symbol",
+                    e = {"<Plug>(coc-rename)", "edit symbol"},
+                    d = {"<Plug>(coc-definition)", "go define"},
+                    r = {"<Plug>(coc-references)", "go reference"},
+                },
                 e = {
                     name = 'edit',
                     c = {':split ~/.config/nvim/init.lua<cr>','edit config'},
@@ -182,13 +189,15 @@ packer.startup(function(use)
                 },
                 T = {
                     name = 'Toggle UI',
-                    z = {':ZenMode', 'toggle zen mode<CR>'}
-                }
+                    z = {':ZenMode<CR>', 'toggle zen mode<CR>'}
+                },
+                p = {
+                    name = "project",
+                    f = {":FzfLua files<cr>", "find file in proect"},
+                },
             }
             which.register_keymap('leader',keymap);
         end,
-        opt = true,
-        keys = '<space>',
     }
 
     use { 'lfv89/vim-interestingwords',
@@ -206,6 +215,8 @@ packer.startup(function(use)
     }
 
     -- 测量启动时间
-    use{ 'dstein64/vim-startuptime',opt=true,cmd='StartupTime' }
+    use{ 'dstein64/vim-startuptime', opt=true, cmd='StartupTime' }
+
+    use 'wbthomason/packer.nvim'
 end)
 
