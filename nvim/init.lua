@@ -204,10 +204,15 @@ packer.startup(function(use)
                     e = {"<Plug>(coc-rename)", "edit symbol"},
                     d = {"<Plug>(coc-definition)", "go define"},
                     r = {"<Plug>(coc-references)", "go reference"},
+                    j = {':CocList outline<CR>','symbol in buffer'},
                 },
                 e = {
                     name = 'edit',
                     c = {':split ~/.config/nvim/init.lua<cr>','edit config'},
+                },
+                j = {
+                    name = 'jump/join/split',
+                    i = {':CocList outline<CR>','symbol in buffer'},
                 },
                 q = {
                     name = 'quit',
