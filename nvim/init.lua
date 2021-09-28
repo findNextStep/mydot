@@ -87,10 +87,57 @@ packer.startup(function(use)
         end,
     }
 
+     -- show git
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        },
+        tag = 'release',-- To use the latest release
+        config = function()
+            require('gitsigns').setup({
+                signcolumn = false,
+                numhl = true,
+                current_line_blame = true,
+            })
+        end,
+        opt = true,
+        event = 'BufWinEnter',
+        cmd = 'Gitsigns',
+    }
+
     -- 状态栏
     use { 'famiu/feline.nvim',
+        requires = {'kyazdani42/nvim-web-devicons'},
         config = function()
-            require('feline').setup()
+            require('feline').setup({
+                components = {
+                    active = {
+                        {
+                            {
+                                provider = function() return require('feline.providers.vi_mode').get_vim_mode() end,
+                                hl = function()
+                                    return {
+                                        name = require('feline.providers.vi_mode').get_mode_highlight_name(),
+                                        bg = require('feline.providers.vi_mode').get_mode_color(),
+                                        fg = 'White',
+                                        style = 'bold'
+                                    }
+                                end,
+                                right_sep = ' ',
+                                icon = '>'
+                            },
+                            {
+                                provider = function (winid,component)
+                                    return require('feline.providers.file').file_info(winid,component,'short-path')
+                                end,
+                            },
+                        },
+                    },
+                    inactive = {
+                    }
+                },
+            })
         end
     }
 
