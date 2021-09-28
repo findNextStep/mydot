@@ -60,7 +60,9 @@ packer.startup(function(use)
                 vim.cmd('PackerCompile')
                 print("Reloaded vimrc!")
             end)
-        end
+        end,
+        opt = true,
+        module = 'vimp',
     }
 
     use { 'norcalli/nvim-colorizer.lua',
@@ -73,7 +75,7 @@ packer.startup(function(use)
                 vim.cmd[[colorscheme codedark]]
             end,
         opt = true,
-        event = 'VimEnter',
+        keys = { { 'n', 'j' }},
     }
 
     -- 缩进线插件
@@ -83,7 +85,7 @@ packer.startup(function(use)
                 show_end_of_line = true,
                 space_char_blankline = ">",
             }
-        end
+        end,
     }
 
     -- 状态栏
@@ -171,6 +173,8 @@ packer.startup(function(use)
                 end
             end)
         end,
+        opt = true,
+        event = 'VimEnter',
     }
 
     use { 'ibhagwan/fzf-lua',
