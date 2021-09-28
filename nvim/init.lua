@@ -32,6 +32,11 @@ packer.init({
 })
 
 packer.startup(function(use)
+    use { 'tjdevries/colorbuddy.nvim',
+        opt = true,
+        module = 'colorbuddy',
+    }
+
     use { 'svermeulen/vimpeccable',
         config = function ()
             local vimp = require('vimp')
@@ -65,17 +70,11 @@ packer.startup(function(use)
         module = 'vimp',
     }
 
-    use { 'norcalli/nvim-colorizer.lua',
-        config = function() require 'colorizer'.setup() end
-    }
-
     use { 'tomasiser/vim-code-dark',
         config =
             function ()
                 vim.cmd[[colorscheme codedark]]
             end,
-        opt = true,
-        keys = { { 'n', 'j' }},
     }
 
     -- 缩进线插件
@@ -93,6 +92,12 @@ packer.startup(function(use)
         config = function()
             require('feline').setup()
         end
+    }
+
+    use {'norcalli/nvim-colorizer.lua',
+        config = function() require('colorizer').setup()end,
+        ft = { 'lua','vim','bash','zsh',},
+        opt = true,
     }
 
     -- 高亮 主题
@@ -139,31 +144,14 @@ packer.startup(function(use)
         branch='release',
         requires = {'rafcamlet/coc-nvim-lua'},
         config = function ()
+            -- key bind
             local vimp = require('vimp')
             vim.o.hidden = true
-            --local function check_back_space()
-            --    local col = vim.fn.col('.') - 1
-            --    if col == 0 then
-            --        return true
-            --    end
-            --    local getline = vim.fn.getline('.')
-            --    if getline == nil then
-            --        return true
-            --    end
-            --    local last_char = getline[col - 1]
-            --    return last_char == ""
-            --    -- return last_char:gsub("%s", "") == ""
-            --end
             vimp.inoremap({'expr', 'silent'}, '<TAB>', function()
                 if vim.fn.pumvisible() == 1 then
                     return "<c-n>"
                 end
                 return "<TAB>"
-                -- FIXME: call coc$refresh expect args
-                -- if check_back_space() then
-                --    return "<TAB>"
-                -- end
-                -- return vim.fn.call("coc#refresh()")
             end)
             vimp.inoremap({'expr', 'silent'}, '<S-TAB>', function()
                 if vim.fn.pumvisible() == 1 then
@@ -172,6 +160,31 @@ packer.startup(function(use)
                     return "<S-TAB>"
                 end
             end)
+            -- color highlight
+            local Color, colors, Group, _, styles = require('colorbuddy').setup()
+            Color.new('parameter','#306b72')
+            Group.new('CocSem_parameter',colors.parameter)
+            Color.new('type','#729de3')
+            Group.new('CocSem_class', colors.type, nil, styles.bold)
+            Group.new('CocSem_type', colors.type, nil, styles.bold)
+            Group.new('CocSem_typeParameter', colors.type, nil, styles.bold)
+            Group.new('CocSem_enum', colors.type, nil, styles.bold)
+            Color.new('functions','#e5b124')
+            Group.new('CocSem_function', colors.functions)
+            Group.new('CocSem_method', colors.functions, nil, styles.underline)
+            Color.new('variable','#26cdca')
+            Group.new('CocSem_variable', colors.variable)
+            Color.new('enumMember','#397797')
+            Group.new('CocSem_enumMember', colors.enumMember, nil, styles.bold)
+            Color.new('macro','#8f5daf')
+            Group.new('CocSem_macro', colors.macro, nil, styles.bold)
+            Color.new('comment','#505050')
+            Group.new('CocSem_comment', colors.comment)
+            Color.new('namespace','#00d780')
+            Group.new('CocSem_namespace', colors.namespace, nil, styles.bold)
+            Color.new('property','#7ca6b7')
+            Group.new('CocSem_property', colors.property, nil, styles.underline)
+
         end,
         opt = true,
         event = 'VimEnter',
@@ -255,12 +268,6 @@ packer.startup(function(use)
 
     -- 测量启动时间
     use{ 'dstein64/vim-startuptime', opt=true, cmd='StartupTime' }
-
-    -- 颜色主题的luabind
-    use { 'tjdevries/colorbuddy.nvim',
-        config = function()
-        end
-    }
 
     use { "terrortylor/nvim-comment",
         config = function()
