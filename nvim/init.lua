@@ -15,6 +15,7 @@ vim.o.history = 5000
 vim.o.tabstop = 4
 vim.o.expandtab = true
 vim.o.shiftwidth = vim.o.tabstop
+vim.o.colorcolumn = "120"
 vim.g.mapleader = " "
 vim.o.softtabstop = 4
 vim.opt.list = true
@@ -44,6 +45,13 @@ packer.startup(function(use)
             -- Keep the cursor in place while joining lines
             vimp.nnoremap('J', 'mzJ`z')
             vimp.inoremap('jj','<ESC>')
+            -- we need better esc in android devices
+            vimp.xnoremap('<C-C>', '<ESC>')
+            vimp.onoremap('<C-c>', '<ESC>')
+            vimp.inoremap('<C-c>', '<ESC>')
+            vimp.cnoremap('<C-c>', '<ESC>')
+            vimp.tnoremap('<C-c>', '<ESC>')
+            vimp.nnoremap('<C-c>', '<ESC>')
             vimp.nnoremap('<leader>qr', function()
                 vimp.unmap_all()
                 vim.cmd('silent wa')
@@ -168,7 +176,8 @@ packer.startup(function(use)
     use { 'ibhagwan/fzf-lua',
         requires = { 'vijaymarupudi/nvim-fzf', 'kyazdani42/nvim-web-devicons' },-- optional for icons
         opt = true,
-        keys = {{'n', '<leader>pf'}}
+        cmd = "FzfLua",
+        module = 'fzf-lua',
     }
 
     use { 'AckslD/nvim-whichkey-setup.lua',
@@ -181,7 +190,6 @@ packer.startup(function(use)
                     noremap=false,
                 }
             }
-            vim.g.which_key_timeout=20
             local keymap = {
                 k = {"<CMD>call InterestingWords('n')<CR>" , "highlight words"},
                 K = {"<CMD>call UncolorAllWords()<CR>" , "diable all highlight"},
@@ -211,13 +219,12 @@ packer.startup(function(use)
                 },
                 p = {
                     name = "project",
-                    f = {":FzfLua files<cr>", "find file in proect"},
+                    f = {":lua require('fzf-lua').files_resume()<cr>", "find file in proect"},
+                    g = {":lua require('fzf-lua').git_files()<cr>", "find file in proect"},
                 },
             }
             which.register_keymap('leader',keymap);
         end,
-        opt = true,
-        keys = {{'n', '<leader>'}},
     }
 
     use { 'lfv89/vim-interestingwords',
@@ -254,14 +261,7 @@ packer.startup(function(use)
                 operator_mapping = "<leader>c"
             })
         end,
-        opt = true,
-        keys = {
-            {'n', '<leader>c'},
-            {'n', '<leader>lc'}
-        },
     }
-
-    use { 'tversteeg/registers.nvim', keys = { { 'n', '"' }, { 'i', '<c-r>' } } }
 
     use { 'tversteeg/registers.nvim', keys = { { 'n', '"' }, { 'i', '<c-r>' } } }
 
