@@ -31,6 +31,21 @@ packer.init({
     }
 })
 
+function MergeTable(t1, t2)
+    for k,v in pairs(t2) do
+        if type(v) == "table" then
+            if type(t1[k] or false) == "table" then
+                MergeTable(t1[k] or {}, t2[k] or {})
+            else
+                t1[k] = v
+            end
+        else
+            t1[k] = v
+        end
+    end
+    return t1
+end
+
 packer.startup(function(use)
     use { 'tjdevries/colorbuddy.nvim',
         opt = true,
@@ -87,24 +102,8 @@ packer.startup(function(use)
         end,
     }
 
-     -- show git
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim'
-        },
-        tag = 'release',-- To use the latest release
-        config = function()
-            require('gitsigns').setup({
-                signcolumn = false,
-                numhl = true,
-                current_line_blame = true,
-            })
-        end,
-        opt = true,
-        event = 'BufWinEnter',
-        cmd = 'Gitsigns',
-    }
+    -- show git
+    use(require('plugin.gitsigns').packer)
 
     -- 状态栏
     use { 'famiu/feline.nvim',
@@ -244,16 +243,17 @@ packer.startup(function(use)
         module = 'fzf-lua',
     }
 
-    use { 'AckslD/nvim-whichkey-setup.lua',
-        requires = {'liuchengxu/vim-which-key'},
+    use { 'folke/which-key.nvim',
         config = function ()
-            local which = require("whichkey_setup")
-            which.config{
-                hide_statusline = true,
-                default_keymap_settings = {
-                    noremap=false,
-                }
-            }
+            local which = require("which-key")
+
+            which.setup({
+                spelling = {
+                    enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+                    suggestions = 20, -- how many suggestions should be shown in the list?
+                },
+            })
+
             local keymap = {
                 k = {"<CMD>call InterestingWords('n')<CR>" , "highlight words"},
                 K = {"<CMD>call UncolorAllWords()<CR>" , "diable all highlight"},
@@ -292,7 +292,8 @@ packer.startup(function(use)
                     g = {":lua require('fzf-lua').git_files()<cr>", "find file in proect"},
                 },
             }
-            which.register_keymap('leader',keymap);
+            keymap = MergeTable(keymap , require('plugin.gitsigns').which_map)
+            which.register(keymap,{prefix = "<leader>"});
         end,
     }
 
