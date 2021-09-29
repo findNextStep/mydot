@@ -234,7 +234,6 @@ packer.startup(function(use)
                 },
                 T = {
                     name = 'Toggle UI',
-                    z = {':ZenMode<CR>', 'toggle zen mode<CR>'}
                 },
                 l = {
                     name="line",
@@ -248,6 +247,7 @@ packer.startup(function(use)
             }
             keymap = MergeTable(keymap , require('plugin.gitsigns').which_map)
             keymap = MergeTable(keymap , require('plugin.coc').which_map)
+            keymap = MergeTable(keymap , require('plugin.zen').which_map)
             which.register(keymap,{prefix = "<leader>"});
         end,
     }
@@ -259,15 +259,7 @@ packer.startup(function(use)
         end
     }
 
-    use { 'folke/zen-mode.nvim',
-        config = function()
-            require("zen-mode").setup {
-                width = 0.85,
-            }
-        end,
-        opt = true,
-        cmd = "ZenMode",
-    }
+    use (require('plugin.zen').packer)
 
     -- 测量启动时间
     use{ 'dstein64/vim-startuptime', opt=true, cmd='StartupTime' }
