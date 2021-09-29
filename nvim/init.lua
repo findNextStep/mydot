@@ -46,6 +46,13 @@ function MergeTable(t1, t2)
     return t1
 end
 
+function MergeArray(t1, t2)
+   for _,v in ipairs(t2) do
+      table.insert(t1, v)
+   end
+   return t1
+end
+
 packer.startup(function(use)
     use { 'tjdevries/colorbuddy.nvim',
         opt = true,
@@ -109,33 +116,40 @@ packer.startup(function(use)
     use { 'famiu/feline.nvim',
         requires = {'kyazdani42/nvim-web-devicons'},
         config = function()
-            require('feline').setup({
-                components = {
-                    active = {
+            local components = {
+                active = {
+                    {
                         {
-                            {
-                                provider = function() return require('feline.providers.vi_mode').get_vim_mode() end,
-                                hl = function()
-                                    return {
-                                        name = require('feline.providers.vi_mode').get_mode_highlight_name(),
-                                        bg = require('feline.providers.vi_mode').get_mode_color(),
-                                        fg = 'White',
-                                        style = 'bold'
-                                    }
-                                end,
-                                right_sep = ' ',
-                                icon = '>'
-                            },
-                            {
-                                provider = function (winid,component)
-                                    return require('feline.providers.file').file_info(winid,component,'short-path')
-                                end,
-                            },
+                            provider = function() return require('feline.providers.vi_mode').get_vim_mode() end,
+                            hl = function()
+                                return {
+                                    name = require('feline.providers.vi_mode').get_mode_highlight_name(),
+                                    bg = require('feline.providers.vi_mode').get_mode_color(),
+                                    fg = 'White',
+                                    style = 'bold'
+                                }
+                            end,
+                            right_sep = ' ',
+                            icon = '>'
+                        },
+                        {
+                            provider = function (winid,component)
+                                return require('feline.providers.file').file_info(winid,component,'short-path')
+                            end,
                         },
                     },
-                    inactive = {
-                    }
+                    {}
                 },
+                inactive = {}
+            }
+            components.active[1] = MergeArray(components.active[1], require('plugin.gitsigns').line_item.left)
+            components.active[2] = MergeArray(components.active[2], require('plugin.gitsigns').line_item.right)
+
+            components.active[1] = MergeArray(components.active[1], require('plugin.coc').line_item.left)
+            components.active[2] = MergeArray(components.active[2], require('plugin.coc').line_item.right)
+
+            require('feline').setup({
+                components = components,
             })
         end
     }
@@ -186,55 +200,7 @@ packer.startup(function(use)
     }
 
     -- coc nvim lsp support
-    use { 'neoclide/coc.nvim',
-        branch='release',
-        requires = {'rafcamlet/coc-nvim-lua'},
-        config = function ()
-            -- key bind
-            local vimp = require('vimp')
-            vim.o.hidden = true
-            vimp.inoremap({'expr', 'silent'}, '<TAB>', function()
-                if vim.fn.pumvisible() == 1 then
-                    return "<c-n>"
-                end
-                return "<TAB>"
-            end)
-            vimp.inoremap({'expr', 'silent'}, '<S-TAB>', function()
-                if vim.fn.pumvisible() == 1 then
-                    return "<c-p>"
-                else
-                    return "<S-TAB>"
-                end
-            end)
-            -- color highlight
-            local Color, colors, Group, _, styles = require('colorbuddy').setup()
-            Color.new('parameter','#306b72')
-            Group.new('CocSem_parameter',colors.parameter)
-            Color.new('type','#729de3')
-            Group.new('CocSem_class', colors.type, nil, styles.bold)
-            Group.new('CocSem_type', colors.type, nil, styles.bold)
-            Group.new('CocSem_typeParameter', colors.type, nil, styles.bold)
-            Group.new('CocSem_enum', colors.type, nil, styles.bold)
-            Color.new('functions','#e5b124')
-            Group.new('CocSem_function', colors.functions)
-            Group.new('CocSem_method', colors.functions, nil, styles.underline)
-            Color.new('variable','#26cdca')
-            Group.new('CocSem_variable', colors.variable)
-            Color.new('enumMember','#397797')
-            Group.new('CocSem_enumMember', colors.enumMember, nil, styles.bold)
-            Color.new('macro','#8f5daf')
-            Group.new('CocSem_macro', colors.macro, nil, styles.bold)
-            Color.new('comment','#505050')
-            Group.new('CocSem_comment', colors.comment)
-            Color.new('namespace','#00d780')
-            Group.new('CocSem_namespace', colors.namespace, nil, styles.bold)
-            Color.new('property','#7ca6b7')
-            Group.new('CocSem_property', colors.property, nil, styles.underline)
-
-        end,
-        opt = true,
-        event = 'VimEnter',
-    }
+    use ( require('plugin.coc').packer )
 
     use { 'ibhagwan/fzf-lua',
         requires = { 'vijaymarupudi/nvim-fzf', 'kyazdani42/nvim-web-devicons' },-- optional for icons
@@ -246,7 +212,6 @@ packer.startup(function(use)
     use { 'folke/which-key.nvim',
         config = function ()
             local which = require("which-key")
-
             which.setup({
                 spelling = {
                     enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
@@ -259,20 +224,9 @@ packer.startup(function(use)
                 K = {"<CMD>call UncolorAllWords()<CR>" , "diable all highlight"},
                 n = "switch numbers",
                 c = 'comment',
-                s = {
-                    name = "search / symbol",
-                    e = {"<Plug>(coc-rename)", "edit symbol"},
-                    d = {"<Plug>(coc-definition)", "go define"},
-                    r = {"<Plug>(coc-references)", "go reference"},
-                    j = {':CocList outline<CR>','symbol in buffer'},
-                },
                 e = {
                     name = 'edit',
                     c = {':split ~/.config/nvim/init.lua<cr>','edit config'},
-                },
-                j = {
-                    name = 'jump/join/split',
-                    i = {':CocList outline<CR>','symbol in buffer'},
                 },
                 q = {
                     name = 'quit',
@@ -293,6 +247,7 @@ packer.startup(function(use)
                 },
             }
             keymap = MergeTable(keymap , require('plugin.gitsigns').which_map)
+            keymap = MergeTable(keymap , require('plugin.coc').which_map)
             which.register(keymap,{prefix = "<leader>"});
         end,
     }
