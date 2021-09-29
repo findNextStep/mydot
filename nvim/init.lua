@@ -248,18 +248,13 @@ packer.startup(function(use)
             keymap = MergeTable(keymap , require('plugin.gitsigns').which_map)
             keymap = MergeTable(keymap , require('plugin.coc').which_map)
             keymap = MergeTable(keymap , require('plugin.zen').which_map)
+            keymap = MergeTable(keymap , require('plugin.interestingwords').which_map)
             which.register(keymap,{prefix = "<leader>"});
         end,
     }
 
-    use { 'lfv89/vim-interestingwords',
-        opt= true,
-        fn = "InterestingWords",
-        config=function()
-        end
-    }
-
     use (require('plugin.zen').packer)
+    use (require('plugin.interestingwords').packer)
 
     -- 测量启动时间
     use{ 'dstein64/vim-startuptime', opt=true, cmd='StartupTime' }
