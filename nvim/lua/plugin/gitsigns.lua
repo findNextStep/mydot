@@ -11,11 +11,12 @@ local module = {
                 numhl = true,
                 status_formatter =
                     function(status)
-                        local added, changed, removed = status.added, status.changed, status.removed
+                        local added, changed, removed, head = status.added, status.changed, status.removed, status.head
                         local status_txt = {}
-                        if added and added > 0 then table.insert(status_txt, '' .. added) end
-                        if changed and changed > 0 then table.insert(status_txt, '' .. changed) end
-                        if removed and removed > 0 then table.insert(status_txt, '' .. removed) end
+                        if added and added > 0 then table.insert(status_txt, ' ' .. added) end
+                        if changed and changed > 0 then table.insert(status_txt, ' ' .. changed) end
+                        if removed and removed > 0 then table.insert(status_txt, ' ' .. removed) end
+                        if head then table.insert(status_txt, '' .. head) end
                         return table.concat(status_txt, ' ')
                     end,
                 current_line_blame = true,
@@ -45,7 +46,7 @@ local module = {
     },
     line_item = {
         left = {
-            {{
+            {
                 provider = function()
                     if vim.b.gitsigns_status == nil then
                         return ""
@@ -53,7 +54,7 @@ local module = {
                         return vim.b.gitsigns_status
                     end
                 end,
-            }},
+            },
         },
         mid = {},
         right = {},

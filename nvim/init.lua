@@ -10,6 +10,7 @@ vim.o.ignorecase = true
 vim.o.termguicolors = true
 vim.o.smartcase = true
 vim.o.incsearch = true
+vim.cmd('let g:neovide_transparency=0.8')
 vim.o.hidden = true
 vim.o.history = 5000
 vim.o.tabstop = 4
@@ -166,9 +167,12 @@ packer.startup(function(use)
                             icon = '>'
                         },
                         {
-                            provider = function (winid,component)
-                                return require('feline.providers.file').file_info(winid,component,'short-path')
-                            end,
+                            provider = {
+                                name = 'file_info',
+                                opts = {
+                                    type = 'uniuqe',
+                                }
+                            },
                         },
                     },
                     {}
