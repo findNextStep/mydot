@@ -59,6 +59,39 @@ packer.startup(function(use)
         module = 'colorbuddy',
     }
 
+    use {
+        'karb94/neoscroll.nvim',
+        config = function() require('neoscroll').setup() end,
+        opt = true,
+        keys = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+            '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+    }
+
+    use {
+        'Xuyuanp/scrollbar.nvim',
+        config = function()
+            local function nvim_create_augroups(definitions)
+                for group_name, definition in pairs(definitions) do
+                    vim.api.nvim_command('augroup '..group_name)
+                    vim.api.nvim_command('autocmd!')
+                    for _, def in ipairs(definition) do
+                        local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
+                        vim.api.nvim_command(command)
+                    end
+                    vim.api.nvim_command('augroup END')
+                end
+            end
+            nvim_create_augroups({
+                scroll_bar_init = {
+                    {'CursorMoved,VimResized,QuitPre', '*', 'silent! lua require(\'scrollbar\').show()'},
+                    {'WinEnter,FocusGained', '*', 'silent! lua require(\'scrollbar\').show()'},
+                    {'WinLeave,BufLeave,BufWinLeave,FocusLost', '*', 'silent! lua require(\'scrollbar\').clear()'},
+                }
+            })
+            require('scrollbar').show()
+        end,
+    }
+
     use { 'svermeulen/vimpeccable',
         config = function ()
             local vimp = require('vimp')
