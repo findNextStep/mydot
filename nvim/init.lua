@@ -18,10 +18,6 @@ vim.o.shiftwidth = vim.o.tabstop
 vim.o.colorcolumn = "120"
 vim.g.mapleader = " "
 vim.o.softtabstop = 4
-vim.opt.list = true
-vim.opt.listchars = {
-    space = "⋅",
-}
 
 local packer = require('packer')
 packer.init({
@@ -59,8 +55,7 @@ packer.startup(function(use)
         module = 'colorbuddy',
     }
 
-    use {
-        'karb94/neoscroll.nvim',
+    use { 'karb94/neoscroll.nvim',
         config = function() require('neoscroll').setup() end,
         opt = true,
         module = 'neoscroll',
@@ -68,8 +63,7 @@ packer.startup(function(use)
             '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
     }
 
-    use {
-        'Xuyuanp/scrollbar.nvim',
+    use { 'Xuyuanp/scrollbar.nvim',
         config = function()
             local function nvim_create_augroups(definitions)
                 for group_name, definition in pairs(definitions) do
@@ -136,9 +130,14 @@ packer.startup(function(use)
     -- 缩进线插件
     use { "lukas-reineke/indent-blankline.nvim",
         config = function()
+            vim.opt.list = true
+            vim.opt.listchars = {
+                space = '⋅',
+            }
+
             require("indent_blankline").setup {
                 show_end_of_line = true,
-                space_char_blankline = ">",
+                space_char_blankline = " ",
             }
         end,
     }
