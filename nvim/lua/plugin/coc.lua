@@ -52,15 +52,25 @@ local module = {
         opt = true,
         event = 'VimEnter',
     },
-    next_error = function()
+    next_warning = function()
         vim.cmd(':call CocAction(\'diagnosticNext\')')
         vim.cmd(":normal! zz")
-        require('which-key').show(" s",{mode = 'n'})
+        require('which-key').show(" sw",{mode = 'n'})
     end,
-    prev_error = function()
+    prev_warning = function()
         vim.cmd(':call CocAction(\'diagnosticPrevious\')')
         vim.cmd(":normal! zz")
-        require('which-key').show(" s",{mode = 'n'})
+        require('which-key').show(" sw",{mode = 'n'})
+    end,
+    next_error = function()
+        vim.cmd(':call CocAction(\'diagnosticNext\',\'error\')')
+        vim.cmd(":normal! zz")
+        require('which-key').show(" sE",{mode = 'n'})
+    end,
+    prev_error = function()
+        vim.cmd(':call CocAction(\'diagnosticPrevious\',\'error\')')
+        vim.cmd(":normal! zz")
+        require('which-key').show(" sE",{mode = 'n'})
     end,
     which_map = {
         s = {
@@ -70,8 +80,16 @@ local module = {
             r = {"<Plug>(coc-references)", "go reference"},
             a = {':CocAction<CR>', 'code action'},
             j = {':CocList outline<CR>','symbol in buffer'},
-            n = {':lua require(\'plugin.coc\').next_error()<CR>' ,'next error'},
-            N = {':lua require(\'plugin.coc\').prev_error()<CR>' ,'prev error'},
+            w = {
+                name = 'warning',
+                n = {':lua require(\'plugin.coc\').next_warning()<CR>' ,'next warning'},
+                N = {':lua require(\'plugin.coc\').prev_warning()<CR>' ,'prev warning'},
+            },
+            E = {
+                name = 'error',
+                n = {':lua require(\'plugin.coc\').next_error()<CR>' ,'next error'},
+                N = {':lua require(\'plugin.coc\').prev_error()<CR>' ,'prev error'},
+            },
             [' '] = {':CocList commands<CR>', 'coc commands'},
         },
         j = {
@@ -82,7 +100,16 @@ local module = {
     line_item = {
         left = {},
         mid = {},
-        right = {},
+        right = {
+            {
+                provider = function()
+                    if vim.fn['coc#status'] == nil then
+                        return ''
+                    end
+                    return vim.fn['coc#status']()
+                end
+            }
+        },
     }
 }
 
