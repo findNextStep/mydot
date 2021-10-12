@@ -10,7 +10,6 @@ vim.o.ignorecase = true
 vim.o.termguicolors = true
 vim.o.smartcase = true
 vim.o.incsearch = true
-vim.cmd('let g:neovide_transparency=0.8')
 vim.o.hidden = true
 vim.o.history = 5000
 vim.o.tabstop = 4
@@ -286,12 +285,14 @@ packer.startup(function(use)
             keymap = MergeTable(keymap , require('plugin.coc').which_map)
             keymap = MergeTable(keymap , require('plugin.zen').which_map)
             keymap = MergeTable(keymap , require('plugin.interestingwords').which_map)
+            keymap = MergeTable(keymap , require('plugin.terminal').which_map)
             which.register(keymap,{prefix = "<leader>"});
         end,
     }
 
     use (require('plugin.zen').packer)
     use (require('plugin.interestingwords').packer)
+    use (require('plugin.terminal').packer)
 
     -- 测量启动时间
     use{ 'dstein64/vim-startuptime', opt=true, cmd='StartupTime' }
