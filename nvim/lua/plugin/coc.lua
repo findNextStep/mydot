@@ -1,7 +1,11 @@
 local module = {
     packer = {
         'neoclide/coc.nvim',
-        requires = {'rafcamlet/coc-nvim-lua'},
+        requires = {
+            'rafcamlet/coc-nvim-lua',
+            'clangd/coc-clangd',
+            'josa42/coc-go',
+        },
         branch = 'release',
         config = function ()
             -- key bind
@@ -48,13 +52,27 @@ local module = {
         opt = true,
         event = 'VimEnter',
     },
+    next_error = function()
+        vim.cmd(':call CocAction(\'diagnosticNext\')')
+        vim.cmd(":normal! zz")
+        require('which-key').show(" s",{mode = 'n'})
+    end,
+    prev_error = function()
+        vim.cmd(':call CocAction(\'diagnosticPrevious\')')
+        vim.cmd(":normal! zz")
+        require('which-key').show(" s",{mode = 'n'})
+    end,
     which_map = {
         s = {
             name = "search / symbol",
             e = {"<Plug>(coc-rename)", "edit symbol"},
             d = {"<Plug>(coc-definition)", "go define"},
             r = {"<Plug>(coc-references)", "go reference"},
+            a = {':CocAction<CR>', 'code action'},
             j = {':CocList outline<CR>','symbol in buffer'},
+            n = {':lua require(\'plugin.coc\').next_error()<CR>' ,'next error'},
+            N = {':lua require(\'plugin.coc\').prev_error()<CR>' ,'prev error'},
+            [' '] = {':CocList commands<CR>', 'coc commands'},
         },
         j = {
             name = 'jump/join/split',

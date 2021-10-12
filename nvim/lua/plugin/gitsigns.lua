@@ -29,12 +29,12 @@ local module = {
     -- 应该绑定在<space>gn上
     next_hunk = function ()
         require('gitsigns').next_hunk()
-        vim.cmd(":normal zz")
+        vim.cmd(":normal! zz")
         require('which-key').show(" g", {mode='n'})
     end,
     prev_hunk = function()
         require('gitsigns').prev_hunk()
-        vim.cmd(":normal zz")
+        vim.cmd(":normal! zz")
         require('which-key').show(" g", {mode='n'})
     end,
     which_map = {
