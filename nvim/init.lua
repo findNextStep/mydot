@@ -111,9 +111,6 @@ packer.startup(function(use)
         end,
     }
 
-    -- show git
-    use(require('plugin.gitsigns').packer)
-
     -- 状态栏
     use { 'famiu/feline.nvim',
         requires = {'kyazdani42/nvim-web-devicons'},
@@ -204,16 +201,6 @@ packer.startup(function(use)
         end
     }
 
-    -- coc nvim lsp support
-    use ( require('plugin.coc').packer )
-
-    use { 'ibhagwan/fzf-lua',
-        requires = { 'vijaymarupudi/nvim-fzf', 'kyazdani42/nvim-web-devicons' },-- optional for icons
-        opt = true,
-        cmd = "FzfLua",
-        module = 'fzf-lua',
-    }
-
     use { 'folke/which-key.nvim',
         config = function ()
             local which = require("which-key")
@@ -244,24 +231,23 @@ packer.startup(function(use)
                     name="line",
                     c = "comment line",
                 },
-                p = {
-                    name = "project",
-                    f = {":lua require('fzf-lua').files_resume()<cr>", "find file in proect"},
-                    g = {":lua require('fzf-lua').git_files()<cr>", "find file in proect"},
-                },
             }
             keymap = MergeTable(keymap , require('plugin.gitsigns').which_map)
             keymap = MergeTable(keymap , require('plugin.coc').which_map)
             keymap = MergeTable(keymap , require('plugin.zen').which_map)
             keymap = MergeTable(keymap , require('plugin.interestingwords').which_map)
             keymap = MergeTable(keymap , require('plugin.terminal').which_map)
+            keymap = MergeTable(keymap , require('plugin.fzf').which_map)
             which.register(keymap,{prefix = "<leader>"});
         end,
     }
 
     use (require('plugin.zen').packer)
+    use (require('plugin.gitsigns').packer)
+    use (require('plugin.coc').packer )
     use (require('plugin.interestingwords').packer)
     use (require('plugin.terminal').packer)
+    use (require('plugin.fzf').packer)
 
     -- 测量启动时间
     use{ 'dstein64/vim-startuptime', opt=true, cmd='StartupTime' }
