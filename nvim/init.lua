@@ -18,6 +18,7 @@ vim.o.shiftwidth = vim.o.tabstop
 vim.o.colorcolumn = "120"
 vim.g.mapleader = " "
 vim.o.softtabstop = 4
+vim.o.mouse = 'nv'
 
 local packer = require('packer')
 packer.init({
