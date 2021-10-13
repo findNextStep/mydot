@@ -58,10 +58,6 @@ packer.startup(function(use)
     use { 'svermeulen/vimpeccable',
         config = function ()
             local vimp = require('vimp')
-            vimp.nnoremap('<leader>hw', function()
-                print('hello')
-                print('world')
-            end)
             vimp.bind('n', '<leader>n', function ()
                 vim.wo.number = not vim.wo.number
             end)
@@ -261,8 +257,6 @@ packer.startup(function(use)
             })
         end,
     }
-
-    use { 'tversteeg/registers.nvim', keys = { { 'n', '"' }, { 'i', '<c-r>' } } }
 
     use 'wbthomason/packer.nvim'
 end)
