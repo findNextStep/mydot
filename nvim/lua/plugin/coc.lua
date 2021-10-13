@@ -24,6 +24,7 @@ local module = {
                     return "<S-TAB>"
                 end
             end)
+            vim.api.nvim_set_keymap('x', '<space>f', ':call CocAction(\'format\')<CR>', {noremap = true});
             -- color highlight
             local Color, colors, Group, _, styles = require('colorbuddy').setup()
             Color.new('parameter','#306b72')
@@ -92,6 +93,7 @@ local module = {
             },
             [' '] = {':CocList commands<CR>', 'coc commands'},
         },
+        f = {'<Plug>(coc-format-selected)', 'coc format'},
         j = {
             name = 'jump/join/split',
             i = {':CocList outline<CR>','symbol in buffer'},
