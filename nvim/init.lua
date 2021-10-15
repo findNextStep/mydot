@@ -20,6 +20,15 @@ vim.g.mapleader = " "
 vim.o.softtabstop = 4
 vim.o.mouse = 'nv'
 
+PluginList = {
+    'plugin.zen',
+    'plugin.gitsigns',
+    'plugin.coc',
+    'plugin.interestingwords',
+    'plugin.terminal',
+    'plugin.fzf',
+}
+
 local packer = require('packer')
 packer.init({
     profile = {
@@ -141,11 +150,14 @@ packer.startup(function(use)
                 },
                 inactive = {}
             }
-            components.active[1] = MergeArray(components.active[1], require('plugin.gitsigns').line_item.left)
-            components.active[2] = MergeArray(components.active[2], require('plugin.gitsigns').line_item.right)
 
-            components.active[1] = MergeArray(components.active[1], require('plugin.coc').line_item.left)
-            components.active[2] = MergeArray(components.active[2], require('plugin.coc').line_item.right)
+            for _, plugin_name in ipairs(PluginList) do
+                local r = require(plugin_name)
+                if r.line_item ~= nil then
+                    components.active[1] = MergeArray(components.active[1], r.line_item.left)
+                    components.active[2] = MergeArray(components.active[2], r.line_item.right)
+                end
+            end
 
             require('feline').setup({
                 components = components,
@@ -213,10 +225,6 @@ packer.startup(function(use)
                 K = {"<CMD>call UncolorAllWords()<CR>" , "diable all highlight"},
                 n = "switch numbers",
                 c = 'comment',
-                e = {
-                    name = 'edit',
-                    c = {':split ~/.config/nvim/init.lua<cr>','edit config'},
-                },
                 q = {
                     name = 'quit',
                     r = 'reload nvim config',
@@ -229,22 +237,21 @@ packer.startup(function(use)
                     c = "comment line",
                 },
             }
-            keymap = MergeTable(keymap , require('plugin.gitsigns').which_map)
-            keymap = MergeTable(keymap , require('plugin.coc').which_map)
-            keymap = MergeTable(keymap , require('plugin.zen').which_map)
-            keymap = MergeTable(keymap , require('plugin.interestingwords').which_map)
-            keymap = MergeTable(keymap , require('plugin.terminal').which_map)
-            keymap = MergeTable(keymap , require('plugin.fzf').which_map)
+            for _, plugin_name in ipairs(PluginList) do
+                local r = require(plugin_name);
+                if r.which_map then
+                    keymap = MergeTable(keymap , r.which_map)
+                end
+            end
+
             which.register(keymap,{prefix = "<leader>"});
         end,
     }
 
-    use (require('plugin.zen').packer)
-    use (require('plugin.gitsigns').packer)
-    use (require('plugin.coc').packer )
-    use (require('plugin.interestingwords').packer)
-    use (require('plugin.terminal').packer)
-    use (require('plugin.fzf').packer)
+
+    for _, plugin_name in ipairs(PluginList) do
+        use (require(plugin_name).packer)
+    end
 
     -- 测量启动时间
     use{ 'dstein64/vim-startuptime', opt=true, cmd='StartupTime' }
