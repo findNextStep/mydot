@@ -5,6 +5,7 @@ local module = {
             'rafcamlet/coc-nvim-lua',
             'clangd/coc-clangd',
             'josa42/coc-go',
+            'iamcco/coc-spell-checker',
         },
         branch = 'release',
         config = function ()
@@ -56,42 +57,44 @@ local module = {
     next_warning = function()
         vim.cmd(':call CocAction(\'diagnosticNext\')')
         vim.cmd(":normal! zz")
-        require('which-key').show(" sw",{mode = 'n'})
+        require('which-key').show(" ew",{mode = 'n'})
     end,
     prev_warning = function()
         vim.cmd(':call CocAction(\'diagnosticPrevious\')')
         vim.cmd(":normal! zz")
-        require('which-key').show(" sw",{mode = 'n'})
+        require('which-key').show(" ew",{mode = 'n'})
     end,
     next_error = function()
         vim.cmd(':call CocAction(\'diagnosticNext\',\'error\')')
         vim.cmd(":normal! zz")
-        require('which-key').show(" sE",{mode = 'n'})
+        require('which-key').show(" e",{mode = 'n'})
     end,
     prev_error = function()
         vim.cmd(':call CocAction(\'diagnosticPrevious\',\'error\')')
         vim.cmd(":normal! zz")
-        require('which-key').show(" sE",{mode = 'n'})
+        require('which-key').show(" e",{mode = 'n'})
     end,
     which_map = {
         s = {
             name = "search / symbol",
+            b = {':call CocAction(\'showOutline\')<cr>', 'show tag in current buffer'},
             e = {"<Plug>(coc-rename)", "edit symbol"},
             d = {"<Plug>(coc-definition)", "go define"},
             r = {"<Plug>(coc-references)", "go reference"},
             a = {':CocAction<CR>', 'code action'},
             j = {':CocList outline<CR>','symbol in buffer'},
+            [' '] = {':CocList commands<CR>', 'coc commands'},
+        },
+        e = {
+            name = 'errors',
             w = {
                 name = 'warning',
                 n = {':lua require(\'plugin.coc\').next_warning()<CR>' ,'next warning'},
                 N = {':lua require(\'plugin.coc\').prev_warning()<CR>' ,'prev warning'},
             },
-            E = {
-                name = 'error',
-                n = {':lua require(\'plugin.coc\').next_error()<CR>' ,'next error'},
-                N = {':lua require(\'plugin.coc\').prev_error()<CR>' ,'prev error'},
-            },
-            [' '] = {':CocList commands<CR>', 'coc commands'},
+            l = {':CocList diagnostics' , 'list error'},
+            n = {':lua require(\'plugin.coc\').next_error()<CR>' ,'next error'},
+            N = {':lua require(\'plugin.coc\').prev_error()<CR>' ,'prev error'},
         },
         f = {'<Plug>(coc-format-selected)', 'coc format'},
         j = {
