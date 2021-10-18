@@ -25,6 +25,13 @@ local module = {
                     return "<S-TAB>"
                 end
             end)
+            vimp.inoremap({'expr'}, '<CR>', function()
+                if vim.fn.pumvisible() == 1 then
+                    return '<C-y>'
+                else
+                    return '<CR>'
+                end
+            end)
             vim.api.nvim_set_keymap('x', '<space>f', ':call CocAction(\'format\')<CR>', {noremap = true});
             -- color highlight
             local Color, colors, Group, _, styles = require('colorbuddy').setup()
@@ -77,12 +84,13 @@ local module = {
     which_map = {
         s = {
             name = "search / symbol",
-            b = {':call CocAction(\'showOutline\')<cr>', 'show tag in current buffer'},
-            e = {"<Plug>(coc-rename)", "edit symbol"},
-            d = {"<Plug>(coc-definition)", "go define"},
-            r = {"<Plug>(coc-references)", "go reference"},
             a = {':CocAction<CR>', 'code action'},
+            b = {':call CocAction(\'showOutline\')<cr>', 'show tag in current buffer'},
+            d = {"<Plug>(coc-definition)", "go define"},
+            e = {"<Plug>(coc-rename)", "edit symbol"},
+            h = {':call CocActionAsync(\'doHover\')<CR>', 'show hover'},
             j = {':CocList outline<CR>','symbol in buffer'},
+            r = {"<Plug>(coc-references)", "go reference"},
             [' '] = {':CocList commands<CR>', 'coc commands'},
         },
         e = {
