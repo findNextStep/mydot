@@ -28,8 +28,9 @@ PluginList = {
     'plugin.interestingwords',
     'plugin.terminal',
     'plugin.fzf',
-    -- 'plugin.auto-session',
+    'plugin.auto-session',
     'plugin.vim-startuptime',
+    'plugin.packer',
 }
 
 local packer = require('packer')
@@ -264,7 +265,5 @@ packer.startup(function(use)
             })
         end,
     }
-
-    use 'wbthomason/packer.nvim'
 end)
 
