@@ -19,6 +19,7 @@ vim.o.colorcolumn = "120"
 vim.g.mapleader = " "
 vim.o.softtabstop = 4
 vim.o.mouse = 'nv'
+vim.o.guifont='DejaVuSansMono Nerd Font'
 
 PluginList = {
     'plugin.zen',
@@ -27,6 +28,8 @@ PluginList = {
     'plugin.interestingwords',
     'plugin.terminal',
     'plugin.fzf',
+    -- 'plugin.auto-session',
+    'plugin.vim-startuptime',
 }
 
 local packer = require('packer')
@@ -79,7 +82,6 @@ packer.startup(function(use)
             vimp.onoremap('<C-c>', '<ESC>')
             vimp.inoremap('<C-c>', '<ESC>')
             vimp.cnoremap('<C-c>', '<ESC>')
-            vimp.tnoremap('<C-c>', '<ESC>')
             vimp.nnoremap('<C-c>', '<ESC>')
             vimp.nnoremap('<leader>qr', function()
                 vimp.unmap_all()
@@ -252,9 +254,6 @@ packer.startup(function(use)
     for _, plugin_name in ipairs(PluginList) do
         use (require(plugin_name).packer)
     end
-
-    -- 测量启动时间
-    use{ 'dstein64/vim-startuptime', opt=true, cmd='StartupTime' }
 
     use { "terrortylor/nvim-comment",
         config = function()
