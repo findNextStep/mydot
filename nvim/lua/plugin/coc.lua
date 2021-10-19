@@ -86,6 +86,7 @@ local module = {
             name = "search / symbol",
             a = {':CocAction<CR>', 'code action'},
             b = {':call CocAction(\'showOutline\')<cr>', 'show tag in current buffer'},
+            c = {':call CocAction(\'showIncomingCalls\')<cr>','show call hierarchy'},
             d = {"<Plug>(coc-definition)", "go define"},
             e = {"<Plug>(coc-rename)", "edit symbol"},
             h = {':call CocActionAsync(\'doHover\')<CR>', 'show hover'},
