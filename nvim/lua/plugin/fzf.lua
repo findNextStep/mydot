@@ -7,6 +7,9 @@ return {
     },
     which_map = {
         [' '] = {':FzfLua commands<cr>', 'use commands'},
+        s = {
+            s = {':FzfLua blines<cr>', 'find line'},
+        },
         p = {
             name = "project",
             f = {":FzfLua files_resume<cr>", "find file in proect"},
