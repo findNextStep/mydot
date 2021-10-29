@@ -20,6 +20,11 @@ vim.g.mapleader = " "
 vim.o.softtabstop = 4
 vim.o.mouse = 'nv'
 vim.o.guifont='DejaVuSansMono Nerd Font'
+function _G.nvim_tabline()
+    return vim.fn.bufname()
+end
+vim.o.tabline='%!v:lua.nvim_tabline()'
+vim.o.showtabline=2
 
 PluginList = {
     'plugin.zen',
@@ -84,6 +89,7 @@ packer.startup(function(use)
             vimp.inoremap('<C-c>', '<ESC>')
             vimp.cnoremap('<C-c>', '<ESC>')
             vimp.nnoremap('<C-c>', '<ESC>')
+            vimp.xnoremap('<leader>y', '"*y')
             vimp.nnoremap('<leader>qr', function()
                 vimp.unmap_all()
                 vim.cmd('silent wa')

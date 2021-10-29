@@ -14,6 +14,7 @@ return {
             name = "project",
             f = {":FzfLua files_resume<cr>", "find file in proect"},
             g = {":FzfLua git_files<cr>", "find file in proect"},
+            p = {'"*p', "paste"},
         },
     }
 }
