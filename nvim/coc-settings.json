@@ -1,5 +1,10 @@
 {
     "coc.preferences.enableFloatHighlight": true,
+    "diagnostic.errorSign": "",
+    "diagnostic.warningSign": "",
+    "diagnostic.infoSign": "",
+    "diagnostic.hintSign": "",
+    "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "suggest.enablePreview": true,
     "clangd.enabled": true,
     "clangd.semanticHighlighting": false,
@@ -17,7 +22,9 @@
     ],
     "clangd.path": "/Users/panxueqian/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/12.0.0/clangd_12.0.0/bin/clangd",
     "coc.preferences.colorSupport": true,
-    "Lua.diagnostics.globals":["vim"],
+    "Lua.diagnostics.globals": [
+        "vim"
+    ],
     "codeLens.enable": true,
     "coc.preferences.formatOnType": true,
     "coc.preferences.formatOnSaveFiletypes": [
