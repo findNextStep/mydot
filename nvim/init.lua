@@ -138,8 +138,7 @@ packer.startup(function(use)
                             hl = function()
                                 return {
                                     name = require('feline.providers.vi_mode').get_mode_highlight_name(),
-                                    bg = require('feline.providers.vi_mode').get_mode_color(),
-                                    fg = 'White',
+                                    fg = require('feline.providers.vi_mode').get_mode_color(),
                                     style = 'bold'
                                 }
                             end,
