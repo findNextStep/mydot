@@ -39,6 +39,7 @@ local module = {
             Group.new('CocSem_parameter',colors.parameter)
             Color.new('type','#729de3')
             Group.new('CocSem_class', colors.type, nil, styles.bold)
+            Group.new('CocSem_struct', colors.type, nil, styles.bold)
             Group.new('CocSem_type', colors.type, nil, styles.bold)
             Group.new('CocSem_typeParameter', colors.type, nil, styles.bold)
             Group.new('CocSem_enum', colors.type, nil, styles.bold)
@@ -57,6 +58,9 @@ local module = {
             Group.new('CocSem_namespace', colors.namespace, nil, styles.bold)
             Color.new('property','#7ca6b7')
             Group.new('CocSem_property', colors.property, nil, styles.underline)
+            -- diagnostic notify
+            Color.new('infoCoc','#3694ff')
+            Group.new('CocInfoSign', colors.property, nil, nil)
         end,
         opt = true,
         event = 'VimEnter',
@@ -112,15 +116,72 @@ local module = {
         },
     },
     line_item = {
-        left = {},
+        left = {
+            {
+                provider = function ()
+                    if vim.b.coc_diagnostic_info == nil then
+                        return ''
+                    elseif vim.b.coc_diagnostic_info.error == 0 then
+                        return ''
+                    else
+                        return '  '..tostring(vim.b.coc_diagnostic_info.error)
+                    end
+                end,
+                hl = {
+                    fg = '#ff0000'
+                },
+            },
+            {
+                provider = function ()
+                    if vim.b.coc_diagnostic_info == nil then
+                        return ''
+                    elseif vim.b.coc_diagnostic_info.warning == 0 then
+                        return ''
+                    else
+                        return '  '..tostring(vim.b.coc_diagnostic_info.warning)
+                    end
+                end,
+                hl = {
+                    fg = '#ff922b'
+                },
+            },
+            {
+                provider = function ()
+                    if vim.b.coc_diagnostic_info == nil then
+                        return ''
+                    elseif vim.b.coc_diagnostic_info.information == 0 then
+                        return ''
+                    else
+                        return '  '..tostring(vim.b.coc_diagnostic_info.information)
+                    end
+                end,
+                hl = {
+                    fg = '#65a7b9'
+                },
+            },
+            {
+                provider = function ()
+                    if vim.b.coc_diagnostic_info == nil then
+                        return ''
+                    elseif vim.b.coc_diagnostic_info.hint == 0 then
+                        return ''
+                    else
+                        return '  '..tostring(vim.b.coc_diagnostic_info.hint)
+                    end
+                end,
+                hl = {
+                    fg = '#00acc1'
+                },
+            },
+        },
         mid = {},
         right = {
             {
                 provider = function()
-                    if vim.fn['coc#status'] == nil then
+                    if vim.g.coc_status == nil then
                         return ''
                     end
-                    return vim.fn['coc#status']()
+                    return vim.g.coc_status
                 end
             }
         },
