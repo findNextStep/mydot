@@ -67,7 +67,7 @@ local module = {
                     if vim.b.gitsigns_status_dict == nil then
                         return ""
                     end
-                    if vim.b.gitsigns_status_dict.added == nil then
+                    if vim.b.gitsigns_status_dict.added == 0 then
                         return ""
                     else
                         return '  '..vim.b.gitsigns_status_dict.added
@@ -82,7 +82,7 @@ local module = {
                     if vim.b.gitsigns_status_dict == nil then
                         return ""
                     end
-                    if vim.b.gitsigns_status_dict.changed == nil then
+                    if vim.b.gitsigns_status_dict.changed == 0 then
                         return ""
                     else
                         return '  '..vim.b.gitsigns_status_dict.changed
@@ -97,7 +97,7 @@ local module = {
                     if vim.b.gitsigns_status_dict == nil then
                         return ""
                     end
-                    if vim.b.gitsigns_status_dict.removed == nil then
+                    if vim.b.gitsigns_status_dict.removed == 0 then
                         return ""
                     else
                         return '  '..vim.b.gitsigns_status_dict.removed
