@@ -21,6 +21,7 @@ local module = {
                     end,
                 current_line_blame = true,
                 current_line_blame_formatter_opts = {
+
                     relative_time = true
                 },
             })
@@ -48,18 +49,67 @@ local module = {
         left = {
             {
                 provider = function()
-                    if vim.b.gitsigns_status == nil then
+                    if vim.b.gitsigns_status_dict == nil then
+                        return ""
+                    end
+                    if vim.b.gitsigns_status_dict.head == nil then
                         return ""
                     else
-                        return vim.b.gitsigns_status
+                        return ' '..vim.b.gitsigns_status_dict.head
                     end
                 end,
             },
         },
         mid = {},
-        right = {},
-    }
+        right = {
+            {
+                provider = function()
+                    if vim.b.gitsigns_status_dict == nil then
+                        return ""
+                    end
+                    if vim.b.gitsigns_status_dict.added == nil then
+                        return ""
+                    else
+                        return '  '..vim.b.gitsigns_status_dict.added
+                    end
+                end,
+                hl = {
+                    fg = '#86af7f'
+                }
+            },
+            {
+                provider = function()
+                    if vim.b.gitsigns_status_dict == nil then
+                        return ""
+                    end
+                    if vim.b.gitsigns_status_dict.changed == nil then
+                        return ""
+                    else
+                        return '  '..vim.b.gitsigns_status_dict.changed
+                    end
+                end,
+                hl = {
+                    fg = '#ff8901'
+                }
+            },
+            {
+                provider = function()
+                    if vim.b.gitsigns_status_dict == nil then
+                        return ""
+                    end
+                    if vim.b.gitsigns_status_dict.removed == nil then
+                        return ""
+                    else
+                        return '  '..vim.b.gitsigns_status_dict.removed
+                    end
+                end,
+                hl = {
+                    fg = '#e96962'
+                }
+            }
+        },
+
+    },
 }
 
 return module
-

@@ -128,7 +128,7 @@ local module = {
                     end
                 end,
                 hl = {
-                    fg = '#ff0000'
+                    fg = '#e96962'
                 },
             },
             {
@@ -142,7 +142,7 @@ local module = {
                     end
                 end,
                 hl = {
-                    fg = '#ff922b'
+                    fg = '#ff8901'
                 },
             },
             {

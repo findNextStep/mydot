@@ -20,16 +20,6 @@ vim.g.mapleader = " "
 vim.o.softtabstop = 4
 vim.o.mouse = 'nv'
 vim.o.guifont='DejaVuSansMono Nerd Font'
-function _G.nvim_tabline()
-    local result = vim.fn.bufname();
-    local treesitter = require('nvim-treesitter')
-    if treesitter ~= nil then
-        result = result..treesitter.statusline(90)
-    end
-    return result;
-end
-vim.o.tabline='%!v:lua.nvim_tabline()'
-vim.o.showtabline=2
 
 PluginList = {
     'plugin.zen',
@@ -67,9 +57,11 @@ function MergeTable(t1, t2)
 end
 
 function MergeArray(t1, t2)
-   for _,v in ipairs(t2) do
-      table.insert(t1, v)
-   end
+    if t2 ~= nil then
+        for _,v in ipairs(t2) do
+            table.insert(t1, v)
+        end
+    end
    return t1
 end
 
@@ -150,6 +142,8 @@ packer.startup(function(use)
                             right_sep = ' ',
                             icon = '>'
                         },
+                    },
+                    {
                         {
                             provider = {
                                 name = 'file_info',
@@ -157,24 +151,45 @@ packer.startup(function(use)
                                     type = 'uniuqe',
                                 }
                             },
-                        },
+                        }
                     },
                     {}
                 },
-                inactive = {}
+                inactive = {
+                    {
+                        {
+                            provider = {
+                                name = 'file_info',
+                                opts = {
+                                    type = 'relative',
+                                }
+                            },
+                        },
+                    },{},{}
+                }
             }
 
             for _, plugin_name in ipairs(PluginList) do
                 local r = require(plugin_name)
                 if r.line_item ~= nil then
                     components.active[1] = MergeArray(components.active[1], r.line_item.left)
-                    components.active[2] = MergeArray(components.active[2], r.line_item.right)
+                    components.active[2] = MergeArray(components.active[2], r.line_item.mid)
+                    components.active[3] = MergeArray(components.active[3], r.line_item.right)
                 end
             end
 
             require('feline').setup({
                 components = components,
+                colors = {
+                    bg = "#1e1e1e",
+                    fg = "#c9d1d9",
+                }
             })
+            function _G.nvim_tabline()
+                return require('feline').statusline()
+            end
+            vim.o.tabline='%!v:lua.nvim_tabline()'
+            vim.o.showtabline=2
         end
     }
 
