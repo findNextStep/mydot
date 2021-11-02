@@ -66,8 +66,9 @@ local module = {
                 provider = function()
                     if vim.b.gitsigns_status_dict == nil then
                         return ""
-                    end
-                    if vim.b.gitsigns_status_dict.added == 0 then
+                    elseif vim.b.gitsigns_status_dict.added == nil then
+                        return ""
+                    elseif vim.b.gitsigns_status_dict.added == 0 then
                         return ""
                     else
                         return '  '..vim.b.gitsigns_status_dict.added
@@ -81,8 +82,9 @@ local module = {
                 provider = function()
                     if vim.b.gitsigns_status_dict == nil then
                         return ""
-                    end
-                    if vim.b.gitsigns_status_dict.changed == 0 then
+                    elseif vim.b.gitsigns_status_dict.changed == nil then
+                        return ""
+                    elseif vim.b.gitsigns_status_dict.changed == 0 then
                         return ""
                     else
                         return '  '..vim.b.gitsigns_status_dict.changed
@@ -96,8 +98,9 @@ local module = {
                 provider = function()
                     if vim.b.gitsigns_status_dict == nil then
                         return ""
-                    end
-                    if vim.b.gitsigns_status_dict.removed == 0 then
+                    elseif vim.b.gitsigns_status_dict.removed == nil then
+                        return ""
+                    elseif vim.b.gitsigns_status_dict.removed == 0 then
                         return ""
                     else
                         return '  '..vim.b.gitsigns_status_dict.removed
