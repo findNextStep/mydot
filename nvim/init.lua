@@ -21,7 +21,12 @@ vim.o.softtabstop = 4
 vim.o.mouse = 'nv'
 vim.o.guifont='DejaVuSansMono Nerd Font'
 function _G.nvim_tabline()
-    return vim.fn.bufname()
+    local result = vim.fn.bufname();
+    local treesitter = require('nvim-treesitter')
+    if treesitter ~= nil then
+        result = result..treesitter.statusline(90)
+    end
+    return result;
 end
 vim.o.tabline='%!v:lua.nvim_tabline()'
 vim.o.showtabline=2
@@ -181,7 +186,6 @@ packer.startup(function(use)
 
     -- 高亮 主题
     use { "nvim-treesitter/nvim-treesitter",
-        ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'lua', 'vim', 'python', 'go'},
         requires = {
             {"nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter"},
             {"JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter"}
