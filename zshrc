@@ -39,7 +39,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 [[ ! -f ~/.zinit/bin/zinit.zsh ]] && {
     command mkdir -p ~/.zinit
-    command git clone https://github.com/zdharma/zinit ~/.zinit/bin
+    command git clone https://github.com/zdharma-continuum/zinit ~/.zinit/bin
 }
 
 source "$HOME/.zinit/bin/zinit.zsh"
@@ -60,15 +60,14 @@ zinit wait lucid for \
     OMZ::plugins/git-extras/git-extras.plugin.zsh
 
 zinit light-mode for \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+    zdharma-continuum/z-a-patch-dl \
+    zdharma-continuum/z-a-bin-gem-node
 
 # zinit ice as="completion"
 # zinit snippet https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty
 zinit wait"1" lucid as="completion" for \
     OMZ::plugins/docker/_docker \
     OMZ::plugins/rust/_rust \
-    OMZ::plugins/cargo/_cargo \
     OMZ::plugins/fd/_fd \
     https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty \
     https://github.com/skroll/zsh-cmake-completion/blob/master/_cmake
@@ -92,14 +91,15 @@ zinit wait"1" lucid for \
 zinit wait"0" lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
  atload"FAST_HIGHLIGHT[chroma-git]=0" \
-    zdharma/fast-syntax-highlighting \
+    zdharma-continuum/fast-syntax-highlighting \
  blockf \
     zsh-users/zsh-completions \
  atload"_zsh_autosuggest_start;bindkey \"גּ \" autosuggest-accept; bindkey \"¬\" autosuggest-accept;bindkey \"^L\" autosuggest-accept; bindkey \"^J\" autosuggest-accept;bindkey \"גּl\" autosuggest-accept " \
     zsh-users/zsh-autosuggestions
 # 在大工程项目中使用git高亮会很卡，这里关掉这个
 
-zinit wait"1" pack"bgn-binary" for fzf
+zinit ice from"gh-r" as"program"
+zinit light junegunn/fzf
 zinit wait"2" lucid for https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
 zinit ice as="completion"
 zinit snippet https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
