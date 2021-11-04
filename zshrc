@@ -39,7 +39,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 [[ ! -f ~/.zinit/bin/zinit.zsh ]] && {
     command mkdir -p ~/.zinit
-    command git clone https://github.com/zdharma-continuum/zinit ~/.zinit/bin
+    command git clone https://github.com/zdharma-continuum/zinit ~/.zinit/bin --depth=10
 }
 
 source "$HOME/.zinit/bin/zinit.zsh"
@@ -98,7 +98,7 @@ zinit wait"0" lucid for \
     zsh-users/zsh-autosuggestions
 # 在大工程项目中使用git高亮会很卡，这里关掉这个
 
-zinit ice from"gh-r" as"program"
+zinit ice atclone"./install --xdg --no-update-rc --completion --key-bindings" atpull"%atclone" as"program" pick="bin/fzf" multisrc"shell/{key-bindings,completion}.zsh"
 zinit light junegunn/fzf
 zinit wait"2" lucid for https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
 zinit ice as="completion"
@@ -275,3 +275,5 @@ ENABLE_CORRECTION="true"
 # autoload -Uz compinit
 # compinit
 # zinit cdreplay -q
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
