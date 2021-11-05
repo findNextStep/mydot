@@ -276,4 +276,4 @@ ENABLE_CORRECTION="true"
 # compinit
 # zinit cdreplay -q
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || return 0
