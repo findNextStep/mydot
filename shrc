@@ -106,3 +106,5 @@ case "$(uname -s)" in
         # export CPPFLAGS="-I/usr/local/Cellar/llvm@9/9.0.1_2/include"
         ;;
 esac
+export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
