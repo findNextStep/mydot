@@ -64,7 +64,7 @@ local module = {
             Group.new('CocInfoSign', colors.property, nil, nil)
         end,
         opt = true,
-        event = "InsertEnter"
+        event = "BufEnter"
     },
     next_warning = function()
         vim.cmd(':call CocAction(\'diagnosticNext\')')
