@@ -12,6 +12,8 @@ local module = {
             -- key bind
             local vimp = require('vimp')
             vim.o.hidden = true
+            vim.api.nvim_set_keymap('x', '<leader>f',  "<Plug>(coc-format-selected)", {noremap = false})
+            -- vimp.xnoremap({'expr', 'silent'},'<leader>x', '<Plug>(coc-format-selected)')
             vimp.inoremap({'expr', 'silent'}, '<TAB>', function()
                 if vim.fn.pumvisible() == 1 then
                     return "<c-n>"
@@ -32,7 +34,6 @@ local module = {
                     return '<CR>'
                 end
             end)
-            vim.api.nvim_set_keymap('x', '<space>f', ':call CocAction(\'format\')<CR>', {noremap = true});
             -- color highlight
             local Color, colors, Group, _, styles = require('colorbuddy').setup()
             Color.new('parameter','#306b72')
@@ -63,7 +64,7 @@ local module = {
             Group.new('CocInfoSign', colors.property, nil, nil)
         end,
         opt = true,
-        event = 'VimEnter',
+        event = "InsertEnter"
     },
     next_warning = function()
         vim.cmd(':call CocAction(\'diagnosticNext\')')
