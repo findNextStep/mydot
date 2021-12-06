@@ -207,14 +207,15 @@ packer.startup(function(use)
             {"JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter"}
         },
         config = function()
-            vim.api.nvim_command("set foldmethod=expr")
-            vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
-            vim.api.nvim_command("set foldlevel=1000000")
+            vim.wo.foldmethod = 'expr'
+            vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+            vim.wo.foldlevel = 99
             require "nvim-treesitter.configs".setup {
                 ensure_installed = {"cpp","lua","bash","python","go"},
                 -- ensure_installed = "all",
                 highlight = {
-                    enable = true
+                    enable = true,
+                    additional_vim_regex_highlighting = false
                 },
                 indent = {
                     enable = true
