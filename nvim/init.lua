@@ -21,6 +21,13 @@ vim.o.softtabstop = 4
 vim.o.mouse = 'nv'
 vim.o.guifont='DejaVuSansMono Nerd Font'
 
+local opts = {
+        noremap = true,
+        silent = false
+    }
+vim.api.nvim_set_keymap('v', '<S-j>', ':m \'>+1<CR>gv=gv', opts)
+vim.api.nvim_set_keymap('v', '<S-k>', ':m \'<-2<CR>gv=gv', opts)
+
 PluginList = {
     'plugin.zen',
     'plugin.gitsigns',
