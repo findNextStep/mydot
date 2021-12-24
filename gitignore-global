@@ -18,3 +18,5 @@ __*
 .vimspector.json
 
 result
+
+third_party/prebuilt/*
