@@ -119,10 +119,7 @@ packer.startup(function(use)
     use { "lukas-reineke/indent-blankline.nvim",
         config = function()
             vim.opt.list = true
-            vim.opt.listchars = {
-                space = '⋅',
-            }
-
+            vim.opt.listchars:append("space:⋅")
             require("indent_blankline").setup {
                 show_end_of_line = true,
                 show_current_context = true,
@@ -224,9 +221,9 @@ packer.startup(function(use)
                     enable = true,
                     additional_vim_regex_highlighting = false
                 },
-                indent = {
-                    enable = true
-                },
+                -- indent = {
+                --     enable = true
+                -- },
                 context_commentstring = {
                     enable = true
                 },
