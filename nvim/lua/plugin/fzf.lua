@@ -1,6 +1,10 @@
 return {
     packer = { 'ibhagwan/fzf-lua',
-        requires = { 'vijaymarupudi/nvim-fzf', 'kyazdani42/nvim-web-devicons' },-- optional for icons
+        requires = {
+            'vijaymarupudi/nvim-fzf',
+            'kyazdani42/nvim-web-devicons',
+            { 'junegunn/fzf', run = './install --bin',}
+        },-- optional for icons
         opt = true,
         cmd = "FzfLua",
         -- module = 'fzf-lua',
