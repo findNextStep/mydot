@@ -39,8 +39,6 @@ PluginList = {
     'plugin.vim-startuptime',
     'plugin.packer',
     'plugin.nvim-luapad',
-    'plugin.aerial',
-    'plugin.diffview',
 }
 
 local packer = require('packer')
@@ -210,7 +208,8 @@ packer.startup(function(use)
     use { "nvim-treesitter/nvim-treesitter",
         requires = {
             {"nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter"},
-            {"JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter"}
+            {"JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter"},
+            {"lewis6991/spellsitter.nvim"},
         },
         config = function()
             vim.wo.foldmethod = 'expr'
@@ -242,6 +241,7 @@ packer.startup(function(use)
                     }
                 }
             }
+            require('spellsitter').setup()
         end
     }
 
@@ -297,5 +297,7 @@ packer.startup(function(use)
             })
         end,
     }
+
+    local enbale = true
 end)
 
