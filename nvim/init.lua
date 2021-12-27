@@ -34,11 +34,13 @@ PluginList = {
     'plugin.coc',
     'plugin.interestingwords',
     'plugin.terminal',
-    'plugin.fzf',
+    'plugin.telescope',
     'plugin.auto-session',
     'plugin.vim-startuptime',
     'plugin.packer',
     'plugin.nvim-luapad',
+    'plugin.aerial',
+    'plugin.diffview',
 }
 
 local packer = require('packer')

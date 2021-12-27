@@ -111,10 +111,6 @@ local module = {
             N = {':lua require(\'plugin.coc\').prev_error()<CR>' ,'prev error'},
         },
         f = {'<Plug>(coc-format-selected)', 'coc format'},
-        j = {
-            name = 'jump/join/split',
-            i = {':CocList outline<CR>','symbol in buffer'},
-        },
     },
     line_item = {
         left = {
