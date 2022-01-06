@@ -210,6 +210,8 @@ packer.startup(function(use)
             {"nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter"},
             {"JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter"},
             {"lewis6991/spellsitter.nvim"},
+            {"romgrk/nvim-treesitter-context"},
+            {"haringsrob/nvim_context_vt"}
         },
         config = function()
             vim.wo.foldmethod = 'expr'
@@ -242,7 +244,15 @@ packer.startup(function(use)
                 }
             }
             require('spellsitter').setup()
-        end
+            local Color, colors, Group, _, styles = require('colorbuddy').setup()
+            Color.new('ContextVt','#505050')
+            Group.new('ContextVt_group', colors.ContextVt)
+            require'nvim_context_vt'.setup{
+                highlight = 'ContextVt_group',
+            }
+        end,
+        -- opt = true,
+        -- event = "BufEnter"
     }
 
     use { 'folke/which-key.nvim',
