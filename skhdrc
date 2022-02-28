@@ -1,7 +1,7 @@
-lcmd - j : yabai -m window --focus next
-lcmd - k : yabai -m window --focus prev
+lcmd - j : yabai -m window --focus next || yabai -m window --focus first
+lcmd - k : yabai -m window --focus prev || yabai -m window --focus first
 ralt + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
-ralt - return : /Users/panxueqian/.cargo/bin/alacritty
+ralt - return : open -n /Applications/Alacritty.app
 ralt - t : open -n /System/Applications/Utilities/Terminal.app
 ralt - d : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
 lcmd - t : yabai -m window --toggle float

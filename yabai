@@ -67,4 +67,5 @@ yabai -m config status_bar_power_icon_strip   
 yabai -m config status_bar_space_icon        
 yabai -m config status_bar_clock_icon        
 
-
+yabai -m rule --add app="系统偏好设置" manage=off
+yabai -m rule --add app="find-book-mark" manage=off
