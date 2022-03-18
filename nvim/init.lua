@@ -245,10 +245,10 @@ packer.startup(function(use)
             }
             require('spellsitter').setup()
             local Color, colors, Group, _, styles = require('colorbuddy').setup()
-            Color.new('ContextVt','#505050')
-            Group.new('ContextVt_group', colors.ContextVt)
+            Color.new('ContextVt','#404040')
+            Group.new('ContextVt', colors.ContextVt)
             require'nvim_context_vt'.setup{
-                highlight = 'ContextVt_group',
+                highlight = 'ContextVt',
             }
         end,
         -- opt = true,
