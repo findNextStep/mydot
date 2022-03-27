@@ -1,5 +1,5 @@
 lcmd - j : yabai -m window --focus next || yabai -m window --focus first
-lcmd - k : yabai -m window --focus prev || yabai -m window --focus first
+lcmd - k : yabai -m window --focus prev || yabai -m window --focus last
 ralt + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
 ralt - return : open -n /Applications/Alacritty.app
 ralt - t : open -n /System/Applications/Utilities/Terminal.app
