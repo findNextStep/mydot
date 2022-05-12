@@ -10,6 +10,7 @@
     "semanticTokens.filetypes": ["cpp","c","rust"],
     "rust-analyzer.inlayHints.enable": true,
     "rust-analyzer.inlayHints.typeHints": true,
+    "sumneko-lua.enableNvimLuaDev":true,
     "clangd.arguments": [
         "--background-index",
         "--compile-commands-dir=build/Debug",

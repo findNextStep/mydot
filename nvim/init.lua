@@ -49,28 +49,28 @@ packer.init({
     }
 })
 
-function MergeTable(t1, t2)
-    for k,v in pairs(t2) do
+function MergeTable(table_1, table_2)
+    for k,v in pairs(table_2) do
         if type(v) == "table" then
-            if type(t1[k] or false) == "table" then
-                MergeTable(t1[k] or {}, t2[k] or {})
+            if type(table_1[k] or false) == "table" then
+                MergeTable(table_1[k] or {}, table_2[k] or {})
             else
-                t1[k] = v
+                table_1[k] = v
             end
         else
-            t1[k] = v
+            table_1[k] = v
         end
     end
-    return t1
+    return table_1
 end
 
-function MergeArray(t1, t2)
-    if t2 ~= nil then
-        for _,v in ipairs(t2) do
-            table.insert(t1, v)
+function MergeArray(array_1, array_2)
+    if array_2 ~= nil then
+        for _,v in ipairs(array_2) do
+            table.insert(array_1, v)
         end
     end
-   return t1
+   return array_1
 end
 
 packer.startup(function(use)
@@ -244,7 +244,7 @@ packer.startup(function(use)
                 }
             }
             require('spellsitter').setup()
-            local Color, colors, Group, _, styles = require('colorbuddy').setup()
+            local Color, colors, Group, _, _ = require('colorbuddy').setup()
             Color.new('ContextVt','#404040')
             Group.new('ContextVt', colors.ContextVt)
             require'nvim_context_vt'.setup{
@@ -307,7 +307,5 @@ packer.startup(function(use)
             })
         end,
     }
-
-    local enbale = true
 end)
 
