@@ -6,7 +6,7 @@ ralt - t : open -n /System/Applications/Utilities/Terminal.app
 ralt - d : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
 lcmd - t : yabai -m window --toggle float
 
-lcmd - g : zsh -c "/Users/panxueqian/Library/Android/sdk/platform-tools/adb shell input tap 1878 363&&sleep 5&&/Users/panxueqian/Library/Android/sdk/platform-tools/adb shell input tap 2700 1300&&sleep 1&&/Users/panxueqian/Library/Android/sdk/platform-tools/adb shell input tap 2600 1200"
+lcmd - g : zsh -c "/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 1878 363&&sleep 5&&/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 2700 1300&&sleep 1&&/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 2600 1200"
 
 shift + lcmd - j : yabai -m window --swap next
 shift + lcmd - k : yabai -m window --swap prev

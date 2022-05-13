@@ -96,14 +96,19 @@ case "$(uname -s)" in
         export PATH="/usr/local/sbin:$PATH"
         export ANDROID_HOME="$HOME/Library/Android/sdk"
         export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
-        export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
+        # export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
+        export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
         export PATH="$PATH:$ANDROID_HOME/platform-tools"
         export GOPATH="$HOME/go"
         export CXXFLAGS=-isystem\ /usr/local/Cellar/llvm/10.0.1/include/c++/v1
         export PATH="$PATH:~/anaconda3/bin"
+        export PATH="$PATH:/Users/bytedance/.pyenv/versions/2.7.18/bin"
+        export PATH="$PATH:~/Library/Python/3.8/bin"
         # export PATH="/usr/local/opt/llvm/bin:$PATH"
         # export LDFLAGS="-L/usr/local/Cellar/llvm@9/9.0.1_2/lib/clang"
         # export CPPFLAGS="-I/usr/local/Cellar/llvm@9/9.0.1_2/include"
+        export ANDROID_NDK_HOME="$HOME/Library/Android/sdk/ndk/22.1.7171670"
+        export ANDROID_NDK="$HOME/Library/Android/sdk/ndk/22.1.7171670"
         ;;
 esac
 export RUSTUP_DIST_SERVER="https://rsproxy.cn"

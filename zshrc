@@ -67,7 +67,6 @@ zinit light-mode for \
 # zinit snippet https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty
 zinit wait"1" lucid as="completion" for \
     OMZ::plugins/docker/_docker \
-    OMZ::plugins/rust/_rust \
     OMZ::plugins/fd/_fd \
     https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty \
     https://github.com/skroll/zsh-cmake-completion/blob/master/_cmake
