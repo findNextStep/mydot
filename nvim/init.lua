@@ -129,7 +129,7 @@ packer.startup(function(use)
     }
 
     -- 状态栏
-    use { 'famiu/feline.nvim',
+    use { 'feline-nvim/feline.nvim',
         requires = {'kyazdani42/nvim-web-devicons'},
         config = function()
             local components = {
@@ -191,9 +191,9 @@ packer.startup(function(use)
                 }
             })
             function _G.nvim_tabline()
-                return require('feline').statusline()
+                return require('feline').winbar.setup()
             end
-            vim.o.tabline='%!v:lua.nvim_tabline()'
+            -- vim.o.tabline='%!v:lua.nvim_tabline()'
             vim.o.showtabline=2
         end
     }
@@ -203,6 +203,7 @@ packer.startup(function(use)
         ft = { 'lua','vim','bash','zsh',},
         opt = true,
     }
+    use 'Vonr/align.nvim'
 
     -- 高亮 主题
     use { "nvim-treesitter/nvim-treesitter",
@@ -218,7 +219,7 @@ packer.startup(function(use)
             vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
             vim.wo.foldlevel = 99
             require "nvim-treesitter.configs".setup {
-                ensure_installed = {"cpp","lua","bash","python","go"},
+                ensure_installed = {"cpp","lua","bash","python","go","vim"},
                 -- ensure_installed = "all",
                 highlight = {
                     enable = true,

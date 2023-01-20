@@ -178,8 +178,12 @@ local module = {
                     if vim.g.coc_status == nil then
                         return ''
                     end
-                    return vim.g.coc_status
-                end
+                    if string.len(vim.g.coc_status) == 0 then
+                        return ''
+                    end
+                    local status = string.gsub(vim.g.coc_status, "%%", "%%%%")
+                    return status
+                end,
             }
         },
     }
