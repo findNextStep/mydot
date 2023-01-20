@@ -20,3 +20,5 @@ __*
 result
 
 third_party/prebuilt/*
+
+.cache/clagnd

@@ -21,10 +21,12 @@ p10k.zsh
 skhdrc
 gitignore-global
 kitty.conf:.config/kitty/kitty.conf
+karabiner/:.config/karabiner
 [endfiles]
 
 [hosts]
 findNextepdeMBP
 MacBook-Pro.local 
+C02CG178MD6V
 bogon
 [endhosts]

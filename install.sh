@@ -7,6 +7,7 @@ case "$(uname -s)" in
     Linux*)
         $(pwd)/dotsync/bin/dotsync -f $(pwd)/.dotsyncrc -L ;;
     Darwin*)   
+        defaults write -g com.apple.swipescrolldirection -bool FALSE
         defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
         $(pwd)/dotsync/bin/dotsync -f $(pwd)/.dotsyncrc_for_mac -L ;;
 esac
