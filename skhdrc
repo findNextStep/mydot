@@ -5,6 +5,7 @@ ralt - return : open -n /Applications/Alacritty.app
 ralt - t : open -n /System/Applications/Utilities/Terminal.app
 ralt - d : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
 lcmd - t : yabai -m window --toggle float
+lcmd - b : yabai -m window --toggle border 
 
 lcmd - g : zsh -c "/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 1878 363&&sleep 5&&/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 2700 1300&&sleep 1&&/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 2600 1200"
 
