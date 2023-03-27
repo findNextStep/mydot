@@ -10,35 +10,27 @@ local module = {
         branch = 'release',
         config = function ()
             -- key bind
-            local vimp = require('vimp')
             vim.o.hidden = true
             vim.api.nvim_set_keymap('x', '<leader>f',  "<Plug>(coc-format-selected)", {noremap = false})
-            -- vimp.xnoremap({'expr', 'silent'},'<leader>x', '<Plug>(coc-format-selected)')
             local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
             vim.keymap.set("i", "<TAB>",
             'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
             vim.keymap.set("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
-            vimp.inoremap({'expr'}, '<CR>', function()
-                if vim.fn.pumvisible() == 1 then
-                    return '<C-y>'
-                else
-                    return '<CR>'
-                end
-            end)
+            vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? "\<C-y> : "<CR>"]], opts)
             -- color highlight
-            vim.api.nvim_set_hl(0,"@parameter",{fg=0x306b72});
-            vim.api.nvim_set_hl(0,"@type",{fg=0x729de3});
-            vim.api.nvim_set_hl(0,"@function",{fg=0xe5b124});
-            vim.api.nvim_set_hl(0,"@variable",{fg=0x26cdca});
-            vim.api.nvim_set_hl(0,"CocSemComment",{fg=0x505050});
-            vim.api.nvim_set_hl(0,"CocSemClass",{fg=0x729de3, bold=true});
-            vim.api.nvim_set_hl(0,"CocSemEnum",{fg=0x397797, bold=true});
-            vim.api.nvim_set_hl(0,"CocSemEnumMember",{fg=0x397797, bold=true});
-            vim.api.nvim_set_hl(0,"CocSemStruct",{fg=0x729de3});
-            vim.api.nvim_set_hl(0,"CocSemMethod",{fg=0xe5b124,underline=true});
-            vim.api.nvim_set_hl(0,"CocSemProperty",{fg=0x7ca6b7,underline=true});
-            vim.api.nvim_set_hl(0,"CocSemMacro",{fg=0x8f5daf,bold=true});
-            vim.api.nvim_set_hl(0,"CocSemNamespace",{fg=0x00d780,bold=true});
+            vim.api.nvim_set_hl(0, "@parameter", { fg = 0x306b72 });
+            vim.api.nvim_set_hl(0, "@type", { fg = 0x729de3 });
+            vim.api.nvim_set_hl(0, "@function", { fg = 0xe5b124 });
+            vim.api.nvim_set_hl(0, "@variable", { fg = 0x26cdca });
+            vim.api.nvim_set_hl(0, "CocSemComment", { fg = 0x505050 });
+            vim.api.nvim_set_hl(0, "CocSemClass", { fg = 0x729de3, bold = true });
+            vim.api.nvim_set_hl(0, "CocSemEnum", { fg = 0x397797, bold = true });
+            vim.api.nvim_set_hl(0, "CocSemEnumMember", { fg = 0x397797, bold = true });
+            vim.api.nvim_set_hl(0, "CocSemStruct", { fg = 0x729de3 });
+            vim.api.nvim_set_hl(0, "CocSemMethod", { fg = 0xe5b124, underline = true });
+            vim.api.nvim_set_hl(0, "CocSemProperty", { fg = 0x7ca6b7, underline = true });
+            vim.api.nvim_set_hl(0, "CocSemMacro", { fg = 0x8f5daf, bold = true });
+            vim.api.nvim_set_hl(0, "CocSemNamespace", { fg = 0x00d780, bold = true });
             -- Group.new('CocSemClass', colors.type, nil, styles.bold)
             -- Group.new('CocSemStruct', colors.type, nil, styles.bold)
             -- Group.new('CocSemType', colors.type, nil, styles.bold)
