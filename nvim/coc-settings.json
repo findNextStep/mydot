@@ -6,7 +6,7 @@
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "clangd.enabled": true,
     "semanticTokens.filetypes": ["cpp","c","rust"],
-    "sumneko-lua.enableNvimLuaDev":true,
+    "sumneko-lua.enableNvimLuaDev": false,
     "clangd.inlayHints.enable":false,
     "clangd.arguments": [
         "--background-index",
