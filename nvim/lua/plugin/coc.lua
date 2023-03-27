@@ -35,33 +35,41 @@ local module = {
                 end
             end)
             -- color highlight
-            local Color, colors, Group, _, styles = require('colorbuddy').setup()
-            Color.new('parameter','#306b72')
-            Group.new('CocSemParameter',colors.parameter)
-            Color.new('type','#729de3')
-            Group.new('CocSemClass', colors.type, nil, styles.bold)
-            Group.new('CocSemStruct', colors.type, nil, styles.bold)
-            Group.new('CocSemType', colors.type, nil, styles.bold)
-            Group.new('CocSemTypeParameter', colors.type, nil, styles.bold)
-            Group.new('CocSemEnum', colors.type, nil, styles.bold)
-            Color.new('functions','#e5b124')
-            Group.new('CocSemFunction', colors.functions)
-            Group.new('CocSemMethod', colors.functions, nil, styles.underline)
-            Color.new('variable','#26cdca')
-            Group.new('CocSemVariable', colors.variable)
-            Color.new('enumMember','#397797')
-            Group.new('CocSemEnumMember', colors.enumMember, nil, styles.bold)
-            Color.new('macro','#8f5daf')
-            Group.new('CocSemMacro', colors.macro, nil, styles.bold)
-            Color.new('comment','#505050')
-            Group.new('CocSemComment', colors.comment)
-            Color.new('namespace','#00d780')
-            Group.new('CocSemNamespace', colors.namespace, nil, styles.bold)
-            Color.new('property','#7ca6b7')
-            Group.new('CocSemProperty', colors.property, nil, styles.underline)
-            -- diagnostic notify
-            Color.new('infoCoc','#3694ff')
-            Group.new('CocInfoSign', colors.property, nil, nil)
+            vim.api.nvim_set_hl(0,"@parameter",{fg=0x306b72});
+            vim.api.nvim_set_hl(0,"@type",{fg=0x729de3});
+            vim.api.nvim_set_hl(0,"@function",{fg=0xe5b124});
+            vim.api.nvim_set_hl(0,"@variable",{fg=0x26cdca});
+            vim.api.nvim_set_hl(0,"CocSemComment",{fg=0x505050});
+            vim.api.nvim_set_hl(0,"CocSemClass",{fg=0x729de3, bold=true});
+            vim.api.nvim_set_hl(0,"CocSemEnum",{fg=0x397797, bold=true});
+            vim.api.nvim_set_hl(0,"CocSemEnumMember",{fg=0x397797, bold=true});
+            vim.api.nvim_set_hl(0,"CocSemStruct",{fg=0x729de3});
+            vim.api.nvim_set_hl(0,"CocSemMethod",{fg=0xe5b124,underline=true});
+            vim.api.nvim_set_hl(0,"CocSemProperty",{fg=0x7ca6b7,underline=true});
+            vim.api.nvim_set_hl(0,"CocSemMacro",{fg=0x8f5daf,bold=true});
+            vim.api.nvim_set_hl(0,"CocSemNamespace",{fg=0x00d780,bold=true});
+            -- Group.new('CocSemClass', colors.type, nil, styles.bold)
+            -- Group.new('CocSemStruct', colors.type, nil, styles.bold)
+            -- Group.new('CocSemType', colors.type, nil, styles.bold)
+            -- Group.new('CocSemTypeParameter', colors.type, nil, styles.bold)
+            -- Group.new('CocSemEnum', colors.type, nil, styles.bold)
+            -- Color.new('functions','#e5b124')
+            -- Group.new('CocSemFunction', colors.functions)
+            -- Color.new('variable','#26cdca')
+            -- Group.new('CocSemVariable', colors.variable)
+            -- Color.new('enumMember','#397797')
+            -- Group.new('CocSemEnumMember', colors.enumMember, nil, styles.bold)
+            -- Color.new('macro','#8f5daf')
+            -- Group.new('CocSemMacro', colors.macro, nil, styles.bold)
+            -- Color.new('comment','#505050')
+            -- Group.new('CocSemComment', colors.comment)
+            -- Color.new('namespace','#00d780')
+            -- Group.new('CocSemNamespace', colors.namespace, nil, styles.bold)
+            -- Color.new('property','#7ca6b7')
+            -- Group.new('CocSemProperty', colors.property, nil, styles.underline)
+            -- -- diagnostic notify
+            -- Color.new('infoCoc','#3694ff')
+            -- Group.new('CocInfoSign', colors.property, nil, nil)
         end,
         opt = true,
         event = "BufEnter"
@@ -98,6 +106,7 @@ local module = {
             j = {':CocList outline<CR>','symbol in buffer'},
             r = {"<Plug>(coc-references)", "go reference"},
             [' '] = {':CocList commands<CR>', 'coc commands'},
+            f = {":CocCommand semanticTokens.inspect<CR>","show token"},
         },
         e = {
             name = 'errors',
