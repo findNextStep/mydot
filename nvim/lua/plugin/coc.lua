@@ -14,19 +14,10 @@ local module = {
             vim.o.hidden = true
             vim.api.nvim_set_keymap('x', '<leader>f',  "<Plug>(coc-format-selected)", {noremap = false})
             -- vimp.xnoremap({'expr', 'silent'},'<leader>x', '<Plug>(coc-format-selected)')
-            vimp.inoremap({'expr', 'silent'}, '<TAB>', function()
-                if vim.fn.pumvisible() == 1 then
-                    return "<c-n>"
-                end
-                return "<TAB>"
-            end)
-            vimp.inoremap({'expr', 'silent'}, '<S-TAB>', function()
-                if vim.fn.pumvisible() == 1 then
-                    return "<c-p>"
-                else
-                    return "<S-TAB>"
-                end
-            end)
+            local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+            vim.keymap.set("i", "<TAB>",
+            'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+            vim.keymap.set("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
             vimp.inoremap({'expr'}, '<CR>', function()
                 if vim.fn.pumvisible() == 1 then
                     return '<C-y>'
