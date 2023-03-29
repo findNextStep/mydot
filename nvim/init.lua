@@ -195,7 +195,12 @@ packer.startup(function(use)
             {"JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter"},
             {"lewis6991/spellsitter.nvim"},
             {"romgrk/nvim-treesitter-context"},
-            {"haringsrob/nvim_context_vt"}
+            {
+                "haringsrob/nvim_context_vt",
+                config = function()
+                    vim.api.nvim_set_hl(0, require('nvim_context_vt.config').default_opts.highlight, { fg = 0x505050 })
+                end
+            }
         },
         config = function()
             vim.wo.foldmethod = 'expr'
