@@ -11,7 +11,7 @@ local module = {
         config = function ()
             -- key bind
             vim.o.hidden = true
-            vim.api.nvim_set_keymap('x', '<leader>f',  "<Plug>(coc-format-selected)", {noremap = false})
+            vim.api.nvim_set_keymap('x', '<leader>f', "<Plug>(coc-format-selected)", { noremap = false })
             local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
             vim.keymap.set('i', '`', function()
                 return vim.fn['coc#pum#next'](1)
@@ -26,18 +26,18 @@ local module = {
                     end
                     return "<Tab>"
                 end
-                , {noremap= true,expr = true})
+                , { noremap = true, expr = true })
             vim.keymap.set("i", "<S-Tab>", function()
-                    if vim.fn['coc#pum#visible']() == 1 then
-                        return vim.fn['coc#pum#prev'](1)
-                    end
-                    return "<S-Tab>"
+                if vim.fn['coc#pum#visible']() == 1 then
+                    return vim.fn['coc#pum#prev'](1)
+                end
+                return "<S-Tab>"
             end, opts)
             vim.keymap.set("i", "<CR>", function()
-                    if vim.fn['coc#pum#visible']() == 1 then
-                        return vim.fn['coc#pum#confirm']();
-                    end
-                   return "\r"
+                if vim.fn['coc#pum#visible']() == 1 then
+                    return vim.fn['coc#pum#confirm']();
+                end
+                return "\r"
             end, opts)
             -- color highlight
             vim.api.nvim_set_hl(0, "@parameter", { fg = 0x306b72 });
@@ -59,8 +59,7 @@ local module = {
     },
     check_back_space = function()
         local col = vim.fn.col('.') - 1
-        local regex = vim.regex([[\s]])
-        return not col or regex:match_str(vim.fn.getline('.')[col - 1])
+        return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
     end,
     next_warning = function()
         vim.cmd(':call CocAction(\'diagnosticNext\')')
