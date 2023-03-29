@@ -21,10 +21,21 @@ vim.o.softtabstop = 4
 vim.o.mouse = 'nv'
 vim.o.guifont='DejaVuSansMono Nerd Font'
 
+-- normal key map
 local opts = {
         noremap = true,
         silent = false
     }
+vim.keymap.set('n', '<leader>n', function()
+    vim.wo.number = not vim.wo.number
+end, { desc = 'show line number' })
+-- Keep the cursor in place while joining lines
+vim.keymap.set('n', 'J', 'mzJ`z', opts)
+vim.keymap.set('i', 'jj', '<ESC>', opts)
+-- we need better esc in android devices
+vim.keymap.set('x', '<C-C>', '<ESC>', opts)
+vim.keymap.set('x', '<C-c>', '<ESC>', opts)
+vim.keymap.set('x', '<leader>y', '"*y', { desc = 'copy' })
 vim.api.nvim_set_keymap('v', '<S-j>', ':m \'>+1<CR>gv=gv', opts)
 vim.api.nvim_set_keymap('v', '<S-k>', ':m \'<-2<CR>gv=gv', opts)
 
@@ -78,35 +89,6 @@ packer.startup(function(use)
     use { 'tjdevries/colorbuddy.nvim',
         opt = true,
         module = 'colorbuddy',
-    }
-
-    use { 'svermeulen/vimpeccable',
-        config = function ()
-            local vimp = require('vimp')
-            vimp.bind('n', '<leader>n', function ()
-                vim.wo.number = not vim.wo.number
-            end)
-            -- Keep the cursor in place while joining lines
-            vimp.nnoremap('J', 'mzJ`z')
-            vimp.inoremap('jj','<ESC>')
-            -- we need better esc in android devices
-            vimp.xnoremap('<C-C>', '<ESC>')
-            vimp.onoremap('<C-c>', '<ESC>')
-            vimp.inoremap('<C-c>', '<ESC>')
-            vimp.cnoremap('<C-c>', '<ESC>')
-            vimp.nnoremap('<C-c>', '<ESC>')
-            vimp.xnoremap('<leader>y', '"*y')
-            vimp.nnoremap('<leader>qr', function()
-                vimp.unmap_all()
-                vim.cmd('silent wa')
-                require("config.util").unload_lua_namespace('config')
-                dofile(vim.fn.stdpath('config') .. '/init.lua')
-                vim.cmd('PackerCompile')
-                print("Reloaded vimrc!")
-            end)
-        end,
-        opt = true,
-        module = 'vimp',
     }
 
     use { 'tomasiser/vim-code-dark',
