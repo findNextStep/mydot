@@ -13,10 +13,32 @@ local module = {
             vim.o.hidden = true
             vim.api.nvim_set_keymap('x', '<leader>f',  "<Plug>(coc-format-selected)", {noremap = false})
             local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
-            vim.keymap.set("i", "<TAB>",
-            'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
-            vim.keymap.set("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
-            vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? "\<C-y> : "<CR>"]], opts)
+            vim.keymap.set('i', '`', function()
+                return vim.fn['coc#pum#next'](1)
+            end, opts)
+            vim.keymap.set("i", "<Tab>",
+                function()
+                    if vim.fn['coc#pum#visible']() == 1 then
+                        return vim.fn['coc#pum#next'](1)
+                    end
+                    if require('plugin.coc').check_back_space() then
+                        return vim.fn['coc#refresh']()
+                    end
+                    return "<Tab>"
+                end
+                , {noremap= true,expr = true})
+            vim.keymap.set("i", "<S-Tab>", function()
+                    if vim.fn['coc#pum#visible']() == 1 then
+                        return vim.fn['coc#pum#prev'](1)
+                    end
+                    return "<S-Tab>"
+            end, opts)
+            vim.keymap.set("i", "<CR>", function()
+                    if vim.fn['coc#pum#visible']() == 1 then
+                        return vim.fn['coc#pum#confirm']();
+                    end
+                   return "<CR>"
+            end, opts)
             -- color highlight
             vim.api.nvim_set_hl(0, "@parameter", { fg = 0x306b72 });
             vim.api.nvim_set_hl(0, "@type", { fg = 0x729de3 });
@@ -31,32 +53,15 @@ local module = {
             vim.api.nvim_set_hl(0, "CocSemProperty", { fg = 0x7ca6b7, underline = true });
             vim.api.nvim_set_hl(0, "CocSemMacro", { fg = 0x8f5daf, bold = true });
             vim.api.nvim_set_hl(0, "CocSemNamespace", { fg = 0x00d780, bold = true });
-            -- Group.new('CocSemClass', colors.type, nil, styles.bold)
-            -- Group.new('CocSemStruct', colors.type, nil, styles.bold)
-            -- Group.new('CocSemType', colors.type, nil, styles.bold)
-            -- Group.new('CocSemTypeParameter', colors.type, nil, styles.bold)
-            -- Group.new('CocSemEnum', colors.type, nil, styles.bold)
-            -- Color.new('functions','#e5b124')
-            -- Group.new('CocSemFunction', colors.functions)
-            -- Color.new('variable','#26cdca')
-            -- Group.new('CocSemVariable', colors.variable)
-            -- Color.new('enumMember','#397797')
-            -- Group.new('CocSemEnumMember', colors.enumMember, nil, styles.bold)
-            -- Color.new('macro','#8f5daf')
-            -- Group.new('CocSemMacro', colors.macro, nil, styles.bold)
-            -- Color.new('comment','#505050')
-            -- Group.new('CocSemComment', colors.comment)
-            -- Color.new('namespace','#00d780')
-            -- Group.new('CocSemNamespace', colors.namespace, nil, styles.bold)
-            -- Color.new('property','#7ca6b7')
-            -- Group.new('CocSemProperty', colors.property, nil, styles.underline)
-            -- -- diagnostic notify
-            -- Color.new('infoCoc','#3694ff')
-            -- Group.new('CocInfoSign', colors.property, nil, nil)
         end,
         opt = true,
         event = "BufEnter"
     },
+    check_back_space = function()
+        local col = vim.fn.col('.') - 1
+        local regex = vim.regex([[\s]])
+        return not col or regex:match_str(vim.fn.getline('.')[col - 1])
+    end,
     next_warning = function()
         vim.cmd(':call CocAction(\'diagnosticNext\')')
         vim.cmd(":normal! zz")
