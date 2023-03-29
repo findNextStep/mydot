@@ -39,6 +39,7 @@ PluginList = {
     'plugin.vim-startuptime',
     'plugin.packer',
     'plugin.nvim-luapad',
+    'plugin.dap',
 }
 
 local packer = require('packer')
