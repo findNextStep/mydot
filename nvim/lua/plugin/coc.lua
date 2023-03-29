@@ -37,7 +37,7 @@ local module = {
                     if vim.fn['coc#pum#visible']() == 1 then
                         return vim.fn['coc#pum#confirm']();
                     end
-                   return "<CR>"
+                   return "\r"
             end, opts)
             -- color highlight
             vim.api.nvim_set_hl(0, "@parameter", { fg = 0x306b72 });
