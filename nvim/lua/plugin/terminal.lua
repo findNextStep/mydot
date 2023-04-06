@@ -13,6 +13,7 @@ return {
             vim.cmd('tmap <C-u> <c-\\><C-n>:call TerminalToggle()<cr>')
             vim.api.nvim_set_keymap('i', t'<C-i>', ':call TerminalToggle()<cr>')
             vim.api.nvim_set_keymap('n', t'<C-i>', ':call TerminalToggle()<cr>')
+            vim.api.nvim_set_keymap('t', 'jj', '<c-\\><c-n>', {})
         end
     },
     which_map = {
