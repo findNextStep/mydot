@@ -53,6 +53,9 @@ local module = {
             vim.api.nvim_set_hl(0, "CocSemProperty", { fg = 0x7ca6b7, underline = true });
             vim.api.nvim_set_hl(0, "CocSemMacro", { fg = 0x8f5daf, bold = true });
             vim.api.nvim_set_hl(0, "CocSemNamespace", { fg = 0x00d780, bold = true });
+            -- color for language server
+            vim.api.nvim_set_hl(0, "CocSemDeprecated", { strikethrough = true });
+            vim.api.nvim_set_hl(0, "CocUnusedHighlight", { strikethrough = true });
         end,
         opt = true,
         event = "BufEnter"
