@@ -195,6 +195,7 @@ packer.startup(function(use)
             {"JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter"},
             {"lewis6991/spellsitter.nvim"},
             {"romgrk/nvim-treesitter-context"},
+            {"nvim-treesitter/playground"},
             {
                 "haringsrob/nvim_context_vt",
                 config = function()
@@ -203,9 +204,9 @@ packer.startup(function(use)
             }
         },
         config = function()
-            vim.wo.foldmethod = 'expr'
-            vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
-            vim.wo.foldlevel = 99
+            vim.opt.foldmethod = 'expr'
+            vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+            vim.opt.foldenable = false
             require "nvim-treesitter.configs".setup {
                 ensure_installed = {"cpp","lua","bash","python","go","vim"},
                 -- ensure_installed = "all",
