@@ -103,7 +103,12 @@ local module = {
             w = {
                 name = 'warning',
                 n = {':lua require(\'plugin.coc\').next_warning()<CR>' ,'next warning'},
-                N = {':lua require(\'plugin.coc\').prev_warning()<CR>' ,'prev warning'},
+                N = { function()
+                    vim.cmd(':call CocAction(\'diagnosticPrevious\')')
+                    vim.cmd(":normal! zz")
+                    require('which-key').show(" ew", { mode = 'n' })
+                end
+                , 'prev warning' },
             },
             l = {':CocList diagnostics' , 'list error'},
             n = {':lua require(\'plugin.coc\').next_error()<CR>' ,'next error'},

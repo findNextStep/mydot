@@ -86,12 +86,9 @@ function MergeArray(array_1, array_2)
 end
 
 packer.startup(function(use)
-    use { 'tjdevries/colorbuddy.nvim',
-        opt = true,
-        module = 'colorbuddy',
-    }
-
     use { 'tomasiser/vim-code-dark',
+        opt = true,
+        event = "BufEnter",
         config =
             function ()
                 vim.cmd[[colorscheme codedark]]
@@ -234,12 +231,10 @@ packer.startup(function(use)
                 }
             }
             require('spellsitter').setup()
-            local Color, colors, Group, _, _ = require('colorbuddy').setup()
-            Color.new('ContextVt','#404040')
-            Group.new('ContextVt', colors.ContextVt)
             require'nvim_context_vt'.setup{
                 highlight = 'ContextVt',
             }
+            vim.api.nvim_set_hl(0, 'ContextVt', { fg = 0x404040})
         end,
         -- opt = true,
         -- event = "BufEnter"
