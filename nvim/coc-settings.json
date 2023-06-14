@@ -95,5 +95,5 @@
             ]
         }
     },
-    "Lua.telemetry.enable": true
+    "Lua.telemetry.enable": false
 }

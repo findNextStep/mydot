@@ -11,8 +11,8 @@ return {
             vim.api.nvim_set_var("terminal_cwd",   2)
             vim.api.nvim_set_var('terminal_key', '<c-i>')
             vim.api.nvim_set_keymap('t', 'jj', '<c-\\><c-n>', {})
-            vim.api.nvim_set_keymap('i', t'<C-i>', ':call TerminalToggle()<cr>', {})
-            vim.api.nvim_set_keymap('n', t'<C-i>', ':call TerminalToggle()<cr>', {})
+            -- vim.api.nvim_set_keymap('i', t'<C-i>', ':call TerminalToggle()<cr>', {})
+            -- vim.api.nvim_set_keymap('n', t'<C-i>', ':call TerminalToggle()<cr>', {})
         end
     },
     which_map = {

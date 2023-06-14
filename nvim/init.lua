@@ -51,6 +51,7 @@ PluginList = {
     'plugin.packer',
     'plugin.nvim-luapad',
     'plugin.dap',
+    'plugin.neotest',
 }
 
 local packer = require('packer')
@@ -292,5 +293,6 @@ packer.startup(function(use)
             })
         end,
     }
+    use('Bekaboo/dropbar.nvim')
 end)
 

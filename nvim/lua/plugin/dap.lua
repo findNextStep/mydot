@@ -5,6 +5,11 @@ this = {
     packer = {
         'mfussenegger/nvim-dap',
         requires = {
+            -- ui for dap
+            {
+                'rcarriga/nvim-dap-ui'
+            },
+            -- about cmake config
             {
                 'Shatur/neovim-tasks',
                 config = function()
@@ -39,6 +44,8 @@ this = {
         config = function()
             local dap = require('dap')
             -- config for lldb see https://github.com/mfussenegger/nvim-dap/discussions/158
+            -- local runner = require('neotest-gtest.runner')
+            -- runner.Runner._executable_path = {require('plugin.dap').get_current_executable_path()}
             dap.adapters.lldb = {
                 type = 'executable',
                 -- use default lldb
@@ -91,7 +98,11 @@ this = {
     get_executable_path = function(build_dir, name, reply_dir)
         local utils = require('tasks.utils')
         local Path = require('plenary.path')
-        for _, target in ipairs(this.get_codemodel_targets(reply_dir)) do
+        local dir = this.get_codemodel_targets(reply_dir)
+        if dir == nil then
+            return nil
+        end
+        for _, target in ipairs(dir) do
             if name == target['name'] then
                 local target_info = this.get_target_info(target, reply_dir)
                 if target_info['type'] ~= 'EXECUTABLE' then
@@ -115,7 +126,11 @@ this = {
         local pc = require('tasks.project_config')
         local c = pc.new()
         local build = this.parse_dir(c.cmake.build_dir, c.cmake.build_type)
-        return this.get_executable_path(build, c.cmake.target, this.get_reply_dir(build)).filename
+        local exe_path = this.get_executable_path(build, c.cmake.target, this.get_reply_dir(build))
+        if exe_path == nil then
+            return nil
+        end
+        return exe_path.filename
     end,
     which_map = {},
 
