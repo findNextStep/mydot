@@ -22,3 +22,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[rebase]
+	instructionFormat = (%an <%ae>) %s
