@@ -66,10 +66,9 @@ zinit light-mode for \
 # zinit ice as="completion"
 # zinit snippet https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty
 zinit wait"1" lucid as="completion" for \
-    OMZ::plugins/docker/_docker \
     OMZ::plugins/fd/_fd \
     https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty \
-    https://github.com/skroll/zsh-cmake-completion/blob/master/_cmake
+    https://github.com/ninja-build/ninja/blob/master/misc/zsh-completion
 # zinit ice mv=":zsh -> _cht" as="completion"
 zinit wait"1" mv=":zsh -> _cht" lucid as="completion" for https://cheat.sh/:zsh
 
