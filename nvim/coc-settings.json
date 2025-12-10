@@ -20,7 +20,7 @@
         "--header-insertion=iwyu",
         "--pch-storage=disk"
     ],
-    "clangd.path": "/Users/bytedance/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/clangd",
+    "clangd.path": "/opt/homebrew/Cellar/llvm@15/15.0.7/bin/clangd",
     "Lua.diagnostics.globals": [
         "vim"
     ],

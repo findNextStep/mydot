@@ -11,6 +11,7 @@ this = {
             },
             -- about cmake config
             {
+                -- use Civitasv/cmake-tools.nvim instade
                 'Shatur/neovim-tasks',
                 config = function()
                     local Path = require('plenary.path')
@@ -66,7 +67,9 @@ this = {
                     runInTerminal = true,
                 },
             }
-        end
+        end,
+        opt = true,
+        module = "dap"
     },
     parse_dir = function(dir, build_type)
         local Path = require('plenary.path')

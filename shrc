@@ -98,7 +98,7 @@ case "$(uname -s)" in
         export ANDROID_HOME="$HOME/Library/Android/sdk"
         export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
         # export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
-        export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.17.jdk/Contents/Home
+        export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/
         export PATH="$PATH:$ANDROID_HOME/platform-tools"
         export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
         export PATH=$ANDROID_SDK_ROOT/build-tools/29.0.3:$PATH
@@ -114,13 +114,20 @@ case "$(uname -s)" in
         # export PATH="/usr/local/opt/llvm/bin:$PATH"
         # export LDFLAGS="-L/usr/local/Cellar/llvm@9/9.0.1_2/lib/clang"
         # export CPPFLAGS="-I/usr/local/Cellar/llvm@9/9.0.1_2/include"
-        export ANDROID_NDK_HOME="$HOME/Library/Android/sdk/ndk/22.1.7171670"
-        export ANDROID_NDK="$HOME/Library/Android/sdk/ndk/22.1.7171670"
+        # export ANDROID_NDK_HOME="$HOME/Library/Android/sdk/ndk/22.1.7171670/"
+        export ANDROID_NDK_HOME="$HOME/Library/Android/sdk/ndk/21.4.7075529/"
+        export ANDROID_NDK="$HOME/Library/Android/sdk/ndk/21.4.7075529/"
+        # export ANDROID_NDK="$HOME/Library/Android/sdk/ndk/22.1.7171670/"
         export PATH=$ANDROID_NDK:$PATH #open ndk-build
         export PATH="$PATH:/Applications/CMake.app/Contents/bin"
+        export PATH=/Users/bytedance/bytedance/RTCGlobal_BuildSystem/local_build:$PATH
+        export PATH=$PATH:/Users/bytedance/.idevops/cache/bundle/ruby/2.6.0/bin
         # export CC=/Users/bytedance/.rtcbuild/.dolphin/dolphin_clang
         # export CXX=/Users/bytedance/.rtcbuild/.dolphin/dolphin_clang++
+        export RTC_PYTHON_PATH=$(which python3)
         ;;
 esac
 export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+
+export PATH="${HOME}/.build_env_config:${PATH}"

@@ -1,45 +1,93 @@
-lcmd - j : yabai -m window --focus next || yabai -m window --focus first
-lcmd - k : yabai -m window --focus prev || yabai -m window --focus last
+# lcmd - j : yabai -m window --focus next || yabai -m window --focus first
+# lcmd - k : yabai -m window --focus prev || yabai -m window --focus last
+# ralt + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+# ralt - return : open -n /Applications/Alacritty.app
+# ralt - t : open -n /System/Applications/Utilities/Terminal.app
+# ralt - d : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+# lcmd - t : yabai -m window --toggle float
+# lcmd - b : yabai -m window --toggle border 
+
+# lcmd - g : zsh -c "/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 1878 363&&sleep 5&&/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 2700 1300&&sleep 1&&/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 2600 1200"
+
+# shift + lcmd - j : yabai -m window --swap next
+# shift + lcmd - k : yabai -m window --swap prev
+
+
+# ralt - space : yabai -m window --toggle zoom-fullscreen
+
+# lcmd - a : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[0]["index"]')
+# lcmd - s : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[1]["index"]')
+# lcmd - d : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[2]["index"]')
+# lcmd - f : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[3]["index"]')
+# lcmd - u : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[4]["index"]')
+# lcmd - i : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[5]["index"]')
+# lcmd - o : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[6]["index"]')
+# lcmd - p : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[7]["index"]')
+
+
+# lcmd + shift - a : yabai -m window --space $(yabai -m query --spaces --display | jq '.[0]["index"]')
+# lcmd + shift - s : yabai -m window --space $(yabai -m query --spaces --display | jq '.[1]["index"]')
+# lcmd + shift - d : yabai -m window --space $(yabai -m query --spaces --display | jq '.[2]["index"]')
+# lcmd + shift - f : yabai -m window --space $(yabai -m query --spaces --display | jq '.[3]["index"]')
+# lcmd + shift - u : yabai -m window --space $(yabai -m query --spaces --display | jq '.[4]["index"]')
+# lcmd + shift - i : yabai -m window --space $(yabai -m query --spaces --display | jq '.[5]["index"]')
+# lcmd + shift - o : yabai -m window --space $(yabai -m query --spaces --display | jq '.[6]["index"]')
+# lcmd + shift - p : yabai -m window --space $(yabai -m query --spaces --display | jq '.[7]["index"]')
+
+# lcmd - space : yabai -m window --toggle split
+
+# lcmd - w : yabai -m display --focus next
+# lcmd - q : yabai -m display --focus prev
+# lcmd + shift -w : yabai -m window --display next
+# lcmd + shift -q : yabai -m window --display prev
+
+# lcmd + shift - r : ~/.cargo/bin/alacritty --command zsh -c "/usr/local/bin/code --folder-uri \"\$(node -e 'console.log(decodeURIComponent(process.argv[1]))' -- \"\$(cat ~/Library/Application\ Support/Code/storage.json | jq '.openedPathsList.entries[].folderUri' -r | ~/.fzf/bin/fzf  )\")\""
+
+
+lcmd - j : aerospace focus --boundaries workspace --boundaries-action wrap-around-the-workspace down
+lcmd - k : aerospace focus --boundaries workspace --boundaries-action wrap-around-the-workspace up
+lcmd - h : aerospace focus --boundaries workspace --boundaries-action wrap-around-the-workspace left
+lcmd - l : aerospace focus --boundaries workspace --boundaries-action wrap-around-the-workspace right
 ralt + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
 ralt - return : open -n /Applications/Alacritty.app
 ralt - t : open -n /System/Applications/Utilities/Terminal.app
 ralt - d : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
-lcmd - t : yabai -m window --toggle float
-lcmd - b : yabai -m window --toggle border 
+lcmd - t : aerospace layout floating tiling
+# lcmd - b : yabai -m window --toggle border 
 
-lcmd - g : zsh -c "/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 1878 363&&sleep 5&&/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 2700 1300&&sleep 1&&/Users/bytedance/Library/Android/sdk/platform-tools/adb shell input tap 2600 1200"
-
-shift + lcmd - j : yabai -m window --swap next
-shift + lcmd - k : yabai -m window --swap prev
-
-
-ralt - space : yabai -m window --toggle zoom-fullscreen
-
-lcmd - a : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[0]["index"]')
-lcmd - s : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[1]["index"]')
-lcmd - d : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[2]["index"]')
-lcmd - f : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[3]["index"]')
-lcmd - u : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[4]["index"]')
-lcmd - i : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[5]["index"]')
-lcmd - o : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[6]["index"]')
-lcmd - p : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[7]["index"]')
+# shift + lcmd - j : yabai -m window --swap next
+# shift + lcmd - k : yabai -m window --swap prev
+shift + lcmd - h : aerospace join-with left
+shift + lcmd - l : aerospace join-with right
 
 
-lcmd + shift - a : yabai -m window --space $(yabai -m query --spaces --display | jq '.[0]["index"]')
-lcmd + shift - s : yabai -m window --space $(yabai -m query --spaces --display | jq '.[1]["index"]')
-lcmd + shift - d : yabai -m window --space $(yabai -m query --spaces --display | jq '.[2]["index"]')
-lcmd + shift - f : yabai -m window --space $(yabai -m query --spaces --display | jq '.[3]["index"]')
-lcmd + shift - u : yabai -m window --space $(yabai -m query --spaces --display | jq '.[4]["index"]')
-lcmd + shift - i : yabai -m window --space $(yabai -m query --spaces --display | jq '.[5]["index"]')
-lcmd + shift - o : yabai -m window --space $(yabai -m query --spaces --display | jq '.[6]["index"]')
-lcmd + shift - p : yabai -m window --space $(yabai -m query --spaces --display | jq '.[7]["index"]')
+ralt - space : aerospace fullscreen
+
+lcmd - a : aerospace workspace $(aerospace list-workspaces --monitor focused | sed -n 1p)
+lcmd - s : aerospace workspace $(aerospace list-workspaces --monitor focused | sed -n 2p)
+lcmd - d : aerospace workspace $(aerospace list-workspaces --monitor focused | sed -n 3p)
+lcmd - f : aerospace workspace $(aerospace list-workspaces --monitor focused | sed -n 4p)
+# lcmd - u : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[4]["index"]')
+# lcmd - i : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[5]["index"]')
+# lcmd - o : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[6]["index"]')
+# lcmd - p : yabai -m space --focus $(yabai -m query --spaces --display | jq '.[7]["index"]')
+
+
+lcmd + shift - a : aerospace move-node-to-workspace $(aerospace list-workspaces --monitor focused | sed -n 1p)
+lcmd + shift - s : aerospace move-node-to-workspace $(aerospace list-workspaces --monitor focused | sed -n 2p)
+lcmd + shift - d : aerospace move-node-to-workspace $(aerospace list-workspaces --monitor focused | sed -n 3p)
+lcmd + shift - f : aerospace move-node-to-workspace $(aerospace list-workspaces --monitor focused | sed -n 4p)
+# lcmd + shift - u : yabai -m window --space $(yabai -m query --spaces --display | jq '.[4]["index"]')
+# lcmd + shift - i : yabai -m window --space $(yabai -m query --spaces --display | jq '.[5]["index"]')
+# lcmd + shift - o : yabai -m window --space $(yabai -m query --spaces --display | jq '.[6]["index"]')
+# lcmd + shift - p : yabai -m window --space $(yabai -m query --spaces --display | jq '.[7]["index"]')
 
 lcmd - space : yabai -m window --toggle split
 
-lcmd - w : yabai -m display --focus next
-lcmd - q : yabai -m display --focus prev
-lcmd + shift -w : yabai -m window --display next
-lcmd + shift -q : yabai -m window --display prev
+lcmd - w : aerospace focus-monitor next
+lcmd - q : aerospace focus-monitor prev
+lcmd + shift -w : aerospace move-node-to-monitor next
+lcmd + shift -q : aerospace move-node-to-monitor prev
 
 lcmd + shift - r : ~/.cargo/bin/alacritty --command zsh -c "/usr/local/bin/code --folder-uri \"\$(node -e 'console.log(decodeURIComponent(process.argv[1]))' -- \"\$(cat ~/Library/Application\ Support/Code/storage.json | jq '.openedPathsList.entries[].folderUri' -r | ~/.fzf/bin/fzf  )\")\""
 

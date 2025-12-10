@@ -1,6 +1,7 @@
 local fn = vim.fn
 
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+
 if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
     vim.cmd 'packadd packer.nvim'
@@ -51,7 +52,7 @@ PluginList = {
     'plugin.packer',
     'plugin.nvim-luapad',
     'plugin.dap',
-    'plugin.neotest',
+    -- 'plugin.neotest',
 }
 
 local packer = require('packer')
@@ -97,16 +98,18 @@ packer.startup(function(use)
     }
 
     -- 缩进线插件
-    use { "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            vim.opt.list = true
-            vim.opt.listchars:append("space:⋅")
-            require("indent_blankline").setup {
-                show_end_of_line = true,
-                show_current_context = true,
-                space_char_blankline = " ",
-            }
-        end,
+   use { "lukas-reineke/indent-blankline.nvim",
+       config = function()
+           vim.opt.list = true
+           vim.opt.listchars:append("space:⋅")
+           require("indent_blankline").setup {
+               show_end_of_line = true,
+               show_current_context = true,
+               space_char_blankline = " ",
+           }
+       end,
+       opt = true,
+       event = {'BufAdd','BufEnter','BufNew','BufNewFile','BufWinEnter'}
     }
 
     -- 状态栏
@@ -184,7 +187,6 @@ packer.startup(function(use)
         ft = { 'lua','vim','bash','zsh',},
         opt = true,
     }
-    use 'Vonr/align.nvim'
 
     -- 高亮 主题
     use { "nvim-treesitter/nvim-treesitter",
@@ -194,13 +196,21 @@ packer.startup(function(use)
             {"lewis6991/spellsitter.nvim"},
             {"romgrk/nvim-treesitter-context"},
             {"nvim-treesitter/playground"},
+            {'Bekaboo/dropbar.nvim'},
             {
                 "haringsrob/nvim_context_vt",
                 config = function()
                     vim.api.nvim_set_hl(0, require('nvim_context_vt.config').default_opts.highlight, { fg = 0x505050 })
-                end
+                    require'nvim_context_vt'.setup{
+                        highlight = 'ContextVt',
+                    }
+                    vim.api.nvim_set_hl(0, 'ContextVt', { fg = 0x404040})
+                end,
+                opt = true,
+                event = "BufEnter"
             }
         },
+        run = ':TSUpdate',
         config = function()
             vim.opt.foldmethod = 'expr'
             vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
@@ -232,13 +242,7 @@ packer.startup(function(use)
                 }
             }
             require('spellsitter').setup()
-            require'nvim_context_vt'.setup{
-                highlight = 'ContextVt',
-            }
-            vim.api.nvim_set_hl(0, 'ContextVt', { fg = 0x404040})
         end,
-        -- opt = true,
-        -- event = "BufEnter"
     }
 
     use { 'folke/which-key.nvim',
@@ -292,7 +296,8 @@ packer.startup(function(use)
                 operator_mapping = "<leader>c"
             })
         end,
+        opt = true,
+        key = "<leader>",
     }
-    use('Bekaboo/dropbar.nvim')
 end)
 

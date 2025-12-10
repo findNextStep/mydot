@@ -6,7 +6,7 @@ DOTFILES=mydot
 bashrc
 vimrc
 myvim
-alacritty.yml
+alacritty.toml
 zshrc
 shrc
 picture
@@ -28,5 +28,6 @@ karabiner/:.config/karabiner
 findNextepdeMBP
 MacBook-Pro.local 
 C02CG178MD6V
+R1XQYHXGJY
 bogon
 [endhosts]

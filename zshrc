@@ -275,3 +275,13 @@ ENABLE_CORRECTION="true"
 # zinit cdreplay -q
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || return 0
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export PATH="${HOME}/.build_env_config:${PATH}"
+
+export ANDROID_HOME=~/Library/Android/sdk
+
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
+export PATH=~/.local/bin:$PATH
+export PATH="~/.airbuild/bin":$PATH
