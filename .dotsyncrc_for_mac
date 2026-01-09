@@ -20,6 +20,7 @@ yabai:.yabairc
 p10k.zsh
 skhdrc
 gitignore-global
+aerospace.toml
 kitty.conf:.config/kitty/kitty.conf
 karabiner/:.config/karabiner
 [endfiles]
