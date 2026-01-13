@@ -195,7 +195,6 @@ packer.startup(function(use)
             {"JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter"},
             {"lewis6991/spellsitter.nvim"},
             {"romgrk/nvim-treesitter-context"},
-            {"nvim-treesitter/playground"},
             {'Bekaboo/dropbar.nvim'},
             {
                 "haringsrob/nvim_context_vt",

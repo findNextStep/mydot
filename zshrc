@@ -5,6 +5,7 @@ echo 233
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+zstyle ':omz:alpha:lib:git' async-prompt no  
 
 # setopt XTRACE
 MY_SHELL="zsh"
@@ -66,7 +67,6 @@ zinit light-mode for \
 # zinit ice as="completion"
 # zinit snippet https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty
 zinit wait"1" lucid as="completion" for \
-    OMZ::plugins/fd/_fd \
     https://github.com/alacritty/alacritty/blob/master/extra/completions/_alacritty \
     https://github.com/ninja-build/ninja/blob/master/misc/zsh-completion
 # zinit ice mv=":zsh -> _cht" as="completion"
