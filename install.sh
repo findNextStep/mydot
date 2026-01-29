@@ -9,6 +9,7 @@ case "$(uname -s)" in
     Darwin*)   
         defaults write -g com.apple.swipescrolldirection -bool FALSE
         defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+        defaults write cn.trae.app ApplePressAndHoldEnabled -bool false
         $(pwd)/dotsync/bin/dotsync -f $(pwd)/.dotsyncrc_for_mac -L ;;
 esac
 
